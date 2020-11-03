@@ -5,6 +5,8 @@ import { TextInput } from "react-native-paper";
 import styles from "./Login.Button.Style.js";
 import text from "./Text.Style.js";
 import bg from "./Screen.Style.js"
+import input from "./TextInput.Style.js";
+
 
 export const LoginPage = () => {
   return (
@@ -13,15 +15,15 @@ export const LoginPage = () => {
         <Text style={text.header}>Hello, friend...</Text>
         <TextInput
           label="Email..."
-          style={styles.input}
           mode="flat"
-          underlineColor="white"
+          underlineColor="black"
+          style={input.container}
         ></TextInput>
         <TextInput
           label="Password..."
-          style={styles.input}
           mode="flat"
-          underlineColor="white"
+          style={input.container}
+          underlineColor="black"
         ></TextInput>
 
         <LoginButton />
