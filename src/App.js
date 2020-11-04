@@ -11,13 +11,14 @@ export default function App() {
   return (
     <>
       <StatusBar style="auto" />
+
       <NavigationContainer>
         <RootStack.Navigator>
           <RootStack.Screen name="Login" component={LoginPage}/>
           <RootStack.Screen name="Dash" component={DashboardPage} />
         </RootStack.Navigator>
       </NavigationContainer>
+
     </>
   );
 }
-
