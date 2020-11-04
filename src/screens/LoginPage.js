@@ -9,7 +9,6 @@ import login from "../styles/LoginButtonStyle.js"
 export const LoginPage = ({ navigation }) => {
 
   const navigate = () => {
-    console.log(navigation);
     return navigation.navigate('Dash');
   }
 
