@@ -1,12 +1,12 @@
 import React from "react";
 import LoginButton from "./Login.Button.js";
-import { Text, View } from "react-native";
+import { Text, View, Button } from "react-native";
 import { TextInput } from "react-native-paper";
 import text from "./Text.Style.js";
 import bg from "./Screen.Style.js";
 import input from "./TextInput.Style.js";
 
-export const LoginPage = () => {
+export const LoginPage = ({ navigation }) => {
   return (
     <>
       <View style={bg.container}>
@@ -24,7 +24,13 @@ export const LoginPage = () => {
           underlineColor="black"
         ></TextInput>
 
-        <LoginButton />
+        {/* <LoginButton /> */}
+
+        <Button
+          title="Login"
+          onPress={() => navigation.navigate('Dash')}
+        />
+        
 
         <Text style={text.text}>Sign up for an account?</Text>
         <Text style={text.text}>Forgot password?</Text>
