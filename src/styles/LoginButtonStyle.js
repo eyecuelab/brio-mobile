@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
+    backgroundColor: 'lightgreen',
     padding: 5,
     marginTop: 30,
     marginRight: 15,
@@ -9,9 +10,8 @@ export default StyleSheet.create({
     borderColor: "black",
     borderWidth: 5,
     borderRadius: 0,
-  },
-  buttonText: {
-    fontSize: 20,
+    alignContent: 'center',
+    justifyContent: 'center',
     textAlign: 'center'
-  }
+  },
 });

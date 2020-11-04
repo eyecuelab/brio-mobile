@@ -1,12 +1,18 @@
 import React from "react";
-import LoginButton from "./Login.Button.js";
-import { Text, View, Button } from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
 import { TextInput } from "react-native-paper";
-import text from "./Text.Style.js";
-import bg from "./Screen.Style.js";
-import input from "./TextInput.Style.js";
+import text from "../styles/TextStyle.js";
+import bg from "../styles/ScreenStyle.js";
+import input from "../styles/TextInputStyle.js";
+import login from "../styles/LoginButtonStyle.js"
 
 export const LoginPage = ({ navigation }) => {
+
+  const navigate = () => {
+    console.log(navigation);
+    return navigation.navigate('Dash');
+  }
+
   return (
     <>
       <View style={bg.container}>
@@ -24,14 +30,15 @@ export const LoginPage = ({ navigation }) => {
           underlineColor="black"
         ></TextInput>
 
-        {/* <LoginButton /> */}
-
-        <Button
-          title="Login"
-          onPress={() => navigation.navigate('Dash')}
-        />
+        <TouchableOpacity
+          style={login.container}
+          onPress={() => navigate()}
+        >
+          <Text>
+            Login
+          </Text>
+        </TouchableOpacity>
         
-
         <Text style={text.text}>Sign up for an account?</Text>
         <Text style={text.text}>Forgot password?</Text>
       </View>
