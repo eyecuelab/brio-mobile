@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 import { Text, View } from "react-native";
-import bg from "./Screen.Style.js"
-import text from "./Text.Style.js";
+import bg from "../styles/ScreenStyle.js";
+import text from "../styles/TextStyle.js";
 
 function DashboardPage() {
     return (
