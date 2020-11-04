@@ -5,10 +5,7 @@ export default function App() {
   return (
     <>
       <StatusBar style="auto" />
-        
-          <LoginPage />
-       
+      <LoginPage />
     </>
   );
 }
-
