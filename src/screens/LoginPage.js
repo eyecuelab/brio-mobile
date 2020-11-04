@@ -7,11 +7,6 @@ import input from "../styles/TextInputStyle.js";
 import login from "../styles/LoginButtonStyle.js"
 
 export const LoginPage = ({ navigation }) => {
-
-  const navigate = () => {
-    return navigation.navigate('Dash');
-  }
-
   return (
     <>
       <View style={bg.container}>
@@ -31,15 +26,25 @@ export const LoginPage = ({ navigation }) => {
 
         <TouchableOpacity
           style={login.container}
-          onPress={() => navigate()}
+          onPress={() => navigation.navigate('Dash')}
         >
           <Text>
             Login
           </Text>
         </TouchableOpacity>
         
-        <Text style={text.text}>Sign up for an account?</Text>
-        <Text style={text.text}>Forgot password?</Text>
+        <Text 
+          onPress={() => navigation.navigate('Signup')}
+          style={text.text}
+        >
+            Sign up for an account?
+        </Text>
+        <Text
+          onPress={() => navigation.navigate('Forgot')}
+          style={text.text}
+        >
+          Forgot password?
+        </Text>
       </View>
     </>
   );
