@@ -9,7 +9,7 @@ import login from "../styles/LoginButtonStyle.js";
 function SignupPage({ navigation }) {
     return (
         <View style={bg.container}>
-            <Text style={text.header}>Hello, friend...</Text>
+            <Text style={text.header}>Create Account</Text>
                 <TextInput
                     label="Email..."
                     mode="flat"

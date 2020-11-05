@@ -9,6 +9,6 @@ export default StyleSheet.create({
     fontSize: 90,
     marginTop: 30,
     marginLeft: 15,
-    marginBottom: 120,
+    marginBottom: 40
   },
 });
