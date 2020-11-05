@@ -1,13 +1,33 @@
 import React from 'react';
-import { Text, View, Image } from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
+import { TextInput } from "react-native-paper";
 import bg from "../styles/ScreenStyle.js";
 import text from "../styles/TextStyle.js";
+import input from "../styles/TextInputStyle.js";
+import login from "../styles/LoginButtonStyle.js";
 
-function ForgotPassword() {
+function ForgotPassword({ navigation }) {
     return (
+        <>
         <View style={bg.container}>
-                <Text style={text.header}>Forgotten Password</Text>
+            <Text style={text.header}>Forgotten Password</Text>
+            <TextInput
+                label="Email..."
+                mode="flat"
+                underlineColor="black"
+                style={input.container}
+            >
+            </TextInput>
+            <TouchableOpacity
+                style={login.container}
+                onPress={() => navigation.navigate('Reset')}
+            >
+                <Text>
+                    Send Password Reset
+                </Text>
+            </TouchableOpacity>
         </View>
+        </>
     )
 }
 export default ForgotPassword

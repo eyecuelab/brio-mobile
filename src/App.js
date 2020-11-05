@@ -6,6 +6,7 @@ import LoginPage from "./screens/LoginPage.js";
 import DashboardPage from "./screens/DashboardPage.js";
 import ForgotPassword from "./screens/ForgotPassword.js";
 import SignupPage from "./screens/SignupPage.js";
+import ResetSent from "./screens/ResetSent.js";
 
 const RootStack = createStackNavigator();
 
@@ -20,6 +21,7 @@ export default function App() {
           <RootStack.Screen name="Dash" component={DashboardPage} />
           <RootStack.Screen name="Forgot" component={ForgotPassword} />
           <RootStack.Screen name="Signup" component={SignupPage} />
+          <RootStack.Screen name="Reset" component={ResetSent} />
         </RootStack.Navigator>
       </NavigationContainer>
 
