@@ -22,7 +22,7 @@ function TokenAuth({ navigation }) {
                     onPress={() => navigation.navigate('Dash')}
                 >
                     <Text>
-                        Sign-Up
+                        Send
                     </Text>
                 </TouchableOpacity>
         </View>
