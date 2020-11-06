@@ -1,16 +1,20 @@
 import React from "react";
-import { Text, View, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity, Image } from "react-native";
 import { TextInput } from "react-native-paper";
 import text from "../styles/TextStyle.js";
 import bg from "../styles/ScreenStyle.js";
 import input from "../styles/TextInputStyle.js";
 import login from "../styles/LoginButtonStyle.js"
+import brio from "../../assets/Brio_Star.png";
 
 export const LoginPage = ({ navigation }) => {
   return (
     <>
-      <View style={bg.container}>
+      <View style={bg.brick}>
         <Text style={text.header}>Hello, friend...</Text>
+        <View>
+               <Image source={brio} />
+        </View>
         <TextInput
           label="Email..."
           mode="flat"

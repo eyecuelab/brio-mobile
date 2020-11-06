@@ -7,6 +7,7 @@ import DashboardPage from "./screens/DashboardPage.js";
 import ForgotPassword from "./screens/ForgotPassword.js";
 import SignupPage from "./screens/SignupPage.js";
 import ResetSent from "./screens/ResetSent.js";
+import TokenAuth from "./screens/TokenAuth.js";
 
 const RootStack = createStackNavigator();
 
@@ -22,6 +23,7 @@ export default function App() {
           <RootStack.Screen name="Forgot" component={ForgotPassword} />
           <RootStack.Screen name="Signup" component={SignupPage} />
           <RootStack.Screen name="Reset" component={ResetSent} />
+          <RootStack.Screen name="Token" component={TokenAuth} />
         </RootStack.Navigator>
       </NavigationContainer>
 
