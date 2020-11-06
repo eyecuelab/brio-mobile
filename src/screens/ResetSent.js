@@ -5,7 +5,7 @@ import text from "../styles/TextStyle.js";
 
 function ResetSent() {
     return (
-        <View style={bg.container}>
+        <View style={bg.berry}>
                 <Text style={text.header}>Password Reset Sent</Text>
         </View>
     )

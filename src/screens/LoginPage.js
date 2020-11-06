@@ -10,7 +10,7 @@ import brio from "../../assets/Brio_Star.png";
 export const LoginPage = ({ navigation }) => {
   return (
     <>
-      <View style={bg.container}>
+      <View style={bg.brick}>
         <Text style={text.header}>Hello, friend...</Text>
         <View>
                <Image source={brio} />

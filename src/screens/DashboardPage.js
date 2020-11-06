@@ -12,14 +12,14 @@ function DashboardPage() {
 
   return (
     <>
-      <View style={bg.container}>
+      <View style={bg.robin}>
         <Text style={text.header}>Dash</Text>
         <View>
           <Image source={brio} />
         </View>
         {progressBars.map((bar) => {
           return (
-            <View style={{ marginLeft: 15, marginBottom: 15 }}>
+            <View key= {bar} style={{ marginLeft: 15, marginBottom: 15 }}>
               <Image source={bar} />
             </View>
           );

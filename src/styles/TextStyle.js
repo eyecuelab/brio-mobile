@@ -9,6 +9,7 @@ export default StyleSheet.create({
     fontSize: 90,
     marginTop: 30,
     marginLeft: 15,
-    marginBottom: 40
+    marginBottom: 40,
+    fontFamily: 'AppleSDGothicNeo-Light',
   },
 });

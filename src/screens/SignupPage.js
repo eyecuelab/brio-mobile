@@ -8,7 +8,7 @@ import login from "../styles/LoginButtonStyle.js";
 
 function SignupPage({ navigation }) {
     return (
-        <View style={bg.container}>
+        <View style={bg.sun}>
             <Text style={text.header}>Create Account</Text>
                 <TextInput
                     label="Email..."

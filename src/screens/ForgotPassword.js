@@ -24,7 +24,7 @@ function ForgotPassword({ navigation }) {
         ></TextInput>
         <TouchableOpacity
           style={login.container}
-          onPress={() => navigation.navigate("Reset")}
+          onPress={() => navigation.navigate("Token")}
         >
           <Text>Send Password Reset</Text>
         </TouchableOpacity>

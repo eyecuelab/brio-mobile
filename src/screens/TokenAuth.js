@@ -8,7 +8,7 @@ import login from "../styles/LoginButtonStyle.js";
 
 function TokenAuth({ navigation }) {
     return (
-        <View style={bg.container}>
+        <View style={bg.mint}>
                 <Text style={text.header}>Please Enter Token</Text>
                 <TextInput
                     label="Enter token..."
@@ -22,9 +22,15 @@ function TokenAuth({ navigation }) {
                     onPress={() => navigation.navigate('Dash')}
                 >
                     <Text>
-                        Send
+                        Confirm
                     </Text>
                 </TouchableOpacity>
+                <Text
+                    style={text.text}
+                    onPress={() => navigation.navigate('Token')}
+                >
+                    Resend Token
+                </Text>
         </View>
     )
 }
