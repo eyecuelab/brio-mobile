@@ -1,7 +1,7 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import LoginPage from "./screens/LoginPage.js";
 import DashboardPage from "./screens/DashboardPage.js";
 import ForgotPassword from "./screens/ForgotPassword.js";
@@ -18,7 +18,7 @@ export default function App() {
 
       <NavigationContainer>
         <RootStack.Navigator>
-          <RootStack.Screen name="Login" component={LoginPage}/>
+          <RootStack.Screen name="Login" component={LoginPage} />
           <RootStack.Screen name="Dash" component={DashboardPage} />
           <RootStack.Screen name="Forgot" component={ForgotPassword} />
           <RootStack.Screen name="Signup" component={SignupPage} />
@@ -26,7 +26,6 @@ export default function App() {
           <RootStack.Screen name="Token" component={TokenAuth} />
         </RootStack.Navigator>
       </NavigationContainer>
-
     </>
   );
 }
