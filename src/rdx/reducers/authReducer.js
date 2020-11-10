@@ -20,15 +20,14 @@ export default (state = initialAuthState, action) => {
         confirmationMessage: null,
         status: "Signed up",
       };
-    case types.CONFIRM_USER_SUCCESS:
+    case c.CONFIRM_USER_SUCCESS:
       return {
         ...state,
         data: null,
         errorMessage: null,
         signUpMessage: null,
-        confirmationMessage: "Account Confirmed!",
+        confirmationMessage: "User Confirmed",
       };
-
     default:
       return state;
   }
