@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Text, View, TouchableOpacity } from "react-native";
 import { TextInput } from "react-native-paper";
 import bg from "../styles/ScreenStyle.js";
@@ -24,6 +24,13 @@ function SignupPage(props) {
   const inputPassword = useRef(null);
   //const inputConfirmPassword = useRef(null);
 
+  useEffect(() => {
+    if (user.status == "Signed up") {
+      navigation.navigate("Token");
+    }
+    return () => {};
+  }, [user.confirmationMessage]);
+
   const signUp = () => {
     signUpWatcher({
       username: username,
@@ -31,13 +38,6 @@ function SignupPage(props) {
       password: password,
       // confirmPassword: confirmPassword,
     });
-    if (user && user.status == "Signed up") {
-      directToTokenPage();
-    }
-  };
-
-  const directToTokenPage = () => {
-    navigation.navigate("Token");
   };
 
   return (

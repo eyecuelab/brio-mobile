@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Text, View, TouchableOpacity } from "react-native";
 import { TextInput } from "react-native-paper";
 import bg from "../styles/ScreenStyle.js";
@@ -16,19 +16,19 @@ function TokenAuth(props) {
 
   const [token, setToken] = useState("");
 
+  useEffect(() => {
+    if (user.confirmationMessage == "User Confirmed") {
+      navigation.navigate("Dash");
+    }
+    return () => {};
+  }, [user.confirmationMessage]);
+
   const confirmUser = () => {
     confirmUserWatcher({
-      token: token,
+      code: token,
     });
-    console.log(user.confirmationMessage)
-    if (user && user.confirmationMessage == "User Confirmed") {
-      directToDashPage();
-    }
   };
 
-  const directToDashPage = () => {
-    navigation.navigate("Dash");
-  };
   return (
     <View style={bg.mint}>
       <Text style={text.header}>Please Enter Token</Text>

@@ -13,6 +13,7 @@ export function* signUpSaga(action) {
 }
 export function* confirmUserSaga(action) {
   let resp = yield call(confirmUserService, action.payload);
+
   console.log(resp.status);
   if (resp.ok && resp.status === 204) {
     yield put({ type: c.CONFIRM_USER_SUCCESS });

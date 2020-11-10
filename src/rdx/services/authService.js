@@ -15,8 +15,8 @@ export const signUpUserService = (request) => {
   });
 };
 
-export const confirmUserService = (token) => {
-  const CONFIRM_API_ENDPOINT = "http://localhost:8080/signup";
+export const confirmUserService = (code) => {
+  const CONFIRM_API_ENDPOINT = "http://localhost:8080/signup/confirm";
 
   const parameters = {
     method: "POST",
@@ -24,10 +24,10 @@ export const confirmUserService = (token) => {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(token),
+    body: JSON.stringify(code),
   };
 
-  return fetch(CONFIRM_API_ENDPOINT, parameters).then((response) => {
-    return response;
+  return fetch(CONFIRM_API_ENDPOINT, parameters).then((resp) => {
+    return resp;
   });
 };
