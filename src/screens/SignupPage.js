@@ -7,61 +7,53 @@ import input from "../styles/TextInputStyle.js";
 import login from "../styles/LoginButtonStyle.js";
 import { connect } from "react-redux";
 import * as actions from "../rdx/actions";
+import { useNavigation } from "@react-navigation/native";
 
-function SignupPage(props, { navigation }) {
+function SignupPage(props) {
+  const navigation = useNavigation();
   const signUpWatcher = props.signUpWatcher;
-  const users = props.users;
+  const user = props.user;
 
-  const [last_name, setLast_Name] = useState("");
-  const [first_name, setFirst_Name] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   //const [confirmPassword, setConfirmPassword] = useState("");
 
-  const inputFirst_Name = useRef(null);
-  const inputLast_Name = useRef(null);
+  const inputUsername = useRef(null);
   const inputEmail = useRef(null);
   const inputPassword = useRef(null);
   //const inputConfirmPassword = useRef(null);
 
   const signUp = () => {
     signUpWatcher({
-      first_name: first_name,
-      last_name: last_name,
+      username: username,
       email: email,
       password: password,
       // confirmPassword: confirmPassword,
     });
-    //navigation.navigate("Token");
+    if (user && user.status == "Signed up") {
+      directToTokenPage();
+    }
+  };
+
+  const directToTokenPage = () => {
+    navigation.navigate("Token");
   };
 
   return (
     <>
       <View style={bg.sun}>
-        <Text style={text.header}>Create Account</Text>
+        <Text style={text.header}>Account Signup</Text>
         <TextInput
-          label="First name..."
+          label="Username..."
           mode="flat"
           underlineColor="black"
           style={input.container}
-          ref={inputFirst_Name}
+          ref={inputUsername}
           returnKeyType="next"
           autoCapitalize="none"
-          value={first_name}
-          onChangeText={setFirst_Name}
-          onSubmitEditing={() => inputFirst_Name.current.focus()}
-        />
-
-        <TextInput
-          label="Last name..."
-          mode="flat"
-          underlineColor="black"
-          style={input.container}
-          ref={inputLast_Name}
-          returnKeyType="next"
-          autoCapitalize="none"
-          value={last_name}
-          onChangeText={setLast_Name}
+          value={username}
+          onChangeText={setUsername}
           onSubmitEditing={() => inputLast_Name.current.focus()}
         />
 
@@ -113,7 +105,7 @@ function SignupPage(props, { navigation }) {
 
 const mapStateToProps = (state) => {
   return {
-    users: state.users,
+    user: state.user,
   };
 };
 
