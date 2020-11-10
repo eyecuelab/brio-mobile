@@ -54,7 +54,7 @@ function SignupPage(props) {
           autoCapitalize="none"
           value={username}
           onChangeText={setUsername}
-          onSubmitEditing={() => inputLast_Name.current.focus()}
+          onSubmitEditing={() => inputEmail.current.focus()}
         />
 
         <TextInput
@@ -67,7 +67,7 @@ function SignupPage(props) {
           autoCapitalize="none"
           value={email}
           onChangeText={setEmail}
-          onSubmitEditing={() => inputUsername.current.focus()}
+          onSubmitEditing={() => inputPassword.current.focus()}
         />
 
         <TextInput

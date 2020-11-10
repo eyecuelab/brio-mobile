@@ -6,3 +6,9 @@ export const signUpWatcher = (payload) => {
     payload,
   };
 };
+export const confirmUserWatcher = (payload) => {
+  return {
+    type: c.CONFIRM_USER_WATCHER,
+    payload,
+  };
+};
