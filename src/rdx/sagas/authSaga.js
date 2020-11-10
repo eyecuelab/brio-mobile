@@ -15,7 +15,7 @@ export function* confirmUserSaga(action) {
   let resp = yield call(confirmUserService, action.payload);
   console.log(resp.status);
   if (resp.ok && resp.status === 204) {
-    yield put({ type: c.CONFIRM_SUCCESS });
+    yield put({ type: c.CONFIRM_USER_SUCCESS });
   } else {
     throw yield resp.json();
   }
