@@ -19,10 +19,10 @@ export const confirmUserService = (token) => {
   const CONFIRM_API_ENDPOINT = "http://localhost:8080/signup";
 
   const parameters = {
-    method: 'POST',
+    method: "POST",
     headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
+      Accept: "application/json",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(token),
   };
