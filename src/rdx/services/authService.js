@@ -14,3 +14,20 @@ export const signUpUserService = (request) => {
     return resp;
   });
 };
+
+export const confirmUserService = (token) => {
+  const CONFIRM_API_ENDPOINT = "http://localhost:8080/signup";
+
+  const parameters = {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(token),
+  };
+
+  return fetch(CONFIRM_API_ENDPOINT, parameters).then((response) => {
+    return response;
+  });
+};
