@@ -1,0 +1,2 @@
+export const SIGNUP_WATCHER = "SIGNUP_WATCHER";
+export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";

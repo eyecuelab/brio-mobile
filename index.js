@@ -5,9 +5,11 @@ import { Provider as PaperProvider } from "react-native-paper";
 
 export const Main = () => {
   return (
-    <PaperProvider>
-      <App />
-    </PaperProvider>
+    <>
+      <PaperProvider>
+        <App />
+      </PaperProvider>
+    </>
   );
 };
 
