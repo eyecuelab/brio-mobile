@@ -25,7 +25,6 @@ function SignupPage(props) {
   //const inputConfirmPassword = useRef(null);
 
   useEffect(() => {
-    console.log(user);
     if (user.status == "Signed up") {
       navigation.navigate("Token");
     }
