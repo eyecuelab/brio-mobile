@@ -1,15 +1,17 @@
+// REACT, REACT NATIVE //
 import React, { useState, useRef, useEffect } from "react";
 import { Text, View, TouchableOpacity } from "react-native";
+import { connect } from "react-redux";
+import * as actions from "../rdx/actions";
+import { useNavigation } from "@react-navigation/native";
+// STYLES //
 import { TextInput } from "react-native-paper";
 import bg from "../styles/ScreenStyle.js";
 import text from "../styles/TextStyle.js";
 import input from "../styles/TextInputStyle.js";
 import login from "../styles/LoginButtonStyle.js";
-import { connect } from "react-redux";
-import * as actions from "../rdx/actions";
-import { useNavigation } from "@react-navigation/native";
 
-function SignupPage(props) {
+const SignupPage = (props) => {
   const navigation = useNavigation();
   const signUpWatcher = props.signUpWatcher;
   const user = props.user;
@@ -24,13 +26,6 @@ function SignupPage(props) {
   const inputPassword = useRef(null);
   //const inputConfirmPassword = useRef(null);
 
-  useEffect(() => {
-    if (user.status == "Signed up") {
-      navigation.navigate("Token");
-    }
-    return () => {};
-  }, [user.status]);
-
   const signUp = () => {
     signUpWatcher({
       username: username,
@@ -39,6 +34,13 @@ function SignupPage(props) {
       // confirmPassword: confirmPassword,
     });
   };
+
+  useEffect(() => {
+    if (user.status == "Signed up") {
+      navigation.navigate("Token");
+    }
+    return () => {};
+  }, [user.status]);
 
   return (
     <>
@@ -109,5 +111,5 @@ const mapStateToProps = (state) => {
   };
 };
 
-SignupPage = connect(mapStateToProps, actions)(SignupPage);
-export default SignupPage;
+const SignupPageConnected = connect(mapStateToProps, actions)(SignupPage);
+export default SignupPageConnected;

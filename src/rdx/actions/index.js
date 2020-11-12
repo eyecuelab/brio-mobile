@@ -12,3 +12,9 @@ export const confirmUserWatcher = (payload) => {
     payload,
   };
 };
+export const logInWatcher = (payload) => {
+  return {
+    type: c.LOGIN_WATCHER,
+    payload,
+  };
+};
