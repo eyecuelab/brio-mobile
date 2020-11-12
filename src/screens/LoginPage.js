@@ -31,7 +31,7 @@ const LoginPage = (props) => {
   };
 
   useEffect(() => {
-    if (user.status == "Logged in") {
+    if (user.status === "Logged in") {
       navigation.navigate("Dash");
     }
     return () => {};
