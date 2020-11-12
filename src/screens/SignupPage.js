@@ -26,13 +26,6 @@ const SignupPage = (props) => {
   const inputPassword = useRef(null);
   //const inputConfirmPassword = useRef(null);
 
-  useEffect(() => {
-    if (user.status == "Signed up") {
-      navigation.navigate("Token");
-    }
-    return () => {};
-  }, [user.status]);
-
   const signUp = () => {
     signUpWatcher({
       username: username,
@@ -41,6 +34,13 @@ const SignupPage = (props) => {
       // confirmPassword: confirmPassword,
     });
   };
+
+  useEffect(() => {
+    if (user.status == "Signed up") {
+      navigation.navigate("Token");
+    }
+    return () => {};
+  }, [user.status]);
 
   return (
     <>

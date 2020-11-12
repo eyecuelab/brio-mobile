@@ -1,5 +1,5 @@
 // REACT, REACT NATIVE //
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Text, View, TouchableOpacity, Image } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../rdx/actions";
@@ -15,6 +15,7 @@ import brio from "../../assets/Brio_Star.png";
 const LoginPage = (props) => {
   const navigation = useNavigation();
   const logInWatcher = props.logInWatcher;
+  const user = props.user;
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,12 +24,19 @@ const LoginPage = (props) => {
   const inputPassword = useRef(null);
 
   const logIn = () => {
-    //navigation.navigate('Dash')
     logInWatcher({
       email: email,
       password: password,
     });
   };
+
+  useEffect(() => {
+    if (user.status == "Logged in") {
+      navigation.navigate("Dash");
+    }
+    return () => {};
+  }, [user.status]);
+
   return (
     <>
       <View style={bg.brick}>
@@ -75,8 +83,10 @@ const LoginPage = (props) => {
     </>
   );
 };
-const mapStateToProps = () => {
-  return {};
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
 };
 const LoginPageConnected = connect(mapStateToProps, actions)(LoginPage);
 export default LoginPageConnected;
