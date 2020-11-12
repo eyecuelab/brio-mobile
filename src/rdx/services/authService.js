@@ -31,3 +31,19 @@ export const confirmUserService = (code) => {
     return resp;
   });
 };
+export const loginUserService = (request) => {
+  const CONFIRM_API_ENDPOINT = "http://localhost:8080/login";
+
+  const parameters = {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(request),
+  };
+
+  return fetch(CONFIRM_API_ENDPOINT, parameters).then((resp) => {
+    return resp;
+  });
+};

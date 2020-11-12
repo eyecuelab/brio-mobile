@@ -24,8 +24,10 @@ const LoginPage = (props) => {
 
   const logIn = () => {
     //navigation.navigate('Dash')
-    //logInWatcher({});
-    console.log("LOGIN PRESSED")
+    logInWatcher({
+      email: email,
+      password: password,
+    });
   };
   return (
     <>

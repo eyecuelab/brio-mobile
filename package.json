@@ -7,7 +7,7 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "postinstall": "rndebugger-open",
-    "debug": "open 'rndebugger://set-debugger-loc?host=localhost&port=19000' && expo start"
+    "debug": "open 'rndebugger://set-debugger-loc?host=localhost&port=19001' && expo start"
   },
   "dependencies": {
     "@react-native-community/masked-view": "0.1.10",

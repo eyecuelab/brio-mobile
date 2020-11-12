@@ -1,5 +1,9 @@
 import * as c from "../actions/types";
-import { signUpUserService, confirmUserService } from "../services/authService";
+import {
+  signUpUserService,
+  confirmUserService,
+  loginUserService,
+} from "../services/authService";
 import { call, put } from "redux-saga/effects";
 
 export function* signUpSaga(action) {
@@ -17,6 +21,15 @@ export function* confirmUserSaga(action) {
   console.log(resp.status);
   if (resp.ok && resp.status === 204) {
     yield put({ type: c.CONFIRM_USER_SUCCESS });
+  } else {
+    throw yield resp.json();
+  }
+}
+export function* logInSaga(action) {
+  let resp = yield call(loginUserService, action.payload);
+  console.log(resp.status);
+  if (resp.ok && resp.status === 204) {
+    yield put({ type: c.LOGIN_SUCCESS });
   } else {
     throw yield resp.json();
   }
