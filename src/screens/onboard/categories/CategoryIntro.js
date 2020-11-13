@@ -20,7 +20,7 @@ function Category() {
           </Text>
         </View>
         <View>
-          <Text>Let’s see things we can focus on now...</Text>
+          <Text>Let’s see some popular areas we can start focusing on now...</Text>
         </View>
         <View>
           <Text>Swipe here</Text>

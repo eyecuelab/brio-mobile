@@ -32,7 +32,7 @@ const LoginPage = (props) => {
 
   useEffect(() => {
     if (user.status === "Logged in") {
-      navigation.navigate("CategoryIntro");
+      navigation.navigate("CategoryNavigation");
     }
     return () => {};
   }, [user.status]);
