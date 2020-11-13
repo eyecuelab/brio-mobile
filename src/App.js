@@ -4,7 +4,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Provider } from "react-redux";
 import { store } from "../src/rdx/store";
-import CategoryIntro from "./components/categories/Category.js";
 import { ScrollView } from "react-native-gesture-handler";
 import LoginPage from "./screens/auth/LoginPage";
 import DashboardPage from "./screens/standard/DashboardPage";
@@ -12,6 +11,7 @@ import ForgotPassword from "./screens/auth/ForgotPassword";
 import SignupPage from "./screens/auth/SignupPage";
 import ResetSent from "./screens/auth/ResetSent";
 import TokenAuth from "./screens/auth/TokenAuth";
+import CategoryIntro from "./screens/onboard/categories/Category.js";
 
 const RootStack = createStackNavigator();
 

@@ -2,7 +2,6 @@ import React from "react";
 import { View, Text } from "react-native";
 import { Swipeable } from "react-native-gesture-handler";
 import CategoryList from "./CategoryList";
-import bg from "../../styles/ScreenStyle.js";
 
 function Category() {
   const RightAction = () => {
