@@ -4,14 +4,14 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Provider } from "react-redux";
 import { store } from "../src/rdx/store";
-import LoginPage from "./screens/LoginPage.js";
-import DashboardPage from "./screens/DashboardPage.js";
-import ForgotPassword from "./screens/ForgotPassword.js";
-import SignupPage from "./screens/SignupPage.js";
-import ResetSent from "./screens/ResetSent.js";
-import TokenAuth from "./screens/TokenAuth.js";
 import CategoryIntro from "./components/categories/Category.js";
 import { ScrollView } from "react-native-gesture-handler";
+import LoginPage from "./screens/auth/LoginPage";
+import DashboardPage from "./screens/standard/DashboardPage";
+import ForgotPassword from "./screens/auth/ForgotPassword";
+import SignupPage from "./screens/auth/SignupPage";
+import ResetSent from "./screens/auth/ResetSent";
+import TokenAuth from "./screens/auth/TokenAuth";
 
 const RootStack = createStackNavigator();
 
@@ -28,10 +28,7 @@ export default function App() {
               <RootStack.Screen name="Signup" component={SignupPage} />
               <RootStack.Screen name="Reset" component={ResetSent} />
               <RootStack.Screen name="Token" component={TokenAuth} />
-              <RootStack.Screen
-                name="CategoryIntro"
-                component={CategoryIntro}
-              />
+              <RootStack.Screen name="CategoryIntro" component={CategoryIntro} />
             </RootStack.Navigator>
           </NavigationContainer>
       </Provider>

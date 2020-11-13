@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Text, View, TouchableOpacity } from "react-native";
 import { TextInput } from "react-native-paper";
-import bg from "../styles/ScreenStyle.js";
-import text from "../styles/TextStyle.js";
-import input from "../styles/TextInputStyle.js";
-import login from "../styles/LoginButtonStyle.js";
+import bg from "../../styles/ScreenStyle.js";
+import text from "../../styles/TextStyle.js";
+import input from "../../styles/TextInputStyle.js";
+import login from "../../styles/LoginButtonStyle.js";
 import { connect } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
-import * as actions from "../rdx/actions";
+import * as actions from "../../rdx/actions";
 
 function TokenAuth(props) {
   const navigation = useNavigation();
