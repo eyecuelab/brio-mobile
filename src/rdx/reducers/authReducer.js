@@ -33,8 +33,7 @@ export default (state = initialAuthState, action) => {
         ...state,
         data: null,
         errorMessage: null,
-        signupMessage: "Signed up successfully!",
-        confirmationMessage: null,
+        signupMessage: null,
         status: "Logged in",
       };
     default:
