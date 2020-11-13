@@ -4,12 +4,12 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Provider } from "react-redux";
 import { store } from "../src/rdx/store";
-import LoginPage from "./screens/LoginPage.js";
-import DashboardPage from "./screens/DashboardPage.js";
-import ForgotPassword from "./screens/ForgotPassword.js";
-import SignupPage from "./screens/SignupPage.js";
-import ResetSent from "./screens/ResetSent.js";
-import TokenAuth from "./screens/TokenAuth.js";
+import LoginPage from "./screens/auth/LoginPage";
+import DashboardPage from "./screens/standard/DashboardPage";
+import ForgotPassword from "./screens/auth/ForgotPassword";
+import SignupPage from "./screens/auth/SignupPage";
+import ResetSent from "./screens/auth/ResetSent";
+import TokenAuth from "./screens/auth/TokenAuth";
 
 const RootStack = createStackNavigator();
 

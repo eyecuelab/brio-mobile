@@ -1,16 +1,16 @@
 import React from "react";
 import { Text, View, TouchableOpacity, Image } from "react-native";
 import { TextInput } from "react-native-paper";
-import bg from "../styles/ScreenStyle.js";
-import text from "../styles/TextStyle.js";
-import input from "../styles/TextInputStyle.js";
-import login from "../styles/LoginButtonStyle.js";
-import brio from "../../assets/Brio_Star.png";
+import bg from "../../styles/ScreenStyle.js";
+import text from "../../styles/TextStyle.js";
+import input from "../../styles/TextInputStyle.js";
+import login from "../../styles/LoginButtonStyle.js";
+import brio from "../../../assets/Brio_Star.png";
 
 function ForgotPassword({ navigation }) {
   return (
     <>
-      <View style={bg.container}>
+      <View style={bg.sun}>
         <View>
           <Text style={text.header}>Forgotten Password</Text>
           <Image source={brio} />
