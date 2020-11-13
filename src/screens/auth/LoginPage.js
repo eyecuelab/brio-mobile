@@ -2,15 +2,15 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Text, View, TouchableOpacity, Image, ScrollView } from "react-native";
 import { connect } from "react-redux";
-import * as actions from "../rdx/actions";
+import * as actions from "../../rdx/actions/";
 import { useNavigation } from "@react-navigation/native";
 // STYLES //
 import { TextInput } from "react-native-paper";
-import text from "../styles/TextStyle.js";
-import bg from "../styles/ScreenStyle.js";
-import input from "../styles/TextInputStyle.js";
-import login from "../styles/LoginButtonStyle.js";
-import brio from "../../assets/Brio_Star.png";
+import text from "../../styles/TextStyle.js";
+import bg from "../../styles/ScreenStyle.js";
+import input from "../../styles/TextInputStyle.js";
+import login from "../../styles/LoginButtonStyle.js";
+import brio from "../../../assets/Brio_Star.png";
 
 const LoginPage = (props) => {
   const navigation = useNavigation();
@@ -68,7 +68,7 @@ const LoginPage = (props) => {
           autoCapitalize="none"
           value={password}
           onChangeText={setPassword}
-          onSubmitEditing={() => inputConfirmPassword.current.focus()}
+          onSubmitEditing={() => inputPassword.current.focus()}
         ></TextInput>
 
         <TouchableOpacity style={login.container} onPress={() => logIn()}>

@@ -2,14 +2,14 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Text, View, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
-import * as actions from "../rdx/actions";
+import * as actions from "../../rdx/actions";
 import { useNavigation } from "@react-navigation/native";
 // STYLES //
 import { TextInput } from "react-native-paper";
-import bg from "../styles/ScreenStyle.js";
-import text from "../styles/TextStyle.js";
-import input from "../styles/TextInputStyle.js";
-import login from "../styles/LoginButtonStyle.js";
+import bg from "../../styles/ScreenStyle.js";
+import text from "../../styles/TextStyle.js";
+import input from "../../styles/TextInputStyle.js";
+import login from "../../styles/LoginButtonStyle.js";
 
 const SignupPage = (props) => {
   const navigation = useNavigation();
@@ -56,7 +56,7 @@ const SignupPage = (props) => {
           autoCapitalize="none"
           value={username}
           onChangeText={setUsername}
-          onSubmitEditing={() => inputEmail.current.focus()}
+          onSubmitEditing={() => inputUsername.current.focus()}
         />
 
         <TextInput
@@ -69,7 +69,7 @@ const SignupPage = (props) => {
           autoCapitalize="none"
           value={email}
           onChangeText={setEmail}
-          onSubmitEditing={() => inputPassword.current.focus()}
+          onSubmitEditing={() => inputEmail.current.focus()}
         />
 
         <TextInput
@@ -82,7 +82,7 @@ const SignupPage = (props) => {
           autoCapitalize="none"
           value={password}
           onChangeText={setPassword}
-          onSubmitEditing={() => inputConfirmPassword.current.focus()}
+          onSubmitEditing={() => inputPassword.current.focus()}
         />
 
         {/* <TextInput
