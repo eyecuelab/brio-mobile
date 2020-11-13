@@ -32,7 +32,7 @@ const LoginPage = (props) => {
 
   useEffect(() => {
     if (user.status === "Logged in") {
-      navigation.navigate("Dash");
+      navigation.navigate("CategoryIntro");
     }
     return () => {};
   }, [user.status]);
@@ -84,6 +84,7 @@ const LoginPage = (props) => {
   );
 };
 const mapStateToProps = (state) => {
+  console.log(state.user)
   return {
     user: state.user,
   };
