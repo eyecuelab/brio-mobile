@@ -10,6 +10,8 @@ import ForgotPassword from "./screens/ForgotPassword.js";
 import SignupPage from "./screens/SignupPage.js";
 import ResetSent from "./screens/ResetSent.js";
 import TokenAuth from "./screens/TokenAuth.js";
+import CategoryIntro from "./components/categories/Category.js";
+import { ScrollView } from "react-native-gesture-handler";
 
 const RootStack = createStackNavigator();
 
@@ -18,17 +20,20 @@ export default function App() {
     <>
       <Provider store={store}>
         <StatusBar style="auto" />
-
-        <NavigationContainer>
-          <RootStack.Navigator>
-            <RootStack.Screen name="Login" component={LoginPage} />
-            <RootStack.Screen name="Dash" component={DashboardPage} />
-            <RootStack.Screen name="Forgot" component={ForgotPassword} />
-            <RootStack.Screen name="Signup" component={SignupPage} />
-            <RootStack.Screen name="Reset" component={ResetSent} />
-            <RootStack.Screen name="Token" component={TokenAuth} />
-          </RootStack.Navigator>
-        </NavigationContainer>
+          <NavigationContainer>
+            <RootStack.Navigator>
+              <RootStack.Screen name="Login" component={LoginPage} />
+              <RootStack.Screen name="Dash" component={DashboardPage} />
+              <RootStack.Screen name="Forgot" component={ForgotPassword} />
+              <RootStack.Screen name="Signup" component={SignupPage} />
+              <RootStack.Screen name="Reset" component={ResetSent} />
+              <RootStack.Screen name="Token" component={TokenAuth} />
+              <RootStack.Screen
+                name="CategoryIntro"
+                component={CategoryIntro}
+              />
+            </RootStack.Navigator>
+          </NavigationContainer>
       </Provider>
     </>
   );

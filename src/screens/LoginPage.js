@@ -1,6 +1,6 @@
 // REACT, REACT NATIVE //
 import React, { useState, useRef, useEffect } from "react";
-import { Text, View, TouchableOpacity, Image } from "react-native";
+import { Text, View, TouchableOpacity, Image, ScrollView } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../rdx/actions";
 import { useNavigation } from "@react-navigation/native";
@@ -32,13 +32,15 @@ const LoginPage = (props) => {
 
   useEffect(() => {
     if (user.status === "Logged in") {
-      navigation.navigate("Dash");
+      navigation.navigate("CategoryIntro");
     }
     return () => {};
   }, [user.status]);
 
   return (
     <>
+    <ScrollView>
+
       <View style={bg.brick}>
         <Text style={text.header}>Hello, friend...</Text>
         <View>
@@ -80,6 +82,7 @@ const LoginPage = (props) => {
           Forgot password?
         </Text>
       </View>
+    </ScrollView>
     </>
   );
 };
