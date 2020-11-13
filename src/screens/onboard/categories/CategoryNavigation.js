@@ -7,9 +7,9 @@ const Tab = createMaterialTopTabNavigator();
 
 export default function CategoryNavigation() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator tabBarOptions={{ showLabel: false }}>
       <Tab.Screen name="Category" component={Category} />
-      <Tab.Screen name="CategoryList" component={CategoryList} />
+      <Tab.Screen name="Category List" component={CategoryList} />
     </Tab.Navigator>
   );
 }
