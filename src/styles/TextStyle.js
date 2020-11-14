@@ -4,6 +4,7 @@ export default StyleSheet.create({
   text: {
     marginLeft: 15,
     marginTop: 5,
+    fontFamily: "Avenir-Light",
   },
   header: {
     fontSize: 90,
