@@ -1,32 +1,25 @@
 import React from "react";
-import { View, Text } from "react-native";
-import { Swipeable } from "react-native-gesture-handler";
-import CategoryList from "./CategoryList";
+import { View, Text, Image } from "react-native";
+import text from "../../../styles/TextStyle.js";
+import bg from "../../../styles/ScreenStyle.js";
+import brio from "../../../../assets/Brio_Star.png";
 
 function Category() {
-  const RightAction = () => {
-    return <CategoryList />;
-  };
   return (
-    <Swipeable
-      renderRightActions={RightAction}
-      onSwipeableRightOpen={() => console.log("OPENING")}
-    >
+    <View style={bg.citrus}>
       <View>
-        <View>
-          <Text>
-            To get started on anything, you sometimes need a few categories to
-            generate ideas.
-          </Text>
-        </View>
-        <View>
-          <Text>Let’s see some popular areas we can start focusing on now...</Text>
-        </View>
-        <View>
-          <Text>Swipe here</Text>
-        </View>
+        <Image source={brio} />
       </View>
-    </Swipeable>
+      <View>
+        <Text style={text.text}>
+          To get started on anything, you sometimes need a few categories to
+          generate ideas.
+        </Text>
+      </View>
+      <View>
+        <Text style={text.text}>Let’s see things we can focus on now...</Text>
+      </View>
+    </View>
   );
 }
 
