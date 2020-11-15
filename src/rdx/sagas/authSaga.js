@@ -27,7 +27,7 @@ export function* confirmUserSaga(action) {
 }
 
 export function* logInSaga(action) {
-  try{
+  try {
     let resp = yield call(loginUserService, action.payload);
     console.log(resp.status);
     if (resp.ok && resp.status === 200) {
