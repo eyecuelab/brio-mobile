@@ -27,11 +27,15 @@ export function* confirmUserSaga(action) {
 }
 
 export function* logInSaga(action) {
-  let resp = yield call(loginUserService, action.payload);
-  console.log(resp.status);
-  if (resp.ok && resp.status === 200) {
-    yield put({ type: c.LOGIN_SUCCESS });
-  } else {
-    throw yield resp.json();
+  try{
+    let resp = yield call(loginUserService, action.payload);
+    console.log(resp.status);
+    if (resp.ok && resp.status === 200) {
+      yield put({ type: c.LOGIN_SUCCESS });
+    } else {
+      throw yield resp.json();
+    }
+  } catch (error) {
+    yield put({ type: c.LOGIN_ERROR, error: error.message });
   }
 }
