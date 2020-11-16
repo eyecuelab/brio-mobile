@@ -20,6 +20,13 @@ export default (state = initialAuthState, action) => {
         confirmationMessage: null,
         status: "Signed up",
       };
+    case c.SIGNUP_ERROR:
+      return {
+        ...state,
+        errorMessage: action.error,
+        signupMessage: action.error,
+        status: "Signup error",
+      };
     case c.CONFIRM_USER_SUCCESS:
       return {
         ...state,
