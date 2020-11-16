@@ -40,18 +40,16 @@ function CategoryList() {
             <Icon name="running" size={30} color="#900" {...props} />
           )}
         />
+      </ListContainer>
       <Button mode="outlined" onPress={() => navigation.navigate("SuggestionNavigation")}>Continue
       </Button>
-      </ListContainer>
-
-      
-
     </View>
   );
 }
 
 const ListContainer = styled.View`
-  margin-top: 24;
+  margin-top: 36;
+  margin-bottom: 36;
   margin-left: 36;
   justify-content: center;
 `;

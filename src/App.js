@@ -28,7 +28,6 @@ export default function App() {
             <RootStack.Screen name="Signup" component={SignupPage} />
             <RootStack.Screen name="Reset" component={ResetSent} />
             <RootStack.Screen name="Token" component={TokenAuth} />
-
             <RootStack.Screen
               name="CategoryNavigation"
               component={CategoryNavigation}
