@@ -13,8 +13,8 @@ import login from "../../styles/LoginButtonStyle.js";
 
 const SignupPage = (props) => {
   const navigation = useNavigation();
-  const signUpWatcher = props.signUpWatcher;
-  const user = props.user;
+  const { signUpWatcher, user } = props;
+  const errorMessage = user.errorMessage;
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -46,6 +46,17 @@ const SignupPage = (props) => {
     <>
       <View style={bg.sun}>
         <Text style={text.header}>Account Signup</Text>
+        {errorMessage !== null ? (
+          <View>
+            <Text style={text.text}>Login Error: {errorMessage}</Text>
+            <Text
+              onPress={() => navigation.navigate("Forgot")}
+              style={text.text}
+            >
+              Forgot password?
+            </Text>
+          </View>
+        ) : null}
         <TextInput
           label="Username..."
           mode="flat"
@@ -103,7 +114,7 @@ const SignupPage = (props) => {
       </View>
     </>
   );
-}
+};
 
 const mapStateToProps = (state) => {
   return {
