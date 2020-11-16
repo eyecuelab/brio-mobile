@@ -14,8 +14,7 @@ import brio from "../../../assets/Brio_Star.png";
 
 const LoginPage = (props) => {
   const navigation = useNavigation();
-  const logInWatcher = props.logInWatcher;
-  const user = props.user;
+  const { logInWatcher, user } = props;
   const errorMessage = user.errorMessage;
 
   const [email, setEmail] = useState("");
@@ -73,7 +72,13 @@ const LoginPage = (props) => {
 
           {errorMessage !== null ? (
             <View>
-              <Text>{errorMessage}</Text>
+              <Text style={text.text}>Login Error: {errorMessage}</Text>
+              <Text
+                onPress={() => navigation.navigate("Forgot")}
+                style={text.text}
+              >
+                Forgot password?
+              </Text>
             </View>
           ) : null}
 
@@ -83,9 +88,6 @@ const LoginPage = (props) => {
 
           <Text onPress={() => navigation.navigate("Signup")} style={text.text}>
             Sign up for an account?
-          </Text>
-          <Text onPress={() => navigation.navigate("Forgot")} style={text.text}>
-            Forgot password?
           </Text>
         </View>
       </ScrollView>
