@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
-import { List } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native";
+import { List, Button } from "react-native-paper";
 import styled from "styled-components/native";
 import text from "../../../styles/TextStyle.js";
 import bg from "../../../styles/ScreenStyle.js";
@@ -8,6 +9,8 @@ import brio from "../../../../assets/Brio_Star.png";
 import Icon from "react-native-vector-icons/FontAwesome5";
 
 function CategoryList() {
+  const navigation = useNavigation();
+  
   return (
     <View style={bg.lime}>
       <View>
@@ -38,12 +41,15 @@ function CategoryList() {
           )}
         />
       </ListContainer>
+      <Button mode="outlined" onPress={() => navigation.navigate("SuggestionNavigation")}>Continue
+      </Button>
     </View>
   );
 }
 
 const ListContainer = styled.View`
-  margin-top: 24;
+  margin-top: 36;
+  margin-bottom: 36;
   margin-left: 36;
   justify-content: center;
 `;
