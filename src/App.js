@@ -11,6 +11,7 @@ import SignupPage from "./screens/auth/SignupPage";
 import ResetSent from "./screens/auth/ResetSent";
 import TokenAuth from "./screens/auth/TokenAuth";
 import CategoryNavigation from "./screens/onboard/categories/CategoryNavigation.js";
+import SuggestionNavigation from "./screens/onboard/suggestions/SuggestionNavigation.js";
 
 const RootStack = createStackNavigator();
 
@@ -31,6 +32,10 @@ export default function App() {
             <RootStack.Screen
               name="CategoryNavigation"
               component={CategoryNavigation}
+            />
+            <RootStack.Screen
+              name="SuggestionNavigation"
+              component={SuggestionNavigation}
             />
           </RootStack.Navigator>
         </NavigationContainer>
