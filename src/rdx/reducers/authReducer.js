@@ -36,6 +36,13 @@ export default (state = initialAuthState, action) => {
         signupMessage: null,
         status: "Logged in",
       };
+    case c.LOGIN_ERROR:
+      return {
+        ...state,
+        errorMessage: action.error,
+        signupMessage: null,
+        status: "Login error",
+      };
     default:
       return state;
   }
