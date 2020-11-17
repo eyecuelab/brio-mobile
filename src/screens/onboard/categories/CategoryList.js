@@ -10,7 +10,7 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 
 function CategoryList() {
   const navigation = useNavigation();
-  
+
   return (
     <View style={bg.lime}>
       <View>
@@ -29,19 +29,23 @@ function CategoryList() {
           )}
         />
         <List.Item
+          title="Exercise"
+          left={(props) => (
+            <Icon name="running" size={35} color="#900" {...props} />
+          )}
+        />
+        <List.Item
           title="Music"
           left={(props) => (
             <Icon name="music" size={30} color="#900" {...props} />
           )}
         />
-        <List.Item
-          title="Exercise"
-          left={(props) => (
-            <Icon name="running" size={30} color="#900" {...props} />
-          )}
-        />
       </ListContainer>
-      <Button mode="outlined" onPress={() => navigation.navigate("SuggestionNavigation")}>Continue
+      <Button
+        mode="outlined"
+        onPress={() => navigation.navigate("SuggestionNavigation")}
+      >
+        Continue
       </Button>
     </View>
   );

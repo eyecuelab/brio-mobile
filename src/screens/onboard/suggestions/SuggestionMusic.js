@@ -1,12 +1,14 @@
 import React from "react";
 import { View, Text } from "react-native";
-import { List } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native";
+import { List, Button } from "react-native-paper";
 import styled from "styled-components/native";
 import text from "../../../styles/TextStyle.js";
 import bg from "../../../styles/ScreenStyle.js";
 import Icon from "react-native-vector-icons/FontAwesome5";
 
 function SuggestionMusic() {
+  const navigation = useNavigation();
   const suggestions = [
     "Listen to a new artistGo for a walk",
     "Listen to your entire Discover Weekly",
@@ -34,6 +36,12 @@ function SuggestionMusic() {
           );
         })}
       </ListContainer>
+      <Button
+        mode="outlined"
+        onPress={() => navigation.navigate("BlockerNavigation")}
+      >
+        Continue to Blockers
+      </Button>
     </View>
   );
 }
