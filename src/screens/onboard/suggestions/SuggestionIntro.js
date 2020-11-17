@@ -4,7 +4,7 @@ import text from "../../../styles/TextStyle.js";
 import bg from "../../../styles/ScreenStyle.js";
 import brio from "../../../../assets/Brio_Star.png";
 
-function Category() {
+function SuggestionIntro() {
   return (
     <View style={bg.citrus}>
       <View>
@@ -25,4 +25,4 @@ function Category() {
   );
 }
 
-export default Category;
+export default SuggestionIntro;
