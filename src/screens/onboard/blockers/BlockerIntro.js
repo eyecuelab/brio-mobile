@@ -12,12 +12,13 @@ function BlockerIntro() {
       </View>
       <View>
         <Text style={text.text}>
-        New ideas are exciting, but we know that often times we never get started because things get in our way. We call these blockers.
+          New ideas are exciting, but we know that often times we never get
+          started because things get in our way. We call these blockers.
         </Text>
       </View>
       <View>
         <Text style={text.text}>
-        Let’s look at some blockers you might have...
+          Let’s look at some blockers you might have...
         </Text>
       </View>
     </View>

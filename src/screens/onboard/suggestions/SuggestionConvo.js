@@ -1,14 +1,12 @@
 import React from "react";
 import { View, Text } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { List, Button } from "react-native-paper";
+import { List } from "react-native-paper";
 import styled from "styled-components/native";
 import text from "../../../styles/TextStyle.js";
 import bg from "../../../styles/ScreenStyle.js";
 import Icon from "react-native-vector-icons/FontAwesome5";
 
 function SuggestionConvo() {
-  const navigation = useNavigation();
   const suggestions = [
     "Call your family once a week",
     "Text/ email your friends",
@@ -36,12 +34,6 @@ function SuggestionConvo() {
           );
         })}
       </ListContainer>
-      <Button
-        mode="outlined"
-        onPress={() => navigation.navigate("BlockerNavigation")}
-      >
-        Continue to Blockers
-      </Button>
     </View>
   );
 }

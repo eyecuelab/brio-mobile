@@ -6,12 +6,8 @@ import text from "../../../styles/TextStyle.js";
 import bg from "../../../styles/ScreenStyle.js";
 import Icon from "react-native-vector-icons/FontAwesome5";
 
-function SuggestionExcercise() {
-  const suggestions = [
-    "Go for a walk",
-    "Bike",
-    "Do Yoga",
-  ];
+function SuggestionExercise() {
+  const suggestions = ["Go for a walk", "Bike", "Do Yoga"];
 
   return (
     <View style={bg.lime}>
@@ -45,4 +41,4 @@ const ListContainer = styled.View`
   justify-content: center;
 `;
 
-export default SuggestionExcercise;
+export default SuggestionExercise;
