@@ -10,7 +10,7 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 function SuggestionMusic() {
   const navigation = useNavigation();
   const suggestions = [
-    "Listen to a new artistGo for a walk",
+    "Listen to a new artist",
     "Listen to your entire Discover Weekly",
     "Make a playlist of 10 songs",
   ];

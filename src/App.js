@@ -3,7 +3,8 @@ import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Provider } from "react-redux";
-import { store } from "../src/rdx/store";
+import { PersistGate } from "redux-persist/integration/react";
+import { store, persistor } from "./rdx/store";
 import LoginPage from "./screens/auth/LoginPage";
 import DashboardPage from "./screens/standard/DashboardPage";
 import ForgotPassword from "./screens/auth/ForgotPassword";
@@ -20,30 +21,31 @@ export default function App() {
   return (
     <>
       <Provider store={store}>
-        <StatusBar style="auto" />
-        <NavigationContainer>
-          <RootStack.Navigator>
-            <RootStack.Screen name="Login" component={LoginPage} />
-            <RootStack.Screen name="Dash" component={DashboardPage} />
-            <RootStack.Screen name="Forgot" component={ForgotPassword} />
-            <RootStack.Screen name="Signup" component={SignupPage} />
-            <RootStack.Screen name="Reset" component={ResetSent} />
-            <RootStack.Screen name="Token" component={TokenAuth} />
-            <RootStack.Screen
-              name="CategoryNavigation"
-              component={CategoryNavigation}
-            />
-            <RootStack.Screen
-              name="SuggestionNavigation"
-              component={SuggestionNavigation}
-            />
-            <RootStack.Screen
-              name="BlockerNavigation"
-              component={BlockerNavigation}
-            />
-            
-          </RootStack.Navigator>
-        </NavigationContainer>
+        <PersistGate loading={null} persistor={persistor}>
+          <StatusBar style="auto" />
+          <NavigationContainer>
+            <RootStack.Navigator>
+              <RootStack.Screen name="Login" component={LoginPage} />
+              <RootStack.Screen name="Dash" component={DashboardPage} />
+              <RootStack.Screen name="Forgot" component={ForgotPassword} />
+              <RootStack.Screen name="Signup" component={SignupPage} />
+              <RootStack.Screen name="Reset" component={ResetSent} />
+              <RootStack.Screen name="Token" component={TokenAuth} />
+              <RootStack.Screen
+                name="CategoryNavigation"
+                component={CategoryNavigation}
+              />
+              <RootStack.Screen
+                name="SuggestionNavigation"
+                component={SuggestionNavigation}
+              />
+              <RootStack.Screen
+                name="BlockerNavigation"
+                component={BlockerNavigation}
+              />
+            </RootStack.Navigator>
+          </NavigationContainer>
+        </PersistGate>
       </Provider>
     </>
   );
