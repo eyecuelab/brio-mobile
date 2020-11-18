@@ -1,103 +1,58 @@
 // REACT, REACT NATIVE //
-import React, { useState, useRef, useEffect } from "react";
-import { Text, View, TouchableOpacity, Image, ScrollView } from "react-native";
-import { connect } from "react-redux";
-import * as actions from "../../rdx/actions/";
+import React, { useState, useEffect } from "react";
+import { Text, View, Image, ScrollView, Button } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 // STYLES //
-import { TextInput } from "react-native-paper";
 import text from "../../styles/TextStyle.js";
 import bg from "../../styles/ScreenStyle.js";
-import input from "../../styles/TextInputStyle.js";
-import login from "../../styles/LoginButtonStyle.js";
 import brio from "../../../assets/Brio_Star.png";
+// EXPO AUTH
+import * as WebBrowser from 'expo-web-browser';
+import { makeRedirectUri, useAuthRequest } from 'expo-auth-session';
+import { SPOTIFY_CLIENT_ID } from '@env';
 
-const LoginPage = (props) => {
+WebBrowser.maybeCompleteAuthSession();
+const discovery = {
+  authorizationEndpoint: 'https://accounts.spotify.com/authorize',
+  tokenEndpoint: 'https://accounts.spotify.com/api/token',
+};
+
+const LoginPage = () => {
   const navigation = useNavigation();
-  const { logInWatcher, user } = props;
-  const errorMessage = user.errorMessage;
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const inputEmail = useRef(null);
-  const inputPassword = useRef(null);
-
-  const logIn = () => {
-    logInWatcher({
-      email: email,
-      password: password,
-    });
-  };
+  const [request, response, promptAsync] = useAuthRequest(
+    {
+      clientId: SPOTIFY_CLIENT_ID,
+      scopes: ['user-read-email', 'playlist-modify-public'],
+      usePKCE: false,
+      redirectUri: makeRedirectUri({
+        native: 'brio-mobile://redirect',
+      }),
+    },
+    discovery
+  );
 
   useEffect(() => {
-    if (user.status === "Logged in") {
+    if (response?.type === 'success') {
+      const { code } = response.params;
       navigation.navigate("CategoryNavigation");
-    }
-    return () => {};
-  }, [user.status]);
+      }
+  }, [response]);
 
   return (
     <>
-      <ScrollView>
         <View style={bg.brick}>
           <Text style={text.header}>Hello, friend...</Text>
-          <View>
             <Image source={brio} />
-          </View>
-          <TextInput
-            label="Email..."
-            mode="flat"
-            underlineColor="black"
-            style={input.container}
-            ref={inputEmail}
-            returnKeyType="next"
-            autoCapitalize="none"
-            value={email}
-            onChangeText={setEmail}
-            onSubmitEditing={() => inputPassword.current.focus()}
-          ></TextInput>
-          <TextInput
-            label="Password..."
-            mode="flat"
-            style={input.container}
-            underlineColor="black"
-            ref={inputPassword}
-            returnKeyType="next"
-            autoCapitalize="none"
-            value={password}
-            onChangeText={setPassword}
-            onSubmitEditing={() => inputPassword.current.focus()}
-          ></TextInput>
-
-          {errorMessage !== null ? (
-            <View>
-              <Text style={text.text}>Login Error: {errorMessage}</Text>
-              <Text
-                onPress={() => navigation.navigate("Forgot")}
-                style={text.text}
-              >
-                Forgot password?
-              </Text>
-            </View>
-          ) : null}
-
-          <TouchableOpacity style={login.container} onPress={() => logIn()}>
-            <Text>Login</Text>
-          </TouchableOpacity>
-
-          <Text onPress={() => navigation.navigate("Signup")} style={text.text}>
-            Sign up for an account?
-          </Text>
+          <Text style={text.text}>Brio uses Spotify's built-in credentials to access the app. You will need to make an account before proceeding.</Text>
+          <Button
+            disabled={!request}
+            title="Login"
+            onPress={() => {
+              promptAsync();
+              }}
+          />
         </View>
-      </ScrollView>
     </>
   );
 };
-const mapStateToProps = (state) => {
-  return {
-    user: state.user,
-  };
-};
-const LoginPageConnected = connect(mapStateToProps, actions)(LoginPage);
-export default LoginPageConnected;
+export default LoginPage;

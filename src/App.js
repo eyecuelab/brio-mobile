@@ -41,6 +41,7 @@ export default function App() {
               name="BlockerNavigation"
               component={BlockerNavigation}
             />
+            
           </RootStack.Navigator>
         </NavigationContainer>
       </Provider>
