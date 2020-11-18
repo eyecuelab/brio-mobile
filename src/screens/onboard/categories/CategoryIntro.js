@@ -1,5 +1,8 @@
+// REACT, REACT NATIVE //
 import React from "react";
 import { View, Text, Image } from "react-native";
+import { connect } from "react-redux";
+// STYLES //
 import text from "../../../styles/TextStyle.js";
 import bg from "../../../styles/ScreenStyle.js";
 import brio from "../../../../assets/Brio_Star.png";
@@ -23,4 +26,10 @@ function Category() {
   );
 }
 
-export default Category;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+const CategoryConnected = connect(mapStateToProps)(Category)
+export default CategoryConnected;

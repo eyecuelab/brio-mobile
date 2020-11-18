@@ -2,6 +2,8 @@
 import React, { useEffect } from "react";
 import { Text, View, Image, Button } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { connect } from "react-redux";
+import * as actions from "../../rdx/actions";
 // STYLES //
 import text from "../../styles/TextStyle.js";
 import bg from "../../styles/ScreenStyle.js";
@@ -12,12 +14,15 @@ import { makeRedirectUri, useAuthRequest } from "expo-auth-session";
 import { SPOTIFY_CLIENT_ID } from "@env";
 
 WebBrowser.maybeCompleteAuthSession();
+
 const discovery = {
   authorizationEndpoint: "https://accounts.spotify.com/authorize",
   tokenEndpoint: "https://accounts.spotify.com/api/token",
 };
 
-const LoginPage = () => {
+const LoginPage = (props) => {
+  const { dispatch } = props;
+
   const navigation = useNavigation();
   const [request, response, promptAsync] = useAuthRequest(
     {
@@ -33,13 +38,13 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (response?.type === "success") {
-      //set this code in to store
-      const { code } = response.params;
+      const { SpotifyCode } = response.params;
+      const action = actions.loggedIn(SpotifyCode);
+      dispatch(action);
       navigation.navigate("CategoryNavigation");
     }
   }, [response]);
 
-  
   return (
     <>
       <View style={bg.brick}>
@@ -60,4 +65,6 @@ const LoginPage = () => {
     </>
   );
 };
-export default LoginPage;
+
+const LoginPageConnected = connect()(LoginPage);
+export default LoginPageConnected;
