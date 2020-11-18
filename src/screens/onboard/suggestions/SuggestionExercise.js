@@ -7,7 +7,11 @@ import bg from "../../../styles/ScreenStyle.js";
 import Icon from "react-native-vector-icons/FontAwesome5";
 
 function SuggestionExercise() {
-  const suggestions = ["Go for a walk", "Bike", "Do Yoga"];
+  const suggestions = [
+    "Go for a walk", 
+    "Bike", 
+    "Do Yoga"
+  ];
 
   return (
     <View style={bg.lime}>

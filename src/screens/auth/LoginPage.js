@@ -38,8 +38,8 @@ const LoginPage = (props) => {
 
   useEffect(() => {
     if (response?.type === "success") {
-      const { SpotifyCode } = response.params;
-      const action = actions.loggedIn(SpotifyCode);
+      const { code } = response.params;
+      const action = actions.loggedIn(code);
       dispatch(action);
       navigation.navigate("CategoryNavigation");
     }

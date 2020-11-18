@@ -8,9 +8,9 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 
 function SuggestionConvo() {
   const suggestions = [
-    "Call your family once a week",
-    "Text/ email your friends",
-    "Join meetup",
+    "Call someone you haven't talked to in awhile",
+    "Write/email a letter",
+    "Join new Meetup group",
   ];
 
   return (
