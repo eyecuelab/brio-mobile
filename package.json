@@ -10,6 +10,7 @@
     "debug": "open 'rndebugger://set-debugger-loc?host=localhost&port=19001' && expo start"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.13.2",
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/material-bottom-tabs": "^5.3.9",
     "@react-navigation/material-top-tabs": "^5.3.9",
@@ -24,6 +25,7 @@
     "react-dom": "^17.0.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.4.tar.gz",
     "react-native-debugger-open": "^0.3.25",
+    "react-native-dotenv": "^2.4.2",
     "react-native-gesture-handler": "~1.7.0",
     "react-native-paper": "^4.3.0",
     "react-native-reanimated": "~1.13.0",
