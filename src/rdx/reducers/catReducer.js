@@ -9,9 +9,20 @@ const initialAuthState = {
       case c.ADDED_MUSIC:
         return {
           ...state,
-          category: "music",
+          category: "music" | "conversation" | "exercise",
         };
       default:
         return state;
     }
   };
+
+  // const tasks = [{
+  //   description: 'Listen to Song',
+  //   createdAt: new Date(),
+  //   completedAt: null,
+  //   points: 10,
+  //   type: 'sugg' | 'blocker',
+  //   category: 'music',
+  // },{
+  //  ... another one
+  // }]
