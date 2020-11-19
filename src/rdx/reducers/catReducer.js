@@ -1,25 +1,39 @@
 import * as c from "../actions/types";
 
-const initialAuthState = {
-  type: "blocker",
-  category: null,
-  description: null,
-  createdAt: null,
-  completedAt: null,
-  points: null,
-};
+const initialAuthState = {};
 
 export default (state = initialAuthState, action) => {
   switch (action.type) {
-    case c.ADDED_MUSIC:
+    case c.ADDED_BLOCKERS:
       return {
         ...state,
-        category: "music",
-        description: "Do you know how to make a playlist?",
-        createdAt: new Date(),
-        completedAt: null,
-        points: 10,
-      }
+        blockers: [
+          {
+            category: "music",
+            id: "musicB1",
+            description: "Do you know how to make a playlist?",
+            createdAt: new Date(),
+            completedAt: null,
+            points: 20,
+          },
+          {
+            category: "music",
+            id: "musicB2",
+            description: "Are you folowing multiple artists?",
+            createdAt: new Date(),
+            completedAt: null,
+            points: 10,
+          },
+          {
+            category: "music",
+            id: "musicB3",
+            description: "Do you follow other users?",
+            createdAt: new Date(),
+            completedAt: null,
+            points: 30,
+          },
+        ],
+      };
     default:
       return state;
   }

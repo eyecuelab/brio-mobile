@@ -7,8 +7,8 @@ export const loggedIn = (code) => {
   };
 };
 
-export const addedMusic = () => {
+export const addedBlockers = () => {
   return {
-    type: c.ADDED_MUSIC
+    type: c.ADDED_BLOCKERS
   };
 };

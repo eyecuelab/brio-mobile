@@ -32,9 +32,9 @@ function BlockerIntro() {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.category);
+  console.log(state.blockers);
   return {
-    category: state.category
+    blockers: state
   }
 }
 const BlockerIntroConnected = connect(mapStateToProps)(BlockerIntro);

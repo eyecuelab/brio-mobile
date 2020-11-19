@@ -20,7 +20,7 @@ function SuggestionMusic(props) {
   const { dispatch } = props;
 
   const addMusic = () => {
-    const action = actions.addedMusic();
+    const action = actions.addedBlockers();
     dispatch(action);
     navigation.navigate("BlockerNavigation");
   };
