@@ -1,8 +1,10 @@
 import * as c from "../actions/types";
 
-const initialAuthState = {};
+const initialCategoryState = {
+  blockers: [],
+};
 
-export default (state = initialAuthState, action) => {
+export default (state = initialCategoryState, action) => {
   switch (action.type) {
     case c.ADDED_BLOCKERS:
       return {

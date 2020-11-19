@@ -1,19 +1,15 @@
 import React from "react";
 import { View, Text } from "react-native";
 import { List, Button } from "react-native-paper";
+import { connect } from "react-redux";
 import styled from "styled-components/native";
 import text from "../../../styles/TextStyle.js";
 import bg from "../../../styles/ScreenStyle.js";
 import Icon from "react-native-vector-icons/FontAwesome5";
-import sArrow from "../../../../assets/Swipe_Arrow.png";
-import arrow from "../../../styles/ArrowStyle.js"
 
-function BlockerMusic() {
-  const blockers = [
-    "Do you know how to make a playlist?",
-    "Are you following multiple artists?",
-    "Do you follow other users?",
-  ];
+function BlockerMusic(props) {
+  const { blockers } = props;
+  const blockerDescriptions = blockers.map((blocker) => blocker.description);
 
   return (
     <View style={bg.lime}>
@@ -24,11 +20,11 @@ function BlockerMusic() {
         <Text style={text.text}>Here are 3 blockers for you</Text>
       </View>
       <ListContainer>
-        {blockers.map((blocker) => {
+        {blockerDescriptions.map((blockerDescription) => {
           return (
             <List.Item
-              key={blocker}
-              title={blocker}
+              key={blockerDescription}
+              title={blockerDescription}
               left={(props) => (
                 <Icon name="music" size={30} color="#900" {...props} />
               )}
@@ -39,7 +35,7 @@ function BlockerMusic() {
       <Button
         mode="outlined"
         onPress={() => {
-          console.log("THE END")
+          console.log("Hello");
         }}
       >
         Continue to Dashboard
@@ -47,7 +43,6 @@ function BlockerMusic() {
     </View>
   );
 }
-
 const ListContainer = styled.View`
   margin-top: 36;
   margin-bottom: 36;
@@ -55,4 +50,14 @@ const ListContainer = styled.View`
   justify-content: center;
 `;
 
-export default BlockerMusic;
+const mapStateToProps = (state) => {
+  const stateBlockers = state.catState.blockers;
+  const musicBlockers = stateBlockers.filter(
+    (stateBlocker) => stateBlocker.category === "music"
+  );
+  return {
+    blockers: musicBlockers,
+  };
+};
+const BlockerMusicConnected = connect(mapStateToProps)(BlockerMusic);
+export default BlockerMusicConnected;
