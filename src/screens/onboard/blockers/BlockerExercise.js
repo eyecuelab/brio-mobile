@@ -12,7 +12,7 @@ function BlockerExercise() {
   const blockers = [
     "Do you have sneakers or running shoes?",
     "Do you have a helmet?",
-    "Do you have a yoga mat",
+    "Do you have a yoga mat?",
   ];
 
   return (
