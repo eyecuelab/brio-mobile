@@ -16,13 +16,13 @@ function SuggestionMusic(props) {
     "Listen to your entire Discover Weekly",
     "Make a playlist of 10 songs",
   ];
-  
+
   const { dispatch } = props;
 
   const addMusic = () => {
-    const action = actions.addedMusic()
-    dispatch(action)
-    navigation.navigate("BlockerNavigation")
+    const action = actions.addedBlockers();
+    dispatch(action);
+    navigation.navigate("BlockerNavigation");
   };
 
   return (
@@ -48,11 +48,9 @@ function SuggestionMusic(props) {
       </ListContainer>
       <Button
         mode="outlined"
-        // ,
-        // onPress={() => {addMusic()}} something like that?
-        // we can add navigation in to this function 
-        // we will wirte function above
-        onPress={() => {addMusic()}}
+        onPress={() => {
+          addMusic();
+        }}
       >
         Continue to Blockers
       </Button>
