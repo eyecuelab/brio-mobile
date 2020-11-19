@@ -8,6 +8,7 @@ import bg from "../../../styles/ScreenStyle.js";
 import brio from "../../../../assets/Brio_Star.png";
 import sArrow from "../../../../assets/Swipe_Arrow.png";
 import arrow from "../../../styles/ArrowStyle.js"
+import styled from "styled-components/native";
 
 function CategoryIntro() {
   return (
