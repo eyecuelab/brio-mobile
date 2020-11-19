@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text } from "react-native";
-import { List, Button } from "react-native-paper";
 import { connect } from "react-redux";
+import { List, Button } from "react-native-paper";
 import styled from "styled-components/native";
 import text from "../../../styles/TextStyle.js";
 import bg from "../../../styles/ScreenStyle.js";
