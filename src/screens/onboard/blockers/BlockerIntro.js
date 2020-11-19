@@ -11,7 +11,7 @@ function BlockerIntro() {
   return (
     <View style={bg.grape}>
       <View>
-        <Image source={brio} />
+        <Image source={brio} style={{marginTop: 100}} />
       </View>
       <View>
         <Text style={text.text}>
