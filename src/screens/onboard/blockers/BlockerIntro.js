@@ -3,6 +3,7 @@ import { View, Text, Image } from "react-native";
 import text from "../../../styles/TextStyle.js";
 import bg from "../../../styles/ScreenStyle.js";
 import brio from "../../../../assets/Brio_Star.png";
+import { connect } from "react-redux";
 
 function BlockerIntro() {
   return (
@@ -25,4 +26,11 @@ function BlockerIntro() {
   );
 }
 
-export default BlockerIntro;
+const mapStateToProps = (state) => {
+  console.log(state.category);
+  return {
+    category: state.category
+  }
+}
+const BlockerIntroConnected = connect(mapStateToProps)(BlockerIntro);
+export default BlockerIntroConnected;

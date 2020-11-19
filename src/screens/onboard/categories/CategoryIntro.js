@@ -7,7 +7,7 @@ import text from "../../../styles/TextStyle.js";
 import bg from "../../../styles/ScreenStyle.js";
 import brio from "../../../../assets/Brio_Star.png";
 
-function Category() {
+function CategoryIntro() {
   return (
     <View style={bg.citrus}>
       <View>
@@ -31,5 +31,5 @@ const mapStateToProps = (state) => {
     user: state.user
   }
 }
-const CategoryConnected = connect(mapStateToProps)(Category)
-export default CategoryConnected;
+const CategoryIntroConnected = connect(mapStateToProps)(CategoryIntro)
+export default CategoryIntroConnected;

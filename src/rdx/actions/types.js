@@ -1,4 +1,5 @@
 export const LOGGED_IN = "LOGGED_IN";
+export const ADDED_MUSIC = "ADDED_MUSIC";
 
 // export const SIGNUP_WATCHER = "SIGNUP_WATCHER";
 // export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";

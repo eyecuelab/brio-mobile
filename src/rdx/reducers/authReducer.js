@@ -8,6 +8,7 @@ const initialAuthState = {
   status: "Logged out",
   redirect: false,
   code: null,
+  category: null
 };
 
 export default (state = initialAuthState, action) => {

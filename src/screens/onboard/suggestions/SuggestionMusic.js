@@ -6,14 +6,24 @@ import styled from "styled-components/native";
 import text from "../../../styles/TextStyle.js";
 import bg from "../../../styles/ScreenStyle.js";
 import Icon from "react-native-vector-icons/FontAwesome5";
+import { connect } from "react-redux";
+import * as actions from "../../../rdx/actions";
 
-function SuggestionMusic() {
+function SuggestionMusic(props) {
   const navigation = useNavigation();
   const suggestions = [
     "Listen to a new artist",
     "Listen to your entire Discover Weekly",
     "Make a playlist of 10 songs",
   ];
+  
+  const { dispatch } = props;
+
+  const addMusic = () => {
+    const action = actions.addedMusic()
+    dispatch(action)
+    navigation.navigate("BlockerNavigation")
+  };
 
   return (
     <View style={bg.lime}>
@@ -38,7 +48,11 @@ function SuggestionMusic() {
       </ListContainer>
       <Button
         mode="outlined"
-        onPress={() => navigation.navigate("BlockerNavigation")}
+        // ,
+        // onPress={() => {addMusic()}} something like that?
+        // we can add navigation in to this function 
+        // we will wirte function above
+        onPress={() => {addMusic()}}
       >
         Continue to Blockers
       </Button>
@@ -53,4 +67,5 @@ const ListContainer = styled.View`
   justify-content: center;
 `;
 
-export default SuggestionMusic;
+const SuggestionMusicConnected = connect()(SuggestionMusic);
+export default SuggestionMusicConnected;
