@@ -32,7 +32,6 @@ function BlockerIntro() {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.blockers);
   return {
     blockers: state
   }
