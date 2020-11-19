@@ -1,10 +1,12 @@
 import React from "react";
 import { View, Text } from "react-native";
-import { List } from "react-native-paper";
+import { List, Button } from "react-native-paper";
 import styled from "styled-components/native";
 import text from "../../../styles/TextStyle.js";
 import bg from "../../../styles/ScreenStyle.js";
 import Icon from "react-native-vector-icons/FontAwesome5";
+import sArrow from "../../../../assets/Swipe_Arrow.png";
+import arrow from "../../../styles/ArrowStyle.js"
 
 function BlockerMusic() {
   const blockers = [
@@ -34,6 +36,14 @@ function BlockerMusic() {
           );
         })}
       </ListContainer>
+      <Button
+        mode="outlined"
+        onPress={() => {
+          console.log("THE END")
+        }}
+      >
+        Continue to Dashboard
+      </Button>
     </View>
   );
 }

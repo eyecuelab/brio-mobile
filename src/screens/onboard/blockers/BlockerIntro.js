@@ -4,6 +4,8 @@ import text from "../../../styles/TextStyle.js";
 import bg from "../../../styles/ScreenStyle.js";
 import brio from "../../../../assets/Brio_Star.png";
 import { connect } from "react-redux";
+import sArrow from "../../../../assets/Swipe_Arrow.png";
+import arrow from "../../../styles/ArrowStyle.js"
 
 function BlockerIntro() {
   return (
@@ -21,6 +23,9 @@ function BlockerIntro() {
         <Text style={text.text}>
           Let’s look at some blockers you might have...
         </Text>
+      </View>
+      <View style={arrow.bottom}>
+        <Image source={sArrow} />
       </View>
     </View>
   );

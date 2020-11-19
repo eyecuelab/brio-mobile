@@ -24,7 +24,11 @@ export default function App() {
         <PersistGate loading={null} persistor={persistor}>
           <StatusBar style="auto" />
           <NavigationContainer>
-            <RootStack.Navigator>
+            <RootStack.Navigator
+                  screenOptions={{
+                  headerShown: false
+                }}
+              >
               <RootStack.Screen name="Login" component={LoginPage} />
               <RootStack.Screen name="Dash" component={DashboardPage} />
               <RootStack.Screen name="Forgot" component={ForgotPassword} />

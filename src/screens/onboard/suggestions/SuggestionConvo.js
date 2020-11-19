@@ -5,7 +5,8 @@ import styled from "styled-components/native";
 import text from "../../../styles/TextStyle.js";
 import bg from "../../../styles/ScreenStyle.js";
 import Icon from "react-native-vector-icons/FontAwesome5";
-import swipeArrow from "../../../../assets/Swipe_Arrow.png";
+import sArrow from "../../../../assets/Swipe_Arrow.png";
+import arrow from "../../../styles/ArrowStyle.js";
 
 function SuggestionConvo() {
   const suggestions = [
@@ -35,9 +36,9 @@ function SuggestionConvo() {
           );
         })}
       </ListContainer>
-      <ArrowContainer>
-        <Image source={swipeArrow} />
-      </ArrowContainer>
+      <View style={arrow.bottom}>
+        <Image source={sArrow} />
+      </View>
     </View>
   );
 }

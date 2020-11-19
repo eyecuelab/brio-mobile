@@ -8,8 +8,8 @@ export default StyleSheet.create({
     fontSize: 18,
   },
   header: {
-    fontSize: 60,
-    marginTop: 30,
+    fontSize: 70,
+    marginTop: 100,
     marginLeft: 15,
     marginBottom: 40,
     fontFamily: 'AppleSDGothicNeo-Light',
