@@ -91,9 +91,7 @@ export default (state = initialCategoryState, action) => {
         (blocker) => blocker.id === action.id
       );
       updatedBlocker[0].completedAt = new Date();
-      return {
-        ...state,
-      };
+      return currentState;
     default:
       return state;
   }

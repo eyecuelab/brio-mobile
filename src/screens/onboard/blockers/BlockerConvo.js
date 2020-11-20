@@ -13,11 +13,6 @@ import arrow from "../../../styles/ArrowStyle.js";
 function BlockerConvo(props) {
   const { dispatch, blockers } = props;
 
-  const blockerDescriptions = blockers.map(
-    (blocker, index) => blocker.description
-  );
-  const blockerIds = blockers.map((blocker, index) => blocker.id);
-
   const completedBlocker = (id) => {
     const action = actions.completedBlocker(id);
     dispatch(action);
@@ -32,23 +27,20 @@ function BlockerConvo(props) {
         <Text style={text.text}>Here are 3 blockers for you</Text>
       </View>
       <ListContainer>
-        {blockerDescriptions.map((blockerDescription, index) => {
-          return (
-            <>
-              <TouchableHighlight>
+        {blockers.map((blocker) => {
+          return (     
+              <TouchableHighlight key={blocker.id}>
                 <List.Item
-                  key={index}
-                  title={blockerDescription}
+                  title={blocker.description}
                   style={{ textDecorationLine: "line-through" }}
                   onPress={() => {
-                    completedBlocker(blockerIds[index]);
+                    completedBlocker(blocker.id);
                   }}
                   left={(props) => (
                     <Icon name="grin" size={30} color="#900" {...props} />
                   )}
                 />
-              </TouchableHighlight>
-            </>
+              </TouchableHighlight>  
           );
         })}
       </ListContainer>
