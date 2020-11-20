@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, TouchableHighlight } from "react-native";
 import { connect } from "react-redux";
+import * as actions from "../../../rdx/actions";
 import { List, Button } from "react-native-paper";
 import styled from "styled-components/native";
 import text from "../../../styles/TextStyle.js";
@@ -8,8 +9,51 @@ import bg from "../../../styles/ScreenStyle.js";
 import Icon from "react-native-vector-icons/FontAwesome5";
 
 function BlockerMusic(props) {
-  const { blockers } = props;
-  const blockerDescriptions = blockers.map((blocker) => blocker.description);
+  const { dispatch, blockers } = props;
+
+  const completedBlocker = (id) => {
+    const action = actions.completedBlocker(id);
+    dispatch(action);
+  };
+
+  const displayBlockers = () => {
+    return (
+      <>
+        {blockers.map((blocker) => {
+          if (blocker.completedAt === null) {
+            return (
+              <TouchableHighlight
+                key={blocker.id}
+                activeOpacity="0.75"
+                underlayColor="gray"
+                onPress={() => {
+                  completedBlocker(blocker.id);
+                }}
+              >
+                <List.Item
+                  title={blocker.description}
+                  left={(props) => (
+                    <Icon name="grin" size={30} color="#900" {...props} />
+                  )}
+                />
+              </TouchableHighlight>
+            );
+          } else {
+            return (
+              <TouchableHighlight key={blocker.id}>
+                <List.Item
+                  title={blocker.description}
+                  left={(props) => (
+                    <Icon name="check" size={30} color="#900" {...props} />
+                  )}
+                />
+              </TouchableHighlight>
+            );
+          }
+        })}
+      </>
+    );
+  };
 
   return (
     <View style={bg.lime}>
@@ -19,19 +63,7 @@ function BlockerMusic(props) {
       <View>
         <Text style={text.text}>Here are 3 blockers for you</Text>
       </View>
-      <ListContainer>
-        {blockerDescriptions.map((blockerDescription) => {
-          return (
-            <List.Item
-              key={blockerDescription}
-              title={blockerDescription}
-              left={(props) => (
-                <Icon name="music" size={30} color="#900" {...props} />
-              )}
-            />
-          );
-        })}
-      </ListContainer>
+      <ListContainer>{displayBlockers()}</ListContainer>
       <Button
         mode="outlined"
         onPress={() => {
