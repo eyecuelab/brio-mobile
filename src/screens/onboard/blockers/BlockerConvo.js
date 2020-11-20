@@ -18,6 +18,45 @@ function BlockerConvo(props) {
     dispatch(action);
   };
 
+  const displayBlockers = () => {
+    return (
+      <>
+        {blockers.map((blocker) => {
+          if (blocker.completedAt === null) {
+            return (
+              <TouchableHighlight
+                key={blocker.id}
+                activeOpacity="0.75"
+                underlayColor="gray"
+                onPress={() => {
+                  completedBlocker(blocker.id);
+                }}
+              >
+                <List.Item
+                  title={blocker.description}
+                  left={(props) => (
+                    <Icon name="grin" size={30} color="#900" {...props} />
+                  )}
+                />
+              </TouchableHighlight>
+            );
+          } else {
+            return (
+              <TouchableHighlight key={blocker.id}>
+                <List.Item
+                  title={blocker.description}
+                  left={(props) => (
+                    <Icon name="check" size={30} color="#900" {...props} />
+                  )}
+                />
+              </TouchableHighlight>
+            );
+          }
+        })}
+      </>
+    );
+  };
+
   return (
     <View style={bg.lime}>
       <View>
@@ -26,24 +65,7 @@ function BlockerConvo(props) {
       <View>
         <Text style={text.text}>Here are 3 blockers for you</Text>
       </View>
-      <ListContainer>
-        {blockers.map((blocker) => {
-          return (     
-              <TouchableHighlight key={blocker.id}>
-                <List.Item
-                  title={blocker.description}
-                  style={{ textDecorationLine: "line-through" }}
-                  onPress={() => {
-                    completedBlocker(blocker.id);
-                  }}
-                  left={(props) => (
-                    <Icon name="grin" size={30} color="#900" {...props} />
-                  )}
-                />
-              </TouchableHighlight>  
-          );
-        })}
-      </ListContainer>
+      <ListContainer>{displayBlockers()}</ListContainer>
       <View style={arrow.bottom}>
         <Image source={sArrow} />
       </View>
@@ -55,17 +77,17 @@ const ListContainer = styled.View`
   margin-top: 36;
   margin-bottom: 36;
   margin-left: 36;
+  margin-right: 36;
   justify-content: center;
 `;
 
 const mapStateToProps = (state) => {
   const stateBlockers = state.catState.blockers;
-  const musicBlockers = stateBlockers.filter(
+  const conveBlockers = stateBlockers.filter(
     (stateBlocker) => stateBlocker.category === "conversation"
   );
-  console.log(musicBlockers);
   return {
-    blockers: musicBlockers,
+    blockers: conveBlockers,
   };
 };
 const BlockerConvoConnected = connect(mapStateToProps)(BlockerConvo);
