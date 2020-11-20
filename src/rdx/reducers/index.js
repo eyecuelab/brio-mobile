@@ -4,7 +4,7 @@ import catReducer from "./catReducer";
 
 const rootReducer = combineReducers({
   user: authReducer,
-  blockers: catReducer,
+  catState: catReducer,
 });
 
 export default rootReducer;

@@ -1,8 +1,10 @@
 import * as c from "../actions/types";
 
-const initialAuthState = {};
+const initialCategoryState = {
+  blockers: [],
+};
 
-export default (state = initialAuthState, action) => {
+export default (state = initialCategoryState, action) => {
   switch (action.type) {
     case c.ADDED_BLOCKERS:
       return {
@@ -10,7 +12,7 @@ export default (state = initialAuthState, action) => {
         blockers: [
           {
             category: "conversation",
-            id: "conversationB1",
+            id: "convB1",
             description: "Do you...?",
             createdAt: new Date(),
             completedAt: null,
@@ -18,7 +20,7 @@ export default (state = initialAuthState, action) => {
           },
           {
             category: "conversation",
-            id: "conversationB1",
+            id: "convB2",
             description: "Are you...?",
             createdAt: new Date(),
             completedAt: null,
@@ -26,7 +28,7 @@ export default (state = initialAuthState, action) => {
           },
           {
             category: "conversation",
-            id: "conversationB1",
+            id: "convB3",
             description: "Do you have...?",
             createdAt: new Date(),
             completedAt: null,
@@ -42,7 +44,7 @@ export default (state = initialAuthState, action) => {
           },
           {
             category: "exercise",
-            id: "exerciseB1",
+            id: "exerciseB2",
             description: "Do you have a helmet?",
             createdAt: new Date(),
             completedAt: null,
@@ -50,7 +52,7 @@ export default (state = initialAuthState, action) => {
           },
           {
             category: "exercise",
-            id: "exerciseB1",
+            id: "exerciseB3",
             description: "Do you have a yoga mat?",
             createdAt: new Date(),
             completedAt: null,
@@ -82,6 +84,14 @@ export default (state = initialAuthState, action) => {
           },
         ],
       };
+    case c.COMPLETED_BLOCKER:
+      const currentState = { ...state };
+      const blockers = currentState.blockers;
+      let updatedBlocker = blockers.filter(
+        (blocker) => blocker.id === action.id
+      );
+      updatedBlocker[0].completedAt = new Date();
+      return currentState;
     default:
       return state;
   }

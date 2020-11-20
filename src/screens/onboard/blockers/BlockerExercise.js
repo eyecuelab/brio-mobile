@@ -1,19 +1,17 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
+import { connect } from "react-redux";
 import { List } from "react-native-paper";
 import styled from "styled-components/native";
 import text from "../../../styles/TextStyle.js";
 import bg from "../../../styles/ScreenStyle.js";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import sArrow from "../../../../assets/Swipe_Arrow.png";
-import arrow from "../../../styles/ArrowStyle.js"
+import arrow from "../../../styles/ArrowStyle.js";
 
-function BlockerExercise() {
-  const blockers = [
-    "Do you have sneakers or running shoes?",
-    "Do you have a helmet?",
-    "Do you have a yoga mat?",
-  ];
+function BlockerExercise(props) {
+  const { blockers } = props;
+  const blockerDescriptions = blockers.map((blocker) => blocker.description);
 
   return (
     <View style={bg.berry}>
@@ -24,11 +22,11 @@ function BlockerExercise() {
         <Text style={text.text}>Here are 3 blockers for you</Text>
       </View>
       <ListContainer>
-        {blockers.map((blocker) => {
+        {blockerDescriptions.map((blockerDescription) => {
           return (
             <List.Item
-              key={blocker}
-              title={blocker}
+              key={blockerDescription}
+              title={blockerDescription}
               left={(props) => (
                 <Icon name="running" size={30} color="#900" {...props} />
               )}
@@ -50,4 +48,14 @@ const ListContainer = styled.View`
   justify-content: center;
 `;
 
-export default BlockerExercise;
+const mapStateToProps = (state) => {
+  const stateBlockers = state.catState.blockers;
+  const musicBlockers = stateBlockers.filter(
+    (stateBlocker) => stateBlocker.category === "exercise"
+  );
+  return {
+    blockers: musicBlockers,
+  };
+};
+const BlockerExerciseConnected = connect(mapStateToProps)(BlockerExercise);
+export default BlockerExerciseConnected;
