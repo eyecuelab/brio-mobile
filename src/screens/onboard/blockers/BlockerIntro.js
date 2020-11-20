@@ -5,13 +5,13 @@ import bg from "../../../styles/ScreenStyle.js";
 import brio from "../../../../assets/Brio_Star.png";
 import { connect } from "react-redux";
 import sArrow from "../../../../assets/Swipe_Arrow.png";
-import arrow from "../../../styles/ArrowStyle.js"
+import arrow from "../../../styles/ArrowStyle.js";
 
 function BlockerIntro() {
   return (
-    <View style={bg.grape}>
+    <View style={bg.sun}>
       <View>
-        <Image source={brio} style={{marginTop: 100}} />
+        <Image source={brio} style={{ marginTop: 100 }} />
       </View>
       <View>
         <Text style={text.text}>
@@ -33,8 +33,8 @@ function BlockerIntro() {
 
 const mapStateToProps = (state) => {
   return {
-    blockers: state
-  }
-}
+    blockers: state,
+  };
+};
 const BlockerIntroConnected = connect(mapStateToProps)(BlockerIntro);
 export default BlockerIntroConnected;
