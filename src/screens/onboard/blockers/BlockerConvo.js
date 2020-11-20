@@ -11,7 +11,9 @@ import arrow from "../../../styles/ArrowStyle.js";
 
 function BlockerConvo(props) {
   const { blockers } = props;
+
   const blockerDescriptions = blockers.map((blocker) => blocker.description);
+  const blockerIds = blockers.map((blocker) => blocker.id);
 
   return (
     <View style={bg.lime}>
@@ -22,15 +24,20 @@ function BlockerConvo(props) {
         <Text style={text.text}>Here are 3 blockers for you</Text>
       </View>
       <ListContainer>
-        {blockerDescriptions.map((blockerDescription) => {
+        {blockerDescriptions.map((blockerDescription, index) => {
           return (
-            <List.Item
-              key={blockerDescription}
-              title={blockerDescription}
-              left={(props) => (
-                <Icon name="grin" size={30} color="#900" {...props} />
-              )}
-            />
+            <>
+              <List.Item
+                key={index}
+                title={blockerDescription}
+                onPress={() => {
+                  console.log(blockerIds[index]);
+                }}
+                left={(props) => (
+                  <Icon name="grin" size={30} color="#900" {...props} />
+                )}
+              />
+            </>
           );
         })}
       </ListContainer>

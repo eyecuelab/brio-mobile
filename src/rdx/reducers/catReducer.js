@@ -12,7 +12,7 @@ export default (state = initialCategoryState, action) => {
         blockers: [
           {
             category: "conversation",
-            id: "conversationB1",
+            id: "convB1",
             description: "Do you...?",
             createdAt: new Date(),
             completedAt: null,
@@ -20,7 +20,7 @@ export default (state = initialCategoryState, action) => {
           },
           {
             category: "conversation",
-            id: "conversationB1",
+            id: "convB2",
             description: "Are you...?",
             createdAt: new Date(),
             completedAt: null,
@@ -28,7 +28,7 @@ export default (state = initialCategoryState, action) => {
           },
           {
             category: "conversation",
-            id: "conversationB1",
+            id: "convB3",
             description: "Do you have...?",
             createdAt: new Date(),
             completedAt: null,
@@ -44,7 +44,7 @@ export default (state = initialCategoryState, action) => {
           },
           {
             category: "exercise",
-            id: "exerciseB1",
+            id: "exerciseB2",
             description: "Do you have a helmet?",
             createdAt: new Date(),
             completedAt: null,
@@ -52,7 +52,7 @@ export default (state = initialCategoryState, action) => {
           },
           {
             category: "exercise",
-            id: "exerciseB1",
+            id: "exerciseB3",
             description: "Do you have a yoga mat?",
             createdAt: new Date(),
             completedAt: null,
