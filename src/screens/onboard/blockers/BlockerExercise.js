@@ -16,7 +16,7 @@ function BlockerExercise() {
   ];
 
   return (
-    <View style={bg.lime}>
+    <View style={bg.berry}>
       <View>
         <Text style={text.header}>Excercise</Text>
       </View>

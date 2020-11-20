@@ -12,7 +12,7 @@ function CategoryList() {
   const navigation = useNavigation();
 
   return (
-    <View style={bg.lime}>
+    <View style={bg.sun}>
       <View>
         <Image source={brio} />
       </View>

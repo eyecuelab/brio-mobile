@@ -8,7 +8,7 @@ import arrow from "../../../styles/ArrowStyle.js"
 
 function SuggestionIntro() {
   return (
-    <View style={bg.citrus}>
+    <View style={bg.robin}>
       <View>
         <Image source={brio} />
       </View>
