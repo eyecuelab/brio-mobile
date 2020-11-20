@@ -12,7 +12,7 @@ function BlockerConvo() {
   const blockers = ["Do you...?", "Are you...?", "Do you have...?"];
 
   return (
-    <View style={bg.lime}>
+    <View style={bg.grape}>
       <View>
         <Text style={text.header}>Conversation</Text>
       </View>

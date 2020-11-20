@@ -16,7 +16,7 @@ function SuggestionConvo() {
   ];
 
   return (
-    <View style={bg.lime}>
+    <View style={bg.grape}>
       <View>
         <Text style={text.header}>Conversation</Text>
       </View>
