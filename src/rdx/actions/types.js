@@ -1,5 +1,6 @@
 export const LOGGED_IN = "LOGGED_IN";
 export const ADDED_BLOCKERS = "ADDED_BLOCKERS";
+export const COMPLETED_BLOCKER = "COMPLETED_BLOCKER";
 
 // export const SIGNUP_WATCHER = "SIGNUP_WATCHER";
 // export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
