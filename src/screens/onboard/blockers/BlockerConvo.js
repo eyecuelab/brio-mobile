@@ -58,7 +58,7 @@ function BlockerConvo(props) {
   };
 
   return (
-    <View style={bg.grape}>
+    <View style={bg.lime}>
       <View>
         <Text style={text.header}>Conversation</Text>
       </View>
@@ -82,7 +82,7 @@ const ListContainer = styled.View`
 `;
 
 const mapStateToProps = (state) => {
-  const stateBlockers = state.catState.blockers;
+  const stateBlockers = state.blockersState.blockers;
   const conveBlockers = stateBlockers.filter(
     (stateBlocker) => stateBlocker.category === "conversation"
   );

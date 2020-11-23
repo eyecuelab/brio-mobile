@@ -17,3 +17,8 @@ export const completedBlocker = (id) => {
     id
   };
 };
+export const loadedBlockers = (id) => {
+  return {
+    type: c.LOADED_BLOCKERS,
+  };
+};

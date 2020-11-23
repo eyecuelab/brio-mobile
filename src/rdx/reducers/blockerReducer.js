@@ -92,6 +92,11 @@ export default (state = initialBlockerState, action) => {
       );
       updatedBlocker[0].completedAt = new Date();
       return currentState;
+
+    case c.LOADED_BLOCKERS:
+      const loadedState = { ...state };
+      return loadedState;
+
     default:
       return state;
   }
