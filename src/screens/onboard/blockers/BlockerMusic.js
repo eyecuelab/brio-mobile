@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, TouchableHighlight } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { connect } from "react-redux";
 import * as actions from "../../../rdx/actions";
 import { List, Button } from "react-native-paper";
@@ -10,6 +11,7 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 
 function BlockerMusic(props) {
   const { dispatch, blockers } = props;
+  const navigation = useNavigation();
 
   const completedBlocker = (id) => {
     const action = actions.completedBlocker(id);
@@ -67,7 +69,8 @@ function BlockerMusic(props) {
       <Button
         mode="outlined"
         onPress={() => {
-          console.log("Hello");
+          // navigation.navigate("StandardNavigation");
+          console.log("HELLO")
         }}
       >
         Continue to Dashboard

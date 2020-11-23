@@ -23,7 +23,6 @@ const discovery = {
 
 const LoginPage = (props) => {
   const { dispatch } = props;
-
   const navigation = useNavigation();
   const [request, response, promptAsync] = useAuthRequest(
     {
@@ -42,7 +41,7 @@ const LoginPage = (props) => {
       const { code } = response.params;
       const action = actions.loggedIn(code);
       dispatch(action);
-      navigation.navigate("CategoryNavigation");
+      navigation.navigate("StandardNavigation");
     }
   }, [response]);
 

@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
 import authReducer from "./authReducer";
-import catReducer from "./catReducer";
+import blockerReducer from "./blockerReducer";
 
 const rootReducer = combineReducers({
   user: authReducer,
-  catState: catReducer,
+  catState: blockerReducer,
 });
 
 export default rootReducer;

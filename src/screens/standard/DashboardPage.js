@@ -9,7 +9,6 @@ import exercise from "../../../assets/Exercise_Progress.png";
 
 function DashboardPage() {
   const progressBars = [music, convo, exercise];
-
   return (
     <>
       <View style={bg.robin}>
@@ -19,7 +18,7 @@ function DashboardPage() {
         </View>
         {progressBars.map((bar) => {
           return (
-            <View key= {bar} style={{ marginLeft: 15, marginBottom: 15 }}>
+            <View key={bar} style={{ marginLeft: 15, marginBottom: 15 }}>
               <Image source={bar} />
             </View>
           );

@@ -14,6 +14,7 @@ import TokenAuth from "./screens/auth/TokenAuth";
 import CategoryNavigation from "./screens/onboard/categories/CategoryNavigation.js";
 import SuggestionNavigation from "./screens/onboard/suggestions/SuggestionNavigation.js";
 import BlockerNavigation from "./screens/onboard/blockers/BlockerNavigation.js";
+import StandardNavigation from "./screens/standard/StandardNavigation.js";
 
 const RootStack = createStackNavigator();
 
@@ -46,6 +47,10 @@ export default function App() {
               <RootStack.Screen
                 name="BlockerNavigation"
                 component={BlockerNavigation}
+              />
+              <RootStack.Screen
+                name="StandardNavigation"
+                component={StandardNavigation}
               />
             </RootStack.Navigator>
           </NavigationContainer>

@@ -12,7 +12,7 @@
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.13.2",
     "@react-native-community/masked-view": "0.1.10",
-    "@react-navigation/material-bottom-tabs": "^5.3.9",
+    "@react-navigation/material-bottom-tabs": "^5.3.10",
     "@react-navigation/material-top-tabs": "^5.3.9",
     "@react-navigation/native": "^5.8.4",
     "@react-navigation/stack": "^5.12.1",
@@ -27,7 +27,7 @@
     "react-native-debugger-open": "^0.3.25",
     "react-native-dotenv": "^2.4.2",
     "react-native-gesture-handler": "~1.7.0",
-    "react-native-paper": "^4.3.0",
+    "react-native-paper": "^4.4.1",
     "react-native-reanimated": "~1.13.0",
     "react-native-safe-area-context": "3.1.4",
     "react-native-screens": "~2.10.1",
