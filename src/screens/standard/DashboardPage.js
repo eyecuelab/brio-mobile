@@ -1,28 +1,19 @@
 import React from "react";
-import { Text, View, Image } from "react-native";
-import text from "../../styles/TextStyle";
+import { View } from "react-native";
 import bg from "../../styles/ScreenStyle";
-import brio from "../../../assets/Brio_Star.png";
-import music from "../../../assets/Music_Progress.png";
-import convo from "../../../assets/Convo_Progress.png";
-import exercise from "../../../assets/Exercise_Progress.png";
+import { Card } from "react-native-paper";
+import Icon from "react-native-vector-icons/FontAwesome5";
 
 function DashboardPage() {
-  const progressBars = [music, convo, exercise];
   return (
     <>
       <View style={bg.robin}>
-        <Text style={text.header}>Dash</Text>
-        <View>
-          <Image source={brio} />
-        </View>
-        {progressBars.map((bar) => {
-          return (
-            <View key={bar} style={{ marginLeft: 15, marginBottom: 15 }}>
-              <Image source={bar} />
-            </View>
-          );
-        })}
+        <Card.Title
+          subtitle="Welcome back! You are doing great!"
+          left={(props) => (
+            <Icon name="grin-stars" size={30} color="#900" {...props} />
+          )}
+        />
       </View>
     </>
   );
