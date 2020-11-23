@@ -7,8 +7,7 @@ import text from "../../styles/TextStyle.js";
 function ConvoCheck() {
     return (
         <View style={bg.grape}>
-                <Text style={text.header}>Exercise Check-In</Text>
-                {/* <Image source={brio} /> */}
+                <Text style={text.header}>Conversation Check-In</Text>
         </View>
     )
 }

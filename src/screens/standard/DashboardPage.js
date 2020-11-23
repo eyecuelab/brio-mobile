@@ -9,7 +9,6 @@ import exercise from "../../../assets/Exercise_Progress.png";
 
 function DashboardPage() {
   const progressBars = [music, convo, exercise];
-
   return (
     <>
       <View style={bg.robin}>

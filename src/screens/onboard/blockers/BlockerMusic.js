@@ -69,7 +69,8 @@ function BlockerMusic(props) {
       <Button
         mode="outlined"
         onPress={() => {
-          navigation.navigate("StandardNavigation");
+          // navigation.navigate("StandardNavigation");
+          console.log("HELLO")
         }}
       >
         Continue to Dashboard
