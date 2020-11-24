@@ -12,24 +12,27 @@ function DashboardPage(props) {
   useEffect(() => {
     const action = actions.loadedBlockers();
     dispatch(action);
-    return () => {}
-  }, [])
+    return () => {};
+  }, []);
 
-  const totalNumOfBlockers = allBlockers.length;
-  const totalPtsArr = allBlockers.map((blocker) => {
-    return (
-      blocker.points
-    )
-  })
-  const totalPts = totalPtsArr.reduce((acc, cur) => {
-    return (
-      acc + cur
-    )
-  })
+  const numOfBlockersDisp = () => {
+    if (allBlockers && allBlockers.length > 0) {
+      const totalPtsArr = allBlockers.map((blocker) => {
+        return blocker.points;
+      });
+      const totalPts = totalPtsArr.reduce((acc, cur) => {
+        return acc + cur;
+      });
+      return (
+        <View>
+          <Text>total points: {totalPts}</Text>
+        </View>
+      );
+    }
+  };
 
   return (
     <>
-    {console.log("totalPts", totalPts)}
       <View style={bg.robin}>
         <Card.Title
           subtitle="Welcome back! You are doing great!"
@@ -37,9 +40,7 @@ function DashboardPage(props) {
             <Icon name="grin-stars" size={30} color="#900" {...props} />
           )}
         />
-        <View>
-          <Text>Total Numbers of Blockers: {totalNumOfBlockers} </Text>
-        </View>
+        {numOfBlockersDisp()}
       </View>
     </>
   );
@@ -47,7 +48,7 @@ function DashboardPage(props) {
 const mapStateToProps = (state) => {
   return {
     allBlockers: state.blockersState.blockers,
-  }
-}
-const DashboardPageConnected = connect(mapStateToProps)(DashboardPage)
+  };
+};
+const DashboardPageConnected = connect(mapStateToProps)(DashboardPage);
 export default DashboardPageConnected;
