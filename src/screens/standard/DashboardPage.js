@@ -15,7 +15,7 @@ function DashboardPage(props) {
     return () => {};
   }, []);
 
-  const numOfBlockersDisp = () => {
+  const allBlockersInfo = () => {
     if (allBlockers && allBlockers.length > 0) {
       const totalPtsArr = allBlockers.map((blocker) => {
         return blocker.points;
@@ -24,9 +24,14 @@ function DashboardPage(props) {
         return acc + cur;
       });
       return (
-        <View>
-          <Text>total points: {totalPts}</Text>
-        </View>
+        <>
+          <View>
+            <Text>Total tasks: {allBlockers.length}</Text>
+          </View>
+          <View>
+            <Text>Total points: {totalPts}</Text>
+          </View>
+        </>
       );
     }
   };
@@ -40,7 +45,7 @@ function DashboardPage(props) {
             <Icon name="grin-stars" size={30} color="#900" {...props} />
           )}
         />
-        {numOfBlockersDisp()}
+        {allBlockersInfo()}
       </View>
     </>
   );
