@@ -2,9 +2,9 @@ import * as React from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import BlockerConvo from "./blockers/BlockerConvo";
-import BlockerExercise from "../onboard/blockers/BlockerExercise";
-import BlockerMusic from "../onboard/blockers/BlockerMusic";
-import DashboardHome from "./DashboardHome";
+import BlockerExercise from "./blockers/BlockerExercise";
+import BlockerMusic from "./blockers/BlockerMusic";
+import DashboardHome from "./dashboard/DashboardHome";
 import ConvoCheck from "./ConvoCheck";
 import AccountSettings from "./AccountSettings";
 
