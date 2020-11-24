@@ -1,12 +1,13 @@
 import React from "react";
 import { Text, View } from "react-native";
 import { connect } from "react-redux";
+import text from "../../styles/TextStyle";
 
-export const Profile = () => {
+export const AccountSettings = () => {
   return (
     <>
       <View>
-        <Text>Hello</Text>
+        <Text style={text.header}>Hello</Text>
       </View>
     </>
   );
@@ -16,4 +17,4 @@ const mapStateToProps = (state) => ({});
 
 const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(AccountSettings);
