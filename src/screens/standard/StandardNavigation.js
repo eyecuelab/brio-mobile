@@ -1,9 +1,9 @@
 import * as React from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import DashboardPage from "./DashboardPage";
+import DashboardHome from "./DashboardHome";
 import ConvoCheck from "./ConvoCheck";
-import Profile from "../auth/Profile";
+import AccountSettings from "./AccountSettings";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -18,7 +18,7 @@ export default function StandardNavigation() {
       >
         <Tab.Screen
           name="dashboard"
-          component={DashboardPage}
+          component={DashboardHome}
           options={{
             tabBarLabel: "Home",
             tabBarIcon: ({ color }) => (
@@ -40,7 +40,7 @@ export default function StandardNavigation() {
 
         <Tab.Screen
           name="profile"
-          component={Profile}
+          component={AccountSettings}
           options={{
             tabBarLabel: "Profile",
             tabBarIcon: ({ color }) => (
