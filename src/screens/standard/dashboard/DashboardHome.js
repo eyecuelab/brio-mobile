@@ -6,6 +6,7 @@ import { Card } from "react-native-paper";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import ConvoDashBar from "./ConvoDashBar";
 import ExerciseDashBar from "./ExerciseDashBar";
+import MusicDashBar from "./MusicDashBar";
 
 function DashboardPage(props) {
   const { allBlockers } = props;
@@ -28,6 +29,7 @@ function DashboardPage(props) {
           </View>
           <ConvoDashBar />
           <ExerciseDashBar />
+          <MusicDashBar />
         </>
       );
     }
