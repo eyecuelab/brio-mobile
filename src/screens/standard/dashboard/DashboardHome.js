@@ -1,10 +1,12 @@
 import React from "react";
 import { View, Text } from "react-native";
 import { connect } from "react-redux";
-import bg from "../../styles/ScreenStyle";
+import bg from "../../../styles/ScreenStyle";
 import { Card } from "react-native-paper";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import ConvoDashBar from "./ConvoDashBar";
+import ExerciseDashBar from "./ExerciseDashBar";
+import MusicDashBar from "./MusicDashBar";
 
 function DashboardPage(props) {
   const { allBlockers } = props;
@@ -26,6 +28,8 @@ function DashboardPage(props) {
             <Text>Total points: {totalPts}</Text>
           </View>
           <ConvoDashBar />
+          <ExerciseDashBar />
+          <MusicDashBar />
         </>
       );
     }
