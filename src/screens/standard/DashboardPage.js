@@ -24,6 +24,7 @@ function DashboardPage(props) {
       const totalPts = totalPtsArr.reduce((acc, cur) => {
         return acc + cur;
       });
+
       return (
         <>
           <View>
@@ -32,6 +33,7 @@ function DashboardPage(props) {
           <View>
             <Text>Total points: {totalPts}</Text>
           </View>
+          <ConvoDashBar />
         </>
       );
     }
@@ -47,7 +49,6 @@ function DashboardPage(props) {
           )}
         />
         {allBlockersInfo()}
-        <ConvoDashBar />
       </View>
     </>
   );
