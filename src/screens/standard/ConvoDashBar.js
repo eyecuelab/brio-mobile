@@ -3,10 +3,16 @@ import { View, Text } from "react-native";
 import { connect } from "react-redux";
 
 export const ConvoDashBar = (props) => {
-  const { dispatch, allBlockers } = props;
+  const { allBlockers } = props;
   const convBlockers = allBlockers.filter(
     (blocker) => blocker.category === "conversation"
   );
+  const sortedBlockersByCompletedAt = convBlockers.sort(function (a, b) {
+    return b.completedAt - a.completedAt;
+  });
+  const mostRecentCompletedBlocker = sortedBlockersByCompletedAt[0];
+
+  const mostRecentCompletedDate = mostRecentCompletedBlocker.completedAt;
 
   const ConvProgress = () => {
     const completedBlockers = convBlockers.filter(
@@ -25,11 +31,18 @@ export const ConvoDashBar = (props) => {
       const totalConvPts = totalConvPtsArr.reduce((acc, cur) => {
         return acc + cur;
       });
+      const month = mostRecentCompletedDate.getMonth() + 1;
+      const day = mostRecentCompletedDate.getDate();
+      const year = mostRecentCompletedDate.getFullYear();
+
       return (
         <>
           <View>
             <Text>
               Conversation points: {currentConvPts} out of {totalConvPts}{" "}
+            </Text>
+            <Text>
+              Last updated: {month} / {day} / {year}
             </Text>
           </View>
         </>
@@ -37,11 +50,7 @@ export const ConvoDashBar = (props) => {
     }
   };
 
-  return (
-    <>
-    {ConvProgress()}
-    </>
-    )
+  return <>{ConvProgress()}</>;
 };
 
 const mapStateToProps = (state) => {

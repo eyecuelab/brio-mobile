@@ -16,7 +16,7 @@ export default (state = initialBlockerState, action) => {
             description: "Do you...?",
             createdAt: new Date(),
             completedAt: null,
-            points: 20,
+            points: 10,
           },
           {
             category: "conversation",
@@ -32,7 +32,7 @@ export default (state = initialBlockerState, action) => {
             description: "Do you have...?",
             createdAt: new Date(),
             completedAt: null,
-            points: 20,
+            points: 30,
           },
           {
             category: "exercise",
@@ -40,7 +40,7 @@ export default (state = initialBlockerState, action) => {
             description: "Do you have sneakers or running shoes?",
             createdAt: new Date(),
             completedAt: null,
-            points: 20,
+            points: 10,
           },
           {
             category: "exercise",
@@ -56,7 +56,7 @@ export default (state = initialBlockerState, action) => {
             description: "Do you have a yoga mat?",
             createdAt: new Date(),
             completedAt: null,
-            points: 20,
+            points: 30,
           },
           {
             category: "music",
@@ -64,7 +64,7 @@ export default (state = initialBlockerState, action) => {
             description: "Do you know how to make a playlist?",
             createdAt: new Date(),
             completedAt: null,
-            points: 20,
+            points: 10,
           },
           {
             category: "music",
@@ -72,7 +72,7 @@ export default (state = initialBlockerState, action) => {
             description: "Are you folowing multiple artists?",
             createdAt: new Date(),
             completedAt: null,
-            points: 10,
+            points: 20,
           },
           {
             category: "music",
@@ -95,7 +95,9 @@ export default (state = initialBlockerState, action) => {
       );
       return {
         ...currentState,
-        blockers: [...newBlockers, updatedBlocker],
+        blockers: [...newBlockers, updatedBlocker].sort(function (a, b) {
+          return a.points - b.points;
+        }),
       };
 
     default:
