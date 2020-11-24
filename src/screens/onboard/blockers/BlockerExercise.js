@@ -81,7 +81,7 @@ const ListContainer = styled.View`
 `;
 
 const mapStateToProps = (state) => {
-  const stateBlockers = state.catState.blockers;
+  const stateBlockers = state.blockersState.blockers;
   const musicBlockers = stateBlockers.filter(
     (stateBlocker) => stateBlocker.category === "exercise"
   );

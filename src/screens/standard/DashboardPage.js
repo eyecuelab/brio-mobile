@@ -15,9 +15,21 @@ function DashboardPage(props) {
     return () => {}
   }, [])
 
+  const totalNumOfBlockers = allBlockers.length;
+  const totalPtsArr = allBlockers.map((blocker) => {
+    return (
+      blocker.points
+    )
+  })
+  const totalPts = totalPtsArr.reduce((acc, cur) => {
+    return (
+      acc + cur
+    )
+  })
+
   return (
     <>
-    {console.log("LOADED BLOCKERS", allBlockers)}
+    {console.log("totalPts", totalPts)}
       <View style={bg.robin}>
         <Card.Title
           subtitle="Welcome back! You are doing great!"
@@ -26,7 +38,7 @@ function DashboardPage(props) {
           )}
         />
         <View>
-          <Text>Conversation points: </Text>
+          <Text>Total Numbers of Blockers: {totalNumOfBlockers} </Text>
         </View>
       </View>
     </>
