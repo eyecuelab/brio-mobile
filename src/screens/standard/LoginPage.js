@@ -41,7 +41,8 @@ const LoginPage = (props) => {
       const { code } = response.params;
       const action = actions.loggedIn(code);
       dispatch(action);
-      navigation.navigate("StandardNavigation");
+      navigation.navigate("LandingNavigation");
+      console.log("HELLO")
     }
   }, [response]);
 
