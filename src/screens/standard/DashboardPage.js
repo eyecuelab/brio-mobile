@@ -5,6 +5,7 @@ import * as actions from "../../rdx/actions";
 import bg from "../../styles/ScreenStyle";
 import { Card } from "react-native-paper";
 import Icon from "react-native-vector-icons/FontAwesome5";
+import ConvoDashBar from "./ConvoDashBar";
 
 function DashboardPage(props) {
   const { dispatch, allBlockers } = props;
@@ -46,6 +47,7 @@ function DashboardPage(props) {
           )}
         />
         {allBlockersInfo()}
+        <ConvoDashBar />
       </View>
     </>
   );
