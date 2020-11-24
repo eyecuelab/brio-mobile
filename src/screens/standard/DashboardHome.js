@@ -7,7 +7,7 @@ import music from "../../../assets/Music_Progress.png";
 import convo from "../../../assets/Convo_Progress.png";
 import exercise from "../../../assets/Exercise_Progress.png";
 
-function DashboardPage() {
+function DashboardHome() {
   const progressBars = [music, convo, exercise];
   return (
     <>
@@ -27,4 +27,4 @@ function DashboardPage() {
     </>
   );
 }
-export default DashboardPage;
+export default DashboardHome;
