@@ -42,7 +42,7 @@ export const ConvoDashBar = (props) => {
               Conversation points: {currentConvPts} out of {totalConvPts}{" "}
             </Text>
             <Text>
-              Last updated: {month} / {day} / {year}
+              Last updated: {month}/{day}/{year}
             </Text>
           </View>
         </>
