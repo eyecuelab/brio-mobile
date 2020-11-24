@@ -1,19 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { View, Text } from "react-native";
 import { connect } from "react-redux";
-import * as actions from "../../rdx/actions";
 
 export const ConvoDashBar = (props) => {
   const { dispatch, allBlockers } = props;
   const convBlockers = allBlockers.filter(
     (blocker) => blocker.category === "conversation"
   );
-
-  useEffect(() => {
-    const action = actions.loadedBlockers();
-    dispatch(action);
-    return () => {};
-  }, []);
 
   const ConvProgress = () => {
     const completedBlockers = convBlockers.filter(

@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { View, Text } from "react-native";
 import { connect } from "react-redux";
-import * as actions from "../../rdx/actions";
 import bg from "../../styles/ScreenStyle";
 import { Card } from "react-native-paper";
 import Icon from "react-native-vector-icons/FontAwesome5";
