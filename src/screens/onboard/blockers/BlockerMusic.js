@@ -66,15 +66,6 @@ function BlockerMusic(props) {
         <Text style={text.text}>Here are 3 blockers for you</Text>
       </View>
       <ListContainer>{displayBlockers()}</ListContainer>
-      <Button
-        mode="outlined"
-        onPress={() => {
-          // navigation.navigate("StandardNavigation");
-          console.log("HELLO")
-        }}
-      >
-        Continue to Dashboard
-      </Button>
     </View>
   );
 }

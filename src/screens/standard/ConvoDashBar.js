@@ -36,7 +36,7 @@ export const ConvoDashBar = (props) => {
         <>
           <View>
             <Text>
-              Conv points: {currentConvPts} out of {totalConvPts}{" "}
+              Conversation points: {currentConvPts} out of {totalConvPts}{" "}
             </Text>
           </View>
         </>
@@ -44,7 +44,11 @@ export const ConvoDashBar = (props) => {
     }
   };
 
-  return <>{ConvProgress()}</>;
+  return (
+    <>
+    {ConvProgress()}
+    </>
+    )
 };
 
 const mapStateToProps = (state) => {

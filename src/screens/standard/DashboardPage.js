@@ -8,13 +8,7 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import ConvoDashBar from "./ConvoDashBar";
 
 function DashboardPage(props) {
-  const { dispatch, allBlockers } = props;
-
-  useEffect(() => {
-    const action = actions.loadedBlockers();
-    dispatch(action);
-    return () => {};
-  }, []);
+  const { allBlockers } = props;
 
   const allBlockersInfo = () => {
     if (allBlockers && allBlockers.length > 0) {
@@ -24,7 +18,6 @@ function DashboardPage(props) {
       const totalPts = totalPtsArr.reduce((acc, cur) => {
         return acc + cur;
       });
-
       return (
         <>
           <View>
@@ -53,10 +46,12 @@ function DashboardPage(props) {
     </>
   );
 }
+
 const mapStateToProps = (state) => {
   return {
     allBlockers: state.blockersState.blockers,
   };
 };
+
 const DashboardPageConnected = connect(mapStateToProps)(DashboardPage);
 export default DashboardPageConnected;

@@ -37,7 +37,7 @@ export default (state = initialBlockerState, action) => {
           {
             category: "exercise",
             id: "exerciseB1",
-            description: "Do you have sneakers or running shoes",
+            description: "Do you have sneakers or running shoes?",
             createdAt: new Date(),
             completedAt: null,
             points: 20,
@@ -84,18 +84,19 @@ export default (state = initialBlockerState, action) => {
           },
         ],
       };
+
     case c.COMPLETED_BLOCKER:
       const currentState = { ...state };
-      const blockers = currentState.blockers;
-      let updatedBlocker = blockers.filter(
-        (blocker) => blocker.id === action.id
+      const { blockers } = currentState;
+      let updatedBlocker = blockers.find((blocker) => blocker.id === action.id);
+      updatedBlocker = { ...updatedBlocker, completedAt: new Date() };
+      const newBlockers = blockers.filter(
+        (blocker) => blocker.id !== action.id
       );
-      updatedBlocker[0].completedAt = new Date();
-      return currentState;
-
-    case c.LOADED_BLOCKERS:
-      const loadedState = { ...state };
-      return loadedState;
+      return {
+        ...currentState,
+        blockers: [...newBlockers, updatedBlocker],
+      };
 
     default:
       return state;
