@@ -1,12 +1,14 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View } from "react-native";
 import { connect } from "react-redux";
 import { VictoryPie } from "victory-native";
 import Svg from "react-native-svg";
 
-export const PieChart = () => {
+export const PieChart = (props) => {
+  const { blockers } = props;
+
   const data = [
-    { x: "Social", y: 35 },
+    { x: "Social", y: 100 },
     { x: "Exercise", y: 40 },
     { x: "Music", y: 55 },
   ];
@@ -14,7 +16,7 @@ export const PieChart = () => {
   return (
     <>
       <View>
-        <Svg width={400} height={400}>
+        <Svg width={400} height={400} viewBox="0 0 400 400" style={{ width: "100%", height: "auto" }}>
           <VictoryPie
             standalone={false}
             innerRadius={75}
@@ -28,7 +30,11 @@ export const PieChart = () => {
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => {
+  return{
+    blockers: state.blockersState.blockers
+  }
+};
 
 const mapDispatchToProps = {};
 

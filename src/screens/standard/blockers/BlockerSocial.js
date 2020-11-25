@@ -10,7 +10,7 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import sArrow from "../../../../assets/Swipe_Arrow.png";
 import arrow from "../../../styles/ArrowStyle.js";
 
-function BlockerConvo(props) {
+function BlockerSocial(props) {
   const { dispatch, blockers } = props;
 
   const completedBlocker = (id) => {
@@ -60,7 +60,7 @@ function BlockerConvo(props) {
   return (
     <View style={bg.lime}>
       <View>
-        <Text style={text.header}>Conversation</Text>
+        <Text style={text.header}>Social</Text>
       </View>
       <View>
         <Text style={text.text}>Here are 3 blockers for you</Text>
@@ -84,11 +84,11 @@ const ListContainer = styled.View`
 const mapStateToProps = (state) => {
   const stateBlockers = state.blockersState.blockers;
   const conveBlockers = stateBlockers.filter(
-    (stateBlocker) => stateBlocker.category === "conversation"
+    (stateBlocker) => stateBlocker.category === "social"
   );
   return {
     blockers: conveBlockers,
   };
 };
-const BlockerConvoConnected = connect(mapStateToProps)(BlockerConvo);
-export default BlockerConvoConnected;
+const BlockerSocialConnected = connect(mapStateToProps)(BlockerSocial);
+export default BlockerSocialConnected;

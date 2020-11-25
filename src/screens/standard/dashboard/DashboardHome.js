@@ -5,7 +5,7 @@ import bg from "../../../styles/ScreenStyle";
 import { Card } from "react-native-paper";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import PieChart from "./PieChart";
-import ConvoDashBar from "./ConvoDashBar";
+import SocialDashBar from "./SocialDashBar";
 import ExerciseDashBar from "./ExerciseDashBar";
 import MusicDashBar from "./MusicDashBar";
 
@@ -24,7 +24,7 @@ function DashboardPage(props) {
         <>
           <View>
             <PieChart />
-            <ConvoDashBar />
+            <SocialDashBar />
             <ExerciseDashBar />
             <MusicDashBar />
             <View>

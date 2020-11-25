@@ -11,7 +11,7 @@ export default (state = initialBlockerState, action) => {
         ...state,
         blockers: [
           {
-            category: "conversation",
+            category: "social",
             id: "convB1",
             description: "Do you...?",
             createdAt: new Date(),
@@ -19,7 +19,7 @@ export default (state = initialBlockerState, action) => {
             points: 10,
           },
           {
-            category: "conversation",
+            category: "social",
             id: "convB2",
             description: "Are you...?",
             createdAt: new Date(),
@@ -27,7 +27,7 @@ export default (state = initialBlockerState, action) => {
             points: 20,
           },
           {
-            category: "conversation",
+            category: "social",
             id: "convB3",
             description: "Do you have...?",
             createdAt: new Date(),

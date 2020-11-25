@@ -1,11 +1,10 @@
 import * as React from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import BlockerConvo from "./blockers/BlockerConvo";
+import BlockerSocial from "./blockers/BlockerSocial";
 import BlockerExercise from "./blockers/BlockerExercise";
 import BlockerMusic from "./blockers/BlockerMusic";
 import DashboardHome from "./dashboard/DashboardHome";
-import ConvoCheck from "./ConvoCheck";
 import AccountSettings from "./AccountSettings";
 
 const Tab = createMaterialBottomTabNavigator();
@@ -31,10 +30,10 @@ export default function StandardNavigation() {
         />
 
         <Tab.Screen
-          name="BlockerConvo"
-          component={BlockerConvo}
+          name="BlockerSocial"
+          component={BlockerSocial}
           options={{
-            tabBarLabel: "Conversation",
+            tabBarLabel: "Social",
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="group" color={color} size={26} />
             ),
@@ -44,7 +43,7 @@ export default function StandardNavigation() {
           name="BlockerExercise"
           component={BlockerExercise}
           options={{
-            tabBarLabel: "Conversation",
+            tabBarLabel: "Social",
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="group" color={color} size={26} />
             ),
@@ -54,7 +53,7 @@ export default function StandardNavigation() {
           name="BlockerMusic"
           component={BlockerMusic}
           options={{
-            tabBarLabel: "Conversation",
+            tabBarLabel: "Social",
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="group" color={color} size={26} />
             ),
