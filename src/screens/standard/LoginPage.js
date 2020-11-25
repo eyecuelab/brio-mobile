@@ -8,7 +8,7 @@ import * as actions from "../../rdx/actions";
 import text from "../../styles/TextStyle.js";
 import bg from "../../styles/ScreenStyle.js";
 import brio from "../../../assets/Brio_Star.png";
-import arrow from "../../styles/ArrowStyle.js"
+import arrow from "../../styles/ArrowStyle.js";
 // EXPO AUTH
 import * as WebBrowser from "expo-web-browser";
 import { makeRedirectUri, useAuthRequest } from "expo-auth-session";
@@ -41,8 +41,9 @@ const LoginPage = (props) => {
       const { code } = response.params;
       const action = actions.loggedIn(code);
       dispatch(action);
-      navigation.navigate("LandingNavigation");
-      console.log("HELLO")
+      const action2 = actions.addedBlockers();
+      dispatch(action2);
+      navigation.navigate("StandardNavigation");
     }
   }, [response]);
 
@@ -50,7 +51,7 @@ const LoginPage = (props) => {
     <>
       <View style={bg.brick}>
         <Text style={text.header}>Hello, friend...</Text>
-        <Image source={brio} style={{marginTop: 100}} />
+        <Image source={brio} style={{ marginTop: 100 }} />
         <Text style={text.text}>
           Brio uses Spotify's built-in credentials to access the app. You will
           need to make an account before proceeding.

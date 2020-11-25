@@ -4,7 +4,7 @@ import blockerReducer from "./blockerReducer";
 
 const rootReducer = combineReducers({
   user: authReducer,
-  catState: blockerReducer,
+  blockersState: blockerReducer,
 });
 
 export default rootReducer;
