@@ -5,25 +5,54 @@ import { VictoryPie } from "victory-native";
 import Svg from "react-native-svg";
 
 export const PieChart = (props) => {
-  const { blockers } = props;
+  const { allBlockers } = props;
+  const exerciseBlockers = allBlockers.filter(
+    (blocker) => blocker.category === "exercise"
+  );
 
-  const data = [
-    { x: "Social", y: 100 },
-    { x: "Exercise", y: 40 },
-    { x: "Music", y: 55 },
-  ];
+  const getData = () => {
+    //current exercise points
+    const completedBlockers = exerciseBlockers.filter(
+      (blocker) => blocker.completedAt !== null
+    );
+
+    if (completedBlockers && completedBlockers.length > 0) {
+      const currentExercisePtsArr = completedBlockers.map(
+        (completedBlocker) => {
+          return completedBlocker.points;
+        }
+      );
+      const currentExercisePts = currentExercisePtsArr.reduce((acc, cur) => {
+        return acc + cur;
+      });
+      const data = [
+        { x: "Social", y: 100 },
+        { x: "Exercise", y: currentExercisePts },
+        { x: "Music", y: 55 },
+      ];
+
+      return (
+        <VictoryPie
+          standalone={false}
+          innerRadius={75}
+          labelRadius={125}
+          data={data}
+          style={{ labels: { fontSize: 20 } }}
+        />
+      );
+    }
+  };
 
   return (
     <>
       <View>
-        <Svg width={400} height={400} viewBox="0 0 400 400" style={{ width: "100%", height: "auto" }}>
-          <VictoryPie
-            standalone={false}
-            innerRadius={75}
-            labelRadius={125}
-            data={data}
-            style={{ labels: { fontSize: 20 } }}
-          />
+        <Svg
+          width={400}
+          height={400}
+          viewBox="0 0 400 400"
+          style={{ width: "100%", height: "auto" }}
+        >
+          {getData()}
         </Svg>
       </View>
     </>
@@ -31,9 +60,9 @@ export const PieChart = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  return{
-    blockers: state.blockersState.blockers
-  }
+  return {
+    allBlockers: state.blockersState.blockers,
+  };
 };
 
 const mapDispatchToProps = {};

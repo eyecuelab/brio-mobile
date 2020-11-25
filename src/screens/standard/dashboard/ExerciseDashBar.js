@@ -4,10 +4,10 @@ import { connect } from "react-redux";
 
 export const ExerciseDashBar = (props) => {
   const { allBlockers } = props;
-  const convBlockers = allBlockers.filter(
+  const socialBlockers = allBlockers.filter(
     (blocker) => blocker.category === "exercise"
   );
-  const sortedBlockersByCompletedAt = convBlockers.sort(function (a, b) {
+  const sortedBlockersByCompletedAt = socialBlockers.sort(function (a, b) {
     return b.completedAt - a.completedAt;
   });
   const mostRecentCompletedBlocker = sortedBlockersByCompletedAt[0];
@@ -15,7 +15,7 @@ export const ExerciseDashBar = (props) => {
   const mostRecentCompletedDate = mostRecentCompletedBlocker.completedAt;
 
   const ExerciseProgress = () => {
-    const completedBlockers = convBlockers.filter(
+    const completedBlockers = socialBlockers.filter(
       (blocker) => blocker.completedAt !== null
     );
     if (completedBlockers && completedBlockers.length > 0) {
@@ -25,7 +25,7 @@ export const ExerciseDashBar = (props) => {
       const currentSocialPts = currnteSocialPtsArr.reduce((acc, cur) => {
         return acc + cur;
       });
-      const totalSocialPtsArr = convBlockers.map((blocker) => {
+      const totalSocialPtsArr = socialBlockers.map((blocker) => {
         return blocker.points;
       });
       const totalSocialPts = totalSocialPtsArr.reduce((acc, cur) => {
