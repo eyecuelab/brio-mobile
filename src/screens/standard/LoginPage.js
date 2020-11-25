@@ -22,7 +22,7 @@ const discovery = {
 };
 
 const LoginPage = (props) => {
-  const { dispatch } = props;
+  const { dispatch, allBlockers } = props;
   const navigation = useNavigation();
   const [request, response, promptAsync] = useAuthRequest(
     {
@@ -41,8 +41,10 @@ const LoginPage = (props) => {
       const { code } = response.params;
       const action = actions.loggedIn(code);
       dispatch(action);
-      const action2 = actions.addedBlockers();
-      dispatch(action2);
+      if (!allBlockers) {
+        const action2 = actions.addedBlockers();
+        dispatch(action2);
+      }
       navigation.navigate("StandardNavigation");
     }
   }, [response]);
@@ -70,5 +72,11 @@ const LoginPage = (props) => {
   );
 };
 
-const LoginPageConnected = connect()(LoginPage);
+const mapStateToProps = (state) => {
+  return {
+    allBlockers: state.blockersState.blockers,
+  };
+};
+
+const LoginPageConnected = connect(mapStateToProps)(LoginPage);
 export default LoginPageConnected;

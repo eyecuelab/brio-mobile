@@ -31,6 +31,7 @@ export const SocialDashBar = (props) => {
       const totalSocialPts = totalSocialPtsArr.reduce((acc, cur) => {
         return acc + cur;
       });
+      
       const month = mostRecentCompletedDate.getMonth() + 1;
       const day = mostRecentCompletedDate.getDate();
       const year = mostRecentCompletedDate.getFullYear();
