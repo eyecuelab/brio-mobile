@@ -36,6 +36,25 @@ export const PieChart = (props) => {
         data={data}
         colorScale={colorScale}
         style={{ labels: { fontSize: 20 } }}
+        events={[
+          {
+            target: "data",
+            eventHandlers: {
+              onPressIn: () => {
+                return [
+                  {
+                    target: "data",
+                    mutation: (dataProps) => {
+                      console.log("item selected is", dataProps.index);
+                      return {};
+                    },
+                  },
+                ];
+              },
+              onPressOut: () => {},
+            },
+          },
+        ]}
       />
     );
   };
@@ -112,6 +131,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(PieChart);
+export default connect(mapStateToProps)(PieChart);

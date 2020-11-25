@@ -60,7 +60,7 @@ function BlockerExercise(props) {
   return (
     <View style={bg.berry}>
       <View>
-        <Text style={text.header}>Excercise</Text>
+        <Text style={text.header}>Exercise</Text>
       </View>
       <View>
         <Text style={text.text}>Here are 3 blockers for you</Text>
