@@ -12,6 +12,23 @@ export const PieChart = (props) => {
   );
 
   const getData = () => {
+    const data = [
+      { x: "Social", y: 100 },
+      { x: "Exercise", y: exercisePts() },
+      { x: "Music", y: 55 },
+    ];
+    return (
+      <VictoryPie
+        standalone={false}
+        innerRadius={75}
+        labelRadius={125}
+        data={data}
+        style={{ labels: { fontSize: 20 } }}
+      />
+    );
+  };
+
+  const exercisePts = () => {
     const completedBlockers = exerciseBlockers.filter(
       (blocker) => blocker.completedAt !== null
     );
@@ -25,23 +42,8 @@ export const PieChart = (props) => {
       currentExercisePts = currentExercisePtsArr.reduce((acc, cur) => {
         return acc + cur;
       });
+      return currentExercisePts
     }
-
-    const data = [
-      { x: "Social", y: 100 },
-      { x: "Exercise", y: currentExercisePts },
-      { x: "Music", y: 55 },
-    ];
-
-    return (
-      <VictoryPie
-        standalone={false}
-        innerRadius={75}
-        labelRadius={125}
-        data={data}
-        style={{ labels: { fontSize: 20 } }}
-      />
-    );
   };
 
   return (
