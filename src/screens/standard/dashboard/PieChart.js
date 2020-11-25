@@ -16,19 +16,25 @@ export const PieChart = (props) => {
   const socialBlockers = allBlockers.filter(
     (blocker) => blocker.category === "social"
   );
+  const exerciseColor = "#D8A1D5";
+  const musicColor = "#94D7B5";
+  const socialColor = "#E0C45E";
+  const colorScale = [exerciseColor, musicColor, socialColor];
 
   const displayPieChart = () => {
     const data = [
-      { x: "Music", y: musicPts() },
       { x: "Exercise", y: exercisePts() },
+      { x: "Music", y: musicPts() },
       { x: "Social", y: socialPts() },
     ];
+
     return (
       <VictoryPie
         standalone={false}
         innerRadius={75}
         labelRadius={125}
         data={data}
+        colorScale={colorScale}
         style={{ labels: { fontSize: 20 } }}
       />
     );
@@ -48,43 +54,39 @@ export const PieChart = (props) => {
       currentExercisePts = currentExercisePtsArr.reduce((acc, cur) => {
         return acc + cur;
       });
-      return currentExercisePts
+      return currentExercisePts;
     }
   };
-  
+
   const musicPts = () => {
     const completedBlockers = musicBlockers.filter(
       (blocker) => blocker.completedAt !== null
     );
     let currentMusicPts = 0;
     if (completedBlockers && completedBlockers.length > 0) {
-      const currentMusicPtsArr = completedBlockers.map(
-        (completedBlocker) => {
-          return completedBlocker.points;
-        }
-      );
+      const currentMusicPtsArr = completedBlockers.map((completedBlocker) => {
+        return completedBlocker.points;
+      });
       currentMusicPts = currentMusicPtsArr.reduce((acc, cur) => {
         return acc + cur;
       });
-      return currentMusicPts
+      return currentMusicPts;
     }
   };
-  
+
   const socialPts = () => {
     const completedBlockers = socialBlockers.filter(
       (blocker) => blocker.completedAt !== null
     );
     let currentSocialPts = 0;
     if (completedBlockers && completedBlockers.length > 0) {
-      const currentSocialPtsArr = completedBlockers.map(
-        (completedBlocker) => {
-          return completedBlocker.points;
-        }
-      );
+      const currentSocialPtsArr = completedBlockers.map((completedBlocker) => {
+        return completedBlocker.points;
+      });
       currentSocialPts = currentSocialPtsArr.reduce((acc, cur) => {
         return acc + cur;
       });
-      return currentSocialPts
+      return currentSocialPts;
     }
   };
 
