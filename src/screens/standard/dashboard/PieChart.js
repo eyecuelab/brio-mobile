@@ -6,41 +6,42 @@ import Svg from "react-native-svg";
 
 export const PieChart = (props) => {
   const { allBlockers } = props;
+
   const exerciseBlockers = allBlockers.filter(
     (blocker) => blocker.category === "exercise"
   );
 
   const getData = () => {
-    //current exercise points
     const completedBlockers = exerciseBlockers.filter(
       (blocker) => blocker.completedAt !== null
     );
-
+    let currentExercisePts = 0;
     if (completedBlockers && completedBlockers.length > 0) {
       const currentExercisePtsArr = completedBlockers.map(
         (completedBlocker) => {
           return completedBlocker.points;
         }
       );
-      const currentExercisePts = currentExercisePtsArr.reduce((acc, cur) => {
+      currentExercisePts = currentExercisePtsArr.reduce((acc, cur) => {
         return acc + cur;
       });
-      const data = [
-        { x: "Social", y: 100 },
-        { x: "Exercise", y: currentExercisePts },
-        { x: "Music", y: 55 },
-      ];
-
-      return (
-        <VictoryPie
-          standalone={false}
-          innerRadius={75}
-          labelRadius={125}
-          data={data}
-          style={{ labels: { fontSize: 20 } }}
-        />
-      );
     }
+
+    const data = [
+      { x: "Social", y: 100 },
+      { x: "Exercise", y: currentExercisePts },
+      { x: "Music", y: 55 },
+    ];
+
+    return (
+      <VictoryPie
+        standalone={false}
+        innerRadius={75}
+        labelRadius={125}
+        data={data}
+        style={{ labels: { fontSize: 20 } }}
+      />
+    );
   };
 
   return (
