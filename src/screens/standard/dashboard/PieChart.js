@@ -10,12 +10,18 @@ export const PieChart = (props) => {
   const exerciseBlockers = allBlockers.filter(
     (blocker) => blocker.category === "exercise"
   );
+  const musicBlockers = allBlockers.filter(
+    (blocker) => blocker.category === "music"
+  );
+  const socialBlockers = allBlockers.filter(
+    (blocker) => blocker.category === "social"
+  );
 
-  const getData = () => {
+  const displayPieChart = () => {
     const data = [
-      { x: "Social", y: 100 },
+      { x: "Music", y: musicPts() },
       { x: "Exercise", y: exercisePts() },
-      { x: "Music", y: 55 },
+      { x: "Social", y: socialPts() },
     ];
     return (
       <VictoryPie
@@ -45,6 +51,42 @@ export const PieChart = (props) => {
       return currentExercisePts
     }
   };
+  
+  const musicPts = () => {
+    const completedBlockers = musicBlockers.filter(
+      (blocker) => blocker.completedAt !== null
+    );
+    let currentMusicPts = 0;
+    if (completedBlockers && completedBlockers.length > 0) {
+      const currentMusicPtsArr = completedBlockers.map(
+        (completedBlocker) => {
+          return completedBlocker.points;
+        }
+      );
+      currentMusicPts = currentMusicPtsArr.reduce((acc, cur) => {
+        return acc + cur;
+      });
+      return currentMusicPts
+    }
+  };
+  
+  const socialPts = () => {
+    const completedBlockers = socialBlockers.filter(
+      (blocker) => blocker.completedAt !== null
+    );
+    let currentSocialPts = 0;
+    if (completedBlockers && completedBlockers.length > 0) {
+      const currentSocialPtsArr = completedBlockers.map(
+        (completedBlocker) => {
+          return completedBlocker.points;
+        }
+      );
+      currentSocialPts = currentSocialPtsArr.reduce((acc, cur) => {
+        return acc + cur;
+      });
+      return currentSocialPts
+    }
+  };
 
   return (
     <>
@@ -55,7 +97,7 @@ export const PieChart = (props) => {
           viewBox="0 0 400 400"
           style={{ width: "100%", height: "auto" }}
         >
-          {getData()}
+          {displayPieChart()}
         </Svg>
       </View>
     </>
