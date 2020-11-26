@@ -38,7 +38,7 @@ export const PieChart = (props) => {
         labelRadius={125}
         data={data}
         colorScale={colorScale}
-        style={{ labels: { fontSize: 20 } }}
+        style={{ labels: { display: 'none' } }}
         events={[
           {
             target: "data",
