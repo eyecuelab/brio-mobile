@@ -41,10 +41,10 @@ const LoginPage = (props) => {
       const { code } = response.params;
       const action = actions.loggedIn(code);
       dispatch(action);
-      if (!allBlockers) {
-        const action2 = actions.addedBlockers();
-        dispatch(action2);
-      }
+      const action2 = actions.addedBlockers();
+      dispatch(action2);
+      // if (!allBlockers) {
+      // }
       navigation.navigate("StandardNavigation");
     }
   }, [response]);

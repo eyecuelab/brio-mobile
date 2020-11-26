@@ -7,6 +7,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "./rdx/store";
 import LoginPage from "./screens/standard/LoginPage";
 import StandardNavigation from "./screens/standard/StandardNavigation.js";
+import ExerciseCheck from "./screens/standard/ExerciseCheck.js";
 
 const RootStack = createStackNavigator();
 
@@ -18,13 +19,12 @@ export default function App() {
           <StatusBar style="auto" />
           <NavigationContainer>
             <RootStack.Navigator
-                  screenOptions={{
-                  headerShown: false
-                }}
-              >
-              <RootStack.Screen name="Login" 
-                component={LoginPage} 
-              />
+              screenOptions={{
+                headerShown: false,
+              }}
+            >
+              <RootStack.Screen name="Login" component={LoginPage} />
+              <RootStack.Screen name="ExerciseCheck" component={ExerciseCheck} />
               <RootStack.Screen
                 name="StandardNavigation"
                 component={StandardNavigation}

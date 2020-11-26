@@ -30,16 +30,6 @@ export default function StandardNavigation() {
         />
 
         <Tab.Screen
-          name="BlockerSocial"
-          component={BlockerSocial}
-          options={{
-            tabBarLabel: "Social",
-            tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="group" color={color} size={26} />
-            ),
-          }}
-        />
-        <Tab.Screen
           name="BlockerExercise"
           component={BlockerExercise}
           options={{
@@ -59,7 +49,16 @@ export default function StandardNavigation() {
             ),
           }}
         />
-
+        <Tab.Screen
+          name="BlockerSocial"
+          component={BlockerSocial}
+          options={{
+            tabBarLabel: "Social",
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="group" color={color} size={26} />
+            ),
+          }}
+        />
         <Tab.Screen
           name="profile"
           component={AccountSettings}

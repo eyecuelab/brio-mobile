@@ -1,11 +1,13 @@
 import React from "react";
 import { View } from "react-native";
 import { connect } from "react-redux";
+import { useNavigation } from "@react-navigation/native";
 import { VictoryPie } from "victory-native";
 import Svg from "react-native-svg";
 
 export const PieChart = (props) => {
   const { allBlockers } = props;
+  const navigation = useNavigation();
 
   const exerciseBlockers = allBlockers.filter(
     (blocker) => blocker.category === "exercise"
@@ -45,7 +47,8 @@ export const PieChart = (props) => {
                   {
                     target: "data",
                     mutation: (dataProps) => {
-                      console.log("item selected is", dataProps.index);
+                      // console.log("item selected is", dataProps.index);
+                      navigation.navigate("ExerciseCheck");
                       return {};
                     },
                   },
