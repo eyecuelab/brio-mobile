@@ -22,6 +22,7 @@ export const PieChart = (props) => {
   const musicColor = "#94D7B5";
   const socialColor = "#E0C45E";
   const colorScale = [exerciseColor, musicColor, socialColor];
+  const navs = ["ExerciseCheck", "MusicCheck", "SocialCheck"]
 
   const displayPieChart = () => {
     const data = [
@@ -47,8 +48,7 @@ export const PieChart = (props) => {
                   {
                     target: "data",
                     mutation: (dataProps) => {
-                      // console.log("item selected is", dataProps.index);
-                      navigation.navigate("ExerciseCheck");
+                      navigation.navigate(navs[dataProps.index]);
                       return {};
                     },
                   },
