@@ -10,6 +10,7 @@ import StandardNavigation from "./screens/standard/StandardNavigation.js";
 import ExerciseCheck from "./screens/standard/ExerciseCheck.js";
 import MusicCheck from "./screens/standard/MusicCheck.js";
 import SocialCheck from "./screens/standard/SocialCheck.js";
+import LandingNavigation from "./screens/landing/LandingNavigation.js";
 
 const RootStack = createStackNavigator();
 
@@ -32,6 +33,10 @@ export default function App() {
               <RootStack.Screen
                 name="StandardNavigation"
                 component={StandardNavigation}
+              />
+              <RootStack.Screen
+                name="LandingNavigation"
+                component={LandingNavigation}
               />
             </RootStack.Navigator>
           </NavigationContainer>
