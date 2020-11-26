@@ -4,10 +4,10 @@ import { connect } from "react-redux";
 
 export const ExerciseDashBar = (props) => {
   const { allBlockers } = props;
-  const convBlockers = allBlockers.filter(
+  const socialBlockers = allBlockers.filter(
     (blocker) => blocker.category === "exercise"
   );
-  const sortedBlockersByCompletedAt = convBlockers.sort(function (a, b) {
+  const sortedBlockersByCompletedAt = socialBlockers.sort(function (a, b) {
     return b.completedAt - a.completedAt;
   });
   const mostRecentCompletedBlocker = sortedBlockersByCompletedAt[0];
@@ -15,20 +15,20 @@ export const ExerciseDashBar = (props) => {
   const mostRecentCompletedDate = mostRecentCompletedBlocker.completedAt;
 
   const ExerciseProgress = () => {
-    const completedBlockers = convBlockers.filter(
+    const completedBlockers = socialBlockers.filter(
       (blocker) => blocker.completedAt !== null
     );
     if (completedBlockers && completedBlockers.length > 0) {
-      const currnteConvPtsArr = completedBlockers.map((completedBlocker) => {
+      const currnteSocialPtsArr = completedBlockers.map((completedBlocker) => {
         return completedBlocker.points;
       });
-      const currentConvPts = currnteConvPtsArr.reduce((acc, cur) => {
+      const currentSocialPts = currnteSocialPtsArr.reduce((acc, cur) => {
         return acc + cur;
       });
-      const totalConvPtsArr = convBlockers.map((blocker) => {
+      const totalSocialPtsArr = socialBlockers.map((blocker) => {
         return blocker.points;
       });
-      const totalConvPts = totalConvPtsArr.reduce((acc, cur) => {
+      const totalSocialPts = totalSocialPtsArr.reduce((acc, cur) => {
         return acc + cur;
       });
       const month = mostRecentCompletedDate.getMonth() + 1;
@@ -39,7 +39,7 @@ export const ExerciseDashBar = (props) => {
         <>
           <View>
             <Text>
-              Exercise points: {currentConvPts} out of {totalConvPts}{" "}
+              Exercise points: {currentSocialPts} out of {totalSocialPts}{" "}
             </Text>
             <Text>
               Last updated: {month}/{day}/{year}

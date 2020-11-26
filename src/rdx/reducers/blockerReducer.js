@@ -11,28 +11,31 @@ export default (state = initialBlockerState, action) => {
         ...state,
         blockers: [
           {
-            category: "conversation",
+            category: "social",
             id: "convB1",
             description: "Do you...?",
             createdAt: new Date(),
             completedAt: null,
             points: 10,
+            color: "#E0C45E",
           },
           {
-            category: "conversation",
+            category: "social",
             id: "convB2",
             description: "Are you...?",
             createdAt: new Date(),
             completedAt: null,
             points: 20,
+            color: "#E0C45E",
           },
           {
-            category: "conversation",
+            category: "social",
             id: "convB3",
             description: "Do you have...?",
             createdAt: new Date(),
             completedAt: null,
             points: 30,
+            color: "#E0C45E",
           },
           {
             category: "exercise",
@@ -41,6 +44,7 @@ export default (state = initialBlockerState, action) => {
             createdAt: new Date(),
             completedAt: null,
             points: 10,
+            color: "#D8A1D5",
           },
           {
             category: "exercise",
@@ -49,6 +53,7 @@ export default (state = initialBlockerState, action) => {
             createdAt: new Date(),
             completedAt: null,
             points: 20,
+            color: "#D8A1D5",
           },
           {
             category: "exercise",
@@ -57,6 +62,7 @@ export default (state = initialBlockerState, action) => {
             createdAt: new Date(),
             completedAt: null,
             points: 30,
+            color: "#D8A1D5",
           },
           {
             category: "music",
@@ -65,6 +71,7 @@ export default (state = initialBlockerState, action) => {
             createdAt: new Date(),
             completedAt: null,
             points: 10,
+            color: "#94D7B5"
           },
           {
             category: "music",
@@ -73,6 +80,7 @@ export default (state = initialBlockerState, action) => {
             createdAt: new Date(),
             completedAt: null,
             points: 20,
+            color: "#94D7B5"
           },
           {
             category: "music",
@@ -81,6 +89,7 @@ export default (state = initialBlockerState, action) => {
             createdAt: new Date(),
             completedAt: null,
             points: 30,
+            color: "#94D7B5"
           },
         ],
       };

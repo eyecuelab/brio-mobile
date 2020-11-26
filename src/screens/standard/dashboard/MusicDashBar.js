@@ -19,16 +19,16 @@ export const MusicDashBar = (props) => {
       (blocker) => blocker.completedAt !== null
     );
     if (completedBlockers && completedBlockers.length > 0) {
-      const currnteConvPtsArr = completedBlockers.map((completedBlocker) => {
+      const currnteSocialPtsArr = completedBlockers.map((completedBlocker) => {
         return completedBlocker.points;
       });
-      const currentConvPts = currnteConvPtsArr.reduce((acc, cur) => {
+      const currentSocialPts = currnteSocialPtsArr.reduce((acc, cur) => {
         return acc + cur;
       });
-      const totalConvPtsArr = convBlockers.map((blocker) => {
+      const totalSocialPtsArr = convBlockers.map((blocker) => {
         return blocker.points;
       });
-      const totalConvPts = totalConvPtsArr.reduce((acc, cur) => {
+      const totalSocialPts = totalSocialPtsArr.reduce((acc, cur) => {
         return acc + cur;
       });
       const month = mostRecentCompletedDate.getMonth() + 1;
@@ -39,7 +39,7 @@ export const MusicDashBar = (props) => {
         <>
           <View>
             <Text>
-              Music points: {currentConvPts} out of {totalConvPts}{" "}
+              Music points: {currentSocialPts} out of {totalSocialPts}{" "}
             </Text>
             <Text>
               Last updated: {month}/{day}/{year}

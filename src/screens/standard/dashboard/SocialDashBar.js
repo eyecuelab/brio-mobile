@@ -2,10 +2,10 @@ import React from "react";
 import { View, Text } from "react-native";
 import { connect } from "react-redux";
 
-export const ConvoDashBar = (props) => {
+export const SocialDashBar = (props) => {
   const { allBlockers } = props;
   const convBlockers = allBlockers.filter(
-    (blocker) => blocker.category === "conversation"
+    (blocker) => blocker.category === "social"
   );
   const sortedBlockersByCompletedAt = convBlockers.sort(function (a, b) {
     return b.completedAt - a.completedAt;
@@ -14,21 +14,21 @@ export const ConvoDashBar = (props) => {
 
   const mostRecentCompletedDate = mostRecentCompletedBlocker.completedAt;
 
-  const ConvProgress = () => {
+  const SocialProgress = () => {
     const completedBlockers = convBlockers.filter(
       (blocker) => blocker.completedAt !== null
     );
     if (completedBlockers && completedBlockers.length > 0) {
-      const currnteConvPtsArr = completedBlockers.map((completedBlocker) => {
+      const currnteSocialPtsArr = completedBlockers.map((completedBlocker) => {
         return completedBlocker.points;
       });
-      const currentConvPts = currnteConvPtsArr.reduce((acc, cur) => {
+      const currentSocialPts = currnteSocialPtsArr.reduce((acc, cur) => {
         return acc + cur;
       });
-      const totalConvPtsArr = convBlockers.map((blocker) => {
+      const totalSocialPtsArr = convBlockers.map((blocker) => {
         return blocker.points;
       });
-      const totalConvPts = totalConvPtsArr.reduce((acc, cur) => {
+      const totalSocialPts = totalSocialPtsArr.reduce((acc, cur) => {
         return acc + cur;
       });
       const month = mostRecentCompletedDate.getMonth() + 1;
@@ -39,7 +39,7 @@ export const ConvoDashBar = (props) => {
         <>
           <View>
             <Text>
-              Conversation points: {currentConvPts} out of {totalConvPts}{" "}
+              Social points: {currentSocialPts} out of {totalSocialPts}{" "}
             </Text>
             <Text>
               Last updated: {month}/{day}/{year}
@@ -50,7 +50,7 @@ export const ConvoDashBar = (props) => {
     }
   };
 
-  return <>{ConvProgress()}</>;
+  return <>{SocialProgress()}</>;
 };
 
 const mapStateToProps = (state) => {
@@ -59,4 +59,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(ConvoDashBar);
+export default connect(mapStateToProps)(SocialDashBar);

@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 import bg from "../../../styles/ScreenStyle";
 import { Card } from "react-native-paper";
 import Icon from "react-native-vector-icons/FontAwesome5";
-import ConvoDashBar from "./ConvoDashBar";
+import PieChart from "./PieChart";
+import SocialDashBar from "./SocialDashBar";
 import ExerciseDashBar from "./ExerciseDashBar";
 import MusicDashBar from "./MusicDashBar";
 
@@ -22,14 +23,17 @@ function DashboardPage(props) {
       return (
         <>
           <View>
-            <Text>Total tasks: {allBlockers.length}</Text>
+            <PieChart />
+            <SocialDashBar />
+            <ExerciseDashBar />
+            <MusicDashBar />
+            <View>
+              <Text>Total tasks: {allBlockers.length}</Text>
+            </View>
+            <View>
+              <Text>Total points: {totalPts}</Text>
+            </View>
           </View>
-          <View>
-            <Text>Total points: {totalPts}</Text>
-          </View>
-          <ConvoDashBar />
-          <ExerciseDashBar />
-          <MusicDashBar />
         </>
       );
     }
