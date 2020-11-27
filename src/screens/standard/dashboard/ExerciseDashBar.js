@@ -1,9 +1,8 @@
 import React from "react";
-import { View, Text } from "react-native";
 import { connect } from "react-redux";
 import { ProgressBar } from "react-native-paper";
-import SvgExercise from "../../../svg_assets/SvgExercise";
 import styled from "styled-components/native";
+import SvgExercise from "../../../svg_assets/SvgExercise";
 
 export const ExerciseDashBar = (props) => {
   const { allBlockers } = props;
@@ -29,12 +28,12 @@ export const ExerciseDashBar = (props) => {
       (blocker) => blocker.completedAt !== null
     );
     if (completedBlockers && completedBlockers.length > 0) {
-      const currentexercisePtsArr = completedBlockers.map(
+      const currentExercisePtsArr = completedBlockers.map(
         (completedBlocker) => {
           return completedBlocker.points;
         }
       );
-      const currentExercisePts = currentexercisePtsArr.reduce((acc, cur) => {
+      const currentExercisePts = currentExercisePtsArr.reduce((acc, cur) => {
         return acc + cur;
       });
 

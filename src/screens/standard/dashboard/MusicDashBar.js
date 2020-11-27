@@ -1,34 +1,44 @@
 import React from "react";
-import { View, Text } from "react-native";
 import { connect } from "react-redux";
+import { ProgressBar } from "react-native-paper";
+import styled from "styled-components/native";
+import SvgMusic from "../../../svg_assets/SvgMusic";
+
 
 export const MusicDashBar = (props) => {
   const { allBlockers } = props;
-  const convBlockers = allBlockers.filter(
+  const musicBlockers = allBlockers.filter(
     (blocker) => blocker.category === "music"
   );
-  const sortedBlockersByCompletedAt = convBlockers.sort(function (a, b) {
+  const sortedBlockersByCompletedAt = musicBlockers.sort(function (a, b) {
     return b.completedAt - a.completedAt;
   });
   const mostRecentCompletedBlocker = sortedBlockersByCompletedAt[0];
 
   const mostRecentCompletedDate = mostRecentCompletedBlocker.completedAt;
 
-  const ExerciseProgress = () => {
-    const completedBlockers = convBlockers.filter(
+  const totalMusicPtsArr = musicBlockers.map((blocker) => {
+    return blocker.points;
+  });
+  const totalMusicPts = totalMusicPtsArr.reduce((acc, cur) => {
+    return acc + cur;
+  });
+
+  const showProgressBar = () => {
+    const completedBlockers = musicBlockers.filter(
       (blocker) => blocker.completedAt !== null
     );
     if (completedBlockers && completedBlockers.length > 0) {
-      const currnteSocialPtsArr = completedBlockers.map((completedBlocker) => {
+      const currnteMusicPtsArr = completedBlockers.map((completedBlocker) => {
         return completedBlocker.points;
       });
-      const currentSocialPts = currnteSocialPtsArr.reduce((acc, cur) => {
+      const currentMusicPts = currnteMusicPtsArr.reduce((acc, cur) => {
         return acc + cur;
       });
-      const totalSocialPtsArr = convBlockers.map((blocker) => {
+      const totalMusicPtsArr = musicBlockers.map((blocker) => {
         return blocker.points;
       });
-      const totalSocialPts = totalSocialPtsArr.reduce((acc, cur) => {
+      const totalMusicPts = totalMusicPtsArr.reduce((acc, cur) => {
         return acc + cur;
       });
       const month = mostRecentCompletedDate.getMonth() + 1;
@@ -37,21 +47,64 @@ export const MusicDashBar = (props) => {
 
       return (
         <>
-          <View>
-            <Text>
-              Music points: {currentSocialPts} out of {totalSocialPts}{" "}
-            </Text>
-            <Text>
-              Last updated: {month}/{day}/{year}
-            </Text>
-          </View>
+          <ProgressBar
+            progress={currentMusicPts / totalMusicPts}
+            color={"#D8A1D5"}
+            transform={[{ scaleX: 1.0 }, { scaleY: 2.5 }]}
+          />
+          <ProgressText>
+            {currentMusicPts} OUT OF {totalMusicPts} COMPLETE
+          </ProgressText>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <ProgressBar
+            progress={0}
+            color={"#94D7B5"}
+            transform={[{ scaleX: 1.0 }, { scaleY: 2.5 }]}
+          />
+          <ProgressText>0 OUT OF {totalMusicPts} COMPLETE</ProgressText>
         </>
       );
     }
   };
 
-  return <>{ExerciseProgress()}</>;
+  return <><ProgressContainer>
+  <ProgressWrapper>
+    <SvgMusic />
+  </ProgressWrapper>
+  <ProgressWrapper>
+    <CategoryText>Music</CategoryText>
+    {showProgressBar()}
+  </ProgressWrapper>
+</ProgressContainer></>;
 };
+
+const ProgressContainer = styled.View`
+  flex: 1;
+  flex-direction: row;
+  margin-bottom: 12px;
+  margin-left: 24px;
+`;
+const ProgressWrapper = styled.View`
+  margin-bottom: 12px;
+  margin-left: 24px;
+`;
+const CategoryText = styled.Text`
+  font-size: 28px;
+  color: #94D7B5;
+  font-weight: 900;
+  margin-bottom: 12px;
+`;
+const ProgressText = styled.Text`
+  margin-top: 12px;
+  margin-bottom: 12px;
+  font-size: 10px;
+  color: #dea768;
+  font-weight: 900;
+`;
 
 const mapStateToProps = (state) => {
   return {

@@ -8,7 +8,6 @@ import ExerciseDashBar from "./ExerciseDashBar";
 import MusicDashBar from "./MusicDashBar";
 import styled from "styled-components/native";
 import SvgBrioFront from "../../../svg_assets/SvgBrioFront";
-import SvgMusic from "../../../svg_assets/SvgMusic";
 import SvgSocial from "../../../svg_assets/SvgSocial";
 
 function DashboardPage(props) {
@@ -54,7 +53,6 @@ function DashboardPage(props) {
         <View style={bg.basic}>
           {pieOrMsg()}
           <ExerciseDashBar />
-          <SvgMusic />
           <MusicDashBar />
           <SvgSocial />
           <SocialDashBar />
