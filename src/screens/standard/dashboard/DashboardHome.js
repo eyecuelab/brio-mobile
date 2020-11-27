@@ -1,11 +1,12 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import { connect } from "react-redux";
 import bg from "../../../styles/ScreenStyle";
 import PieChart from "./PieChart";
 import SocialDashBar from "./SocialDashBar";
 import ExerciseDashBar from "./ExerciseDashBar";
 import MusicDashBar from "./MusicDashBar";
+import styled from "styled-components/native";
 import SvgBrioFront from "../../../svg_assets/SvgBrioFront";
 import SvgMusic from "../../../svg_assets/SvgMusic";
 import SvgExercise from "../../../svg_assets/SvgExercise";
@@ -53,19 +54,40 @@ function DashboardPage(props) {
 
   return (
     <>
-      <View style={bg.basic}>
-        <View>
-          <SvgBrioFront />
-          <Text>Welcome back username! You look great!</Text>
+      <ScrollView>
+        <View style={bg.basic}>
+          <DiagramContainer>
+            <SvgBrioFront />
+            <Diagram>
+              <DiagramText>Welcome back Kiwi! </DiagramText>
+              <DiagramText> You look great!</DiagramText>
+            </Diagram>
+          </DiagramContainer>
+          {allBlockersInfo()}
+          <SvgMusic />
+          <SvgExercise />
+          <SvgSocial />
         </View>
-        <SvgMusic />
-        <SvgExercise />
-        <SvgSocial />
-        {allBlockersInfo()}
-      </View>
+      </ScrollView>
     </>
   );
 }
+
+const DiagramContainer = styled.View`
+  flex: 1;
+  flex-direction: row;
+  justify-content: center;
+`;
+const Diagram = styled.View`
+  justify-content: center;
+  margin-right: 10;
+  margin-left: 10;
+`;
+const DiagramText = styled.Text`
+  font-size: 18px;
+  color: #51ade0;
+  font-weight: 900;
+`;
 
 const mapStateToProps = (state) => {
   return {
