@@ -1,13 +1,14 @@
 import React from "react";
 import { View, Text } from "react-native";
 import { connect } from "react-redux";
+import { ProgressBar } from "react-native-paper";
 
 export const ExerciseDashBar = (props) => {
   const { allBlockers } = props;
-  const socialBlockers = allBlockers.filter(
+  const exerciseBlockers = allBlockers.filter(
     (blocker) => blocker.category === "exercise"
   );
-  const sortedBlockersByCompletedAt = socialBlockers.sort(function (a, b) {
+  const sortedBlockersByCompletedAt = exerciseBlockers.sort(function (a, b) {
     return b.completedAt - a.completedAt;
   });
   const mostRecentCompletedBlocker = sortedBlockersByCompletedAt[0];
@@ -15,20 +16,22 @@ export const ExerciseDashBar = (props) => {
   const mostRecentCompletedDate = mostRecentCompletedBlocker.completedAt;
 
   const ExerciseProgress = () => {
-    const completedBlockers = socialBlockers.filter(
+    const completedBlockers = exerciseBlockers.filter(
       (blocker) => blocker.completedAt !== null
     );
     if (completedBlockers && completedBlockers.length > 0) {
-      const currnteSocialPtsArr = completedBlockers.map((completedBlocker) => {
-        return completedBlocker.points;
-      });
-      const currentSocialPts = currnteSocialPtsArr.reduce((acc, cur) => {
+      const currentexercisePtsArr = completedBlockers.map(
+        (completedBlocker) => {
+          return completedBlocker.points;
+        }
+      );
+      const currentExercisePts = currentexercisePtsArr.reduce((acc, cur) => {
         return acc + cur;
       });
-      const totalSocialPtsArr = socialBlockers.map((blocker) => {
+      const totalExercisePtsArr = exerciseBlockers.map((blocker) => {
         return blocker.points;
       });
-      const totalSocialPts = totalSocialPtsArr.reduce((acc, cur) => {
+      const totalExercisePts = totalExercisePtsArr.reduce((acc, cur) => {
         return acc + cur;
       });
       const month = mostRecentCompletedDate.getMonth() + 1;
@@ -38,11 +41,13 @@ export const ExerciseDashBar = (props) => {
       return (
         <>
           <View>
+            <ProgressBar
+              progress={currentExercisePts / totalExercisePts}
+              color={"#D8A1D5"}
+              transform={[{ scaleX: 1.0 }, { scaleY: 4 }]}
+            />
             <Text>
-              Exercise points: {currentSocialPts} out of {totalSocialPts}{" "}
-            </Text>
-            <Text>
-              Last updated: {month}/{day}/{year}
+              Exercise: {currentExercisePts} out of {totalExercisePts}{" "}
             </Text>
           </View>
         </>

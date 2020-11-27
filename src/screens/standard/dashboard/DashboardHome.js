@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, ScrollView } from "react-native";
+import { View, ScrollView } from "react-native";
 import { connect } from "react-redux";
 import bg from "../../../styles/ScreenStyle";
 import PieChart from "./PieChart";
@@ -49,27 +49,17 @@ function DashboardPage(props) {
     }
   };
 
-  const allBlockersInfo = () => {
-    return (
-      <>
-        <View>
-          <SocialDashBar />
-          <ExerciseDashBar />
-          <MusicDashBar />
-        </View>
-      </>
-    );
-  };
-
   return (
     <>
       <ScrollView>
         <View style={bg.basic}>
           {pieOrMsg()}
-          {allBlockersInfo()}
-          <SvgMusic />
           <SvgExercise />
+          <ExerciseDashBar />
+          <SvgMusic />
+          <MusicDashBar />
           <SvgSocial />
+          <SocialDashBar />
         </View>
       </ScrollView>
     </>
