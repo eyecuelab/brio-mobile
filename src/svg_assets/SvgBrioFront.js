@@ -19,7 +19,7 @@ export default function SvgBrioFront(){
   <circle cx="51.5381" cy="61.9762" r="1.95714" fill="white"/>
   </svg>
   `;
-  const SvgImage = () => <SvgXml xml={svgMarkup} width="301px" />;  
+  const SvgImage = () => <SvgXml xml={svgMarkup} width="100px" />;  
 
   return <SvgImage />;
 }

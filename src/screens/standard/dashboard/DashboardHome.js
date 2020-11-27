@@ -6,7 +6,10 @@ import PieChart from "./PieChart";
 import SocialDashBar from "./SocialDashBar";
 import ExerciseDashBar from "./ExerciseDashBar";
 import MusicDashBar from "./MusicDashBar";
-import SvgBrio from "../../../assets/SvgBrioFront";
+import SvgBrioFront from "../../../svg_assets/SvgBrioFront";
+import SvgMusic from "../../../svg_assets/SvgMusic";
+import SvgExercise from "../../../svg_assets/SvgExercise";
+import SvgSocial from "../../../svg_assets/SvgSocial";
 
 function DashboardPage(props) {
   const { allBlockers } = props;
@@ -50,8 +53,14 @@ function DashboardPage(props) {
 
   return (
     <>
-      <View style={bg.robin}>
-        <SvgBrio />
+      <View style={bg.basic}>
+        <View>
+          <SvgBrioFront />
+          <Text>Welcome back username! You look great!</Text>
+        </View>
+        <SvgMusic />
+        <SvgExercise />
+        <SvgSocial />
         {allBlockersInfo()}
       </View>
     </>

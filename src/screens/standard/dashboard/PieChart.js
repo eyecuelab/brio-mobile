@@ -116,9 +116,9 @@ export const PieChart = (props) => {
     <>
       <View>
         <Svg
-          width={400}
-          height={400}
-          viewBox="0 0 400 400"
+          width={350}
+          height={350}
+          viewBox="-15 50 400 400"
           style={{ width: "100%", height: "auto" }}
         >
           {displayPieChart()}
