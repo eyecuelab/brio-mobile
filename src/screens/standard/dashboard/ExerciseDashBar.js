@@ -24,7 +24,7 @@ export const ExerciseDashBar = (props) => {
     return acc + cur;
   });
 
-  const ExerciseProgress = () => {
+  const showProgressBar = () => {
     const completedBlockers = exerciseBlockers.filter(
       (blocker) => blocker.completedAt !== null
     );
@@ -44,47 +44,43 @@ export const ExerciseDashBar = (props) => {
 
       return (
         <>
-          <ProgressContainer>
-            <ProgressWrapper>
-              <SvgExercise />
-            </ProgressWrapper>
-            <ProgressWrapper>
-              <CategoryText>Exercise</CategoryText>
-              <ProgressBar
-                progress={currentExercisePts / totalExercisePts}
-                color={"#D8A1D5"}
-                transform={[{ scaleX: 1.0 }, { scaleY: 2.5 }]}
-              />
-              <ProgressText>
-                {currentExercisePts} OUT OF {totalExercisePts} COMPLETE
-              </ProgressText>
-            </ProgressWrapper>
-          </ProgressContainer>
+          <ProgressBar
+            progress={currentExercisePts / totalExercisePts}
+            color={"#D8A1D5"}
+            transform={[{ scaleX: 1.0 }, { scaleY: 2.5 }]}
+          />
+          <ProgressText>
+            {currentExercisePts} OUT OF {totalExercisePts} COMPLETE
+          </ProgressText>
         </>
       );
     } else {
       return (
         <>
-          <ProgressContainer>
-            <ProgressWrapper>
-              <SvgExercise />
-            </ProgressWrapper>
-            <ProgressWrapper>
-              <CategoryText>Exercise</CategoryText>
-              <ProgressBar
-                progress={0}
-                color={"#D8A1D5"}
-                transform={[{ scaleX: 1.0 }, { scaleY: 2.5 }]}
-              />
-              <ProgressText>0 OUT OF {totalExercisePts} COMPLETE</ProgressText>
-            </ProgressWrapper>
-          </ProgressContainer>
+          <ProgressBar
+            progress={0}
+            color={"#D8A1D5"}
+            transform={[{ scaleX: 1.0 }, { scaleY: 2.5 }]}
+          />
+          <ProgressText>0 OUT OF {totalExercisePts} COMPLETE</ProgressText>
         </>
       );
     }
   };
 
-  return <>{ExerciseProgress()}</>;
+  return (
+    <>
+      <ProgressContainer>
+        <ProgressWrapper>
+          <SvgExercise />
+        </ProgressWrapper>
+        <ProgressWrapper>
+          <CategoryText>Exercise</CategoryText>
+          {showProgressBar()}
+        </ProgressWrapper>
+      </ProgressContainer>
+    </>
+  );
 };
 
 const ProgressContainer = styled.View`
