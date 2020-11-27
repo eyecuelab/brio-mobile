@@ -14,55 +14,58 @@ import SvgSocial from "../../../svg_assets/SvgSocial";
 
 function DashboardPage(props) {
   const { allBlockers } = props;
-  const allBlockersInfo = () => {
+
+  const pieOrMsg = () => {
     if (allBlockers && allBlockers.length > 0) {
-      const totalPtsArr = allBlockers.map((blocker) => {
-        return blocker.points;
-      });
-      const totalPts = totalPtsArr.reduce((acc, cur) => {
-        return acc + cur;
-      });
-
-      const pieChartOrMessage = () => {
-        if (allBlockers.length > 0) {
-          return (
-            <>
-              <PieChart />
-            </>
-          );
-        }
-      };
-
-      return (
-        <>
-          <View>
-            <PieChart />
-            <SocialDashBar />
-            <ExerciseDashBar />
-            <MusicDashBar />
-            <View>
-              <Text>Total tasks: {allBlockers.length}</Text>
-            </View>
-            <View>
-              <Text>Total points: {totalPts}</Text>
-            </View>
-          </View>
-        </>
+      const completedBlockers = allBlockers.filter(
+        (blocker) => blocker.completedAt !== null
       );
+      if (completedBlockers && completedBlockers.length === 0) {
+        console.log(completedBlockers);
+        return (
+          <>
+            <DiagramContainer>
+              <SvgBrioFront />
+              <Diagram>
+                <DiagramText>You haven't got points yet </DiagramText>
+              </Diagram>
+            </DiagramContainer>
+          </>
+        );
+      } else {
+        return (
+          <>
+            <DiagramContainer>
+              <SvgBrioFront />
+              <Diagram>
+                <DiagramText>Welcome back Kiwi! </DiagramText>
+                <DiagramText> You look great!</DiagramText>
+              </Diagram>
+            </DiagramContainer>
+            <PieChart />
+          </>
+        );
+      }
     }
+  };
+
+  const allBlockersInfo = () => {
+    return (
+      <>
+        <View>
+          <SocialDashBar />
+          <ExerciseDashBar />
+          <MusicDashBar />
+        </View>
+      </>
+    );
   };
 
   return (
     <>
       <ScrollView>
         <View style={bg.basic}>
-          <DiagramContainer>
-            <SvgBrioFront />
-            <Diagram>
-              <DiagramText>Welcome back Kiwi! </DiagramText>
-              <DiagramText> You look great!</DiagramText>
-            </Diagram>
-          </DiagramContainer>
+          {pieOrMsg()}
           {allBlockersInfo()}
           <SvgMusic />
           <SvgExercise />
