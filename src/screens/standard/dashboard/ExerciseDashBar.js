@@ -3,6 +3,7 @@ import { View, Text } from "react-native";
 import { connect } from "react-redux";
 import { ProgressBar } from "react-native-paper";
 import SvgExercise from "../../../svg_assets/SvgExercise";
+import styled from "styled-components/native";
 
 export const ExerciseDashBar = (props) => {
   const { allBlockers } = props;
@@ -43,33 +44,41 @@ export const ExerciseDashBar = (props) => {
 
       return (
         <>
-          <View>
-            <SvgExercise />
-            <Text>Exercise</Text>
-            <ProgressBar
-              progress={currentExercisePts / totalExercisePts}
-              color={"#D8A1D5"}
-              transform={[{ scaleX: 1.0 }, { scaleY: 4 }]}
-            />
-            <Text>
-              {currentExercisePts} OUT OF {totalExercisePts} COMPLETE
-            </Text>
-          </View>
+          <ProgressContainer>
+            <ProgressWrapper>
+              <SvgExercise />
+            </ProgressWrapper>
+            <ProgressWrapper>
+              <CategoryText>Exercise</CategoryText>
+              <ProgressBar
+                progress={currentExercisePts / totalExercisePts}
+                color={"#D8A1D5"}
+                transform={[{ scaleX: 1.0 }, { scaleY: 2.5 }]}
+              />
+              <ProgressText>
+                {currentExercisePts} OUT OF {totalExercisePts} COMPLETE
+              </ProgressText>
+            </ProgressWrapper>
+          </ProgressContainer>
         </>
       );
     } else {
       return (
         <>
-          <View>
-            <SvgExercise />
-            <Text>Exercise</Text>
-            <ProgressBar
-              progress={0}
-              color={"#D8A1D5"}
-              transform={[{ scaleX: 1.0 }, { scaleY: 4 }]}
-            />
-            <Text>0 OUT OF {totalExercisePts} COMPLETE</Text>
-          </View>
+          <ProgressContainer>
+            <ProgressWrapper>
+              <SvgExercise />
+            </ProgressWrapper>
+            <ProgressWrapper>
+              <CategoryText>Exercise</CategoryText>
+              <ProgressBar
+                progress={0}
+                color={"#D8A1D5"}
+                transform={[{ scaleX: 1.0 }, { scaleY: 2.5 }]}
+              />
+              <ProgressText>0 OUT OF {totalExercisePts} COMPLETE</ProgressText>
+            </ProgressWrapper>
+          </ProgressContainer>
         </>
       );
     }
@@ -77,6 +86,30 @@ export const ExerciseDashBar = (props) => {
 
   return <>{ExerciseProgress()}</>;
 };
+
+const ProgressContainer = styled.View`
+  flex: 1;
+  flex-direction: row;
+  margin-bottom: 12px;
+  margin-left: 24px;
+`;
+const ProgressWrapper = styled.View`
+  margin-bottom: 12px;
+  margin-left: 24px;
+`;
+const CategoryText = styled.Text`
+  font-size: 28px;
+  color: #d8a1d5;
+  font-weight: 900;
+  margin-bottom: 12px;
+`;
+const ProgressText = styled.Text`
+  margin-top: 12px;
+  margin-bottom: 12px;
+  font-size: 10px;
+  color: #dea768;
+  font-weight: 900;
+`;
 
 const mapStateToProps = (state) => {
   return {
