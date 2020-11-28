@@ -10,7 +10,7 @@ import SvgExercise from "../../../svg_assets/SvgExercise";
 import SvgMusic from "../../../svg_assets/SvgMusic";
 import SvgSocial from "../../../svg_assets/SvgSocial";
 
-function DashboardPage(props) {
+function DashboardMain(props) {
   const { allBlockers } = props;
 
   const pieOrMsg = () => {
@@ -92,5 +92,5 @@ const mapStateToProps = (state) => {
   };
 };
 
-const DashboardPageConnected = connect(mapStateToProps)(DashboardPage);
-export default DashboardPageConnected;
+const DashboardMainConnected = connect(mapStateToProps)(DashboardMain);
+export default DashboardMainConnected;

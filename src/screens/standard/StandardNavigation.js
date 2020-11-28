@@ -3,7 +3,7 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import BlockerSocial from "./blockers/BlockerSocial";
 import BlockerExercise from "./blockers/BlockerExercise";
 import BlockerMusic from "./blockers/BlockerMusic";
-import DashboardHome from "./dashboard/DashboardHome";
+import DashboardMain from "./dashboard/DashboardMain";
 import AccountSettings from "./AccountSettings";
 import SvgStarIcon from "../../svg_assets/SvgStarIcon";
 import SvgHomeIcon from "../../svg_assets/SvgHomeIcon";
@@ -22,7 +22,7 @@ export default function StandardNavigation() {
       >
         <Tab.Screen
           name="dashboard"
-          component={DashboardHome}
+          component={DashboardMain}
           options={{
             tabBarLabel: "Dashboard",
             tabBarIcon: ({ color }) => (
