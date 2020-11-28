@@ -1,11 +1,13 @@
 import * as React from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import BlockerSocial from "./blockers/BlockerSocial";
 import BlockerExercise from "./blockers/BlockerExercise";
 import BlockerMusic from "./blockers/BlockerMusic";
 import DashboardHome from "./dashboard/DashboardHome";
 import AccountSettings from "./AccountSettings";
+import SvgStarIcon from "../../svg_assets/SvgStarIcon";
+import SvgHomeIcon from "../../svg_assets/SvgHomeIcon";
+import SvgProfileIcon from "../../svg_assets/SvgProfileIcon";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -22,9 +24,9 @@ export default function StandardNavigation() {
           name="dashboard"
           component={DashboardHome}
           options={{
-            tabBarLabel: "Home",
+            tabBarLabel: "Dashboard",
             tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="home" color={color} size={26} />
+              <SvgStarIcon name="star" color={color} size={26} />
             ),
           }}
         />
@@ -35,7 +37,7 @@ export default function StandardNavigation() {
           options={{
             tabBarLabel: "Social",
             tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="group" color={color} size={26} />
+              <SvgHomeIcon name="group" color={color} size={26} />
             ),
           }}
         />
@@ -45,7 +47,7 @@ export default function StandardNavigation() {
           options={{
             tabBarLabel: "Social",
             tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="group" color={color} size={26} />
+              <SvgHomeIcon name="group" color={color} size={26} />
             ),
           }}
         />
@@ -55,7 +57,7 @@ export default function StandardNavigation() {
           options={{
             tabBarLabel: "Social",
             tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="group" color={color} size={26} />
+              <SvgHomeIcon name="group" color={color} size={26} />
             ),
           }}
         />
@@ -65,7 +67,7 @@ export default function StandardNavigation() {
           options={{
             tabBarLabel: "Profile",
             tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="account" color={color} size={26} />
+              <SvgProfileIcon name="account" color={color} size={26} />
             ),
           }}
         />
