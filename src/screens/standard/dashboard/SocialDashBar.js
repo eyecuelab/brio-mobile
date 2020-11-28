@@ -1,21 +1,30 @@
 import React from "react";
-import { View, Text } from "react-native";
 import { connect } from "react-redux";
+import { ProgressBar } from "react-native-paper";
+import styled from "styled-components/native";
+import SvgSocial from "../../../svg_assets/SvgSocial";
 
 export const SocialDashBar = (props) => {
   const { allBlockers } = props;
-  const convBlockers = allBlockers.filter(
+  const socialBlockers = allBlockers.filter(
     (blocker) => blocker.category === "social"
   );
-  const sortedBlockersByCompletedAt = convBlockers.sort(function (a, b) {
+  const sortedBlockersByCompletedAt = socialBlockers.sort(function (a, b) {
     return b.completedAt - a.completedAt;
   });
   const mostRecentCompletedBlocker = sortedBlockersByCompletedAt[0];
 
   const mostRecentCompletedDate = mostRecentCompletedBlocker.completedAt;
 
-  const SocialProgress = () => {
-    const completedBlockers = convBlockers.filter(
+  const totalSocialPtsArr = socialBlockers.map((blocker) => {
+    return blocker.points;
+  });
+  const totalSocialPts = totalSocialPtsArr.reduce((acc, cur) => {
+    return acc + cur;
+  });
+
+  const showProgressBar = () => {
+    const completedBlockers = socialBlockers.filter(
       (blocker) => blocker.completedAt !== null
     );
     if (completedBlockers && completedBlockers.length > 0) {
@@ -25,7 +34,7 @@ export const SocialDashBar = (props) => {
       const currentSocialPts = currnteSocialPtsArr.reduce((acc, cur) => {
         return acc + cur;
       });
-      const totalSocialPtsArr = convBlockers.map((blocker) => {
+      const totalSocialPtsArr = socialBlockers.map((blocker) => {
         return blocker.points;
       });
       const totalSocialPts = totalSocialPtsArr.reduce((acc, cur) => {
@@ -37,21 +46,67 @@ export const SocialDashBar = (props) => {
 
       return (
         <>
-          <View>
-            <Text>
-              Social points: {currentSocialPts} out of {totalSocialPts}{" "}
-            </Text>
-            <Text>
-              Last updated: {month}/{day}/{year}
-            </Text>
-          </View>
+          <ProgressBar
+            progress={currentSocialPts / totalSocialPts}
+            color={"#E0C45E"}
+            transform={[{ scaleX: 1.0 }, { scaleY: 2.5 }]}
+          />
+          <ProgressText>
+            {currentSocialPts} OUT OF {totalSocialPts} COMPLETE
+          </ProgressText>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <ProgressBar
+            progress={0}
+            color={"#E0C45E"}
+            transform={[{ scaleX: 1.0 }, { scaleY: 2.5 }]}
+          />
+          <ProgressText>0 OUT OF {totalSocialPts} COMPLETE</ProgressText>
         </>
       );
     }
   };
 
-  return <>{SocialProgress()}</>;
+  return (
+    <>
+      <ProgressContainer>
+        <ProgressWrapper>
+          <SvgSocial />
+        </ProgressWrapper>
+        <ProgressWrapper>
+          <CategoryText>Social</CategoryText>
+          {showProgressBar()}
+        </ProgressWrapper>
+      </ProgressContainer>
+    </>
+  );
 };
+
+const ProgressContainer = styled.View`
+  flex: 1;
+  flex-direction: row;
+  margin-bottom: 12px;
+`;
+const ProgressWrapper = styled.View`
+  margin-bottom: 12px;
+  margin-left: 24px;
+`;
+const CategoryText = styled.Text`
+  font-size: 28px;
+  color: #e0c45e;
+  font-weight: 900;
+  margin-bottom: 12px;
+`;
+const ProgressText = styled.Text`
+  margin-top: 12px;
+  margin-bottom: 12px;
+  font-size: 10px;
+  color: #dea768;
+  font-weight: 900;
+`;
 
 const mapStateToProps = (state) => {
   return {

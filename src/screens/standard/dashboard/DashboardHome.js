@@ -8,7 +8,6 @@ import ExerciseDashBar from "./ExerciseDashBar";
 import MusicDashBar from "./MusicDashBar";
 import styled from "styled-components/native";
 import SvgBrioFront from "../../../svg_assets/SvgBrioFront";
-import SvgSocial from "../../../svg_assets/SvgSocial";
 
 function DashboardPage(props) {
   const { allBlockers } = props;
@@ -54,7 +53,6 @@ function DashboardPage(props) {
           {pieOrMsg()}
           <ExerciseDashBar />
           <MusicDashBar />
-          <SvgSocial />
           <SocialDashBar />
         </View>
       </ScrollView>
@@ -66,6 +64,7 @@ const DiagramContainer = styled.View`
   flex: 1;
   flex-direction: row;
   justify-content: center;
+  margin-top: 28;
 `;
 const Diagram = styled.View`
   justify-content: center;

@@ -86,7 +86,6 @@ const ProgressContainer = styled.View`
   flex: 1;
   flex-direction: row;
   margin-bottom: 12px;
-  margin-left: 24px;
 `;
 const ProgressWrapper = styled.View`
   margin-bottom: 12px;

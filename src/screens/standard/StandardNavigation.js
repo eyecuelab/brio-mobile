@@ -14,9 +14,9 @@ export default function StandardNavigation() {
     <>
       <Tab.Navigator
         initialRouteName="Feed"
-        activeColor="#B96AF6"
+        activeColor="#ECC08D"
         inactiveColor="#757272"
-        barStyle={{ backgroundColor: "#fff" }}
+        barStyle={{ backgroundColor: "#FFFFFF" }}
       >
         <Tab.Screen
           name="dashboard"

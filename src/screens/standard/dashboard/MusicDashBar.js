@@ -49,7 +49,7 @@ export const MusicDashBar = (props) => {
         <>
           <ProgressBar
             progress={currentMusicPts / totalMusicPts}
-            color={"#D8A1D5"}
+            color={"#94D7B5"}
             transform={[{ scaleX: 1.0 }, { scaleY: 2.5 }]}
           />
           <ProgressText>
@@ -84,9 +84,7 @@ export const MusicDashBar = (props) => {
 
 const ProgressContainer = styled.View`
   flex: 1;
-  flex-direction: row;
-  margin-bottom: 12px;
-  margin-left: 24px;
+  flex-direction: row;margin-bottom: 12px;
 `;
 const ProgressWrapper = styled.View`
   margin-bottom: 12px;

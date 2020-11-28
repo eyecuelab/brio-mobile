@@ -114,11 +114,14 @@ export const PieChart = (props) => {
 
   return (
     <>
-      <View>
+      <View style={{ alignItems: 'center', 
+          justifyContent:'center'}}>
         <Svg
-          width={350}
-          height={350}
-          viewBox="-15 50 400 400"
+          alignItems='center'
+          justifyContent='center'
+          width={300}
+          height={300}
+          viewBox="0 0 400 400"
           style={{ width: "100%", height: "auto" }}
         >
           {displayPieChart()}
