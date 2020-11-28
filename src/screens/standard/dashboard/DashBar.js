@@ -2,38 +2,35 @@ import React from "react";
 import { connect } from "react-redux";
 import { ProgressBar } from "react-native-paper";
 import styled from "styled-components/native";
-import SvgExercise from "../../../svg_assets/SvgExercise";
 
-export const ExerciseDashBar = (props) => {
-  const { allBlockers } = props;
-  const exerciseBlockers = allBlockers.filter(
-    (blocker) => blocker.category === "exercise"
+export const DashBar = (props) => {
+  const { allBlockers, category, color, image } = props;
+  const catBlockers = allBlockers.filter(
+    (blocker) => blocker.category === category.toLowerCase()
   );
-  const sortedBlockersByCompletedAt = exerciseBlockers.sort(function (a, b) {
+  const sortedBlockersByCompletedAt = catBlockers.sort(function (a, b) {
     return b.completedAt - a.completedAt;
   });
   const mostRecentCompletedBlocker = sortedBlockersByCompletedAt[0];
 
   const mostRecentCompletedDate = mostRecentCompletedBlocker.completedAt;
 
-  const totalExercisePtsArr = exerciseBlockers.map((blocker) => {
+  const totalcatPtsArr = catBlockers.map((blocker) => {
     return blocker.points;
   });
-  const totalExercisePts = totalExercisePtsArr.reduce((acc, cur) => {
+  const totalcatPts = totalcatPtsArr.reduce((acc, cur) => {
     return acc + cur;
   });
 
   const showProgressBar = () => {
-    const completedBlockers = exerciseBlockers.filter(
+    const completedBlockers = catBlockers.filter(
       (blocker) => blocker.completedAt !== null
     );
     if (completedBlockers && completedBlockers.length > 0) {
-      const currentExercisePtsArr = completedBlockers.map(
-        (completedBlocker) => {
-          return completedBlocker.points;
-        }
-      );
-      const currentExercisePts = currentExercisePtsArr.reduce((acc, cur) => {
+      const currentcatPtsArr = completedBlockers.map((completedBlocker) => {
+        return completedBlocker.points;
+      });
+      const currentcatPts = currentcatPtsArr.reduce((acc, cur) => {
         return acc + cur;
       });
 
@@ -44,12 +41,12 @@ export const ExerciseDashBar = (props) => {
       return (
         <>
           <ProgressBar
-            progress={currentExercisePts / totalExercisePts}
-            color={"#D8A1D5"}
+            progress={currentcatPts / totalcatPts}
+            color={color}
             transform={[{ scaleX: 1.0 }, { scaleY: 2.5 }]}
           />
           <ProgressText>
-            {currentExercisePts} OUT OF {totalExercisePts} COMPLETE
+            {currentcatPts} OUT OF {totalcatPts} COMPLETE
           </ProgressText>
         </>
       );
@@ -58,10 +55,10 @@ export const ExerciseDashBar = (props) => {
         <>
           <ProgressBar
             progress={0}
-            color={"#D8A1D5"}
+            color={color}
             transform={[{ scaleX: 1.0 }, { scaleY: 2.5 }]}
           />
-          <ProgressText>0 OUT OF {totalExercisePts} COMPLETE</ProgressText>
+          <ProgressText>0 OUT OF {totalcatPts} COMPLETE</ProgressText>
         </>
       );
     }
@@ -70,11 +67,9 @@ export const ExerciseDashBar = (props) => {
   return (
     <>
       <ProgressContainer>
+        <ProgressWrapper>{image}</ProgressWrapper>
         <ProgressWrapper>
-          <SvgExercise />
-        </ProgressWrapper>
-        <ProgressWrapper>
-          <CategoryText>Exercise</CategoryText>
+          <CategoryText style={{ color: color }}>{category}</CategoryText>
           {showProgressBar()}
         </ProgressWrapper>
       </ProgressContainer>
@@ -93,7 +88,6 @@ const ProgressWrapper = styled.View`
 `;
 const CategoryText = styled.Text`
   font-size: 28px;
-  color: #d8a1d5;
   font-weight: 900;
   margin-bottom: 12px;
 `;
@@ -111,4 +105,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(ExerciseDashBar);
+export default connect(mapStateToProps)(DashBar);

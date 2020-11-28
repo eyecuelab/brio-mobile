@@ -3,11 +3,12 @@ import { View, ScrollView } from "react-native";
 import { connect } from "react-redux";
 import bg from "../../../styles/ScreenStyle";
 import PieChart from "./PieChart";
-import SocialDashBar from "./SocialDashBar";
-import ExerciseDashBar from "./ExerciseDashBar";
-import MusicDashBar from "./MusicDashBar";
+import DashBar from "./DashBar";
 import styled from "styled-components/native";
 import SvgBrioFront from "../../../svg_assets/SvgBrioFront";
+import SvgExercise from "../../../svg_assets/SvgExercise";
+import SvgMusic from "../../../svg_assets/SvgMusic";
+import SvgSocial from "../../../svg_assets/SvgSocial";
 
 function DashboardPage(props) {
   const { allBlockers } = props;
@@ -51,9 +52,17 @@ function DashboardPage(props) {
       <ScrollView>
         <View style={bg.basic}>
           {pieOrMsg()}
-          <ExerciseDashBar />
-          <MusicDashBar />
-          <SocialDashBar />
+          <DashBar
+            category={"Exercise"}
+            color={"#d8a1d5"}
+            image={<SvgExercise />}
+          />
+          <DashBar category={"Music"} color={"#94D7B5"} image={<SvgMusic />} />
+          <DashBar
+            category={"Social"}
+            color={"#E0C45E"}
+            image={<SvgSocial />}
+          />
         </View>
       </ScrollView>
     </>
