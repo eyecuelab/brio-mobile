@@ -19,7 +19,6 @@ function DashboardMain(props) {
         (blocker) => blocker.completedAt !== null
       );
       if (completedBlockers && completedBlockers.length === 0) {
-        console.log(completedBlockers);
         return (
           <>
             <DiagramContainer>

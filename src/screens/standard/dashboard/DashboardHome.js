@@ -1,23 +1,26 @@
-import React from 'react'
+import React from "react";
 import { Text, View } from "react-native";
-import { connect } from 'react-redux'
+import Svg from "react-native-svg";
+import { connect } from "react-redux";
+import bg from "../../../styles/ScreenStyle";
+import SvgBrioHome from "../../../svg_assets/SvgBrioHome";
 
-export const DashboardHome = () => {
+export const DashboardHome = (props) => {
+  const { allBlockers } = props;
+
   return (
     <>
-     <View>
-       <Text>DashboardHome</Text>
-      </View> 
+      <View style={bg.basic}>
+        <SvgBrioHome style={{width: 500, height: 500}}/>
+      </View>
     </>
-  )
-}
+  );
+};
 
-const mapStateToProps = (state) => ({
-  
-})
+const mapStateToProps = (state) => {
+  return {
+    allBlockers: state.blockersState.blockers,
+  };
+};
 
-const mapDispatchToProps = {
-  
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardHome)
+export default connect(mapStateToProps)(DashboardHome);
