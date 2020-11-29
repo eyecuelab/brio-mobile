@@ -4,7 +4,8 @@ import BlockerSocial from "./blockers/BlockerSocial";
 import BlockerExercise from "./blockers/BlockerExercise";
 import BlockerMusic from "./blockers/BlockerMusic";
 import DashboardMain from "./dashboard/DashboardMain";
-import AccountSettings from "./AccountSettings";
+import DashboardHome from "./dashboard/DashboardHome";
+import AccountSettings from "./dashboard/AccountSettings";
 import SvgStarIcon from "../../svg_assets/SvgStarIcon";
 import SvgHomeIcon from "../../svg_assets/SvgHomeIcon";
 import SvgProfileIcon from "../../svg_assets/SvgProfileIcon";
@@ -21,16 +22,26 @@ export default function StandardNavigation() {
         barStyle={{ backgroundColor: "#FFFFFF" }}
       >
         <Tab.Screen
-          name="dashboard"
+          name="dashboardMain"
           component={DashboardMain}
           options={{
-            tabBarLabel: "Dashboard",
+            tabBarLabel: "Main",
             tabBarIcon: ({ color }) => (
               <SvgStarIcon name="star" color={color} size={26} />
             ),
           }}
         />
 
+        <Tab.Screen
+          name="dashboardHome"
+          component={DashboardHome}
+          options={{
+            tabBarLabel: "Home",
+            tabBarIcon: ({ color }) => (
+              <SvgHomeIcon name="group" color={color} size={26} />
+            ),
+          }}
+        />
         <Tab.Screen
           name="BlockerExercise"
           component={BlockerExercise}

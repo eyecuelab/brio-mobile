@@ -69,7 +69,7 @@ export const PieChart = (props) => {
     return (
       <>
         <View style={{ position: "absolute" }}>
-          <SvgEyeballPie style={{ height: 20, width: 20 }} />
+          <SvgEyeballPie />
         </View>
       </>
     );
