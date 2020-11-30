@@ -26,37 +26,67 @@ export const DashboardHome = (props) => {
             <DiagramText>What are we going to do today?</DiagramText>
           </Diagram>
         </DiagramContainer>
-        
+
         <List.Item
           title="Exercise"
-          titleStyle={{fontFamily: "Avenir-Light", color:"#D8A1D5", fontSize: 36, fontWeight: "bold", }}
+          titleStyle={{
+            fontFamily: "Avenir-Light",
+            color: "#D8A1D5",
+            fontSize: 36,
+            fontWeight: "bold",
+          }}
           description="LAST CHECKIN Sunday Nov 22, 2020"
           descriptionNumberOfLines={2}
-          descriptionStyle={{fontFamily: "Avenir-Light", color:"#ECC08E", fontSize: 10, fontWeight: "bold", marginBottom: 30}}
-          style={{ justifyContent: "center",
-          alignItems: "center" }}
+          descriptionStyle={{
+            fontFamily: "Avenir-Light",
+            color: "#ECC08E",
+            fontSize: 10,
+            fontWeight: "bold",
+            marginBottom: 30,
+          }}
+          style={{ justifyContent: "center", alignItems: "center" }}
           left={(props) => <SvgExercise {...props} />}
           right={(props) => <SvgArrowExercise {...props} />}
         />
         <List.Item
           title="Music"
-          titleStyle={{fontFamily: "Avenir-Light", color:"#94D7B5", fontSize: 36, fontWeight: "bold", }}
+          titleStyle={{
+            fontFamily: "Avenir-Light",
+            color: "#94D7B5",
+            fontSize: 36,
+            fontWeight: "bold",
+          }}
           description="LAST CHECKIN Sunday Nov 22, 2020"
           descriptionNumberOfLines={2}
-          descriptionStyle={{fontFamily: "Avenir-Light", color:"#ECC08E", fontSize: 10, fontWeight: "bold", marginBottom: 30 }}
-          style={{ justifyContent: "center",
-          alignItems: "center" }}
+          descriptionStyle={{
+            fontFamily: "Avenir-Light",
+            color: "#ECC08E",
+            fontSize: 10,
+            fontWeight: "bold",
+            marginBottom: 30,
+          }}
+          style={{ justifyContent: "center", alignItems: "center" }}
           left={(props) => <SvgMusic {...props} />}
           right={(props) => <SvgArrowMusic {...props} />}
         />
         <List.Item
           title="Social"
-          titleStyle={{fontFamily: "Avenir-Light", color:"#E0C45E", fontSize: 36, fontWeight: "bold", }}
+          titleStyle={{
+            fontFamily: "Avenir-Light",
+            color: "#E0C45E",
+            fontSize: 36,
+            fontWeight: "bold",
+          }}
           description="LAST CHECKIN Sunday Nov 22, 2020"
           descriptionNumberOfLines={2}
-          descriptionStyle={{fontFamily: "Avenir-Light", color:"#ECC08E", fontSize: 10, fontWeight: "bold", marginBottom: 30 }}
-          style={{ justifyContent: "center",
-          alignItems: "center" }}
+          descriptionStyle={{
+            fontFamily: "Avenir-Light",
+            color: "#ECC08E",
+            fontSize: 10,
+            fontWeight: "bold",
+            marginBottom: 30,
+          }}
+          style={{ justifyContent: "center", alignItems: "center" }}
           left={(props) => <SvgSocial {...props} />}
           right={(props) => <SvgArrowSocial {...props} />}
         />
