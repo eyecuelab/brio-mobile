@@ -1,58 +1,119 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import { connect } from "react-redux";
 import bg from "../../../styles/ScreenStyle";
-import { Card } from "react-native-paper";
-import Icon from "react-native-vector-icons/FontAwesome5";
-import PieChart from "./PieChart";
-import SocialDashBar from "./SocialDashBar";
-import ExerciseDashBar from "./ExerciseDashBar";
-import MusicDashBar from "./MusicDashBar";
+import SvgBrioHome from "../../../svg_assets/SvgBrioHome";
+import SvgExercise from "../../../svg_assets/SvgExercise";
+import SvgArrowExercise from "../../../svg_assets/SvgArrowExercise";
+import SvgArrowMusic from "../../../svg_assets/SvgArrowMusic";
+import SvgArrowSocial from "../../../svg_assets/SvgArrowSocial";
+import SvgMusic from "../../../svg_assets/SvgMusic";
+import SvgSocial from "../../../svg_assets/SvgSocial";
+import styled from "styled-components/native";
+import { List } from "react-native-paper";
 
-function DashboardPage(props) {
+export const DashboardHome = (props) => {
   const { allBlockers } = props;
-
-  const allBlockersInfo = () => {
-    if (allBlockers && allBlockers.length > 0) {
-      const totalPtsArr = allBlockers.map((blocker) => {
-        return blocker.points;
-      });
-      const totalPts = totalPtsArr.reduce((acc, cur) => {
-        return acc + cur;
-      });
-      return (
-        <>
-          <View>
-            <PieChart />
-            <SocialDashBar />
-            <ExerciseDashBar />
-            <MusicDashBar />
-            <View>
-              <Text>Total tasks: {allBlockers.length}</Text>
-            </View>
-            <View>
-              <Text>Total points: {totalPts}</Text>
-            </View>
-          </View>
-        </>
-      );
-    }
-  };
 
   return (
     <>
-      <View style={bg.robin}>
-        <Card.Title
-          subtitle="Welcome back! You are doing great!"
-          left={(props) => (
-            <Icon name="grin-stars" size={30} color="#900" {...props} />
-          )}
+      <View style={bg.basic}>
+        <DiagramContainer>
+          <SvgBrioHome />
+          <Diagram>
+            <DiagramTextHeader>Oh my gosh!</DiagramTextHeader>
+            <DiagramText>This is going to be so much fun. </DiagramText>
+            <DiagramText>What are we going to do today?</DiagramText>
+          </Diagram>
+        </DiagramContainer>
+
+        <List.Item
+          title="Exercise"
+          titleStyle={{
+            fontFamily: "Avenir-Light",
+            color: "#D8A1D5",
+            fontSize: 36,
+            fontWeight: "bold",
+          }}
+          description="LAST CHECKIN Sunday Nov 22, 2020"
+          descriptionNumberOfLines={2}
+          descriptionStyle={{
+            fontFamily: "Avenir-Light",
+            color: "#ECC08E",
+            fontSize: 10,
+            fontWeight: "bold",
+            marginBottom: 30,
+          }}
+          style={{ justifyContent: "center", alignItems: "center" }}
+          left={(props) => <SvgExercise {...props} />}
+          right={(props) => <SvgArrowExercise {...props} />}
         />
-        {allBlockersInfo()}
+        <List.Item
+          title="Music"
+          titleStyle={{
+            fontFamily: "Avenir-Light",
+            color: "#94D7B5",
+            fontSize: 36,
+            fontWeight: "bold",
+          }}
+          description="LAST CHECKIN Sunday Nov 22, 2020"
+          descriptionNumberOfLines={2}
+          descriptionStyle={{
+            fontFamily: "Avenir-Light",
+            color: "#ECC08E",
+            fontSize: 10,
+            fontWeight: "bold",
+            marginBottom: 30,
+          }}
+          style={{ justifyContent: "center", alignItems: "center" }}
+          left={(props) => <SvgMusic {...props} />}
+          right={(props) => <SvgArrowMusic {...props} />}
+        />
+        <List.Item
+          title="Social"
+          titleStyle={{
+            fontFamily: "Avenir-Light",
+            color: "#E0C45E",
+            fontSize: 36,
+            fontWeight: "bold",
+          }}
+          description="LAST CHECKIN Sunday Nov 22, 2020"
+          descriptionNumberOfLines={2}
+          descriptionStyle={{
+            fontFamily: "Avenir-Light",
+            color: "#ECC08E",
+            fontSize: 10,
+            fontWeight: "bold",
+            marginBottom: 30,
+          }}
+          style={{ justifyContent: "center", alignItems: "center" }}
+          left={(props) => <SvgSocial {...props} />}
+          right={(props) => <SvgArrowSocial {...props} />}
+        />
       </View>
     </>
   );
-}
+};
+
+const DiagramContainer = styled.View`
+  flex: 1;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 28;
+`;
+const Diagram = styled.View`
+  margin-top: 28;
+`;
+const DiagramTextHeader = styled.Text`
+  font-size: 35px;
+  color: #51ade0;
+  font-weight: 900;
+`;
+const DiagramText = styled.Text`
+  font-size: 18px;
+  color: #51ade0;
+  font-weight: 900;
+`;
 
 const mapStateToProps = (state) => {
   return {
@@ -60,5 +121,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const DashboardPageConnected = connect(mapStateToProps)(DashboardPage);
-export default DashboardPageConnected;
+export default connect(mapStateToProps)(DashboardHome);

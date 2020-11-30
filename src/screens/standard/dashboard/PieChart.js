@@ -3,7 +3,8 @@ import { View } from "react-native";
 import { connect } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { VictoryPie } from "victory-native";
-import Svg from "react-native-svg";
+import { Svg, Circle } from "react-native-svg";
+import SvgEyeballPie from "../../../svg_assets/SvgEyeballPie";
 
 export const PieChart = (props) => {
   const { allBlockers } = props;
@@ -22,7 +23,7 @@ export const PieChart = (props) => {
   const musicColor = "#94D7B5";
   const socialColor = "#E0C45E";
   const colorScale = [exerciseColor, musicColor, socialColor];
-  const navs = ["ExerciseCheck", "MusicCheck", "SocialCheck"]
+  const navs = ["ExerciseCheck", "MusicCheck", "SocialCheck"];
 
   const displayPieChart = () => {
     const data = [
@@ -32,36 +33,47 @@ export const PieChart = (props) => {
     ];
 
     return (
-      <VictoryPie
-        standalone={false}
-        innerRadius={75}
-        labelRadius={125}
-        data={data}
-        colorScale={colorScale}
-        style={{ labels: { fontSize: 20 } }}
-        events={[
-          {
-            target: "data",
-            eventHandlers: {
-              onPressIn: () => {
-                return [
-                  {
-                    target: "data",
-                    mutation: (dataProps) => {
-                      navigation.navigate(navs[dataProps.index]);
-                      return {};
+      <>
+        <VictoryPie
+          standalone={false}
+          innerRadius={100}
+          labelRadius={125}
+          data={data}
+          colorScale={colorScale}
+          style={{ labels: { display: "none" } }}
+          events={[
+            {
+              target: "data",
+              eventHandlers: {
+                onPressIn: () => {
+                  return [
+                    {
+                      target: "data",
+                      mutation: (dataProps) => {
+                        navigation.navigate(navs[dataProps.index]);
+                        return {};
+                      },
                     },
-                  },
-                ];
+                  ];
+                },
+                onPressOut: () => {},
               },
-              onPressOut: () => {},
             },
-          },
-        ]}
-      />
+          ]}
+        />
+      </>
     );
   };
 
+  const showEyeball = () => {
+    return (
+      <>
+        <View style={{ position: "absolute" }}>
+          <SvgEyeballPie />
+        </View>
+      </>
+    );
+  };
   const exercisePts = () => {
     const completedBlockers = exerciseBlockers.filter(
       (blocker) => blocker.completedAt !== null
@@ -114,15 +126,17 @@ export const PieChart = (props) => {
 
   return (
     <>
-      <View>
+      <View style={{ alignItems: "center", justifyContent: "center" }}>
         <Svg
-          width={400}
-          height={400}
+          width={300}
+          height={300}
           viewBox="0 0 400 400"
           style={{ width: "100%", height: "auto" }}
         >
+          {/* <Circle cx={200} cy={200} r={110} fill="#fff"/> */}
           {displayPieChart()}
         </Svg>
+        {showEyeball()}
       </View>
     </>
   );

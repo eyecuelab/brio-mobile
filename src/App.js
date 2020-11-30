@@ -40,6 +40,7 @@ export default function App() {
               />
             </RootStack.Navigator>
           </NavigationContainer>
+
         </PersistGate>
       </Provider>
     </>

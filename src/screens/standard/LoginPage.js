@@ -1,6 +1,6 @@
 // REACT, REACT NATIVE //
 import React, { useEffect } from "react";
-import { Text, View, Image, Button } from "react-native";
+import { Text, View, Image, Button, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { connect } from "react-redux";
 import * as actions from "../../rdx/actions";
@@ -51,23 +51,25 @@ const LoginPage = (props) => {
 
   return (
     <>
-      <View style={bg.brick}>
-        <Text style={text.header}>Hello, friend...</Text>
-        <Image source={brio} style={{ marginTop: 100 }} />
-        <Text style={text.text}>
-          Brio uses Spotify's built-in credentials to access the app. You will
-          need to make an account before proceeding.
-        </Text>
-        <View style={arrow.bottom}>
-          <Button
-            disabled={!request}
-            title="Login"
-            onPress={() => {
-              promptAsync();
-            }}
-          />
+      <ScrollView>
+        <View style={bg.brick}>
+          <Text style={text.header}>Hello, friend...</Text>
+          <Image source={brio} style={{ marginTop: 100 }} />
+          <Text style={text.text}>
+            Brio uses Spotify's built-in credentials to access the app. You will
+            need to make an account before proceeding.
+          </Text>
+          <View style={arrow.bottom}>
+            <Button
+              disabled={!request}
+              title="Login"
+              onPress={() => {
+                promptAsync();
+              }}
+            />
+          </View>
         </View>
-      </View>
+      </ScrollView>
     </>
   );
 };

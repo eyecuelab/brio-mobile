@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View } from "react-native";
 import { connect } from "react-redux";
-import text from "../../styles/TextStyle";
+import text from "../../../styles/TextStyle";
 
 export const AccountSettings = () => {
   return (
