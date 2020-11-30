@@ -151,21 +151,26 @@ export const DashboardHome = (props) => {
 const DiagramContainer = styled.View`
   flex: 1;
   flex-direction: row;
-  justify-content: center;
-  margin-top: 28;
+  justify-content: space-around;
+  margin-top: 36;
 `;
 const Diagram = styled.View`
-  margin-top: 28;
+  margin-top: 36;
 `;
 const DiagramTextHeader = styled.Text`
   font-size: 35px;
   color: #51ade0;
   font-weight: 900;
+  background-color: #fff;
+  padding: 10px;
 `;
 const DiagramText = styled.Text`
   font-size: 18px;
   color: #51ade0;
   font-weight: 900;
+  background-color: #fff;
+  padding-left: 10px;
+  padding-right: 10px;
 `;
 
 const mapStateToProps = (state) => {
