@@ -65,7 +65,6 @@ export const DashboardHome = (props) => {
             <DiagramText>What are we going to do today?</DiagramText>
           </Diagram>
         </DiagramContainer>
-
         <List.Item
           title="Exercise"
           titleStyle={{
@@ -74,16 +73,21 @@ export const DashboardHome = (props) => {
             fontSize: 36,
             fontWeight: "bold",
           }}
-          description={`LAST CHECKIN \n ${exeDay} ${exeMonth} ${exeDate}, ${exeYear}`}
+          description={`LAST CHECKIN \n${exeDay} ${exeMonth} ${exeDate}, ${exeYear}`}
           descriptionNumberOfLines={2}
           descriptionStyle={{
             fontFamily: "Avenir-Light",
             color: "#ECC08E",
             fontSize: 10,
             fontWeight: "bold",
-            marginBottom: 30,
           }}
-          style={{ justifyContent: "center", alignItems: "center" }}
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "#fff",
+            padding: 20,
+            margin: "auto",
+          }}
           left={(props) => <SvgExercise {...props} />}
           right={(props) => <SvgArrowExercise {...props} />}
         />
@@ -102,9 +106,14 @@ export const DashboardHome = (props) => {
             color: "#ECC08E",
             fontSize: 10,
             fontWeight: "bold",
-            marginBottom: 30,
           }}
-          style={{ justifyContent: "center", alignItems: "center" }}
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "#fff",
+            padding: 20,
+            margin: "auto",
+          }}
           left={(props) => <SvgMusic {...props} />}
           right={(props) => <SvgArrowMusic {...props} />}
         />
@@ -123,9 +132,14 @@ export const DashboardHome = (props) => {
             color: "#ECC08E",
             fontSize: 10,
             fontWeight: "bold",
-            marginBottom: 30,
           }}
-          style={{ justifyContent: "center", alignItems: "center" }}
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "#fff",
+            padding: 20,
+            margin: "auto",
+          }}
           left={(props) => <SvgSocial {...props} />}
           right={(props) => <SvgArrowSocial {...props} />}
         />

@@ -8,12 +8,6 @@ export const DashBar = (props) => {
   const catBlockers = allBlockers.filter(
     (blocker) => blocker.category === category.toLowerCase()
   );
-  const sortedBlockersByCompletedAt = catBlockers.sort(function (a, b) {
-    return b.completedAt - a.completedAt;
-  });
-  const mostRecentCompletedBlocker = sortedBlockersByCompletedAt[0];
-
-  const mostRecentCompletedDate = mostRecentCompletedBlocker.completedAt;
 
   const totalcatPtsArr = catBlockers.map((blocker) => {
     return blocker.points;
@@ -33,10 +27,6 @@ export const DashBar = (props) => {
       const currentcatPts = currentcatPtsArr.reduce((acc, cur) => {
         return acc + cur;
       });
-
-      const month = mostRecentCompletedDate.getMonth() + 1;
-      const day = mostRecentCompletedDate.getDate();
-      const year = mostRecentCompletedDate.getFullYear();
 
       return (
         <>
