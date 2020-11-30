@@ -3,7 +3,7 @@ import { View } from "react-native";
 import { connect } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { VictoryPie } from "victory-native";
-import Svg from "react-native-svg";
+import { Svg, Circle } from "react-native-svg";
 import SvgEyeballPie from "../../../svg_assets/SvgEyeballPie";
 
 export const PieChart = (props) => {
@@ -133,6 +133,7 @@ export const PieChart = (props) => {
           viewBox="0 0 400 400"
           style={{ width: "100%", height: "auto" }}
         >
+          {/* <Circle cx={200} cy={200} r={110} fill="#fff"/> */}
           {displayPieChart()}
         </Svg>
         {showEyeball()}

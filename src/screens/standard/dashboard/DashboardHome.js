@@ -4,7 +4,11 @@ import Svg from "react-native-svg";
 import { connect } from "react-redux";
 import bg from "../../../styles/ScreenStyle";
 import SvgBrioHome from "../../../svg_assets/SvgBrioHome";
+import SvgExercise from "../../../svg_assets/SvgExercise";
+import SvgMusic from "../../../svg_assets/SvgMusic";
+import SvgSocial from "../../../svg_assets/SvgSocial";
 import styled from "styled-components/native";
+import { Card } from "react-native-paper";
 
 export const DashboardHome = (props) => {
   const { allBlockers } = props;
@@ -16,10 +20,15 @@ export const DashboardHome = (props) => {
           <SvgBrioHome />
           <Diagram>
             <DiagramTextHeader>Oh my gosh!</DiagramTextHeader>
-            <DiagramText>This is going to be su much fun. </DiagramText>
+            <DiagramText>This is going to be so much fun. </DiagramText>
             <DiagramText>What are we going to do today?</DiagramText>
           </Diagram>
         </DiagramContainer>
+        <Card.Title
+          title="Exercise"
+          subtitle="LAST CHECKIN"
+          left={(props) => <SvgExercise {...props} icon="folder" />}
+        />
       </View>
     </>
   );
