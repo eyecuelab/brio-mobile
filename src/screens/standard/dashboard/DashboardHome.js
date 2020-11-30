@@ -11,6 +11,7 @@ import SvgMusic from "../../../svg_assets/SvgMusic";
 import SvgSocial from "../../../svg_assets/SvgSocial";
 import styled from "styled-components/native";
 import { List } from "react-native-paper";
+import DashList from "./DashList";
 
 export const DashboardHome = (props) => {
   const { allBlockers } = props;
@@ -91,58 +92,7 @@ export const DashboardHome = (props) => {
           left={(props) => <SvgExercise {...props} />}
           right={(props) => <SvgArrowExercise {...props} />}
         />
-        <List.Item
-          title="Music"
-          titleStyle={{
-            fontFamily: "Avenir-Light",
-            color: "#94D7B5",
-            fontSize: 36,
-            fontWeight: "bold",
-          }}
-          description="LAST CHECKIN Sunday Nov 22, 2020"
-          descriptionNumberOfLines={2}
-          descriptionStyle={{
-            fontFamily: "Avenir-Light",
-            color: "#ECC08E",
-            fontSize: 10,
-            fontWeight: "bold",
-          }}
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: "#fff",
-            padding: 20,
-            margin: "auto",
-          }}
-          left={(props) => <SvgMusic {...props} />}
-          right={(props) => <SvgArrowMusic {...props} />}
-        />
-        <List.Item
-          title="Social"
-          titleStyle={{
-            fontFamily: "Avenir-Light",
-            color: "#E0C45E",
-            fontSize: 36,
-            fontWeight: "bold",
-          }}
-          description="LAST CHECKIN Sunday Nov 22, 2020"
-          descriptionNumberOfLines={2}
-          descriptionStyle={{
-            fontFamily: "Avenir-Light",
-            color: "#ECC08E",
-            fontSize: 10,
-            fontWeight: "bold",
-          }}
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: "#fff",
-            padding: 20,
-            margin: "auto",
-          }}
-          left={(props) => <SvgSocial {...props} />}
-          right={(props) => <SvgArrowSocial {...props} />}
-        />
+        <DashList />
       </View>
     </>
   );
