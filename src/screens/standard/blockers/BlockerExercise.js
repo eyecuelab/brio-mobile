@@ -7,8 +7,7 @@ import styled from "styled-components/native";
 import text from "../../../styles/TextStyle.js";
 import bg from "../../../styles/ScreenStyle.js";
 import Icon from "react-native-vector-icons/FontAwesome5";
-import sArrow from "../../../../assets/Swipe_Arrow.png";
-import arrow from "../../../styles/ArrowStyle.js";
+import SvgCheckinExercise from "../../../svg_assets/SvgCheckinExercise";
 
 function BlockerExercise(props) {
   const { dispatch, blockers } = props;
@@ -59,19 +58,28 @@ function BlockerExercise(props) {
 
   return (
     <View style={bg.berry}>
-      <View>
-        <Text style={text.header}>Exercise</Text>
-      </View>
-      <View>
-        <Text style={text.text}>Here are 3 blockers for you</Text>
-      </View>
+      <CheckinContainer>
+        <SvgCheckinExercise />
+        <CategoryText>Exercise</CategoryText>
+      </CheckinContainer>
       <ListContainer>{displayBlockers()}</ListContainer>
-      <View style={arrow.bottom}>
-        <Image source={sArrow} />
-      </View>
+      
+     
     </View>
   );
 }
+
+const CheckinContainer = styled.View`
+  margin-top: 36;
+  align-items: center;
+  justify-content: center;
+`;
+
+const CategoryText = styled.Text`
+  font-size: 36px;
+  font-weight: 900;
+  color: #d8a1d5;
+`;
 
 const ListContainer = styled.View`
   margin-top: 36;

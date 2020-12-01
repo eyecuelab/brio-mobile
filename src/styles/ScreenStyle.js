@@ -52,6 +52,6 @@ export default StyleSheet.create({
     flex: 1,
     paddingTop: 64,
     padding: 8,
-    backgroundColor: "#FFDFFE",
+    backgroundColor: "#FFEFEF",
   },
 });
