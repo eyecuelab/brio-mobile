@@ -49,10 +49,6 @@ export const DashboardHome = (props) => {
     "December",
   ];
 
-  const exeMonth = months[mostRecentCompletedDateExe.getMonth()];
-  const exeDay = days[mostRecentCompletedDateExe.getDay()];
-  const exeDate = mostRecentCompletedDateExe.getDate();
-  const exeYear = mostRecentCompletedDateExe.getFullYear();
 
   return (
     <>
