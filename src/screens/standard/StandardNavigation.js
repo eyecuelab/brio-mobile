@@ -42,36 +42,7 @@ export default function StandardNavigation() {
             ),
           }}
         />
-        <Tab.Screen
-          name="BlockerExercise"
-          component={BlockerExercise}
-          options={{
-            tabBarLabel: "Social",
-            tabBarIcon: ({ color }) => (
-              <SvgHomeIcon name="group" color={color} size={26} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="BlockerMusic"
-          component={BlockerMusic}
-          options={{
-            tabBarLabel: "Social",
-            tabBarIcon: ({ color }) => (
-              <SvgHomeIcon name="group" color={color} size={26} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="BlockerSocial"
-          component={BlockerSocial}
-          options={{
-            tabBarLabel: "Social",
-            tabBarIcon: ({ color }) => (
-              <SvgHomeIcon name="group" color={color} size={26} />
-            ),
-          }}
-        />
+
         <Tab.Screen
           name="profile"
           component={AccountSettings}

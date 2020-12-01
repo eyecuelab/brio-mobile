@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { List } from "react-native-paper";
 import styled from "styled-components/native";
+import { useNavigation } from "@react-navigation/native";
 
 export const DashList = (props) => {
   const days = [
@@ -29,6 +30,7 @@ export const DashList = (props) => {
   ];
 
   const { allBlockers, category, color, image, arrow } = props;
+  const navigation = useNavigation();
 
   const catBlockers = allBlockers.filter(
     (blocker) => blocker.category === category.toLowerCase()
@@ -87,7 +89,7 @@ export const DashList = (props) => {
             padding: 20,
             margin: "auto",
           }}
-          onPress={() => console.log("PRESSED", {category})}
+          onPress={() =>  navigation.navigate(`Blocker${category}`)}
           left={() => <ListImage>{image}</ListImage>}
           right={() => <ListImage>{arrow}</ListImage>}
         />
