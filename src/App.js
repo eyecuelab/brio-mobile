@@ -7,7 +7,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "./rdx/store";
 import LoginPage from "./screens/standard/LoginPage";
 import StandardNavigation from "./screens/standard/StandardNavigation.js";
-import BlockerExercise from "./screens/standard/check ins/BlockerExercise.js";
+import CheckinExercise from "./screens/standard/check ins/CheckinExercise.js";
 import BlockerMusic from "./screens/standard/check ins/BlockerMusic.js";
 import BlockerSocial from "./screens/standard/check ins/BlockerSocial.js";
 import LandingNavigation from "./screens/landing/LandingNavigation.js";
@@ -27,7 +27,7 @@ export default function App() {
               }}
             >
               <RootStack.Screen name="Login" component={LoginPage} />
-              <RootStack.Screen name="BlockerExercise" component={BlockerExercise} />
+              <RootStack.Screen name="CheckinExercise" component={CheckinExercise} />
               <RootStack.Screen name="BlockerMusic" component={BlockerMusic} />
               <RootStack.Screen name="BlockerSocial" component={BlockerSocial} />
               <RootStack.Screen
