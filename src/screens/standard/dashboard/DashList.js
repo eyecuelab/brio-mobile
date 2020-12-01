@@ -1,7 +1,7 @@
 import React from "react";
-import { View } from "react-native";
 import { connect } from "react-redux";
 import { List } from "react-native-paper";
+import styled from "styled-components/native";
 
 export const DashList = (props) => {
   const days = [
@@ -86,12 +86,17 @@ export const DashList = (props) => {
           padding: 20,
           margin: "auto",
         }}
-        left={() => <View style={{borderWidth: 1, flexDirection: "column", justifyContent: "center"}}>{image}</View>}
-        right={() => <View style={{borderWidth: 1, flexDirection: "column", justifyContent: "center"}}>{arrow}</View>}
+        left={() => <ListImage>{image}</ListImage>}
+        right={() => <ListImage>{arrow}</ListImage>}
       />
     </>
   );
 };
+
+const ListImage = styled.View`
+  flex-direction: column;
+  justify-content: center;
+`;
 
 const mapStateToProps = (state) => {
   return {
