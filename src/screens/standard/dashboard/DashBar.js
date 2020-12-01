@@ -4,7 +4,7 @@ import { ProgressBar } from "react-native-paper";
 import styled from "styled-components/native";
 
 export const DashBar = (props) => {
-  const { allBlockers, category, color, image } = props;
+  const { allBlockers, category, color, image, from } = props;
   const catBlockers = allBlockers.filter(
     (blocker) => blocker.category === category.toLowerCase()
   );
@@ -16,7 +16,7 @@ export const DashBar = (props) => {
     return acc + cur;
   });
 
-  const showProgressBar = () => {
+  const showProgressBarInDashboardHome = () => {
     const completedBlockers = catBlockers.filter(
       (blocker) => blocker.completedAt !== null
     );
@@ -27,7 +27,6 @@ export const DashBar = (props) => {
       const currentcatPts = currentcatPtsArr.reduce((acc, cur) => {
         return acc + cur;
       });
-
       return (
         <>
           <ProgressBar
@@ -54,17 +53,67 @@ export const DashBar = (props) => {
     }
   };
 
-  return (
-    <>
-      <ProgressContainer>
-        <ProgressWrapper>{image}</ProgressWrapper>
-        <ProgressWrapper>
-          <CategoryText style={{ color: color }}>{category}</CategoryText>
-          {showProgressBar()}
-        </ProgressWrapper>
-      </ProgressContainer>
-    </>
-  );
+  const showProgressBarInBlockers = () => {
+    const completedBlockers = catBlockers.filter(
+      (blocker) => blocker.completedAt !== null
+    );
+    if (completedBlockers && completedBlockers.length > 0) {
+      const currentcatPtsArr = completedBlockers.map((completedBlocker) => {
+        return completedBlocker.points;
+      });
+      const currentcatPts = currentcatPtsArr.reduce((acc, cur) => {
+        return acc + cur;
+      });
+      return (
+        <>
+          <ProgressText>
+            {currentcatPts} OUT OF {totalcatPts} COMPLETE
+          </ProgressText>
+          <ProgressBar
+            progress={currentcatPts / totalcatPts}
+            color={color}
+            transform={[{ scaleX: 1.3 }, { scaleY: 2.5 }]}
+          />
+        </>
+      );
+    } else {
+      return (
+        <>
+          <ProgressText>0 OUT OF {totalcatPts} COMPLETE</ProgressText>
+          <ProgressBar
+            progress={0}
+            color={color}
+            transform={[{ scaleX: 1.3 }, { scaleY: 2.5 }]}
+          />
+        </>
+      );
+    }
+  };
+
+  const checkPrecComp = () => {
+    if (from === "DashboardMain") {
+      return (
+        <ProgressContainer>
+          <ProgressWrapper>{image}</ProgressWrapper>
+          <ProgressWrapper>
+            <CategoryText style={{ color: color }}>{category}</CategoryText>
+            {showProgressBarInDashboardHome()}
+          </ProgressWrapper>
+        </ProgressContainer>
+      );
+    } else if (from === "BlockerExercise") {
+      return (
+        <ProgressWrapperBlockers>
+          <CategoryTextBlockers style={{ color: color }}>
+            {category}
+          </CategoryTextBlockers>
+          {showProgressBarInBlockers()}
+        </ProgressWrapperBlockers>
+      );
+    }
+  };
+
+  return <>{checkPrecComp()}</>;
 };
 
 const ProgressContainer = styled.View`
@@ -76,8 +125,17 @@ const ProgressWrapper = styled.View`
   margin-bottom: 12px;
   margin-left: 24px;
 `;
+const ProgressWrapperBlockers = styled.View`
+  margin-bottom: 12px;
+  margin-left: 12px;
+`;
 const CategoryText = styled.Text`
   font-size: 28px;
+  font-weight: 900;
+  margin-bottom: 12px;
+`;
+const CategoryTextBlockers = styled.Text`
+  font-size: 36px;
   font-weight: 900;
   margin-bottom: 12px;
 `;

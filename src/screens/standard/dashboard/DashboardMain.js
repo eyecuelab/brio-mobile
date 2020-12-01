@@ -55,12 +55,19 @@ function DashboardMain(props) {
             category={"Exercise"}
             color={"#d8a1d5"}
             image={<SvgExercise />}
+            from={"DashboardMain"}
           />
-          <DashBar category={"Music"} color={"#94D7B5"} image={<SvgMusic />} />
+          <DashBar
+            category={"Music"}
+            color={"#94D7B5"}
+            image={<SvgMusic />}
+            from={"DashboardMain"}
+          />
           <DashBar
             category={"Social"}
             color={"#E0C45E"}
             image={<SvgSocial />}
+            from={"DashboardMain"}
           />
         </View>
       </ScrollView>
