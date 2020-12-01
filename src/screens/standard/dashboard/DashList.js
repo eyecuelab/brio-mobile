@@ -87,6 +87,7 @@ export const DashList = (props) => {
             padding: 20,
             margin: "auto",
           }}
+          onPress={() => console.log("PRESSED", {category})}
           left={() => <ListImage>{image}</ListImage>}
           right={() => <ListImage>{arrow}</ListImage>}
         />
