@@ -69,7 +69,7 @@ export const DashList = (props) => {
           titleStyle={{
             fontFamily: "Avenir-Light",
             color: `${color}`,
-            fontSize: 36,
+            fontSize: 32,
             fontWeight: "bold",
           }}
           description={description()}
@@ -96,7 +96,7 @@ export const DashList = (props) => {
 };
 
 const ListWrapper = styled.View`
-  margin: 12px;
+  margin: 6px;
 `;
 const ListImage = styled.View`
   flex-direction: column;

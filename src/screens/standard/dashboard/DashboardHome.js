@@ -12,43 +12,7 @@ import SvgArrowSocial from "../../../svg_assets/SvgArrowSocial";
 import styled from "styled-components/native";
 import DashList from "./DashList";
 
-export const DashboardHome = (props) => {
-  const { allBlockers } = props;
-
-  const exeBlockers = allBlockers.filter(
-    (blocker) => blocker.category === "exercise"
-  );
-  const sortedExeBlockersByCompletedAt = exeBlockers.sort(function (a, b) {
-    return b.completedAt - a.completedAt;
-  });
-  const mostRecentCompletedExeBlocker = sortedExeBlockersByCompletedAt[0];
-
-  const mostRecentCompletedDateExe = mostRecentCompletedExeBlocker.completedAt;
-
-  const days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
+export const DashboardHome = () => {
   return (
     <>
       <View style={bg.basic}>
@@ -113,10 +77,4 @@ const ListContainer = styled.View`
   margin-bottom: 24;
 `;
 
-const mapStateToProps = (state) => {
-  return {
-    allBlockers: state.blockersState.blockers,
-  };
-};
-
-export default connect(mapStateToProps)(DashboardHome);
+export default connect()(DashboardHome);
