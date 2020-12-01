@@ -26,7 +26,7 @@ function BlockerExercise(props) {
               <TouchableHighlight
                 key={blocker.id}
                 activeOpacity="0.75"
-                underlayColor="gray"
+                underlayColor="#D8A1D5"
                 onPress={() => {
                   completedBlocker(blocker.id);
                 }}
@@ -44,6 +44,7 @@ function BlockerExercise(props) {
               <TouchableHighlight key={blocker.id}>
                 <List.Item
                   title={blocker.description}
+                  titleStyle={{ color: "#fff" }}
                   left={(props) => (
                     <Icon name="check" size={30} color="#900" {...props} />
                   )}
