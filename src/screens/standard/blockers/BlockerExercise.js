@@ -5,8 +5,9 @@ import * as actions from "../../../rdx/actions";
 import { List } from "react-native-paper";
 import styled from "styled-components/native";
 import bg from "../../../styles/ScreenStyle.js";
-import Icon from "react-native-vector-icons/FontAwesome5";
 import SvgCheckinExercise from "../../../svg_assets/SvgCheckinExercise";
+import SvgStarIcon from "../../../svg_assets/SvgStarIcon";
+import SvgStarIconComplete from "../../../svg_assets/SvgStarIconComplete";
 import DashBar from "../dashboard/DashBar";
 
 function BlockerExercise(props) {
@@ -30,24 +31,32 @@ function BlockerExercise(props) {
                 onPress={() => {
                   completedBlocker(blocker.id);
                 }}
+                style={{ marginTop: 12, marginBottom: 24 }}
               >
                 <List.Item
                   title={blocker.description}
-                  left={(props) => (
-                    <Icon name="grin" size={30} color="#900" {...props} />
+                  titleNumberOfLines={3}
+                  left={() => (
+                    <SvgStarIcon color1={"#D8A1D5"} color2={"#FFE3E3"} />
                   )}
                 />
               </TouchableHighlight>
             );
           } else {
             return (
-              <TouchableHighlight key={blocker.id}>
+              <TouchableHighlight
+                key={blocker.id}
+                style={{
+                  marginTop: 12,
+                  marginBottom: 24,
+                  backgroundColor: "#D8A1D5",
+                }}
+              >
                 <List.Item
                   title={blocker.description}
-                  titleStyle={{ color: "#fff" }}
-                  left={(props) => (
-                    <Icon name="check" size={30} color="#900" {...props} />
-                  )}
+                  titleNumberOfLines={3}
+                  titleStyle={{ color: "#FFFFFF" }}
+                  left={() => <SvgStarIconComplete />}
                 />
               </TouchableHighlight>
             );
