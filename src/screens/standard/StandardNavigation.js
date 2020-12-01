@@ -3,7 +3,7 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import DashboardMain from "./dashboard/DashboardMain";
 import DashboardHome from "./dashboard/DashboardHome";
 import AccountSettings from "./dashboard/AccountSettings";
-import SvgStarIcon from "../../svg_assets/SvgStarIcon";
+import SvgStarMainIcon from "../../svg_assets/SvgStarMainIcon";
 import SvgHomeIcon from "../../svg_assets/SvgHomeIcon";
 import SvgProfileIcon from "../../svg_assets/SvgProfileIcon";
 
@@ -24,7 +24,7 @@ export default function StandardNavigation() {
           options={{
             tabBarLabel: "Main",
             tabBarIcon: ({ color }) => (
-              <SvgStarIcon name="star" color={color} size={26} />
+              <SvgStarMainIcon name="star" color={color} size={26} />
             ),
           }}
         />

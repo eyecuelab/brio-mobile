@@ -9,7 +9,7 @@ import LoginPage from "./screens/standard/LoginPage";
 import StandardNavigation from "./screens/standard/StandardNavigation.js";
 import BlockerExercise from "./screens/standard/check ins/BlockerExercise.js";
 import BlockerMusic from "./screens/standard/check ins/BlockerMusic.js";
-import BlockerSocial from "./screens/standard/check ins/check insocial.js";
+import BlockerSocial from "./screens/standard/check ins/BlockerSocial.js";
 import LandingNavigation from "./screens/landing/LandingNavigation.js";
 
 const RootStack = createStackNavigator();
