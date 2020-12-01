@@ -49,7 +49,6 @@ export const DashboardHome = (props) => {
     "December",
   ];
 
-
   return (
     <>
       <View style={bg.basic}>
@@ -61,24 +60,26 @@ export const DashboardHome = (props) => {
             <DiagramText>What are we going to do today?</DiagramText>
           </Diagram>
         </DiagramContainer>
-        <DashList
-          category={"Exercise"}
-          color={"#d8a1d5"}
-          image={<SvgExercise />}
-          arrow={<SvgArrowExercise />}
-        />
-        <DashList
-          category={"Music"}
-          color={"#94D7B5"}
-          image={<SvgMusic />}
-          arrow={<SvgArrowMusic />}
-        />
-        <DashList
-          category={"Social"}
-          color={"#E0C45E"}
-          image={<SvgSocial />}
-          arrow={<SvgArrowSocial />}
-        />
+        <ListContainer>
+          <DashList
+            category={"Exercise"}
+            color={"#d8a1d5"}
+            image={<SvgExercise />}
+            arrow={<SvgArrowExercise />}
+          />
+          <DashList
+            category={"Music"}
+            color={"#94D7B5"}
+            image={<SvgMusic />}
+            arrow={<SvgArrowMusic />}
+          />
+          <DashList
+            category={"Social"}
+            color={"#E0C45E"}
+            image={<SvgSocial />}
+            arrow={<SvgArrowSocial />}
+          />
+        </ListContainer>
       </View>
     </>
   );
@@ -107,6 +108,9 @@ const DiagramText = styled.Text`
   background-color: #fff;
   padding-left: 10px;
   padding-right: 10px;
+`;
+const ListContainer = styled.View`
+  margin-bottom: 24;
 `;
 
 const mapStateToProps = (state) => {

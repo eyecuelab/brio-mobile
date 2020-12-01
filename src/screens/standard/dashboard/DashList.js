@@ -63,36 +63,41 @@ export const DashList = (props) => {
 
   return (
     <>
-      <List.Item
-        title={category}
-        titleStyle={{
-          fontFamily: "Avenir-Light",
-          color: `${color}`,
-          fontSize: 36,
-          fontWeight: "bold",
-        }}
-        description={description()}
-        descriptionNumberOfLines={2}
-        descriptionStyle={{
-          fontFamily: "Avenir-Light",
-          color: "#ECC08E",
-          fontSize: 10,
-          fontWeight: "bold",
-        }}
-        style={{
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: "#fff",
-          padding: 20,
-          margin: "auto",
-        }}
-        left={() => <ListImage>{image}</ListImage>}
-        right={() => <ListImage>{arrow}</ListImage>}
-      />
+      <ListWrapper>
+        <List.Item
+          title={category}
+          titleStyle={{
+            fontFamily: "Avenir-Light",
+            color: `${color}`,
+            fontSize: 36,
+            fontWeight: "bold",
+          }}
+          description={description()}
+          descriptionNumberOfLines={2}
+          descriptionStyle={{
+            fontFamily: "Avenir-Light",
+            color: "#ECC08E",
+            fontSize: 10,
+            fontWeight: "bold",
+          }}
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "#fff",
+            padding: 20,
+            margin: "auto",
+          }}
+          left={() => <ListImage>{image}</ListImage>}
+          right={() => <ListImage>{arrow}</ListImage>}
+        />
+      </ListWrapper>
     </>
   );
 };
 
+const ListWrapper = styled.View`
+  margin: 12px;
+`;
 const ListImage = styled.View`
   flex-direction: column;
   justify-content: center;
