@@ -113,11 +113,11 @@ const ListHeaderText = styled.Text`
 
 const mapStateToProps = (state) => {
   const stateBlockers = state.blockersState.blockers;
-  const musicBlockers = stateBlockers.filter(
+  const exerciseBlockers = stateBlockers.filter(
     (stateBlocker) => stateBlocker.category === "exercise"
   );
   return {
-    blockers: musicBlockers,
+    blockers: exerciseBlockers,
   };
 };
 const BlockerExerciseConnected = connect(mapStateToProps)(BlockerExercise);
