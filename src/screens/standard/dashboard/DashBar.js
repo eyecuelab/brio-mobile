@@ -27,7 +27,6 @@ export const DashBar = (props) => {
       const currentcatPts = currentcatPtsArr.reduce((acc, cur) => {
         return acc + cur;
       });
-
       return (
         <>
           <ProgressBar
@@ -54,6 +53,43 @@ export const DashBar = (props) => {
     }
   };
 
+  const showProgressBarInBlockers = () => {
+    const completedBlockers = catBlockers.filter(
+      (blocker) => blocker.completedAt !== null
+    );
+    if (completedBlockers && completedBlockers.length > 0) {
+      const currentcatPtsArr = completedBlockers.map((completedBlocker) => {
+        return completedBlocker.points;
+      });
+      const currentcatPts = currentcatPtsArr.reduce((acc, cur) => {
+        return acc + cur;
+      });
+      return (
+        <>
+          <ProgressText>
+            {currentcatPts} OUT OF {totalcatPts} COMPLETE
+          </ProgressText>
+          <ProgressBar
+            progress={currentcatPts / totalcatPts}
+            color={color}
+            transform={[{ scaleX: 1.3 }, { scaleY: 2.5 }]}
+          />
+        </>
+      );
+    } else {
+      return (
+        <>
+          <ProgressText>0 OUT OF {totalcatPts} COMPLETE</ProgressText>
+          <ProgressBar
+            progress={0}
+            color={color}
+            transform={[{ scaleX: 1.3 }, { scaleY: 2.5 }]}
+          />
+        </>
+      );
+    }
+  };
+
   const checkPrecComp = () => {
     if (from === "DashboardMain") {
       return (
@@ -65,8 +101,18 @@ export const DashBar = (props) => {
           </ProgressWrapper>
         </ProgressContainer>
       );
+    } else if (from === "BlockerExercise") {
+      return (
+        <ProgressWrapperBlockers>
+          <CategoryTextBlockers style={{ color: color }}>
+            {category}
+          </CategoryTextBlockers>
+          {showProgressBarInBlockers()}
+        </ProgressWrapperBlockers>
+      );
     }
   };
+
   return <>{checkPrecComp()}</>;
 };
 
@@ -79,8 +125,17 @@ const ProgressWrapper = styled.View`
   margin-bottom: 12px;
   margin-left: 24px;
 `;
+const ProgressWrapperBlockers = styled.View`
+  margin-bottom: 12px;
+  margin-left: 12px;
+`;
 const CategoryText = styled.Text`
   font-size: 28px;
+  font-weight: 900;
+  margin-bottom: 12px;
+`;
+const CategoryTextBlockers = styled.Text`
+  font-size: 36px;
   font-weight: 900;
   margin-bottom: 12px;
 `;

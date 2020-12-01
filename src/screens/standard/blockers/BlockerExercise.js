@@ -1,14 +1,12 @@
 import React from "react";
-import { View, Text, Image, TouchableHighlight } from "react-native";
+import { View,TouchableHighlight } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../rdx/actions";
 import { List } from "react-native-paper";
 import styled from "styled-components/native";
-import text from "../../../styles/TextStyle.js";
 import bg from "../../../styles/ScreenStyle.js";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import SvgCheckinExercise from "../../../svg_assets/SvgCheckinExercise";
-import SvgExercise from "../../../svg_assets/SvgExercise";
 import DashBar from "../dashboard/DashBar";
 
 function BlockerExercise(props) {
@@ -62,16 +60,13 @@ function BlockerExercise(props) {
     <View style={bg.berry}>
       <CheckinContainer>
         <SvgCheckinExercise />
-        <CategoryText>Exercise</CategoryText>
-        <DashBarText></DashBarText>
         <DashBar
-            category={"Exercise"}
-            color={"#d8a1d5"}
-          />
+          category={"Exercise"}
+          color={"#d8a1d5"}
+          from={"BlockerExercise"}
+        />
       </CheckinContainer>
       <ListContainer>{displayBlockers()}</ListContainer>
-      
-     
     </View>
   );
 }
@@ -80,12 +75,6 @@ const CheckinContainer = styled.View`
   margin-top: 36;
   align-items: center;
   justify-content: center;
-`;
-
-const CategoryText = styled.Text`
-  font-size: 36px;
-  font-weight: 900;
-  color: #d8a1d5;
 `;
 
 const ListContainer = styled.View`
