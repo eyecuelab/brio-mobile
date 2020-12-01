@@ -4,7 +4,7 @@ import { ProgressBar } from "react-native-paper";
 import styled from "styled-components/native";
 
 export const DashBar = (props) => {
-  const { allBlockers, category, color, image } = props;
+  const { allBlockers, category, color, image, from } = props;
   const catBlockers = allBlockers.filter(
     (blocker) => blocker.category === category.toLowerCase()
   );
@@ -16,7 +16,7 @@ export const DashBar = (props) => {
     return acc + cur;
   });
 
-  const showProgressBar = () => {
+  const showProgressBarInDashboardHome = () => {
     const completedBlockers = catBlockers.filter(
       (blocker) => blocker.completedAt !== null
     );
@@ -54,17 +54,20 @@ export const DashBar = (props) => {
     }
   };
 
-  return (
-    <>
-      <ProgressContainer>
-        <ProgressWrapper>{image}</ProgressWrapper>
-        <ProgressWrapper>
-          <CategoryText style={{ color: color }}>{category}</CategoryText>
-          {showProgressBar()}
-        </ProgressWrapper>
-      </ProgressContainer>
-    </>
-  );
+  const checkPrecComp = () => {
+    if (from === "DashboardMain") {
+      return (
+        <ProgressContainer>
+          <ProgressWrapper>{image}</ProgressWrapper>
+          <ProgressWrapper>
+            <CategoryText style={{ color: color }}>{category}</CategoryText>
+            {showProgressBarInDashboardHome()}
+          </ProgressWrapper>
+        </ProgressContainer>
+      );
+    }
+  };
+  return <>{checkPrecComp()}</>;
 };
 
 const ProgressContainer = styled.View`

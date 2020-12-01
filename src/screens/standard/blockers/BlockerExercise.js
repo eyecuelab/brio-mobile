@@ -63,6 +63,7 @@ function BlockerExercise(props) {
       <CheckinContainer>
         <SvgCheckinExercise />
         <CategoryText>Exercise</CategoryText>
+        <DashBarText></DashBarText>
         <DashBar
             category={"Exercise"}
             color={"#d8a1d5"}
