@@ -8,6 +8,8 @@ import text from "../../../styles/TextStyle.js";
 import bg from "../../../styles/ScreenStyle.js";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import SvgCheckinExercise from "../../../svg_assets/SvgCheckinExercise";
+import SvgExercise from "../../../svg_assets/SvgExercise";
+import DashBar from "../dashboard/DashBar";
 
 function BlockerExercise(props) {
   const { dispatch, blockers } = props;
@@ -61,6 +63,10 @@ function BlockerExercise(props) {
       <CheckinContainer>
         <SvgCheckinExercise />
         <CategoryText>Exercise</CategoryText>
+        <DashBar
+            category={"Exercise"}
+            color={"#d8a1d5"}
+          />
       </CheckinContainer>
       <ListContainer>{displayBlockers()}</ListContainer>
       
