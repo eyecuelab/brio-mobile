@@ -1,5 +1,5 @@
 import React from "react";
-import { View,TouchableHighlight } from "react-native";
+import { View, TouchableHighlight } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../rdx/actions";
 import { List } from "react-native-paper";
@@ -66,7 +66,13 @@ function BlockerExercise(props) {
           from={"BlockerExercise"}
         />
       </CheckinContainer>
-      <ListContainer>{displayBlockers()}</ListContainer>
+      <ListContainer>
+        <ListHeaderTextWrapper>
+          <ListHeaderText>TAP TO COMPLETE</ListHeaderText>
+          <ListHeaderText>REFRESH</ListHeaderText>
+        </ListHeaderTextWrapper>
+        {displayBlockers()}
+      </ListContainer>
     </View>
   );
 }
@@ -76,12 +82,23 @@ const CheckinContainer = styled.View`
   align-items: center;
   justify-content: center;
 `;
-
 const ListContainer = styled.View`
   margin-top: 36;
+  margin-right: 12;
+  margin-left: 12;
   margin-bottom: 36;
-  margin-left: 36;
   justify-content: center;
+`;
+const ListHeaderTextWrapper = styled.View`
+  height: 20;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 12px;
+`;
+const ListHeaderText = styled.Text`
+  color: #d8a1d5;
+  font-size: 12px;
+  font-weight: 900;
 `;
 
 const mapStateToProps = (state) => {
