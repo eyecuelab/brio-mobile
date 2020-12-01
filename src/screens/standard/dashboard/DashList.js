@@ -86,7 +86,7 @@ export const DashList = (props) => {
           padding: 20,
           margin: "auto",
         }}
-        left={() => image}
+        left={() => <View style={{borderWidth: 1, flexDirection: "column", justifyContent: "center"}}>{image}</View>}
         right={() => <View style={{borderWidth: 1, flexDirection: "column", justifyContent: "center"}}>{arrow}</View>}
       />
     </>
