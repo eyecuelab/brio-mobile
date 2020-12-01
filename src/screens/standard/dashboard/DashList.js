@@ -1,4 +1,5 @@
 import React from "react";
+import { View } from "react-native";
 import { connect } from "react-redux";
 import { List } from "react-native-paper";
 
@@ -86,7 +87,7 @@ export const DashList = (props) => {
           margin: "auto",
         }}
         left={() => image}
-        right={() => arrow}
+        right={() => <View style={{borderWidth: 1, flexDirection: "column", justifyContent: "center"}}>{arrow}</View>}
       />
     </>
   );
