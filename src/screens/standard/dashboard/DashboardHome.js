@@ -5,16 +5,14 @@ import bg from "../../../styles/ScreenStyle";
 import SvgBrioHome from "../../../svg_assets/SvgBrioHome";
 import SvgExercise from "../../../svg_assets/SvgExercise";
 import SvgArrowExercise from "../../../svg_assets/SvgArrowExercise";
-import SvgArrowMusic from "../../../svg_assets/SvgArrowMusic";
-import SvgArrowSocial from "../../../svg_assets/SvgArrowSocial";
 import SvgMusic from "../../../svg_assets/SvgMusic";
+import SvgArrowMusic from "../../../svg_assets/SvgArrowMusic";
 import SvgSocial from "../../../svg_assets/SvgSocial";
+import SvgArrowSocial from "../../../svg_assets/SvgArrowSocial";
 import styled from "styled-components/native";
-import { List } from "react-native-paper";
+import DashList from "./DashList";
 
-export const DashboardHome = (props) => {
-  const { allBlockers } = props;
-
+export const DashboardHome = () => {
   return (
     <>
       <View style={bg.basic}>
@@ -26,70 +24,26 @@ export const DashboardHome = (props) => {
             <DiagramText>What are we going to do today?</DiagramText>
           </Diagram>
         </DiagramContainer>
-
-        <List.Item
-          title="Exercise"
-          titleStyle={{
-            fontFamily: "Avenir-Light",
-            color: "#D8A1D5",
-            fontSize: 36,
-            fontWeight: "bold",
-          }}
-          description="LAST CHECKIN Sunday Nov 22, 2020"
-          descriptionNumberOfLines={2}
-          descriptionStyle={{
-            fontFamily: "Avenir-Light",
-            color: "#ECC08E",
-            fontSize: 10,
-            fontWeight: "bold",
-            marginBottom: 30,
-          }}
-          style={{ justifyContent: "center", alignItems: "center" }}
-          left={(props) => <SvgExercise {...props} />}
-          right={(props) => <SvgArrowExercise {...props} />}
-        />
-        <List.Item
-          title="Music"
-          titleStyle={{
-            fontFamily: "Avenir-Light",
-            color: "#94D7B5",
-            fontSize: 36,
-            fontWeight: "bold",
-          }}
-          description="LAST CHECKIN Sunday Nov 22, 2020"
-          descriptionNumberOfLines={2}
-          descriptionStyle={{
-            fontFamily: "Avenir-Light",
-            color: "#ECC08E",
-            fontSize: 10,
-            fontWeight: "bold",
-            marginBottom: 30,
-          }}
-          style={{ justifyContent: "center", alignItems: "center" }}
-          left={(props) => <SvgMusic {...props} />}
-          right={(props) => <SvgArrowMusic {...props} />}
-        />
-        <List.Item
-          title="Social"
-          titleStyle={{
-            fontFamily: "Avenir-Light",
-            color: "#E0C45E",
-            fontSize: 36,
-            fontWeight: "bold",
-          }}
-          description="LAST CHECKIN Sunday Nov 22, 2020"
-          descriptionNumberOfLines={2}
-          descriptionStyle={{
-            fontFamily: "Avenir-Light",
-            color: "#ECC08E",
-            fontSize: 10,
-            fontWeight: "bold",
-            marginBottom: 30,
-          }}
-          style={{ justifyContent: "center", alignItems: "center" }}
-          left={(props) => <SvgSocial {...props} />}
-          right={(props) => <SvgArrowSocial {...props} />}
-        />
+        <ListContainer>
+          <DashList
+            category={"Exercise"}
+            color={"#d8a1d5"}
+            image={<SvgExercise />}
+            arrow={<SvgArrowExercise />}
+          />
+          <DashList
+            category={"Music"}
+            color={"#94D7B5"}
+            image={<SvgMusic />}
+            arrow={<SvgArrowMusic />}
+          />
+          <DashList
+            category={"Social"}
+            color={"#E0C45E"}
+            image={<SvgSocial />}
+            arrow={<SvgArrowSocial />}
+          />
+        </ListContainer>
       </View>
     </>
   );
@@ -98,27 +52,29 @@ export const DashboardHome = (props) => {
 const DiagramContainer = styled.View`
   flex: 1;
   flex-direction: row;
-  justify-content: center;
-  margin-top: 28;
+  justify-content: space-around;
+  margin-top: 36;
 `;
 const Diagram = styled.View`
-  margin-top: 28;
+  margin-top: 36;
 `;
 const DiagramTextHeader = styled.Text`
   font-size: 35px;
   color: #51ade0;
   font-weight: 900;
+  background-color: #fff;
+  padding: 10px;
 `;
 const DiagramText = styled.Text`
   font-size: 18px;
   color: #51ade0;
   font-weight: 900;
+  background-color: #fff;
+  padding-left: 10px;
+  padding-right: 10px;
+`;
+const ListContainer = styled.View`
+  margin-bottom: 24;
 `;
 
-const mapStateToProps = (state) => {
-  return {
-    allBlockers: state.blockersState.blockers,
-  };
-};
-
-export default connect(mapStateToProps)(DashboardHome);
+export default connect()(DashboardHome);

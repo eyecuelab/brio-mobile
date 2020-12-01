@@ -3,13 +3,13 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import DashboardMain from "./dashboard/DashboardMain";
 import DashboardHome from "./dashboard/DashboardHome";
 import AccountSettings from "./dashboard/AccountSettings";
-import SvgStarIcon from "../../svg_assets/SvgStarIcon";
-import SvgHomeIcon from "../../svg_assets/SvgHomeIcon";
-import SvgProfileIcon from "../../svg_assets/SvgProfileIcon";
+import SvgStarIcon from "../../../svg_assets/SvgStarIcon";
+import SvgHomeIcon from "../../../svg_assets/SvgHomeIcon";
+import SvgProfileIcon from "../../../svg_assets/SvgProfileIcon";
 
 const Tab = createMaterialBottomTabNavigator();
 
-export default function StandardNavigation() {
+export default function BlockersNavigation() {
   return (
     <>
       <Tab.Navigator
