@@ -1,5 +1,5 @@
 import React from "react";
-import { View, TouchableHighlight } from "react-native";
+import { View, TouchableHighlight, ScrollView } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../rdx/actions";
 import { List } from "react-native-paper";
@@ -67,23 +67,25 @@ function BlockerExercise(props) {
   };
 
   return (
-    <View style={bg.berry}>
-      <CheckinContainer>
-        <SvgCheckinExercise />
-        <DashBar
-          category={"Exercise"}
-          color={"#d8a1d5"}
-          from={"BlockerExercise"}
-        />
-      </CheckinContainer>
-      <ListContainer>
-        <ListHeaderTextWrapper>
-          <ListHeaderText>TAP TO COMPLETE</ListHeaderText>
-          <ListHeaderText>REFRESH</ListHeaderText>
-        </ListHeaderTextWrapper>
-        {displayBlockers()}
-      </ListContainer>
-    </View>
+    <ScrollView>
+      <View style={bg.berry}>
+        <CheckinContainer>
+          <SvgCheckinExercise />
+          <DashBar
+            category={"Exercise"}
+            color={"#d8a1d5"}
+            from={"BlockerExercise"}
+          />
+        </CheckinContainer>
+        <ListContainer>
+          <ListHeaderTextWrapper>
+            <ListHeaderText>TAP TO COMPLETE</ListHeaderText>
+            <ListHeaderText>REFRESH</ListHeaderText>
+          </ListHeaderTextWrapper>
+          {displayBlockers()}
+        </ListContainer>
+      </View>
+    </ScrollView>
   );
 }
 
