@@ -3,18 +3,16 @@ import { connect } from "react-redux";
 import { List } from "react-native-paper";
 
 export const DashList = (props) => {
-  const { allBlockers } = props;
+  const { allBlockers, category, color, image } = props;
 
-  const exeBlockers = allBlockers.filter(
-    (blocker) => blocker.category === "exercise"
+  const catBlockers = allBlockers.filter(
+    (blocker) => blocker.category === category.toLowerCase()
   );
-  const sortedExeBlockersByCompletedAt = exeBlockers.sort(function (a, b) {
-    return b.completedAt - a.completedAt;
-  });
-  const mostRecentCompletedExeBlocker = sortedExeBlockersByCompletedAt[0];
 
-  const mostRecentCompletedDateExe = mostRecentCompletedExeBlocker.completedAt;
-
+  const completedBlockers = catBlockers.filter(
+    (blocker) => blocker.completedAt !== null
+  );
+  
   const days = [
     "Sunday",
     "Monday",
@@ -39,46 +37,95 @@ export const DashList = (props) => {
     "December",
   ];
 
-  const exeMonth = months[mostRecentCompletedDateExe.getMonth()];
-  const exeDay = days[mostRecentCompletedDateExe.getDay()];
-  const exeDate = mostRecentCompletedDateExe.getDate();
-  const exeYear = mostRecentCompletedDateExe.getFullYear();
-  return (
-    <>
-      <List.Item
-        title="Exercise"
-        titleStyle={{
-          fontFamily: "Avenir-Light",
-          color: "#D8A1D5",
-          fontSize: 36,
-          fontWeight: "bold",
-        }}
-        description={`LAST CHECKIN \n${exeDay} ${exeMonth} ${exeDate}, ${exeYear}`}
-        descriptionNumberOfLines={2}
-        descriptionStyle={{
-          fontFamily: "Avenir-Light",
-          color: "#ECC08E",
-          fontSize: 10,
-          fontWeight: "bold",
-        }}
-        style={{
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: "#fff",
-          padding: 20,
-          margin: "auto",
-        }}
-        left={(props) => <SvgExercise {...props} />}
-        right={(props) => <SvgArrowExercise {...props} />}
-      />
-    </>
-  );
+  const showLists = () => {
+    if (completedBlockers && completedBlockers.length > 0) {
+      const sortedBlockersByCompletedAt = completedBlockers.sort(function (
+        a,
+        b
+      ) {
+        return b.completedAt - a.completedAt;
+      });
+      const mostRecentCompletedBlocker = sortedBlockersByCompletedAt[0];
+
+      const mostRecentCompletedDate = mostRecentCompletedBlocker.completedAt;
+
+      const month = months[mostRecentCompletedDate.getMonth()];
+      const day = days[mostRecentCompletedDate.getDay()];
+      const date = mostRecentCompletedDate.getDate();
+      const year = mostRecentCompletedDate.getFullYear();
+      return (
+        <>
+          <List.Item
+            title={category}
+            titleStyle={{
+              fontFamily: "Avenir-Light",
+              color: `${color}`,
+              fontSize: 36,
+              fontWeight: "bold",
+            }}
+            description={`LAST CHECKIN \n${day} ${month} ${date}, ${year}`}
+            descriptionNumberOfLines={2}
+            descriptionStyle={{
+              fontFamily: "Avenir-Light",
+              color: "#ECC08E",
+              fontSize: 10,
+              fontWeight: "bold",
+            }}
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundColor: "#fff",
+              padding: 20,
+              margin: "auto",
+            }}
+            left={() => {
+              image;
+            }}
+          />
+        </>
+      );
+    } else {
+      return (
+        <>
+          <List.Item
+            title={category}
+            titleStyle={{
+              fontFamily: "Avenir-Light",
+              color: `${color}`,
+              fontSize: 36,
+              fontWeight: "bold",
+            }}
+            description={"NO BLOCKERS ACCOMPLISHED"}
+            descriptionNumberOfLines={2}
+            descriptionStyle={{
+              fontFamily: "Avenir-Light",
+              color: "#ECC08E",
+              fontSize: 10,
+              fontWeight: "bold",
+            }}
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundColor: "#fff",
+              padding: 20,
+              margin: "auto",
+            }}
+            left={() => {
+              image;
+            }}
+          />
+        </>
+      );
+    }
+  };
+
+  return <>{showLists()}</>;
 };
 
 const mapStateToProps = (state) => {
   return {
     allBlockers: state.blockersState.blockers,
-  }
+  };
 };
 
 export default connect(mapStateToProps)(DashList);

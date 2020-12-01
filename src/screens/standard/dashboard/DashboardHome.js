@@ -5,12 +5,11 @@ import bg from "../../../styles/ScreenStyle";
 import SvgBrioHome from "../../../svg_assets/SvgBrioHome";
 import SvgExercise from "../../../svg_assets/SvgExercise";
 import SvgArrowExercise from "../../../svg_assets/SvgArrowExercise";
-import SvgArrowMusic from "../../../svg_assets/SvgArrowMusic";
-import SvgArrowSocial from "../../../svg_assets/SvgArrowSocial";
 import SvgMusic from "../../../svg_assets/SvgMusic";
+import SvgArrowMusic from "../../../svg_assets/SvgArrowMusic";
 import SvgSocial from "../../../svg_assets/SvgSocial";
+import SvgArrowSocial from "../../../svg_assets/SvgArrowSocial";
 import styled from "styled-components/native";
-import { List } from "react-native-paper";
 import DashList from "./DashList";
 
 export const DashboardHome = (props) => {
@@ -66,33 +65,24 @@ export const DashboardHome = (props) => {
             <DiagramText>What are we going to do today?</DiagramText>
           </Diagram>
         </DiagramContainer>
-        <List.Item
-          title="Exercise"
-          titleStyle={{
-            fontFamily: "Avenir-Light",
-            color: "#D8A1D5",
-            fontSize: 36,
-            fontWeight: "bold",
-          }}
-          description={`LAST CHECKIN \n${exeDay} ${exeMonth} ${exeDate}, ${exeYear}`}
-          descriptionNumberOfLines={2}
-          descriptionStyle={{
-            fontFamily: "Avenir-Light",
-            color: "#ECC08E",
-            fontSize: 10,
-            fontWeight: "bold",
-          }}
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: "#fff",
-            padding: 20,
-            margin: "auto",
-          }}
-          left={(props) => <SvgExercise {...props} />}
-          right={(props) => <SvgArrowExercise {...props} />}
+        <DashList
+          category={"Exercise"}
+          color={"#d8a1d5"}
+          image={<SvgExercise />}
+          arrow={<SvgArrowExercise />}
         />
-        <DashList />
+        <DashList
+          category={"Music"}
+          color={"#94D7B5"}
+          image={<SvgMusic />}
+          arrow={<SvgArrowMusic />}
+        />
+        <DashList
+          category={"Social"}
+          color={"#E0C45E"}
+          image={<SvgSocial />}
+          arrow={<SvgArrowSocial />}
+        />
       </View>
     </>
   );
