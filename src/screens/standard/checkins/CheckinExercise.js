@@ -12,11 +12,7 @@ export const CheckinExercise = () => {
       <View style={bg.berry}>
         <CheckinContainer>
           <SvgCheckinExercise />
-          <DashBar
-            category={"Exercise"}
-            color={"#d8a1d5"}
-            from={"BlockerExercise"}
-          />
+          <DashBar category={"Exercise"} color={"#d8a1d5"} from={"Checkin"} />
         </CheckinContainer>
         <ListContainer>
           <ListHeaderTextWrapper>

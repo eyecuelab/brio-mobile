@@ -9,14 +9,10 @@ import DashBar from "../dashboard/DashBar";
 export const CheckinSocial = () => {
   return (
     <ScrollView>
-      <View style={bg.berry}>
+      <View style={bg.citrus}>
         <CheckinContainer>
           <SvgCheckinSocial />
-          <DashBar
-            category={"Social"}
-            color={"#d8a1d5"}
-            from={"BlockerSocial"}
-          />
+          <DashBar category={"Social"} color={"#E0C45E"} from={"Checkin"} />
         </CheckinContainer>
         <ListContainer>
           <ListHeaderTextWrapper>
@@ -49,7 +45,7 @@ const ListHeaderTextWrapper = styled.View`
   margin: 12px;
 `;
 const ListHeaderText = styled.Text`
-  color: #d8a1d5;
+  color: #e0c45e;
   font-size: 12px;
   font-weight: 900;
 `;

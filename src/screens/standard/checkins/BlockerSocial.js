@@ -3,7 +3,6 @@ import { TouchableHighlight } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../rdx/actions";
 import { List } from "react-native-paper";
-
 import SvgStarIcon from "../../../svg_assets/SvgStarIcon";
 import SvgStarIconComplete from "../../../svg_assets/SvgStarIconComplete";
 
@@ -24,7 +23,7 @@ function BlockerSocial(props) {
               <TouchableHighlight
                 key={blocker.id}
                 activeOpacity="0.75"
-                underlayColor="#94D7B5"
+                underlayColor="#E0C45E"
                 onPress={() => {
                   completedBlocker(blocker.id);
                 }}
@@ -34,7 +33,7 @@ function BlockerSocial(props) {
                   title={blocker.description}
                   titleNumberOfLines={3}
                   left={() => (
-                    <SvgStarIcon color1={"#94D7B5"} color2={"#DAF3E6"} />
+                    <SvgStarIcon color1={"#E0C45E"} color2={"#E0C45E"} />
                   )}
                 />
               </TouchableHighlight>

@@ -3,7 +3,6 @@ import { TouchableHighlight } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../rdx/actions";
 import { List } from "react-native-paper";
-
 import SvgStarIcon from "../../../svg_assets/SvgStarIcon";
 import SvgStarIconComplete from "../../../svg_assets/SvgStarIconComplete";
 
@@ -46,7 +45,7 @@ function BlockerMusic(props) {
                 style={{
                   marginTop: 12,
                   marginBottom: 24,
-                  backgroundColor: "#D8A1D5",
+                  backgroundColor: "#94D7B5",
                 }}
               >
                 <List.Item

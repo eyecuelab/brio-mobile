@@ -9,10 +9,10 @@ import DashBar from "../dashboard/DashBar";
 export const CheckinMusic = () => {
   return (
     <ScrollView>
-      <View style={bg.berry}>
+      <View style={bg.mint}>
         <CheckinContainer>
           <SvgCheckinMusic />
-          <DashBar category={"Music"} color={"#d8a1d5"} from={"BlockerMusic"} />
+          <DashBar category={"Music"} color={"#94D7B5"} from={"Checkin"} />
         </CheckinContainer>
         <ListContainer>
           <ListHeaderTextWrapper>
@@ -45,7 +45,7 @@ const ListHeaderTextWrapper = styled.View`
   margin: 12px;
 `;
 const ListHeaderText = styled.Text`
-  color: #d8a1d5;
+  color: #94d7b5;
   font-size: 12px;
   font-weight: 900;
 `;
