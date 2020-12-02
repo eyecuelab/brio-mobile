@@ -45,7 +45,7 @@ function BlockerSocial(props) {
                 style={{
                   marginTop: 12,
                   marginBottom: 24,
-                  backgroundColor: "#D8A1D5",
+                  backgroundColor: "#E0C45E",
                 }}
               >
                 <List.Item
