@@ -3,8 +3,6 @@ import { TouchableHighlight } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../rdx/actions";
 import { List } from "react-native-paper";
-import styled from "styled-components/native";
-
 import SvgStarIcon from "../../../svg_assets/SvgStarIcon";
 import SvgStarIconComplete from "../../../svg_assets/SvgStarIconComplete";
 

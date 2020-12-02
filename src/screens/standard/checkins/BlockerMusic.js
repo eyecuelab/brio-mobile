@@ -1,17 +1,14 @@
 import React from "react";
-import { View, Text, TouchableHighlight } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { TouchableHighlight } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../rdx/actions";
 import { List } from "react-native-paper";
-import styled from "styled-components/native";
-import text from "../../../styles/TextStyle.js";
-import bg from "../../../styles/ScreenStyle.js";
-import Icon from "react-native-vector-icons/FontAwesome5";
+
+import SvgStarIcon from "../../../svg_assets/SvgStarIcon";
+import SvgStarIconComplete from "../../../svg_assets/SvgStarIconComplete";
 
 function BlockerMusic(props) {
   const { dispatch, blockers } = props;
-  const navigation = useNavigation();
 
   const completedBlocker = (id) => {
     const action = actions.completedBlocker(id);
@@ -27,27 +24,36 @@ function BlockerMusic(props) {
               <TouchableHighlight
                 key={blocker.id}
                 activeOpacity="0.75"
-                underlayColor="gray"
+                underlayColor="#94D7B5"
                 onPress={() => {
                   completedBlocker(blocker.id);
                 }}
+                style={{ marginTop: 12, marginBottom: 24 }}
               >
                 <List.Item
                   title={blocker.description}
-                  left={(props) => (
-                    <Icon name="grin" size={30} color="#900" {...props} />
+                  titleNumberOfLines={3}
+                  left={() => (
+                    <SvgStarIcon color1={"#94D7B5"} color2={"#DAF3E6"} />
                   )}
                 />
               </TouchableHighlight>
             );
           } else {
             return (
-              <TouchableHighlight key={blocker.id}>
+              <TouchableHighlight
+                key={blocker.id}
+                style={{
+                  marginTop: 12,
+                  marginBottom: 24,
+                  backgroundColor: "#D8A1D5",
+                }}
+              >
                 <List.Item
                   title={blocker.description}
-                  left={(props) => (
-                    <Icon name="check" size={30} color="#900" {...props} />
-                  )}
+                  titleNumberOfLines={3}
+                  titleStyle={{ color: "#FFFFFF" }}
+                  left={() => <SvgStarIconComplete />}
                 />
               </TouchableHighlight>
             );
@@ -57,25 +63,8 @@ function BlockerMusic(props) {
     );
   };
 
-  return (
-    <View style={bg.lime}>
-      <View>
-        <Text style={text.header}>Music</Text>
-      </View>
-      <View>
-        <Text style={text.text}>Here are 3 blockers for you</Text>
-      </View>
-      <ListContainer>{displayBlockers()}</ListContainer>
-    </View>
-  );
+  return <>{displayBlockers()}</>;
 }
-const ListContainer = styled.View`
-  margin-top: 36;
-  margin-bottom: 36;
-  margin-left: 36;
-  justify-content: center;
-`;
-
 const mapStateToProps = (state) => {
   const stateBlockers = state.blockersState.blockers;
   const musicBlockers = stateBlockers.filter(
