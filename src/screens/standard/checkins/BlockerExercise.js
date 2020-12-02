@@ -20,6 +20,7 @@ function BlockerExercise(props) {
         {blockers.map((blocker) => {
           if (blocker.completedAt === null) {
             return (
+              <>
               <TouchableHighlight
                 key={blocker.id}
                 activeOpacity="0.75"
@@ -37,9 +38,12 @@ function BlockerExercise(props) {
                   )}
                 />
               </TouchableHighlight>
+              </>
             );
           } else {
             return (
+              <>
+              {displayCompletedBlockers()}
               <TouchableHighlight
                 key={blocker.id}
                 style={{
@@ -55,12 +59,17 @@ function BlockerExercise(props) {
                   left={() => <SvgStarIconComplete />}
                 />
               </TouchableHighlight>
+              </>
             );
           }
         })}
       </>
     );
   };
+
+  const displayCompletedBlockers = () => {
+    console.log("HELLO")
+  }
 
   return <>{displayBlockers()}</>;
 }
