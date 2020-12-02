@@ -140,9 +140,7 @@ export default (state = initialBlockerState, action) => {
       );
       return {
         ...currentState,
-        blockers: [...newBlockers, updatedBlocker].sort(function (a, b) {
-          return a.points - b.points;
-        }),
+        blockers: [...newBlockers, updatedBlocker],
       };
 
     default:

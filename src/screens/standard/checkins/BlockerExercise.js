@@ -1,5 +1,5 @@
 import React from "react";
-import { TouchableHighlight } from "react-native";
+import { View, TouchableHighlight } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../rdx/actions";
 import { List } from "react-native-paper";
@@ -21,55 +21,60 @@ function BlockerExercise(props) {
           if (blocker.completedAt === null) {
             return (
               <>
-              <TouchableHighlight
-                key={blocker.id}
-                activeOpacity="0.75"
-                underlayColor="#D8A1D5"
-                onPress={() => {
-                  completedBlocker(blocker.id);
-                }}
-                style={{ marginTop: 12, marginBottom: 24 }}
-              >
-                <List.Item
-                  title={blocker.description}
-                  titleNumberOfLines={3}
-                  left={() => (
-                    <SvgStarIcon color1={"#D8A1D5"} color2={"#FFE3E3"} />
-                  )}
-                />
-              </TouchableHighlight>
+                <TouchableHighlight
+                  key={blocker.id}
+                  activeOpacity="0.75"
+                  underlayColor="#D8A1D5"
+                  onPress={() => {
+                    completedBlocker(blocker.id);
+                  }}
+                  style={{ marginTop: 12, marginBottom: 24 }}
+                >
+                  <List.Item
+                    title={blocker.description}
+                    titleNumberOfLines={3}
+                    left={() => (
+                      <SvgStarIcon color1={"#D8A1D5"} color2={"#FFE3E3"} />
+                    )}
+                  />
+                </TouchableHighlight>
               </>
             );
+            <View
+              style={{
+                borderBottomColor: "#D8A1D5",
+                borderBottomWidth: 1,
+              }}
+            />;
           } else {
-            return (
-              <>
-              {displayCompletedBlockers()}
-              <TouchableHighlight
-                key={blocker.id}
-                style={{
-                  marginTop: 12,
-                  marginBottom: 24,
-                  backgroundColor: "#D8A1D5",
-                }}
-              >
-                <List.Item
-                  title={blocker.description}
-                  titleNumberOfLines={3}
-                  titleStyle={{ color: "#FFFFFF" }}
-                  left={() => <SvgStarIconComplete />}
-                />
-              </TouchableHighlight>
-              </>
-            );
+            return <>{displayCompletedBlockers(blocker)}</>;
           }
         })}
       </>
     );
   };
 
-  const displayCompletedBlockers = () => {
-    console.log("HELLO")
-  }
+  const displayCompletedBlockers = (blocker) => {
+    return (
+      <>
+        <TouchableHighlight
+          key={blocker.id}
+          style={{
+            marginTop: 12,
+            marginBottom: 24,
+            backgroundColor: "#D8A1D5",
+          }}
+        >
+          <List.Item
+            title={blocker.description}
+            titleNumberOfLines={3}
+            titleStyle={{ color: "#FFFFFF" }}
+            left={() => <SvgStarIconComplete />}
+          />
+        </TouchableHighlight>
+      </>
+    );
+  };
 
   return <>{displayBlockers()}</>;
 }
