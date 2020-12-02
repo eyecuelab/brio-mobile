@@ -1,5 +1,5 @@
 import React from "react";
-import { View, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 import styled from "styled-components/native";
 import bg from "../../../styles/ScreenStyle.js";
 import SvgCheckinExercise from "../../../svg_assets/SvgCheckinExercise";
@@ -9,7 +9,7 @@ import DashBar from "../dashboard/DashBar";
 export const CheckinExercise = () => {
   return (
     <ScrollView>
-      <View style={bg.berry}>
+      <Container style={bg.berry}>
         <CheckinContainer>
           <SvgCheckinExercise />
           <DashBar category={"Exercise"} color={"#d8a1d5"} from={"Checkin"} />
@@ -21,13 +21,16 @@ export const CheckinExercise = () => {
           </ListHeaderTextWrapper>
           <BlockerExercise />
         </ListContainer>
-      </View>
+      </Container>
     </ScrollView>
   );
 };
 
+const Container = styled.View`
+  flex: 1;
+  height: 100%;
+`;
 const CheckinContainer = styled.View`
-  margin-top: 36;
   align-items: center;
   justify-content: center;
 `;

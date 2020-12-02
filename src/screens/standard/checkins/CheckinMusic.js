@@ -1,5 +1,5 @@
 import React from "react";
-import { View, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 import styled from "styled-components/native";
 import bg from "../../../styles/ScreenStyle.js";
 import SvgCheckinMusic from "../../../svg_assets/SvgCheckinMusic";
@@ -9,7 +9,7 @@ import DashBar from "../dashboard/DashBar";
 export const CheckinMusic = () => {
   return (
     <ScrollView>
-      <View style={bg.mint}>
+      <Container style={bg.mint}>
         <CheckinContainer>
           <SvgCheckinMusic />
           <DashBar category={"Music"} color={"#94D7B5"} from={"Checkin"} />
@@ -21,13 +21,17 @@ export const CheckinMusic = () => {
           </ListHeaderTextWrapper>
           <BlockerMusic />
         </ListContainer>
-      </View>
+      </Container>
     </ScrollView>
   );
 };
 
+
+const Container = styled.View`
+  flex: 1;
+  height: 100%;
+`;
 const CheckinContainer = styled.View`
-  margin-top: 36;
   align-items: center;
   justify-content: center;
 `;

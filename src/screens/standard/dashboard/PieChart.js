@@ -23,7 +23,7 @@ export const PieChart = (props) => {
   const musicColor = "#94D7B5";
   const socialColor = "#E0C45E";
   const colorScale = [exerciseColor, musicColor, socialColor];
-  const navs = ["BlockerExercise", "BlockerMusic", "BlockerSocial"];
+  const navs = ["CheckinExercise", "CheckinMusic", "CheckinSocial"];
 
   const displayPieChart = () => {
     const data = [
