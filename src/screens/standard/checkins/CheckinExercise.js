@@ -7,6 +7,7 @@ import BlockerExercise from "./BlockerExercise";
 import DashBar from "../dashboard/DashBar";
 
 export const CheckinExercise = () => {
+  
   return (
     <ScrollView>
       <Container style={bg.berry}>

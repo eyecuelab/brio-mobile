@@ -31,6 +31,7 @@ function BlockerExercise(props) {
                   style={{ marginTop: 12, marginBottom: 24 }}
                 >
                   <List.Item
+                    key={blocker.id}
                     title={blocker.description}
                     titleNumberOfLines={3}
                     left={() => (
@@ -40,43 +41,65 @@ function BlockerExercise(props) {
                 </TouchableHighlight>
               </>
             );
-            <View
-              style={{
-                borderBottomColor: "#D8A1D5",
-                borderBottomWidth: 1,
-              }}
-            />;
-          } else {
-            return <>{displayCompletedBlockers(blocker)}</>;
           }
         })}
       </>
     );
   };
 
-  const displayCompletedBlockers = (blocker) => {
+  const displayCompletedBlockers = () => {
     return (
       <>
-        <TouchableHighlight
-          key={blocker.id}
-          style={{
-            marginTop: 12,
-            marginBottom: 24,
-            backgroundColor: "#D8A1D5",
-          }}
-        >
-          <List.Item
-            title={blocker.description}
-            titleNumberOfLines={3}
-            titleStyle={{ color: "#FFFFFF" }}
-            left={() => <SvgStarIconComplete />}
-          />
-        </TouchableHighlight>
+        {displayDivider()}
+        {blockers.map((blocker) => {
+          if (blocker.completedAt !== null) {
+            return (
+              <>
+                <TouchableHighlight
+                  key={blocker.id}
+                  style={{
+                    marginTop: 12,
+                    marginBottom: 24,
+                    backgroundColor: "#D8A1D5",
+                  }}
+                >
+                  <List.Item
+                    key={blocker.id}
+                    title={blocker.description}
+                    titleNumberOfLines={3}
+                    titleStyle={{ color: "#FFFFFF" }}
+                    left={() => <SvgStarIconComplete />}
+                  />
+                </TouchableHighlight>
+              </>
+            );
+          }
+        })}
       </>
     );
   };
 
-  return <>{displayBlockers()}</>;
+  const displayDivider = () => {
+    const completedBlockers = blockers.find(
+      (blocker) => blocker.completedAt !== null
+    );
+    if (completedBlockers) {
+      return (
+        <View
+          style={{
+            borderBottomColor: "#D8A1D5",
+            borderBottomWidth: 3,
+          }}
+        />
+      );
+    }
+  };
+  return (
+    <>
+      {displayBlockers()}
+      {displayCompletedBlockers()}
+    </>
+  );
 }
 const mapStateToProps = (state) => {
   const stateBlockers = state.blockersState.blockers;
