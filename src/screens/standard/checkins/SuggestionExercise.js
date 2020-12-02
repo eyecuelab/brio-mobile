@@ -17,7 +17,7 @@ const mapStateToProps = (state) => {
   const exerciseBlockers = stateBlockers.filter(
     (stateBlocker) => stateBlocker.category === "exercise"
   );
-  const completedExerciseBlockers = exerciseBlockers.find(
+  const completedExerciseBlockers = exerciseBlockers.filter(
     (blocker) => blocker.completedAt !== null
   );
   return {
