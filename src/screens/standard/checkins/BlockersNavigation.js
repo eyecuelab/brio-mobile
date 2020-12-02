@@ -2,7 +2,7 @@ import * as React from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import DashboardMain from "./dashboard/DashboardMain";
 import DashboardHome from "./dashboard/DashboardHome";
-import AccountSettings from "./dashboard/AccountSettings";
+import DashboardProfile from "./dashboard/DashboardProfile";
 import SvgStarIcon from "../../../svg_assets/SvgStarIcon";
 import SvgHomeIcon from "../../../svg_assets/SvgHomeIcon";
 import SvgProfileIcon from "../../../svg_assets/SvgProfileIcon";
@@ -42,7 +42,7 @@ export default function BlockersNavigation() {
 
         <Tab.Screen
           name="profile"
-          component={AccountSettings}
+          component={DashboardProfile}
           options={{
             tabBarLabel: "Profile",
             tabBarIcon: ({ color }) => (

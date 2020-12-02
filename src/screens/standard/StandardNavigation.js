@@ -1,8 +1,8 @@
 import * as React from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
-import DashboardMain from "./dashboard/DashboardMain";
-import DashboardHome from "./dashboard/DashboardHome";
-import AccountSettings from "./dashboard/AccountSettings";
+import DashMainStackScreen from "./dashboard/DashMainStackScreen";
+import DashHomeStackScreen from "./dashboard/DashHomeStackScreen";
+import DashProfileStackScreen from "./dashboard/DashProfileStackScreen";
 import SvgStarMainIcon from "../../svg_assets/SvgStarMainIcon";
 import SvgHomeIcon from "../../svg_assets/SvgHomeIcon";
 import SvgProfileIcon from "../../svg_assets/SvgProfileIcon";
@@ -13,16 +13,16 @@ export default function StandardNavigation() {
   return (
     <>
       <Tab.Navigator
-        initialRouteName="Feed"
-        activeColor="#ECC08D"
-        inactiveColor="#757272"
+        initialRouteName="dashboardHome"
+        activeColor="#757272"
+        inactiveColor="#ECC08D"
         barStyle={{ backgroundColor: "#FFFFFF" }}
       >
         <Tab.Screen
           name="dashboardMain"
-          component={DashboardMain}
+          component={DashMainStackScreen}
           options={{
-            tabBarLabel: "Main",
+            tabBarLabel: "Overview",
             tabBarIcon: ({ color }) => (
               <SvgStarMainIcon name="star" color={color} size={26} />
             ),
@@ -31,7 +31,7 @@ export default function StandardNavigation() {
 
         <Tab.Screen
           name="dashboardHome"
-          component={DashboardHome}
+          component={DashHomeStackScreen}
           options={{
             tabBarLabel: "Home",
             tabBarIcon: ({ color }) => (
@@ -42,7 +42,7 @@ export default function StandardNavigation() {
 
         <Tab.Screen
           name="profile"
-          component={AccountSettings}
+          component={DashProfileStackScreen}
           options={{
             tabBarLabel: "Profile",
             tabBarIcon: ({ color }) => (

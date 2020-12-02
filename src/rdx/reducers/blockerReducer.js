@@ -40,20 +40,56 @@ export default (state = initialBlockerState, action) => {
           {
             category: "exercise",
             id: "exerciseB1",
-            description: "Do you have sneakers or running shoes?",
+            description: "Do you have running shoes?",
             createdAt: new Date(),
             completedAt: null,
             points: 10,
             color: "#D8A1D5",
+            suggestions: [
+              {
+                id: "exerciseS1",
+                description: "Go for a 1 mile jog",
+                createdAt: new Date(),
+                completedAt: null,
+                points: 20,
+                color: "#D8A1D5",
+              },
+              {
+                id: "exerciseS2",
+                description: "Go for a 3 mile run",
+                createdAt: new Date(),
+                completedAt: null,
+                points: 30,
+                color: "#D8A1D5",
+              },
+            ]
           },
           {
             category: "exercise",
             id: "exerciseB2",
-            description: "Do you have a helmet?",
+            description: "Do you have a bike?",
             createdAt: new Date(),
             completedAt: null,
             points: 20,
             color: "#D8A1D5",
+            suggestions: [
+              {
+                id: "exerciseS3",
+                description: "Go for a 1 mile jog",
+                createdAt: new Date(),
+                completedAt: null,
+                points: 20,
+                color: "#D8A1D5",
+              },
+              {
+                id: "exerciseS4",
+                description: "Go for a 3 mile run",
+                createdAt: new Date(),
+                completedAt: null,
+                points: 30,
+                color: "#D8A1D5",
+              },
+            ]
           },
           {
             category: "exercise",
