@@ -48,11 +48,40 @@ function BlockerExercise(props) {
   };
 
   const displayCompletedBlockers = () => {
+    const days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    const months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "June",
+      "July",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+
     return (
       <>
         {displayDivider()}
         {blockers.map((blocker) => {
           if (blocker.completedAt !== null) {
+            const completedDate = blocker.completedAt;
+            const month = months[completedDate.getMonth()];
+            const day = days[completedDate.getDay()];
+            const date = completedDate.getDate();
+            const year = completedDate.getFullYear();
             return (
               <>
                 <TouchableHighlight
@@ -68,6 +97,8 @@ function BlockerExercise(props) {
                     title={blocker.description}
                     titleNumberOfLines={3}
                     titleStyle={{ color: "#FFFFFF" }}
+                    description={`${day} ${month} ${date}, ${year}`}
+                    descriptionStyle={{ color: "#FFFFFF" }}
                     left={() => <SvgStarIconComplete />}
                   />
                 </TouchableHighlight>
@@ -94,6 +125,7 @@ function BlockerExercise(props) {
       );
     }
   };
+
   return (
     <>
       {displayBlockers()}
