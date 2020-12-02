@@ -5,6 +5,7 @@ import * as actions from "../../../rdx/actions";
 import { List } from "react-native-paper";
 import SvgStarIcon from "../../../svg_assets/SvgStarIcon";
 import SvgStarIconComplete from "../../../svg_assets/SvgStarIconComplete";
+import SuggestionExercise from "./SuggestionExercise";
 
 function BlockerExercise(props) {
   const { dispatch, blockers } = props;
@@ -132,6 +133,7 @@ function BlockerExercise(props) {
 
   return (
     <>
+      <SuggestionExercise />
       {displayBlockers()}
       {displayCompletedBlockers()}
     </>
