@@ -15,9 +15,21 @@ function DashHomeStackScreen() {
         component={DashboardHome}
         options={{ headerMode: "none", headerShown: false }}
       />
-      <HomeStack.Screen name="CheckinExercise" component={CheckinExercise} />
-      <HomeStack.Screen name="CheckinMusic" component={CheckinMusic} />
-      <HomeStack.Screen name="CheckinSocial" component={CheckinSocial} />
+      <HomeStack.Screen
+        name="CheckinExercise"
+        component={CheckinExercise}
+        options={{ headerMode: "none", headerShown: false }}
+      />
+      <HomeStack.Screen
+        name="CheckinMusic"
+        component={CheckinMusic}
+        options={{ headerMode: "none", headerShown: false }}
+      />
+      <HomeStack.Screen
+        name="CheckinSocial"
+        component={CheckinSocial}
+        options={{ headerMode: "none", headerShown: false }}
+      />
     </HomeStack.Navigator>
   );
 }

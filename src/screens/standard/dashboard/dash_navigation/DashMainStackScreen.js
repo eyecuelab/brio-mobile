@@ -15,9 +15,21 @@ function DashMainStackScreen() {
         component={DashboardMain}
         options={{ headerMode: "none", headerShown: false }}
       />
-      <MainStack.Screen name="CheckinExercise" component={CheckinExercise} />
-      <MainStack.Screen name="CheckinMusic" component={CheckinMusic} />
-      <MainStack.Screen name="CheckinSocial" component={CheckinSocial} />
+      <MainStack.Screen
+        name="CheckinExercise"
+        component={CheckinExercise}
+        options={{ headerMode: "none", headerShown: false }}
+      />
+      <MainStack.Screen
+        name="CheckinMusic"
+        component={CheckinMusic}
+        options={{ headerMode: "none", headerShown: false }}
+      />
+      <MainStack.Screen
+        name="CheckinSocial"
+        component={CheckinSocial}
+        options={{ headerMode: "none", headerShown: false }}
+      />
     </MainStack.Navigator>
   );
 }

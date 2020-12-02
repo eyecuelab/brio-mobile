@@ -15,9 +15,21 @@ function DashProfileStackScreen() {
         component={DashboardProfile}
         options={{ headerMode: "none", headerShown: false }}
       />
-      <ProfileStack.Screen name="CheckinExercise" component={CheckinExercise} />
-      <ProfileStack.Screen name="CheckinMusic" component={CheckinMusic} />
-      <ProfileStack.Screen name="CheckinSocial" component={CheckinSocial} />
+      <ProfileStack.Screen
+        name="CheckinExercise"
+        component={CheckinExercise}
+        options={{ headerMode: "none", headerShown: false }}
+      />
+      <ProfileStack.Screen
+        name="CheckinMusic"
+        component={CheckinMusic}
+        options={{ headerMode: "none", headerShown: false }}
+      />
+      <ProfileStack.Screen
+        name="CheckinSocial"
+        component={CheckinSocial}
+        options={{ headerMode: "none", headerShown: false }}
+      />
     </ProfileStack.Navigator>
   );
 }
