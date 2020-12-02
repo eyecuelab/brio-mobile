@@ -89,7 +89,7 @@ export const DashList = (props) => {
             padding: 20,
             margin: "auto",
           }}
-          onPress={() => navigation.navigate(`Blocker${category}`)}
+          onPress={() => navigation.navigate(`Checkin${category}`)}
           left={() => <ListImage>{image}</ListImage>}
           right={() => <ListImage>{arrow}</ListImage>}
         />

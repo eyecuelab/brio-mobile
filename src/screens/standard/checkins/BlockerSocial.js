@@ -1,14 +1,10 @@
 import React from "react";
-import { View, Text, Image, TouchableHighlight } from "react-native";
+import { TouchableHighlight } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../rdx/actions";
 import { List } from "react-native-paper";
-import styled from "styled-components/native";
-import text from "../../../styles/TextStyle.js";
-import bg from "../../../styles/ScreenStyle.js";
-import Icon from "react-native-vector-icons/FontAwesome5";
-import sArrow from "../../../../assets/Swipe_Arrow.png";
-import arrow from "../../../styles/ArrowStyle.js";
+import SvgStarIcon from "../../../svg_assets/SvgStarIcon";
+import SvgStarIconComplete from "../../../svg_assets/SvgStarIconComplete";
 
 function BlockerSocial(props) {
   const { dispatch, blockers } = props;
@@ -27,27 +23,36 @@ function BlockerSocial(props) {
               <TouchableHighlight
                 key={blocker.id}
                 activeOpacity="0.75"
-                underlayColor="gray"
+                underlayColor="#E0C45E"
                 onPress={() => {
                   completedBlocker(blocker.id);
                 }}
+                style={{ marginTop: 12, marginBottom: 24 }}
               >
                 <List.Item
                   title={blocker.description}
-                  left={(props) => (
-                    <Icon name="grin" size={30} color="#900" {...props} />
+                  titleNumberOfLines={3}
+                  left={() => (
+                    <SvgStarIcon color1={"#E0C45E"} color2={"#E0C45E"} />
                   )}
                 />
               </TouchableHighlight>
             );
           } else {
             return (
-              <TouchableHighlight key={blocker.id}>
+              <TouchableHighlight
+                key={blocker.id}
+                style={{
+                  marginTop: 12,
+                  marginBottom: 24,
+                  backgroundColor: "#D8A1D5",
+                }}
+              >
                 <List.Item
                   title={blocker.description}
-                  left={(props) => (
-                    <Icon name="check" size={30} color="#900" {...props} />
-                  )}
+                  titleNumberOfLines={3}
+                  titleStyle={{ color: "#FFFFFF" }}
+                  left={() => <SvgStarIconComplete />}
                 />
               </TouchableHighlight>
             );
@@ -57,37 +62,15 @@ function BlockerSocial(props) {
     );
   };
 
-  return (
-    <View style={bg.lime}>
-      <View>
-        <Text style={text.header}>Social</Text>
-      </View>
-      <View>
-        <Text style={text.text}>Here are 3 blockers for you</Text>
-      </View>
-      <ListContainer>{displayBlockers()}</ListContainer>
-      <View style={arrow.bottom}>
-        <Image source={sArrow} />
-      </View>
-    </View>
-  );
+  return <>{displayBlockers()}</>;
 }
-
-const ListContainer = styled.View`
-  margin-top: 36;
-  margin-bottom: 36;
-  margin-left: 36;
-  margin-right: 36;
-  justify-content: center;
-`;
-
 const mapStateToProps = (state) => {
   const stateBlockers = state.blockersState.blockers;
-  const conveBlockers = stateBlockers.filter(
+  const socialBlockers = stateBlockers.filter(
     (stateBlocker) => stateBlocker.category === "social"
   );
   return {
-    blockers: conveBlockers,
+    blockers: socialBlockers,
   };
 };
 const BlockerSocialConnected = connect(mapStateToProps)(BlockerSocial);

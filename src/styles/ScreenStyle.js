@@ -16,7 +16,7 @@ export default StyleSheet.create({
     flex: 1,
     paddingTop: 64,
     padding: 8,
-    backgroundColor: "#FFF0DF",
+    backgroundColor: "#FFFEDF",
   },
   sun: {
     flex: 1,
@@ -34,7 +34,7 @@ export default StyleSheet.create({
     flex: 1,
     paddingTop: 64,
     padding: 8,
-    backgroundColor: "#DFFFEF",
+    backgroundColor: "#F1FFDF",
   },
   robin: {
     flex: 1,

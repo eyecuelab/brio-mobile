@@ -101,7 +101,7 @@ export const DashBar = (props) => {
           </ProgressWrapper>
         </ProgressContainer>
       );
-    } else if (from === "BlockerExercise") {
+    } else if (from === "Checkin") {
       return (
         <ProgressWrapperBlockers>
           <CategoryTextBlockers style={{ color: color }}>
