@@ -1,8 +1,8 @@
 import * as React from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
-import DashMainStackScreen from "./dashboard/DashMainStackScreen";
-import DashHomeStackScreen from "./dashboard/DashHomeStackScreen";
-import DashProfileStackScreen from "./dashboard/DashProfileStackScreen";
+import DashMainStackScreen from "./dashboard/dash_navigation/DashMainStackScreen";
+import DashHomeStackScreen from "./dashboard/dash_navigation/DashHomeStackScreen";
+import DashProfileStackScreen from "./dashboard/dash_navigation/DashProfileStackScreen";
 import SvgStarMainIcon from "../../svg_assets/SvgStarMainIcon";
 import SvgHomeIcon from "../../svg_assets/SvgHomeIcon";
 import SvgProfileIcon from "../../svg_assets/SvgProfileIcon";
@@ -13,7 +13,7 @@ export default function StandardNavigation() {
   return (
     <>
       <Tab.Navigator
-        initialRouteName="dashboardHome"
+        initialRouteName="dashboardMain"
         activeColor="#757272"
         inactiveColor="#ECC08D"
         barStyle={{ backgroundColor: "#FFFFFF" }}
