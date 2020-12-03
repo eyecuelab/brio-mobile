@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, TouchableHighlight } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../rdx/actions";
@@ -15,6 +15,8 @@ function BlockerExercise(props) {
     dispatch(action);
   };
 
+  const [blocked, setBlocked] = useState(false);
+
   const displayBlockers = () => {
     return (
       <>
@@ -27,7 +29,7 @@ function BlockerExercise(props) {
                   activeOpacity="0.75"
                   underlayColor="#D8A1D5"
                   onPress={() => {
-                    completedBlocker(blocker.id);
+                    completedBlocker(blocker.id), setBlocked(true);
                   }}
                   style={{ marginTop: 12, marginBottom: 24 }}
                 >
@@ -131,9 +133,14 @@ function BlockerExercise(props) {
     return `${day} ${month} ${date}, ${year}`;
   };
 
+  const dislaySuggs = () => {
+    if (blocked) {
+      return <SuggestionExercise />;
+    }
+  };
   return (
     <>
-      <SuggestionExercise />
+      {dislaySuggs()}
       {displayBlockers()}
       {displayCompletedBlockers()}
     </>

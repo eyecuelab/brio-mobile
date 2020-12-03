@@ -6,26 +6,27 @@ import { List } from "react-native-paper";
 import SvgStarIcon from "../../../svg_assets/SvgStarIcon";
 
 export const SuggestionExercise = (props) => {
-  const { completedBlockers, dispatch } = props;
-  console.log(completedBlockers)
+  const { blockers, dispatch } = props;
+
+  console.log(blockers)
   const completedSuggestion = (blockerId, suggestionId) => {
     const action = actions.completedSuggestion(blockerId, suggestionId);
     dispatch(action);
   };
 
   const displaySuggestions = () => {
-    const completedBlockersWithSugg = completedBlockers.filter(
+    const blockersWithSugg = blockers.filter(
       (blocker) => blocker.suggestions && blocker.suggestions.length > 0
     );
-    if (completedBlockersWithSugg && completedBlockersWithSugg.length > 0) {
-      const suggestionsArray = completedBlockersWithSugg.map(
+    if (blockersWithSugg && blockersWithSugg.length > 0) {
+      const suggestionsArray = blockersWithSugg.map(
         (blocker) => blocker.suggestions
       );
       const suggestions = suggestionsArray.flat();
 
       return (
         <>
-          {completedBlockersWithSugg.map((blocker) => {
+          {blockersWithSugg.map((blocker) => {
             const nextSuggestion = suggestions.find(
               (suggestion) => blocker.id === suggestion.prerequisiteId
             );
@@ -57,7 +58,86 @@ export const SuggestionExercise = (props) => {
       );
     }
   };
-  return <>{displaySuggestions()}</>;
+
+  const displayCompletedSuggestions = () => {
+    const blockersWithSugg = blockers.filter(
+      (blocker) => blocker.suggestions && blocker.suggestions.length > 0
+    );
+    if (blockersWithSugg && blockersWithSugg.length > 0) {
+      const suggestionsArray = blockersWithSugg.map(
+        (blocker) => blocker.suggestions
+      );
+      const suggestions = suggestionsArray.flat();
+    }
+    return(
+      <>
+      {suggestions.map((suggestion) => {
+        return (
+          <TouchableHighlight
+                  key={suggestion.id}
+                  style={{
+                    marginTop: 12,
+                    marginBottom: 24,
+                    backgroundColor: "#D8A1D5",
+                  }}
+                >
+                  <List.Item
+                    key={suggestion.id}
+                    title={suggestion.description}
+                    titleNumberOfLines={3}
+                    titleStyle={{ color: "#FFFFFF" }}
+                    description={getCompletedDate(suggestion)}
+                    descriptionStyle={{ color: "#FFFFFF" }}
+                    left={() => <SvgStarIconComplete />}
+                  />
+                </TouchableHighlight>
+        )
+      })}
+      </>
+    )
+  };
+
+
+  const getCompletedDate = (blocker) => {
+    const days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    const months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "June",
+      "July",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+    const completedDate = blocker.completedAt;
+    const month = months[completedDate.getMonth()];
+    const day = days[completedDate.getDay()];
+    const date = completedDate.getDate();
+    const year = completedDate.getFullYear();
+
+    return `${day} ${month} ${date}, ${year}`;
+  };
+
+
+  return (
+    <>
+      {displaySuggestions()}
+      {displayCompletedSuggestions()}
+    </>
+  );
 };
 
 const mapStateToProps = (state) => {
@@ -65,11 +145,8 @@ const mapStateToProps = (state) => {
   const exerciseBlockers = stateBlockers.filter(
     (stateBlocker) => stateBlocker.category === "exercise"
   );
-  const completedExerciseBlockers = exerciseBlockers.filter(
-    (blocker) => blocker.completedAt !== null
-  );
   return {
-    completedBlockers: completedExerciseBlockers,
+    blockers: exerciseBlockers,
   };
 };
 
