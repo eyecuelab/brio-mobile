@@ -4,78 +4,6 @@ const initialBlockerState = {
   blockers: [],
 };
 
-const exercise_chain_1 = {
-  id: 'exercise_chain_1',
-  prerequisite_chain_id: null,
-  steps: [
-  {
-    category: "exercise",
-    id: "exerciseB1",
-    description: "Do you have running shoes?",
-    createdAt: new Date(),
-    completedAt: null,
-    points: 10,
-    color: "#D8A1D5",
-    prerequisite_step_id: null, 
-  }, {
-    category: "exercise",
-    id: "exerciseB2",
-    description: "Run 1 mile?",
-    createdAt: new Date(),
-    completedAt: null,
-    points: 10,
-    color: "#D8A1D5",
-    prerequisite_step_id: "exerciseB1", 
-  }, {
-    category: "exercise",
-    id: "exerciseB1",
-    description: "Run 3 miles?",
-    createdAt: new Date(),
-    completedAt: null,
-    points: 10,
-    color: "#D8A1D5",
-    prerequisite_step_id: "exerciseB2", 
-  }
-]
-}
-
-const exercise_chain_2 = {
-  id: 'exercise_chain_2',
-  prerequisite_chain_id: 'exercise_chain_1',
-  steps: [
-  {
-    category: "exercise",
-    id: "exerciseB1",
-    description: "Do you have running shoes?",
-    createdAt: new Date(),
-    completedAt: null,
-    points: 10,
-    color: "#D8A1D5",
-    prerequisite_step_id: null, 
-  }, {
-    category: "exercise",
-    id: "exerciseB2",
-    description: "Run 1 mile?",
-    createdAt: new Date(),
-    completedAt: null,
-    points: 10,
-    color: "#D8A1D5",
-    prerequisite_step_id: "exerciseB1", 
-  }, {
-    category: "exercise",
-    id: "exerciseB3",
-    description: "Run 3 miles?",
-    createdAt: new Date(),
-    completedAt: null,
-    points: 10,
-    color: "#D8A1D5",
-    prerequisite_step_id: "exerciseB3", 
-  }
-]
-}
-
-
-
 export default (state = initialBlockerState, action) => {
   switch (action.type) {
     case c.ADDED_BLOCKERS:
@@ -90,6 +18,7 @@ export default (state = initialBlockerState, action) => {
             completedAt: null,
             points: 10,
             color: "#D8A1D5",
+            prerequisiteId: null,
             suggestions: [
               {
                 id: "exerciseS1",
@@ -98,6 +27,7 @@ export default (state = initialBlockerState, action) => {
                 completedAt: null,
                 points: 20,
                 color: "#D8A1D5",
+                prerequisiteId: "exerciseB1",
               },
               {
                 id: "exerciseS2",
@@ -106,6 +36,7 @@ export default (state = initialBlockerState, action) => {
                 completedAt: null,
                 points: 30,
                 color: "#D8A1D5",
+                prerequisiteId: "exerciseS1",
               },
             ]
           },
@@ -219,3 +150,73 @@ export default (state = initialBlockerState, action) => {
       return state;
   }
 };
+
+// const exercise_chain_1 = {
+//   id: 'exercise_chain_1',
+//   prerequisite_chain_id: null,
+//   steps: [
+//   {
+//     category: "exercise",
+//     id: "exerciseB1",
+//     description: "Do you have running shoes?",
+//     createdAt: new Date(),
+//     completedAt: null,
+//     points: 10,
+//     color: "#D8A1D5",
+//     prerequisite_step_id: null, 
+//   }, {
+//     category: "exercise",
+//     id: "exerciseB2",
+//     description: "Run 1 mile?",
+//     createdAt: new Date(),
+//     completedAt: null,
+//     points: 10,
+//     color: "#D8A1D5",
+//     prerequisite_step_id: "exerciseB1", 
+//   }, {
+//     category: "exercise",
+//     id: "exerciseB1",
+//     description: "Run 3 miles?",
+//     createdAt: new Date(),
+//     completedAt: null,
+//     points: 10,
+//     color: "#D8A1D5",
+//     prerequisite_step_id: "exerciseB2", 
+//   }
+// ]
+// }
+
+// const exercise_chain_2 = {
+//   id: 'exercise_chain_2',
+//   prerequisite_chain_id: 'exercise_chain_1',
+//   steps: [
+//   {
+//     category: "exercise",
+//     id: "exerciseB1",
+//     description: "Do you have running shoes?",
+//     createdAt: new Date(),
+//     completedAt: null,
+//     points: 10,
+//     color: "#D8A1D5",
+//     prerequisite_step_id: null, 
+//   }, {
+//     category: "exercise",
+//     id: "exerciseB2",
+//     description: "Run 1 mile?",
+//     createdAt: new Date(),
+//     completedAt: null,
+//     points: 10,
+//     color: "#D8A1D5",
+//     prerequisite_step_id: "exerciseB1", 
+//   }, {
+//     category: "exercise",
+//     id: "exerciseB3",
+//     description: "Run 3 miles?",
+//     createdAt: new Date(),
+//     completedAt: null,
+//     points: 10,
+//     color: "#D8A1D5",
+//     prerequisite_step_id: "exerciseB3", 
+//   }
+// ]
+// }

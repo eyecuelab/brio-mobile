@@ -36,7 +36,7 @@ function BlockerExercise(props) {
                     title={blocker.description}
                     titleNumberOfLines={3}
                     left={() => (
-                      <SvgStarIcon key={blocker.id} color1={"#D8A1D5"} color2={"#FFE3E3"} />
+                      <SvgStarIcon color1={"#D8A1D5"} color2={"#FFE3E3"} />
                     )}
                   />
                 </TouchableHighlight>
@@ -71,7 +71,7 @@ function BlockerExercise(props) {
                     titleStyle={{ color: "#FFFFFF" }}
                     description={getCompletedDate(blocker)}
                     descriptionStyle={{ color: "#FFFFFF" }}
-                    left={() => <SvgStarIconComplete key={blocker.id}/>}
+                    left={() => <SvgStarIconComplete />}
                   />
                 </TouchableHighlight>
               </>

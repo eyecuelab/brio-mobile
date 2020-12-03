@@ -1,6 +1,9 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, TouchableHighlight } from "react-native";
 import { connect } from "react-redux";
+import { List } from "react-native-paper";
+import SvgStarIcon from "../../../svg_assets/SvgStarIcon";
+import SvgStarIconComplete from "../../../svg_assets/SvgStarIconComplete";
 
 export const SuggestionExercise = (props) => {
   const { completedBlockers } = props;
@@ -13,7 +16,28 @@ export const SuggestionExercise = (props) => {
       return (
         <>
           {completedBlockersWithSugg.map((blocker) => {
-            return <Text key={blocker.id}>{blocker.suggestions[0].description}</Text>;
+            return (
+              <>
+                <TouchableHighlight
+                  key={blocker.id}
+                  activeOpacity="0.75"
+                  underlayColor="#D8A1D5"
+                  onPress={() => {
+                    console.log("pressed");
+                  }}
+                  style={{ marginTop: 12, marginBottom: 24 }}
+                >
+                  <List.Item
+                    key={blocker.id}
+                    title={blocker.suggestions[0].description}
+                    titleNumberOfLines={3}
+                    left={() => (
+                      <SvgStarIcon color1={"#D8A1D5"} color2={"#FFE3E3"} />
+                    )}
+                  />
+                </TouchableHighlight>
+              </>
+            );
           })}
         </>
       );
