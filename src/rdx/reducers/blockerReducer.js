@@ -38,7 +38,7 @@ export default (state = initialBlockerState, action) => {
                 color: "#D8A1D5",
                 prerequisiteId: "exerciseS1",
               },
-            ]
+            ],
           },
           {
             category: "exercise",
@@ -48,24 +48,27 @@ export default (state = initialBlockerState, action) => {
             completedAt: null,
             points: 20,
             color: "#D8A1D5",
+            prerequisiteId: null,
             suggestions: [
               {
                 id: "exerciseS3",
-                description: "Go for a 1 mile jog",
+                description: "Go for a 1 mile bike",
                 createdAt: new Date(),
                 completedAt: null,
                 points: 20,
                 color: "#D8A1D5",
+                prerequisiteId: "exerciseB2",
               },
               {
                 id: "exerciseS4",
-                description: "Go for a 3 mile run",
+                description: "Go for a 3 mile bike",
                 createdAt: new Date(),
                 completedAt: null,
                 points: 30,
                 color: "#D8A1D5",
+                prerequisiteId: "exerciseS3",
               },
-            ]
+            ],
           },
           {
             category: "exercise",
@@ -83,7 +86,7 @@ export default (state = initialBlockerState, action) => {
             createdAt: new Date(),
             completedAt: null,
             points: 10,
-            color: "#94D7B5"
+            color: "#94D7B5",
           },
           {
             category: "music",
@@ -92,7 +95,7 @@ export default (state = initialBlockerState, action) => {
             createdAt: new Date(),
             completedAt: null,
             points: 20,
-            color: "#94D7B5"
+            color: "#94D7B5",
           },
           {
             category: "music",
@@ -101,7 +104,7 @@ export default (state = initialBlockerState, action) => {
             createdAt: new Date(),
             completedAt: null,
             points: 30,
-            color: "#94D7B5"
+            color: "#94D7B5",
           },
           {
             category: "social",
@@ -163,7 +166,7 @@ export default (state = initialBlockerState, action) => {
 //     completedAt: null,
 //     points: 10,
 //     color: "#D8A1D5",
-//     prerequisite_step_id: null, 
+//     prerequisite_step_id: null,
 //   }, {
 //     category: "exercise",
 //     id: "exerciseB2",
@@ -172,7 +175,7 @@ export default (state = initialBlockerState, action) => {
 //     completedAt: null,
 //     points: 10,
 //     color: "#D8A1D5",
-//     prerequisite_step_id: "exerciseB1", 
+//     prerequisite_step_id: "exerciseB1",
 //   }, {
 //     category: "exercise",
 //     id: "exerciseB1",
@@ -181,7 +184,7 @@ export default (state = initialBlockerState, action) => {
 //     completedAt: null,
 //     points: 10,
 //     color: "#D8A1D5",
-//     prerequisite_step_id: "exerciseB2", 
+//     prerequisite_step_id: "exerciseB2",
 //   }
 // ]
 // }
@@ -198,7 +201,7 @@ export default (state = initialBlockerState, action) => {
 //     completedAt: null,
 //     points: 10,
 //     color: "#D8A1D5",
-//     prerequisite_step_id: null, 
+//     prerequisite_step_id: null,
 //   }, {
 //     category: "exercise",
 //     id: "exerciseB2",
@@ -207,7 +210,7 @@ export default (state = initialBlockerState, action) => {
 //     completedAt: null,
 //     points: 10,
 //     color: "#D8A1D5",
-//     prerequisite_step_id: "exerciseB1", 
+//     prerequisite_step_id: "exerciseB1",
 //   }, {
 //     category: "exercise",
 //     id: "exerciseB3",
@@ -216,7 +219,7 @@ export default (state = initialBlockerState, action) => {
 //     completedAt: null,
 //     points: 10,
 //     color: "#D8A1D5",
-//     prerequisite_step_id: "exerciseB3", 
+//     prerequisite_step_id: "exerciseB3",
 //   }
 // ]
 // }

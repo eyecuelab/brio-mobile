@@ -1,9 +1,8 @@
 import React from "react";
-import { Text, TouchableHighlight } from "react-native";
+import { TouchableHighlight } from "react-native";
 import { connect } from "react-redux";
 import { List } from "react-native-paper";
 import SvgStarIcon from "../../../svg_assets/SvgStarIcon";
-import SvgStarIconComplete from "../../../svg_assets/SvgStarIconComplete";
 
 export const SuggestionExercise = (props) => {
   const { completedBlockers } = props;
@@ -13,9 +12,18 @@ export const SuggestionExercise = (props) => {
       (blocker) => blocker.suggestions && blocker.suggestions.length > 0
     );
     if (completedBlockersWithSugg && completedBlockersWithSugg.length > 0) {
+      const suggestionsArray = completedBlockersWithSugg.map(
+        (blocker) => blocker.suggestions
+      );
+      const suggestions = suggestionsArray.flat();
+
       return (
         <>
           {completedBlockersWithSugg.map((blocker) => {
+            const nextSuggestion = suggestions.find(
+              (suggestion) => blocker.id === suggestion.prerequisiteId
+            );
+
             return (
               <>
                 <TouchableHighlight
@@ -29,7 +37,7 @@ export const SuggestionExercise = (props) => {
                 >
                   <List.Item
                     key={blocker.id}
-                    title={blocker.suggestions[0].description}
+                    title={nextSuggestion.description}
                     titleNumberOfLines={3}
                     left={() => (
                       <SvgStarIcon color1={"#D8A1D5"} color2={"#FFE3E3"} />
