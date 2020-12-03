@@ -5,11 +5,19 @@ import { connect } from "react-redux";
 export const SuggestionExercise = (props) => {
   const { completedBlockers } = props;
 
-  return (
-    <>
-      <Text>SUGGESTION</Text>
-    </>
-  );
+  const displaySuggestions = () => {
+    const completedBlockersWithSugg = completedBlockers.filter(
+      (blocker) => blocker.suggestions && blocker.suggestions.length > 0
+    );
+    if (completedBlockersWithSugg && completedBlockersWithSugg.length > 0) {
+      return (
+        <>
+          <Text>Suggestion</Text>
+        </>
+      );
+    }
+  };
+  return <>{displaySuggestions()}</>;
 };
 
 const mapStateToProps = (state) => {
