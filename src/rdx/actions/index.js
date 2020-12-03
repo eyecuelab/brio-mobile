@@ -16,4 +16,9 @@ export const completedBlocker = (id) => {
     type: c.COMPLETED_BLOCKER,
     id
   };
+export const completedSugeestion = (id) => {
+  return {
+    type: c.COMPLETED_SUGGESTION,
+    id
+  };
 };

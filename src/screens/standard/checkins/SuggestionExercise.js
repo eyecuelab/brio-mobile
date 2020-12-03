@@ -1,11 +1,17 @@
 import React from "react";
 import { TouchableHighlight } from "react-native";
 import { connect } from "react-redux";
+import * as actions from "../../../rdx/actions";
 import { List } from "react-native-paper";
 import SvgStarIcon from "../../../svg_assets/SvgStarIcon";
 
 export const SuggestionExercise = (props) => {
-  const { completedBlockers } = props;
+  const { completedBlockers, dispatch } = props;
+
+  const completedSuggestion = (id) => {
+    const action = actions.completedSuggestion(id);
+    dispatch(action);
+  };
 
   const displaySuggestions = () => {
     const completedBlockersWithSugg = completedBlockers.filter(
@@ -31,7 +37,7 @@ export const SuggestionExercise = (props) => {
                   activeOpacity="0.75"
                   underlayColor="#D8A1D5"
                   onPress={() => {
-                    console.log("pressed");
+                    completedSuggestion(suggestion.prerequisiteId);
                   }}
                   style={{ marginTop: 12, marginBottom: 24 }}
                 >
