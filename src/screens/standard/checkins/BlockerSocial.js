@@ -30,10 +30,11 @@ function BlockerSocial(props) {
                 style={{ marginTop: 12, marginBottom: 24 }}
               >
                 <List.Item
+                  key={blocker.id}
                   title={blocker.description}
                   titleNumberOfLines={3}
                   left={() => (
-                    <SvgStarIcon color1={"#E0C45E"} color2={"#E0C45E"} />
+                    <SvgStarIcon key={blocker.id} color1={"#E0C45E"} color2={"#E0C45E"} />
                   )}
                 />
               </TouchableHighlight>
@@ -49,10 +50,11 @@ function BlockerSocial(props) {
                 }}
               >
                 <List.Item
+                  key={blocker.id}
                   title={blocker.description}
                   titleNumberOfLines={3}
                   titleStyle={{ color: "#FFFFFF" }}
-                  left={() => <SvgStarIconComplete />}
+                  left={() => <SvgStarIconComplete key={blocker.id}/>}
                 />
               </TouchableHighlight>
             );

@@ -33,7 +33,7 @@ function BlockerMusic(props) {
                   title={blocker.description}
                   titleNumberOfLines={3}
                   left={() => (
-                    <SvgStarIcon color1={"#94D7B5"} color2={"#DAF3E6"} />
+                    <SvgStarIcon key={blocker.id} color1={"#94D7B5"} color2={"#DAF3E6"} />
                   )}
                 />
               </TouchableHighlight>
@@ -52,7 +52,7 @@ function BlockerMusic(props) {
                   title={blocker.description}
                   titleNumberOfLines={3}
                   titleStyle={{ color: "#FFFFFF" }}
-                  left={() => <SvgStarIconComplete />}
+                  left={() => <SvgStarIconComplete key={blocker.id}/>}
                 />
               </TouchableHighlight>
             );

@@ -13,7 +13,7 @@ export const SuggestionExercise = (props) => {
       return (
         <>
           {completedBlockersWithSugg.map((blocker) => {
-            return <Text>{blocker.suggestions[0].description}</Text>;
+            return <Text key={blocker.id}>{blocker.suggestions[0].description}</Text>;
           })}
         </>
       );
