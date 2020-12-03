@@ -7,9 +7,9 @@ import SvgStarIcon from "../../../svg_assets/SvgStarIcon";
 
 export const SuggestionExercise = (props) => {
   const { completedBlockers, dispatch } = props;
-
-  const completedSuggestion = (id) => {
-    const action = actions.completedSuggestion(id);
+  console.log(completedBlockers)
+  const completedSuggestion = (blockerId, suggestionId) => {
+    const action = actions.completedSuggestion(blockerId, suggestionId);
     dispatch(action);
   };
 
@@ -37,7 +37,7 @@ export const SuggestionExercise = (props) => {
                   activeOpacity="0.75"
                   underlayColor="#D8A1D5"
                   onPress={() => {
-                    completedSuggestion(suggestion.prerequisiteId);
+                    completedSuggestion(blocker.id, nextSuggestion.id);
                   }}
                   style={{ marginTop: 12, marginBottom: 24 }}
                 >

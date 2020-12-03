@@ -6,7 +6,7 @@ const initialBlockerState = {
 
 export default (state = initialBlockerState, action) => {
   switch (action.type) {
-    case c.ADDED_BLOCKERS:
+    case c.ADDED_BLOCKERS: {
       return {
         ...state,
         blockers: [
@@ -135,8 +135,9 @@ export default (state = initialBlockerState, action) => {
           },
         ],
       };
+    }
 
-    case c.COMPLETED_BLOCKER:
+    case c.COMPLETED_BLOCKER: {
       const currentState = { ...state };
       const { blockers } = currentState;
       let updatedBlocker = blockers.find((blocker) => blocker.id === action.id);
@@ -148,6 +149,35 @@ export default (state = initialBlockerState, action) => {
         ...currentState,
         blockers: [...newBlockers, updatedBlocker],
       };
+    }
+
+    case c.COMPLETED_SUGGESTION: {
+      const currentState = { ...state };
+      const { blockers } = currentState;
+      let blocker = blockers.find((blocker) => blocker.id === action.blockerId);
+      const suggestions = blocker.suggestions;
+      let suggestion = suggestions.find(
+        (suggestion) => suggestion.id === action.suggestionId
+      );
+
+      suggestion = { ...suggestion, completedAt: new Date() };
+
+      const siblingSuggestions = suggestions.filter(
+        (suggestion) => suggestion.id !== action.suggestionId
+      );
+      blocker = {
+        ...blocker,
+        suggestions: [...siblingSuggestions, suggestion],
+      };
+
+      const siblingBlockers = blockers.filter(
+        (blocker) => blocker.id !== action.blockerId
+      );
+      return {
+        ...currentState,
+        blockers: [...siblingBlockers, blocker],
+      };
+    }
 
     default:
       return state;

@@ -16,9 +16,11 @@ export const completedBlocker = (id) => {
     type: c.COMPLETED_BLOCKER,
     id
   };
-export const completedSugeestion = (id) => {
+};
+export const completedSuggestion = (blockerId, suggestionId) => {
   return {
     type: c.COMPLETED_SUGGESTION,
-    id
+    blockerId,
+    suggestionId,
   };
 };
