@@ -12,7 +12,9 @@ export const SuggestionExercise = (props) => {
     if (completedBlockersWithSugg && completedBlockersWithSugg.length > 0) {
       return (
         <>
-          <Text>Suggestion</Text>
+          {completedBlockersWithSugg.map((blocker) => {
+            return <Text>{blocker.suggestions[0].description}</Text>;
+          })}
         </>
       );
     }
