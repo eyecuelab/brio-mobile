@@ -9,7 +9,7 @@ import SvgStarIconComplete from "../../../svg_assets/SvgStarIconComplete";
 function BlockerExercise(props) {
   const { dispatch, blockers } = props;
 
-  console.log(blockers)
+  console.log(blockers);
 
   const completedBlocker = (id) => {
     const action = actions.completedBlocker(id);
@@ -27,43 +27,44 @@ function BlockerExercise(props) {
         {blockers.map((blocker) => {
           if (blocker.completedAt === null) {
             return (
-              <>
-                <TouchableHighlight
+              <TouchableHighlight
+                key={blocker.id}
+                activeOpacity="0.75"
+                underlayColor="#D8A1D5"
+                onPress={() => {
+                  completedBlocker(blocker.id);
+                }}
+                style={{ marginTop: 12, marginBottom: 24 }}
+              >
+                <List.Item
                   key={blocker.id}
-                  activeOpacity="0.75"
-                  underlayColor="#D8A1D5"
-                  onPress={() => {
-                    completedBlocker(blocker.id);
-                  }}
-                  style={{ marginTop: 12, marginBottom: 24 }}
-                >
-                  <List.Item
-                    key={blocker.id}
-                    title={blocker.description}
-                    titleNumberOfLines={3}
-                    left={() => (
-                      <SvgStarIcon color1={"#D8A1D5"} color2={"#FFE3E3"} />
-                    )}
-                  />
-                </TouchableHighlight>
-              </>
+                  title={blocker.description}
+                  titleNumberOfLines={3}
+                  left={() => (
+                    <SvgStarIcon color1={"#D8A1D5"} color2={"#FFE3E3"} />
+                  )}
+                />
+              </TouchableHighlight>
             );
           } else {
-            if (blocker.suggestions.length > 0) {
+            const uncompletedSuggestion = blocker.suggestions.find(
+              (suggestion) => suggestion.completedAt === null
+            );
+            if (uncompletedSuggestion) {
               return (
                 <>
                   <TouchableHighlight
-                    key={blocker.suggestions[0].id}
+                    key={uncompletedSuggestion.id}
                     activeOpacity="0.75"
                     underlayColor="#D8A1D5"
                     onPress={() => {
-                      completedSuggestion(blocker.id, blocker.suggestions[0].id);
+                      completedSuggestion(blocker.id, uncompletedSuggestion.id);
                     }}
                     style={{ marginTop: 12, marginBottom: 24 }}
                   >
                     <List.Item
-                      key={blocker.suggestions[0].id}
-                      title={blocker.suggestions[0].description}
+                      key={uncompletedSuggestion.id}
+                      title={uncompletedSuggestion.description}
                       titleNumberOfLines={3}
                       left={() => (
                         <SvgStarIcon color1={"#D8A1D5"} color2={"#FFE3E3"} />
@@ -101,6 +102,40 @@ function BlockerExercise(props) {
                     titleNumberOfLines={3}
                     titleStyle={{ color: "#FFFFFF" }}
                     description={getCompletedDate(blocker)}
+                    descriptionStyle={{ color: "#FFFFFF" }}
+                    left={() => <SvgStarIconComplete />}
+                  />
+                </TouchableHighlight>
+                {displayCompletedSuggestions(blocker.suggestions)}
+              </>
+            );
+          }
+        })}
+      </>
+    );
+  };
+
+  const displayCompletedSuggestions = (suggestions) => {
+    return (
+      <>
+        {suggestions.map((suggestion) => {
+          if (suggestion.completedAt !== null) {
+            return (
+              <>
+                <TouchableHighlight
+                  key={suggestion.id}
+                  style={{
+                    marginTop: 12,
+                    marginBottom: 24,
+                    backgroundColor: "#D8A1D5",
+                  }}
+                >
+                  <List.Item
+                    key={suggestion.id}
+                    title={suggestion.description}
+                    titleNumberOfLines={3}
+                    titleStyle={{ color: "#FFFFFF" }}
+                    description={getCompletedDate(suggestion)}
                     descriptionStyle={{ color: "#FFFFFF" }}
                     left={() => <SvgStarIconComplete />}
                   />
