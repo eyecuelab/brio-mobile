@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, TouchableHighlight } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../rdx/actions";
 import { List } from "react-native-paper";
 import SvgStarIcon from "../../../svg_assets/SvgStarIcon";
 import SvgStarIconComplete from "../../../svg_assets/SvgStarIconComplete";
-import SuggestionExercise from "./SuggestionExercise";
 
 function BlockerExercise(props) {
   const { dispatch, blockers } = props;
@@ -14,8 +13,6 @@ function BlockerExercise(props) {
     const action = actions.completedBlocker(id);
     dispatch(action);
   };
-
-  const [blocked, setBlocked] = useState(false);
 
   const displayBlockers = () => {
     return (
@@ -29,13 +26,36 @@ function BlockerExercise(props) {
                   activeOpacity="0.75"
                   underlayColor="#D8A1D5"
                   onPress={() => {
-                    completedBlocker(blocker.id), setBlocked(true);
+                    completedBlocker(blocker.id);
                   }}
                   style={{ marginTop: 12, marginBottom: 24 }}
                 >
                   <List.Item
                     key={blocker.id}
                     title={blocker.description}
+                    titleNumberOfLines={3}
+                    left={() => (
+                      <SvgStarIcon color1={"#D8A1D5"} color2={"#FFE3E3"} />
+                    )}
+                  />
+                </TouchableHighlight>
+              </>
+            );
+          } else {
+            return (
+              <>
+                <TouchableHighlight
+                  key={blocker.suggestions[0].id}
+                  activeOpacity="0.75"
+                  underlayColor="#D8A1D5"
+                  // onPress={() => {
+                  //   completedBlocker(blocker.suggestions[0].id);
+                  // }}
+                  style={{ marginTop: 12, marginBottom: 24 }}
+                >
+                  <List.Item
+                    key={blocker.suggestions[0].id}
+                    title={blocker.suggestions[0].description}
                     titleNumberOfLines={3}
                     left={() => (
                       <SvgStarIcon color1={"#D8A1D5"} color2={"#FFE3E3"} />
@@ -100,52 +120,47 @@ function BlockerExercise(props) {
     }
   };
 
-  const getCompletedDate = (blocker) => {
-    const days = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ];
-    const months = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "June",
-      "July",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ];
-    const completedDate = blocker.completedAt;
-    const month = months[completedDate.getMonth()];
-    const day = days[completedDate.getDay()];
-    const date = completedDate.getDate();
-    const year = completedDate.getFullYear();
-
-    return `${day} ${month} ${date}, ${year}`;
-  };
-
-  const displaySuggs = () => {
-    if (blocked) {
-      return <SuggestionExercise />;
-    }
-  };
   return (
     <>
-      {displaySuggs()}
       {displayBlockers()}
       {displayCompletedBlockers()}
     </>
   );
 }
+
+const getCompletedDate = (blocker) => {
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "June",
+    "July",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  const completedDate = blocker.completedAt;
+  const month = months[completedDate.getMonth()];
+  const day = days[completedDate.getDay()];
+  const date = completedDate.getDate();
+  const year = completedDate.getFullYear();
+
+  return `${day} ${month} ${date}, ${year}`;
+};
+
 const mapStateToProps = (state) => {
   const stateBlockers = state.blockersState.blockers;
   const exerciseBlockers = stateBlockers.filter(
