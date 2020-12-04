@@ -74,13 +74,13 @@ export const PieChart = (props) => {
       </>
     );
   };
+
   const exercisePts = () => {
     let currentExercisePts = 0;
 
     const completedBlockers = exerciseBlockers.filter(
       (blocker) => blocker.completedAt !== null
     );
-    
     if (completedBlockers && completedBlockers.length > 0) {
       const currentExercisePtsArr = completedBlockers.map(
         (completedBlocker) => {
@@ -89,22 +89,27 @@ export const PieChart = (props) => {
       );
       currentExercisePts = currentExercisePtsArr.reduce((acc, cur) => {
         return acc + cur;
-      });  
-    }
+      });
 
-    const completedSuggestions = completedBlockers.filter((suggestion) => suggestion.completedAt !== null)
-    
-    if (completedSuggestions && completedSuggestions.length > 0) {
-      const currentSuggestionPtsArr = completedSuggestions.map(
-        (completedSuggestion) => {
-          return completedSuggestion.points;
-        }
-      );
-      currentExercisePts = currentSuggestionPtsArr.reduce((acc, cur) => {
-        return acc + cur;
-      });  
+      const completedSuggestions = completedBlockers
+        .map((blocker) =>
+          blocker.suggestions.filter(
+            (suggestion) => suggestion.completedAt !== null
+          )
+        )
+        .flat();
+
+      if (completedSuggestions && completedSuggestions.length > 0) {
+        const completedSuggestionsPts = completedSuggestions.map(
+          (completedBlocker) => {
+            return completedBlocker.points;
+          }
+        );
+        currentExercisePts += completedSuggestionsPts.reduce((acc, cur) => {
+          return acc + cur;
+        });
+      }
     }
-    
     return currentExercisePts;
   };
 
