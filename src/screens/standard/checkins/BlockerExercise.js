@@ -9,8 +9,6 @@ import SvgStarIconComplete from "../../../svg_assets/SvgStarIconComplete";
 function BlockerExercise(props) {
   const { dispatch, blockers } = props;
 
-  console.log(blockers);
-
   const completedBlocker = (id) => {
     const action = actions.completedBlocker(id);
     dispatch(action);

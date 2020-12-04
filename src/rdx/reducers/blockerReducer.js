@@ -89,6 +89,7 @@ export default (state = initialBlockerState, action) => {
             completedAt: null,
             points: 10,
             color: "#94D7B5",
+            suggestions: [],
           },
           {
             category: "music",
@@ -98,6 +99,7 @@ export default (state = initialBlockerState, action) => {
             completedAt: null,
             points: 20,
             color: "#94D7B5",
+            suggestions: [],
           },
           {
             category: "music",
@@ -107,6 +109,7 @@ export default (state = initialBlockerState, action) => {
             completedAt: null,
             points: 30,
             color: "#94D7B5",
+            suggestions: [],
           },
           {
             category: "social",
@@ -116,6 +119,7 @@ export default (state = initialBlockerState, action) => {
             completedAt: null,
             points: 10,
             color: "#E0C45E",
+            suggestions: [],
           },
           {
             category: "social",
@@ -125,6 +129,7 @@ export default (state = initialBlockerState, action) => {
             completedAt: null,
             points: 20,
             color: "#E0C45E",
+            suggestions: [],
           },
           {
             category: "social",
@@ -134,6 +139,7 @@ export default (state = initialBlockerState, action) => {
             completedAt: null,
             points: 30,
             color: "#E0C45E",
+            suggestions: [],
           },
         ],
       };
