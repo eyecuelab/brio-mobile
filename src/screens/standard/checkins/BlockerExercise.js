@@ -9,9 +9,16 @@ import SvgStarIconComplete from "../../../svg_assets/SvgStarIconComplete";
 function BlockerExercise(props) {
   const { dispatch, blockers } = props;
 
+  console.log(blockers)
+
   const completedBlocker = (id) => {
     const action = actions.completedBlocker(id);
     dispatch(action);
+  };
+
+  const completedSuggestion = (blockerId, suggestionId) => {
+    const action2 = actions.completedSuggestion(blockerId, suggestionId);
+    dispatch(action2);
   };
 
   const displayBlockers = () => {
@@ -49,9 +56,9 @@ function BlockerExercise(props) {
                     key={blocker.suggestions[0].id}
                     activeOpacity="0.75"
                     underlayColor="#D8A1D5"
-                    // onPress={() => {
-                    //   completedBlocker(blocker.suggestions[0].id);
-                    // }}
+                    onPress={() => {
+                      completedSuggestion(blocker.id, blocker.suggestions[0].id);
+                    }}
                     style={{ marginTop: 12, marginBottom: 24 }}
                   >
                     <List.Item
