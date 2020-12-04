@@ -4,23 +4,22 @@ import { connect } from "react-redux";
 import * as actions from "../../../rdx/actions";
 import { List } from "react-native-paper";
 import SvgStarIcon from "../../../svg_assets/SvgStarIcon";
+import SvgStarIconComplete from "../../../svg_assets/SvgStarIconComplete";
 
 export const SuggestionExercise = (props) => {
-  const { blockers, dispatch } = props;
+  const { blockers, suggestions, dispatch } = props;
 
-  console.log(blockers)
   const completedSuggestion = (blockerId, suggestionId) => {
     const action = actions.completedSuggestion(blockerId, suggestionId);
     dispatch(action);
   };
 
   const displaySuggestions = () => {
-    const blockersWithSugg = blockers.filter(
-      (blocker) => blocker.suggestions && blocker.suggestions.length > 0
-    );
-    if (blockersWithSugg && blockersWithSugg.length > 0) {
-      const suggestionsArray = blockersWithSugg.map(
-        (blocker) => blocker.suggestions
+    
+    const completedSuggestions = suggestions.filter((suggestion) => suggestion.completedAt !== null)
+    if (completedSuggestions && completedSuggestions.length > 0) {
+      const suggestionsArray = suggestions.map(
+        (suggestion) => blocker.suggestions
       );
       const suggestions = suggestionsArray.flat();
 
@@ -30,7 +29,7 @@ export const SuggestionExercise = (props) => {
             const nextSuggestion = suggestions.find(
               (suggestion) => blocker.id === suggestion.prerequisiteId
             );
-
+            console.log("NEXT SUGGESTION", nextSuggestion)
             return (
               <>
                 <TouchableHighlight
@@ -38,6 +37,7 @@ export const SuggestionExercise = (props) => {
                   activeOpacity="0.75"
                   underlayColor="#D8A1D5"
                   onPress={() => {
+                    console.log(nextSuggestion.id)
                     completedSuggestion(blocker.id, nextSuggestion.id);
                   }}
                   style={{ marginTop: 12, marginBottom: 24 }}
@@ -68,12 +68,16 @@ export const SuggestionExercise = (props) => {
         (blocker) => blocker.suggestions
       );
       const suggestions = suggestionsArray.flat();
-    }
-    return(
-      <>
-      {suggestions.map((suggestion) => {
+      const completedSuggestions = suggestions.filter(
+        (suggestion) => suggestion.completedAt !== null
+      );
+      if (completedSuggestions && completedSuggestions.length > 0) {
         return (
-          <TouchableHighlight
+          <>
+            {console.log("COMPLETED SUGGESTIONS", completedSuggestions)}
+            {completedSuggestions.map((suggestion) => {
+              return (
+                <TouchableHighlight
                   key={suggestion.id}
                   style={{
                     marginTop: 12,
@@ -91,14 +95,15 @@ export const SuggestionExercise = (props) => {
                     left={() => <SvgStarIconComplete />}
                   />
                 </TouchableHighlight>
-        )
-      })}
-      </>
-    )
+              );
+            })}
+          </>
+        );
+      }
+    }
   };
 
-
-  const getCompletedDate = (blocker) => {
+  const getCompletedDate = (suggestion) => {
     const days = [
       "Sunday",
       "Monday",
@@ -122,7 +127,8 @@ export const SuggestionExercise = (props) => {
       "Nov",
       "Dec",
     ];
-    const completedDate = blocker.completedAt;
+
+    const completedDate = suggestion.completedAt;
     const month = months[completedDate.getMonth()];
     const day = days[completedDate.getDay()];
     const date = completedDate.getDate();
@@ -130,7 +136,6 @@ export const SuggestionExercise = (props) => {
 
     return `${day} ${month} ${date}, ${year}`;
   };
-
 
   return (
     <>
@@ -144,9 +149,12 @@ const mapStateToProps = (state) => {
   const stateBlockers = state.blockersState.blockers;
   const exerciseBlockers = stateBlockers.filter(
     (stateBlocker) => stateBlocker.category === "exercise"
-  );
+    );
+    const blockersWithSuggs = exerciseBlockers.filter((blocker) => blocker.suggestions)
+    const suggestions = blockersWithSuggs.map((sugg) => sugg.suggestions).flat()
   return {
     blockers: exerciseBlockers,
+    suggestions: suggestions,
   };
 };
 

@@ -133,14 +133,14 @@ function BlockerExercise(props) {
     return `${day} ${month} ${date}, ${year}`;
   };
 
-  const dislaySuggs = () => {
+  const displaySuggs = () => {
     if (blocked) {
       return <SuggestionExercise />;
     }
   };
   return (
     <>
-      {dislaySuggs()}
+      {displaySuggs()}
       {displayBlockers()}
       {displayCompletedBlockers()}
     </>
