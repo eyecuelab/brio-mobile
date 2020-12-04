@@ -42,28 +42,30 @@ function BlockerExercise(props) {
               </>
             );
           } else {
-            return (
-              <>
-                <TouchableHighlight
-                  key={blocker.suggestions[0].id}
-                  activeOpacity="0.75"
-                  underlayColor="#D8A1D5"
-                  // onPress={() => {
-                  //   completedBlocker(blocker.suggestions[0].id);
-                  // }}
-                  style={{ marginTop: 12, marginBottom: 24 }}
-                >
-                  <List.Item
+            if (blocker.suggestions.length > 0) {
+              return (
+                <>
+                  <TouchableHighlight
                     key={blocker.suggestions[0].id}
-                    title={blocker.suggestions[0].description}
-                    titleNumberOfLines={3}
-                    left={() => (
-                      <SvgStarIcon color1={"#D8A1D5"} color2={"#FFE3E3"} />
-                    )}
-                  />
-                </TouchableHighlight>
-              </>
-            );
+                    activeOpacity="0.75"
+                    underlayColor="#D8A1D5"
+                    // onPress={() => {
+                    //   completedBlocker(blocker.suggestions[0].id);
+                    // }}
+                    style={{ marginTop: 12, marginBottom: 24 }}
+                  >
+                    <List.Item
+                      key={blocker.suggestions[0].id}
+                      title={blocker.suggestions[0].description}
+                      titleNumberOfLines={3}
+                      left={() => (
+                        <SvgStarIcon color1={"#D8A1D5"} color2={"#FFE3E3"} />
+                      )}
+                    />
+                  </TouchableHighlight>
+                </>
+              );
+            }
           }
         })}
       </>

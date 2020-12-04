@@ -78,6 +78,8 @@ export default (state = initialBlockerState, action) => {
             completedAt: null,
             points: 30,
             color: "#D8A1D5",
+            prerequisiteId: null,
+            suggestions: [],
           },
           {
             category: "music",
