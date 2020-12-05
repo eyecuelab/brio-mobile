@@ -29,6 +29,8 @@ export const DashBar = (props) => {
   const totalCatPts = totalCatBlockerPts + totalCatSuggestionPts;
 
   const showProgressBarInDashboardHome = () => {
+    let currentCatPoints = 0;
+
     const completedBlockers = catBlockers.filter(
       (blocker) => blocker.completedAt !== null
     );
@@ -36,9 +38,28 @@ export const DashBar = (props) => {
       const currentCatPointsArr = completedBlockers.map((completedBlocker) => {
         return completedBlocker.points;
       });
-      const currentCatPoints = currentCatPointsArr.reduce((acc, cur) => {
+      currentCatPoints = currentCatPointsArr.reduce((acc, cur) => {
         return acc + cur;
       });
+
+      const completedSuggestions = completedBlockers
+        .map((blocker) =>
+          blocker.suggestions.filter(
+            (suggestion) => suggestion.completedAt !== null
+          )
+        )
+        .flat();
+
+      if (completedSuggestions && completedSuggestions.length > 0) {
+        const completedSuggestionsPts = completedSuggestions.map(
+          (completedBlocker) => {
+            return completedBlocker.points;
+          }
+        );
+        currentCatPoints += completedSuggestionsPts.reduce((acc, cur) => {
+          return acc + cur;
+        });
+      }
       return (
         <>
           <ProgressBar
@@ -66,17 +87,6 @@ export const DashBar = (props) => {
   };
 
   const showProgressBarInBlockers = () => {
-    // const completedBlockers = catBlockers.filter(
-    //   (blocker) => blocker.completedAt !== null
-    // );
-    // if (completedBlockers && completedBlockers.length > 0) {
-    //   const currentCatPointsArr = completedBlockers.map((completedBlocker) => {
-    //     return completedBlocker.points;
-    //   });
-    //   const currentCatPoints = currentCatPointsArr.reduce((acc, cur) => {
-    //     return acc + cur;
-    //   });
-
     let currentCatPoints = 0;
 
     const completedBlockers = catBlockers.filter(
