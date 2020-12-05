@@ -20,7 +20,7 @@ export const CheckinExercise = () => {
             <ListHeaderText>TAP TO COMPLETE</ListHeaderText>
             <ListHeaderText>REFRESH</ListHeaderText>
           </ListHeaderTextWrapper>
-          <BlockerExercise category={"exercise"} color={"#D8A1D5"} />
+          <BlockerExercise category={"exercise"} color1={"#D8A1D5"} color2={"#FFE3E3"} />
         </ListContainer>
       </Container>
     </ScrollView>

@@ -7,7 +7,7 @@ import SvgStarIcon from "../../../svg_assets/SvgStarIcon";
 import SvgStarIconComplete from "../../../svg_assets/SvgStarIconComplete";
 
 function Blocker(props) {
-  const { dispatch, blockers, category, color } = props;
+  const { dispatch, blockers, color1, color2 } = props;
 
   const completedBlocker = (id) => {
     const action = actions.completedBlocker(id);
@@ -28,7 +28,7 @@ function Blocker(props) {
               <TouchableHighlight
                 key={blocker.id}
                 activeOpacity="0.75"
-                underlayColor={color}
+                underlayColor={color1}
                 onPress={() => {
                   completedBlocker(blocker.id);
                 }}
@@ -39,7 +39,7 @@ function Blocker(props) {
                   title={blocker.description}
                   titleNumberOfLines={3}
                   left={() => (
-                    <SvgStarIcon color1={`${color}`} color2={"#FFE3E3"} />
+                    <SvgStarIcon color1={`${color1}`} color2={`${color2}`} />
                   )}
                 />
               </TouchableHighlight>
@@ -54,7 +54,7 @@ function Blocker(props) {
                   <TouchableHighlight
                     key={uncompletedSuggestion.id}
                     activeOpacity="0.75"
-                    underlayColor={color}
+                    underlayColor={color1}
                     onPress={() => {
                       completedSuggestion(blocker.id, uncompletedSuggestion.id);
                     }}
@@ -65,7 +65,10 @@ function Blocker(props) {
                       title={uncompletedSuggestion.description}
                       titleNumberOfLines={3}
                       left={() => (
-                        <SvgStarIcon color1={`${color}`} color2={"#FFE3E3"} />
+                        <SvgStarIcon
+                          color1={`${color1}`}
+                          color2={`${color2}`}
+                        />
                       )}
                     />
                   </TouchableHighlight>
@@ -91,7 +94,7 @@ function Blocker(props) {
                   style={{
                     marginTop: 12,
                     marginBottom: 24,
-                    backgroundColor: `${color}`,
+                    backgroundColor: `${color1}`,
                   }}
                 >
                   <List.Item
@@ -125,7 +128,7 @@ function Blocker(props) {
                   style={{
                     marginTop: 12,
                     marginBottom: 24,
-                    backgroundColor: `${color}`,
+                    backgroundColor: `${color1}`,
                   }}
                 >
                   <List.Item
@@ -154,7 +157,7 @@ function Blocker(props) {
       return (
         <View
           style={{
-            borderBottomColor: `${color}`,
+            borderBottomColor: `${color1}`,
             borderBottomWidth: 3,
           }}
         />
