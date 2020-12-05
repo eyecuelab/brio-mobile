@@ -20,7 +20,6 @@ export const CheckinMusic = () => {
             <ListHeaderText>REFRESH</ListHeaderText>
           </ListHeaderTextWrapper>
           <Blocker category={"music"} color1={"#94D7B5"} color2={"#DAF3E6"}/>
-          
         </ListContainer>
       </Container>
     </ScrollView>

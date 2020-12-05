@@ -189,7 +189,7 @@ export default (state = initialBlockerState, action) => {
           },
           {
             category: "social",
-            id: "convB1",
+            id: "socialB1",
             description: "Do you...?",
             createdAt: new Date(),
             completedAt: null,
