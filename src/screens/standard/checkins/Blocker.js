@@ -7,7 +7,11 @@ import SvgStarIcon from "../../../svg_assets/SvgStarIcon";
 import SvgStarIconComplete from "../../../svg_assets/SvgStarIconComplete";
 
 function Blocker(props) {
-  const { dispatch, blockers, color1, color2 } = props;
+  const { dispatch, blockers, category, color1, color2 } = props;
+
+  const catBlockers = blockers.filter(
+    (blocker) => blocker.category === `${category}`
+  );
 
   const completedBlocker = (id) => {
     const action = actions.completedBlocker(id);
@@ -22,7 +26,7 @@ function Blocker(props) {
   const displayBlockers = () => {
     return (
       <>
-        {blockers.map((blocker) => {
+        {catBlockers.map((blocker) => {
           if (blocker.completedAt === null) {
             return (
               <TouchableHighlight
@@ -85,7 +89,7 @@ function Blocker(props) {
     return (
       <>
         {displayDivider()}
-        {blockers.map((blocker) => {
+        {catBlockers.map((blocker) => {
           if (blocker.completedAt !== null) {
             return (
               <>
@@ -207,10 +211,7 @@ const getCompletedDate = (blocker) => {
 };
 
 const mapStateToProps = (state) => {
-  const stateBlockers = state.blockersState.blockers;
-  const blockers = stateBlockers.filter(
-    (stateBlocker) => stateBlocker.category === `${category}`
-  );
+  const blockers = state.blockersState.blockers;
   return {
     blockers: blockers,
   };
