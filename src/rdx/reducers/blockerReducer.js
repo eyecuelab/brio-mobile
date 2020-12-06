@@ -4,8 +4,8 @@ const initialBlockerState = {
   blockers: [],
   currentPoints: {
     exercise: 0,
+    music: 0,
     social: 0,
-    musics: 0,
   },
 };
 
@@ -15,8 +15,8 @@ export default (state = initialBlockerState, action) => {
       return {
         currentPoints: {
           exercise: 0,
+          music: 0,
           social: 0,
-          musics: 0,
         },
         blockers: [
           {
@@ -90,7 +90,7 @@ export default (state = initialBlockerState, action) => {
             prerequisiteId: null,
             suggestions: [
               {
-                id: "exerciseS4",
+                id: "exerciseS5",
                 description: "Do 15 mins yoga",
                 createdAt: new Date(),
                 completedAt: null,
@@ -99,13 +99,13 @@ export default (state = initialBlockerState, action) => {
                 prerequisiteId: "exerciseB3",
               },
               {
-                id: "exerciseS5",
+                id: "exerciseS6",
                 description: "Do 30 mins yoga",
                 createdAt: new Date(),
                 completedAt: null,
                 points: 30,
                 color: "#D8A1D5",
-                prerequisiteId: "exerciseS4",
+                prerequisiteId: "exerciseS5",
               },
             ],
           },
@@ -227,7 +227,7 @@ export default (state = initialBlockerState, action) => {
           },
           {
             category: "social",
-            id: "convB2",
+            id: "socialB2",
             description: "Are you...?",
             createdAt: new Date(),
             completedAt: null,
@@ -256,7 +256,7 @@ export default (state = initialBlockerState, action) => {
           },
           {
             category: "social",
-            id: "convB3",
+            id: "socialB3",
             description: "Do you have...?",
             createdAt: new Date(),
             completedAt: null,
@@ -313,29 +313,39 @@ export default (state = initialBlockerState, action) => {
 
     case c.COMPLETED_SUGGESTION: {
       const currentState = { ...state };
-      const { blockers } = currentState;
-      let blocker = blockers.find((blocker) => blocker.id === action.blockerId);
-      const suggestions = blocker.suggestions;
-      let suggestion = suggestions.find(
+      // updating suggestion with completedAt
+      const { blockers, currentPoints } = currentState;
+      let updatedBlocker = blockers.find(
+        (blocker) => blocker.id === action.blockerId
+      );
+      const suggestions = updatedBlocker.suggestions;
+      let updatedSuggestion = suggestions.find(
         (suggestion) => suggestion.id === action.suggestionId
       );
+      updatedSuggestion = { ...updatedSuggestion, completedAt: new Date() };
 
-      suggestion = { ...suggestion, completedAt: new Date() };
-
-      const siblingSuggestions = suggestions.filter(
+      const otherSuggestions = suggestions.filter(
         (suggestion) => suggestion.id !== action.suggestionId
       );
-      blocker = {
-        ...blocker,
-        suggestions: [...siblingSuggestions, suggestion],
+      updatedBlocker = {
+        ...updatedBlocker,
+        suggestions: [...otherSuggestions, updatedSuggestion],
       };
-
-      const siblingBlockers = blockers.filter(
+      const otherBlockers = blockers.filter(
         (blocker) => blocker.id !== action.blockerId
       );
+      const updatedBlockers = [...otherBlockers, updatedBlocker];
+      // updating currentPoints with category
+      const currentPointsForCateogry = currentPoints[updatedBlocker.category];
+      const updatedPoints = {
+        ...currentPoints,
+        [updatedBlocker.category]:
+          currentPointsForCateogry + updatedSuggestion.points,
+      };
       return {
         ...currentState,
-        blockers: [...siblingBlockers, blocker],
+        blockers: updatedBlockers,
+        currentPoints: updatedPoints,
       };
     }
 

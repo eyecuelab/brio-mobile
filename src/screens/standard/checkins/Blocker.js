@@ -124,7 +124,6 @@ function Blocker(props) {
         {suggestions.map((suggestion) => {
           if (suggestion.completedAt !== null) {
             return (
-              <>
                 <TouchableHighlight
                   key={suggestion.id}
                   style={{
@@ -143,7 +142,6 @@ function Blocker(props) {
                     left={() => <SvgStarIconComplete />}
                   />
                 </TouchableHighlight>
-              </>
             );
           }
         })}

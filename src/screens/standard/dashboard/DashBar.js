@@ -5,6 +5,7 @@ import styled from "styled-components/native";
 
 export const DashBar = (props) => {
   const { allBlockers, category, color, image, from } = props;
+
   const catBlockers = allBlockers.filter(
     (blocker) => blocker.category === category.toLowerCase()
   );
