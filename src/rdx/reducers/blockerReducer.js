@@ -2,13 +2,22 @@ import * as c from "../actions/types";
 
 const initialBlockerState = {
   blockers: [],
+  currentPoints: {
+    exercise: 0,
+    social: 0,
+    musics: 0,
+  },
 };
 
 export default (state = initialBlockerState, action) => {
   switch (action.type) {
     case c.ADDED_BLOCKERS: {
       return {
-        ...state,
+        currentPoints: {
+          exercise: 0,
+          social: 0,
+          musics: 0,
+        },
         blockers: [
           {
             category: "exercise",
@@ -280,15 +289,25 @@ export default (state = initialBlockerState, action) => {
 
     case c.COMPLETED_BLOCKER: {
       const currentState = { ...state };
-      const { blockers } = currentState;
+      // updating blocker with completedAt
+      const { blockers, currentPoints } = currentState;
       let updatedBlocker = blockers.find((blocker) => blocker.id === action.id);
       updatedBlocker = { ...updatedBlocker, completedAt: new Date() };
-      const newBlockers = blockers.filter(
+      const otherBlockers = blockers.filter(
         (blocker) => blocker.id !== action.id
       );
+      const updatedBlockers = [...otherBlockers, updatedBlocker];
+      // updating currentPoints with category
+      const currentPointsForCateogry = currentPoints[updatedBlocker.category];
+      const updatedPoints = {
+        ...currentPoints,
+        [updatedBlocker.category]:
+          currentPointsForCateogry + updatedBlocker.points,
+      };
       return {
         ...currentState,
-        blockers: [...newBlockers, updatedBlocker],
+        blockers: updatedBlockers,
+        currentPoints: updatedPoints,
       };
     }
 

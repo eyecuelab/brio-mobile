@@ -42,6 +42,7 @@ export const DashBar = (props) => {
         return acc + cur;
       });
 
+
       const completedSuggestions = completedBlockers
         .map((blocker) =>
           blocker.suggestions.filter(
@@ -49,7 +50,7 @@ export const DashBar = (props) => {
           )
         )
         .flat();
-
+ 
       if (completedSuggestions && completedSuggestions.length > 0) {
         const completedSuggestionsPts = completedSuggestions.map(
           (completedBlocker) => {

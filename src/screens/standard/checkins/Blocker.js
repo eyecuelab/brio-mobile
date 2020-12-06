@@ -54,7 +54,6 @@ function Blocker(props) {
             );
             if (uncompletedSuggestion) {
               return (
-                <>
                   <TouchableHighlight
                     key={uncompletedSuggestion.id}
                     activeOpacity="0.75"
@@ -76,7 +75,6 @@ function Blocker(props) {
                       )}
                     />
                   </TouchableHighlight>
-                </>
               );
             }
           }
