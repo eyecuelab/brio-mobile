@@ -4,7 +4,7 @@ import { ProgressBar } from "react-native-paper";
 import styled from "styled-components/native";
 
 export const DashBar = (props) => {
-  const { allBlockers, category, color, image, from } = props;
+  const { allBlockers, catPoints, category, color, image, from } = props;
 
   const catBlockers = allBlockers.filter(
     (blocker) => blocker.category === category.toLowerCase()
@@ -29,48 +29,19 @@ export const DashBar = (props) => {
 
   const totalCatPts = totalCatBlockerPts + totalCatSuggestionPts;
 
+  const currentCatPts = catPoints[category.toLowerCase()];
+
   const showProgressBarInDashboardHome = () => {
-    let currentCatPoints = 0;
-
-    const completedBlockers = catBlockers.filter(
-      (blocker) => blocker.completedAt !== null
-    );
-    if (completedBlockers && completedBlockers.length > 0) {
-      const currentCatPointsArr = completedBlockers.map((completedBlocker) => {
-        return completedBlocker.points;
-      });
-      currentCatPoints = currentCatPointsArr.reduce((acc, cur) => {
-        return acc + cur;
-      });
-
-
-      const completedSuggestions = completedBlockers
-        .map((blocker) =>
-          blocker.suggestions.filter(
-            (suggestion) => suggestion.completedAt !== null
-          )
-        )
-        .flat();
- 
-      if (completedSuggestions && completedSuggestions.length > 0) {
-        const completedSuggestionsPts = completedSuggestions.map(
-          (completedBlocker) => {
-            return completedBlocker.points;
-          }
-        );
-        currentCatPoints += completedSuggestionsPts.reduce((acc, cur) => {
-          return acc + cur;
-        });
-      }
+    if (currentCatPts > 0) {
       return (
         <>
           <ProgressBar
-            progress={currentCatPoints / totalCatPts}
+            progress={currentCatPts / totalCatPts}
             color={color}
             transform={[{ scaleX: 1.0 }, { scaleY: 2.5 }]}
           />
           <ProgressText>
-            {currentCatPoints} OUT OF {totalCatPts} POINTS
+            {currentCatPts} OUT OF {totalCatPts} POINTS
           </ProgressText>
         </>
       );
@@ -89,45 +60,14 @@ export const DashBar = (props) => {
   };
 
   const showProgressBarInBlockers = () => {
-    let currentCatPoints = 0;
-
-    const completedBlockers = catBlockers.filter(
-      (blocker) => blocker.completedAt !== null
-    );
-    if (completedBlockers && completedBlockers.length > 0) {
-      const currentCatPointsArr = completedBlockers.map((completedBlocker) => {
-        return completedBlocker.points;
-      });
-      currentCatPoints = currentCatPointsArr.reduce((acc, cur) => {
-        return acc + cur;
-      });
-
-      const completedSuggestions = completedBlockers
-        .map((blocker) =>
-          blocker.suggestions.filter(
-            (suggestion) => suggestion.completedAt !== null
-          )
-        )
-        .flat();
-
-      if (completedSuggestions && completedSuggestions.length > 0) {
-        const completedSuggestionsPts = completedSuggestions.map(
-          (completedBlocker) => {
-            return completedBlocker.points;
-          }
-        );
-        currentCatPoints += completedSuggestionsPts.reduce((acc, cur) => {
-          return acc + cur;
-        });
-      }
-
+    if (currentCatPts > 0) {
       return (
         <>
           <ProgressText>
-            {currentCatPoints} OUT OF {totalCatPts} POINTS
+            {currentCatPts} OUT OF {totalCatPts} POINTS
           </ProgressText>
           <ProgressBar
-            progress={currentCatPoints / totalCatPts}
+            progress={currentCatPts / totalCatPts}
             color={color}
             transform={[{ scaleX: 1.3 }, { scaleY: 2.5 }]}
           />
@@ -207,6 +147,7 @@ const ProgressText = styled.Text`
 const mapStateToProps = (state) => {
   return {
     allBlockers: state.blockersState.blockers,
+    catPoints: state.blockersState.currentPoints,
   };
 };
 

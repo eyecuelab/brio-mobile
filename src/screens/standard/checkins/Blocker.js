@@ -54,27 +54,24 @@ function Blocker(props) {
             );
             if (uncompletedSuggestion) {
               return (
-                  <TouchableHighlight
+                <TouchableHighlight
+                  key={uncompletedSuggestion.id}
+                  activeOpacity="0.75"
+                  underlayColor={color1}
+                  onPress={() => {
+                    completedSuggestion(blocker.id, uncompletedSuggestion.id);
+                  }}
+                  style={{ marginTop: 12, marginBottom: 24 }}
+                >
+                  <List.Item
                     key={uncompletedSuggestion.id}
-                    activeOpacity="0.75"
-                    underlayColor={color1}
-                    onPress={() => {
-                      completedSuggestion(blocker.id, uncompletedSuggestion.id);
-                    }}
-                    style={{ marginTop: 12, marginBottom: 24 }}
-                  >
-                    <List.Item
-                      key={uncompletedSuggestion.id}
-                      title={uncompletedSuggestion.description}
-                      titleNumberOfLines={3}
-                      left={() => (
-                        <SvgStarIcon
-                          color1={`${color1}`}
-                          color2={`${color2}`}
-                        />
-                      )}
-                    />
-                  </TouchableHighlight>
+                    title={uncompletedSuggestion.description}
+                    titleNumberOfLines={3}
+                    left={() => (
+                      <SvgStarIcon color1={`${color1}`} color2={`${color2}`} />
+                    )}
+                  />
+                </TouchableHighlight>
               );
             }
           }
@@ -119,34 +116,32 @@ function Blocker(props) {
   };
 
   const displayCompletedSuggestions = (suggestions) => {
-    return (
-      <>
-        {suggestions.map((suggestion) => {
-          if (suggestion.completedAt !== null) {
-            return (
-                <TouchableHighlight
-                  key={suggestion.id}
-                  style={{
-                    marginTop: 12,
-                    marginBottom: 24,
-                    backgroundColor: `${color1}`,
-                  }}
-                >
-                  <List.Item
-                    key={suggestion.id}
-                    title={suggestion.description}
-                    titleNumberOfLines={3}
-                    titleStyle={{ color: "#FFFFFF" }}
-                    description={getCompletedDate(suggestion)}
-                    descriptionStyle={{ color: "#FFFFFF" }}
-                    left={() => <SvgStarIconComplete />}
-                  />
-                </TouchableHighlight>
-            );
-          }
-        })}
-      </>
-    );
+    {
+      suggestions.map((suggestion) => {
+        if (suggestion.completedAt !== null) {
+          return (
+            <TouchableHighlight
+              key={suggestion.id}
+              style={{
+                marginTop: 12,
+                marginBottom: 24,
+                backgroundColor: `${color1}`,
+              }}
+            >
+              <List.Item
+                key={suggestion.id}
+                title={suggestion.description}
+                titleNumberOfLines={3}
+                titleStyle={{ color: "#FFFFFF" }}
+                description={getCompletedDate(suggestion)}
+                descriptionStyle={{ color: "#FFFFFF" }}
+                left={() => <SvgStarIconComplete />}
+              />
+            </TouchableHighlight>
+          );
+        }
+      });
+    }
   };
 
   const displayDivider = () => {
