@@ -11,6 +11,7 @@ import CheckinExercise from "./screens/standard/checkins/CheckinExercise.js";
 import CheckinMusic from "./screens/standard/checkins/CheckinMusic.js";
 import CheckinSocial from "./screens/standard/checkins/CheckinSocial.js";
 import LandingNavigation from "./screens/landing/LandingNavigation.js";
+import BrioGeneral from "./screens/landing/BrioGeneral";
 
 const RootStack = createStackNavigator();
 
@@ -26,6 +27,7 @@ export default function App() {
                 headerShown: false,
               }}
             >
+              <RootStack.Screen name="BrioGeneral" component={BrioGeneral} />
               <RootStack.Screen name="Login" component={LoginPage} />
               <RootStack.Screen name="CheckinExercise" component={CheckinExercise} />
               <RootStack.Screen name="CheckinMusic" component={CheckinMusic} />

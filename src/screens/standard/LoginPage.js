@@ -26,7 +26,7 @@ const LoginPage = (props) => {
   const navigation = useNavigation();
   const [request, response, promptAsync] = useAuthRequest(
     {
-      clientId: SPOTIFY_CLIENT_ID,
+      clientId: SPOTIFY_CLIENT_ID ,
       scopes: ["user-read-email", "playlist-modify-public"],
       usePKCE: false,
       redirectUri: makeRedirectUri({
