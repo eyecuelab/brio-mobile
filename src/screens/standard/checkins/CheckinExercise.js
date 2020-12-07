@@ -3,10 +3,11 @@ import { ScrollView } from "react-native";
 import styled from "styled-components/native";
 import bg from "../../../styles/ScreenStyle.js";
 import SvgCheckinExercise from "../../../svg_assets/SvgCheckinExercise";
-import BlockerExercise from "./BlockerExercise";
+import Blocker from "./Blocker";
 import DashBar from "../dashboard/DashBar";
 
 export const CheckinExercise = () => {
+  
   return (
     <ScrollView>
       <Container style={bg.berry}>
@@ -19,7 +20,7 @@ export const CheckinExercise = () => {
             <ListHeaderText>TAP TO COMPLETE</ListHeaderText>
             <ListHeaderText>REFRESH</ListHeaderText>
           </ListHeaderTextWrapper>
-          <BlockerExercise />
+          <Blocker category={"exercise"} color1={"#D8A1D5"} color2={"#FFE3E3"} />
         </ListContainer>
       </Container>
     </ScrollView>

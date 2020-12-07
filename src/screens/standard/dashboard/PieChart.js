@@ -27,9 +27,9 @@ export const PieChart = (props) => {
 
   const displayPieChart = () => {
     const data = [
-      { x: "Exercise", y: exercisePts() },
-      { x: "Music", y: musicPts() },
-      { x: "Social", y: socialPts() },
+      { x: "Exercise", y: calculatePts(exerciseBlockers) },
+      { x: "Music", y: calculatePts(musicBlockers) },
+      { x: "Social", y: calculatePts(socialBlockers) },
     ];
 
     return (
@@ -74,54 +74,41 @@ export const PieChart = (props) => {
       </>
     );
   };
-  const exercisePts = () => {
-    const completedBlockers = exerciseBlockers.filter(
+
+  const calculatePts = (blockers) => {
+    let currentPts = 0
+    const completedBlockers = blockers.filter(
       (blocker) => blocker.completedAt !== null
     );
-    let currentExercisePts = 0;
     if (completedBlockers && completedBlockers.length > 0) {
-      const currentExercisePtsArr = completedBlockers.map(
+      const currentPtsArr = completedBlockers.map(
         (completedBlocker) => {
           return completedBlocker.points;
         }
       );
-      currentExercisePts = currentExercisePtsArr.reduce((acc, cur) => {
+      currentPts = currentPtsArr.reduce((acc, cur) => {
         return acc + cur;
       });
-      return currentExercisePts;
-    }
-  };
 
-  const musicPts = () => {
-    const completedBlockers = musicBlockers.filter(
-      (blocker) => blocker.completedAt !== null
-    );
-    let currentMusicPts = 0;
-    if (completedBlockers && completedBlockers.length > 0) {
-      const currentMusicPtsArr = completedBlockers.map((completedBlocker) => {
-        return completedBlocker.points;
-      });
-      currentMusicPts = currentMusicPtsArr.reduce((acc, cur) => {
-        return acc + cur;
-      });
-      return currentMusicPts;
+      const completedSuggestions = completedBlockers
+        .map((blocker) =>
+          blocker.suggestions.filter(
+            (suggestion) => suggestion.completedAt !== null
+          )
+        )
+        .flat();
+      if (completedSuggestions && completedSuggestions.length > 0) {
+        const completedSuggestionsPts = completedSuggestions.map(
+          (completedBlocker) => {
+            return completedBlocker.points;
+          }
+        );
+        currentPts += completedSuggestionsPts.reduce((acc, cur) => {
+          return acc + cur;
+        });
+      }
     }
-  };
-
-  const socialPts = () => {
-    const completedBlockers = socialBlockers.filter(
-      (blocker) => blocker.completedAt !== null
-    );
-    let currentSocialPts = 0;
-    if (completedBlockers && completedBlockers.length > 0) {
-      const currentSocialPtsArr = completedBlockers.map((completedBlocker) => {
-        return completedBlocker.points;
-      });
-      currentSocialPts = currentSocialPtsArr.reduce((acc, cur) => {
-        return acc + cur;
-      });
-      return currentSocialPts;
-    }
+    return currentPts;
   };
 
   return (

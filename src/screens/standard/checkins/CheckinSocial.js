@@ -3,7 +3,7 @@ import { ScrollView } from "react-native";
 import styled from "styled-components/native";
 import bg from "../../../styles/ScreenStyle.js";
 import SvgCheckinSocial from "../../../svg_assets/SvgCheckinSocial";
-import BlockerSocial from "./BlockerSocial";
+import Blocker from "./Blocker";
 import DashBar from "../dashboard/DashBar";
 
 export const CheckinSocial = () => {
@@ -19,7 +19,7 @@ export const CheckinSocial = () => {
             <ListHeaderText>TAP TO COMPLETE</ListHeaderText>
             <ListHeaderText>REFRESH</ListHeaderText>
           </ListHeaderTextWrapper>
-          <BlockerSocial />
+          <Blocker category={"social"} color1={"#E0C45E"} color2={"#E0C45E"}/>
         </ListContainer>
       </Container>
     </ScrollView>

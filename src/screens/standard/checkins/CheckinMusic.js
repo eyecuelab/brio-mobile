@@ -3,7 +3,7 @@ import { ScrollView } from "react-native";
 import styled from "styled-components/native";
 import bg from "../../../styles/ScreenStyle.js";
 import SvgCheckinMusic from "../../../svg_assets/SvgCheckinMusic";
-import BlockerMusic from "./BlockerMusic";
+import Blocker from "./Blocker";
 import DashBar from "../dashboard/DashBar";
 
 export const CheckinMusic = () => {
@@ -19,7 +19,7 @@ export const CheckinMusic = () => {
             <ListHeaderText>TAP TO COMPLETE</ListHeaderText>
             <ListHeaderText>REFRESH</ListHeaderText>
           </ListHeaderTextWrapper>
-          <BlockerMusic />
+          <Blocker category={"music"} color1={"#94D7B5"} color2={"#DAF3E6"}/>
         </ListContainer>
       </Container>
     </ScrollView>

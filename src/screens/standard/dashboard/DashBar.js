@@ -4,38 +4,44 @@ import { ProgressBar } from "react-native-paper";
 import styled from "styled-components/native";
 
 export const DashBar = (props) => {
-  const { allBlockers, category, color, image, from } = props;
+  const { allBlockers, catPoints, category, color, image, from } = props;
+
   const catBlockers = allBlockers.filter(
     (blocker) => blocker.category === category.toLowerCase()
   );
 
-  const totalcatPtsArr = catBlockers.map((blocker) => {
-    return blocker.points;
-  });
-  const totalcatPts = totalcatPtsArr.reduce((acc, cur) => {
-    return acc + cur;
-  });
+  const totalCatBlockerPts = catBlockers
+    .map((blocker) => {
+      return blocker.points;
+    })
+    .reduce((acc, cur) => {
+      return acc + cur;
+    });
+
+  const totalCatSuggestionPts = catBlockers
+    .map((blocker) =>
+      blocker.suggestions.map((suggestion) => suggestion.points)
+    )
+    .flat()
+    .reduce((acc, cur) => {
+      return acc + cur;
+    });
+
+  const totalCatPts = totalCatBlockerPts + totalCatSuggestionPts;
+
+  const currentCatPts = catPoints[category.toLowerCase()];
 
   const showProgressBarInDashboardHome = () => {
-    const completedBlockers = catBlockers.filter(
-      (blocker) => blocker.completedAt !== null
-    );
-    if (completedBlockers && completedBlockers.length > 0) {
-      const currentcatPtsArr = completedBlockers.map((completedBlocker) => {
-        return completedBlocker.points;
-      });
-      const currentcatPts = currentcatPtsArr.reduce((acc, cur) => {
-        return acc + cur;
-      });
+    if (currentCatPts > 0) {
       return (
         <>
           <ProgressBar
-            progress={currentcatPts / totalcatPts}
+            progress={currentCatPts / totalCatPts}
             color={color}
             transform={[{ scaleX: 1.0 }, { scaleY: 2.5 }]}
           />
           <ProgressText>
-            {currentcatPts} OUT OF {totalcatPts} COMPLETE
+            {currentCatPts} OUT OF {totalCatPts} POINTS
           </ProgressText>
         </>
       );
@@ -47,30 +53,21 @@ export const DashBar = (props) => {
             color={color}
             transform={[{ scaleX: 1.0 }, { scaleY: 2.5 }]}
           />
-          <ProgressText>0 OUT OF {totalcatPts} COMPLETE</ProgressText>
+          <ProgressText>0 OUT OF {totalCatPts} POINTS</ProgressText>
         </>
       );
     }
   };
 
   const showProgressBarInBlockers = () => {
-    const completedBlockers = catBlockers.filter(
-      (blocker) => blocker.completedAt !== null
-    );
-    if (completedBlockers && completedBlockers.length > 0) {
-      const currentcatPtsArr = completedBlockers.map((completedBlocker) => {
-        return completedBlocker.points;
-      });
-      const currentcatPts = currentcatPtsArr.reduce((acc, cur) => {
-        return acc + cur;
-      });
+    if (currentCatPts > 0) {
       return (
         <>
           <ProgressText>
-            {currentcatPts} OUT OF {totalcatPts} COMPLETE
+            {currentCatPts} OUT OF {totalCatPts} POINTS
           </ProgressText>
           <ProgressBar
-            progress={currentcatPts / totalcatPts}
+            progress={currentCatPts / totalCatPts}
             color={color}
             transform={[{ scaleX: 1.3 }, { scaleY: 2.5 }]}
           />
@@ -79,7 +76,7 @@ export const DashBar = (props) => {
     } else {
       return (
         <>
-          <ProgressText>0 OUT OF {totalcatPts} COMPLETE</ProgressText>
+          <ProgressText>0 OUT OF {totalCatPts} POINTS</ProgressText>
           <ProgressBar
             progress={0}
             color={color}
@@ -90,7 +87,7 @@ export const DashBar = (props) => {
     }
   };
 
-  const checkPrecComp = () => {
+  const checkPrevComp = () => {
     if (from === "DashboardMain") {
       return (
         <ProgressContainer>
@@ -113,7 +110,7 @@ export const DashBar = (props) => {
     }
   };
 
-  return <>{checkPrecComp()}</>;
+  return <>{checkPrevComp()}</>;
 };
 
 const ProgressContainer = styled.View`
@@ -150,6 +147,7 @@ const ProgressText = styled.Text`
 const mapStateToProps = (state) => {
   return {
     allBlockers: state.blockersState.blockers,
+    catPoints: state.blockersState.currentPoints,
   };
 };
 

@@ -13,6 +13,7 @@ import styled from "styled-components/native";
 import DashList from "./DashList";
 
 export const DashboardHome = () => {
+    
   return (
     <>
       <View style={bg.basic}>

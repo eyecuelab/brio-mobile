@@ -3,7 +3,7 @@ import { Text, View } from "react-native";
 import { connect } from "react-redux";
 import text from "../../../styles/TextStyle";
 
-export const AccountSettings = () => {
+export const DashboardProfile = () => {
   return (
     <>
       <View>
@@ -17,4 +17,4 @@ const mapStateToProps = (state) => ({});
 
 const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(AccountSettings);
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardProfile);
