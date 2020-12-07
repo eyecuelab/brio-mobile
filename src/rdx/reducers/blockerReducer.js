@@ -1,4 +1,5 @@
 import * as c from "../actions/types";
+import uuid from "react-native-uuid";
 
 const initialBlockerState = {
   blockers: [],
@@ -21,7 +22,7 @@ export default (state = initialBlockerState, action) => {
         blockers: [
           {
             category: "exercise",
-            id: "exerciseB1",
+            id: uuid(),
             description: "Do you have running shoes?",
             createdAt: new Date(),
             completedAt: null,
@@ -29,7 +30,7 @@ export default (state = initialBlockerState, action) => {
             color: "#D8A1D5",
             suggestions: [
               {
-                id: "exerciseS1",
+                id: uuid(),
                 description: "Go for a 1 mile jog",
                 createdAt: new Date(),
                 completedAt: null,
@@ -37,7 +38,7 @@ export default (state = initialBlockerState, action) => {
                 color: "#D8A1D5",
               },
               {
-                id: "exerciseS2",
+                id: uuid(),
                 description: "Go for a 3 mile run",
                 createdAt: new Date(),
                 completedAt: null,
@@ -48,7 +49,7 @@ export default (state = initialBlockerState, action) => {
           },
           {
             category: "exercise",
-            id: "exerciseB2",
+            id: uuid(),
             description: "Do you have a bike?",
             createdAt: new Date(),
             completedAt: null,
@@ -56,7 +57,7 @@ export default (state = initialBlockerState, action) => {
             color: "#D8A1D5",
             suggestions: [
               {
-                id: "exerciseS3",
+                id: uuid(),
                 description: "Go for a 1 mile bike",
                 createdAt: new Date(),
                 completedAt: null,
@@ -64,7 +65,7 @@ export default (state = initialBlockerState, action) => {
                 color: "#D8A1D5",
               },
               {
-                id: "exerciseS4",
+                id: uuid(),
                 description: "Go for a 3 mile bike",
                 createdAt: new Date(),
                 completedAt: null,
@@ -75,7 +76,7 @@ export default (state = initialBlockerState, action) => {
           },
           {
             category: "exercise",
-            id: "exerciseB3",
+            id: uuid(),
             description: "Do you have a yoga mat?",
             createdAt: new Date(),
             completedAt: null,
@@ -83,7 +84,7 @@ export default (state = initialBlockerState, action) => {
             color: "#D8A1D5",
             suggestions: [
               {
-                id: "exerciseS5",
+                id: uuid(),
                 description: "Do 15 mins yoga",
                 createdAt: new Date(),
                 completedAt: null,
@@ -91,7 +92,7 @@ export default (state = initialBlockerState, action) => {
                 color: "#D8A1D5",
               },
               {
-                id: "exerciseS6",
+                id: uuid(),
                 description: "Do 30 mins yoga",
                 createdAt: new Date(),
                 completedAt: null,
@@ -102,7 +103,7 @@ export default (state = initialBlockerState, action) => {
           },
           {
             category: "music",
-            id: "musicB1",
+            id: uuid(),
             description: "Do you know how to make a playlist?",
             createdAt: new Date(),
             completedAt: null,
@@ -110,7 +111,7 @@ export default (state = initialBlockerState, action) => {
             color: "#94D7B5",
             suggestions: [
               {
-                id: "musicS1",
+                id: uuid(),
                 description: "...",
                 createdAt: new Date(),
                 completedAt: null,
@@ -118,7 +119,7 @@ export default (state = initialBlockerState, action) => {
                 color: "#D8A1D5",
               },
               {
-                id: "musicS2",
+                id: uuid(),
                 description: "......",
                 createdAt: new Date(),
                 completedAt: null,
@@ -129,7 +130,7 @@ export default (state = initialBlockerState, action) => {
           },
           {
             category: "music",
-            id: "musicB2",
+            id: uuid(),
             description: "Are you folowing multiple artists?",
             createdAt: new Date(),
             completedAt: null,
@@ -137,7 +138,7 @@ export default (state = initialBlockerState, action) => {
             color: "#94D7B5",
             suggestions: [
               {
-                id: "musicS3",
+                id: uuid(),
                 description: "...",
                 createdAt: new Date(),
                 completedAt: null,
@@ -145,7 +146,7 @@ export default (state = initialBlockerState, action) => {
                 color: "#D8A1D5",
               },
               {
-                id: "musicS4",
+                id: uuid(),
                 description: "......",
                 createdAt: new Date(),
                 completedAt: null,
@@ -156,7 +157,7 @@ export default (state = initialBlockerState, action) => {
           },
           {
             category: "music",
-            id: "musicB3",
+            id: uuid(),
             description: "Do you follow other users?",
             createdAt: new Date(),
             completedAt: null,
@@ -164,7 +165,7 @@ export default (state = initialBlockerState, action) => {
             color: "#94D7B5",
             suggestions: [
               {
-                id: "musicS5",
+                id: uuid(),
                 description: "...",
                 createdAt: new Date(),
                 completedAt: null,
@@ -172,7 +173,7 @@ export default (state = initialBlockerState, action) => {
                 color: "#D8A1D5",
               },
               {
-                id: "musicS6",
+                id: uuid(),
                 description: "......",
                 createdAt: new Date(),
                 completedAt: null,
@@ -183,7 +184,7 @@ export default (state = initialBlockerState, action) => {
           },
           {
             category: "social",
-            id: "socialB1",
+            id: uuid(),
             description: "Do you...?",
             createdAt: new Date(),
             completedAt: null,
@@ -191,7 +192,7 @@ export default (state = initialBlockerState, action) => {
             color: "#E0C45E",
             suggestions: [
               {
-                id: "socialS1",
+                id: uuid(),
                 description: "...",
                 createdAt: new Date(),
                 completedAt: null,
@@ -199,7 +200,7 @@ export default (state = initialBlockerState, action) => {
                 color: "#D8A1D5",
               },
               {
-                id: "socialS2",
+                id: uuid(),
                 description: "......",
                 createdAt: new Date(),
                 completedAt: null,
@@ -210,7 +211,7 @@ export default (state = initialBlockerState, action) => {
           },
           {
             category: "social",
-            id: "socialB2",
+            id: uuid(),
             description: "Are you...?",
             createdAt: new Date(),
             completedAt: null,
@@ -218,7 +219,7 @@ export default (state = initialBlockerState, action) => {
             color: "#E0C45E",
             suggestions: [
               {
-                id: "socialS3",
+                id: uuid(),
                 description: "...",
                 createdAt: new Date(),
                 completedAt: null,
@@ -226,7 +227,7 @@ export default (state = initialBlockerState, action) => {
                 color: "#D8A1D5",
               },
               {
-                id: "socialS4",
+                id: uuid(),
                 description: "......",
                 createdAt: new Date(),
                 completedAt: null,
@@ -237,7 +238,7 @@ export default (state = initialBlockerState, action) => {
           },
           {
             category: "social",
-            id: "socialB3",
+            id: uuid(),
             description: "Do you have...?",
             createdAt: new Date(),
             completedAt: null,
@@ -245,7 +246,7 @@ export default (state = initialBlockerState, action) => {
             color: "#E0C45E",
             suggestions: [
               {
-                id: "socialS5",
+                id: uuid(),
                 description: "...",
                 createdAt: new Date(),
                 completedAt: null,
@@ -253,7 +254,7 @@ export default (state = initialBlockerState, action) => {
                 color: "#D8A1D5",
               },
               {
-                id: "socialS6",
+                id: uuid(),
                 description: "......",
                 createdAt: new Date(),
                 completedAt: null,
