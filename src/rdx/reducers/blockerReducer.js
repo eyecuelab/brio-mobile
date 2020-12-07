@@ -1,5 +1,5 @@
 import * as c from "../actions/types";
-import uuid from "react-native-uuid";
+import UUIDGenerator from 'react-native-uuid-generator';
 
 const initialBlockerState = {
   blockers: [],
@@ -22,7 +22,7 @@ export default (state = initialBlockerState, action) => {
         blockers: [
           {
             category: "exercise",
-            id: uuid(),
+            id: UUIDGenerator.getRandomUUID(),
             description: "Do you have running shoes?",
             createdAt: new Date(),
             completedAt: null,
@@ -30,7 +30,7 @@ export default (state = initialBlockerState, action) => {
             color: "#D8A1D5",
             suggestions: [
               {
-                id: uuid(),
+                id: UUIDGenerator.getRandomUUID(),
                 description: "Go for a 1 mile jog",
                 createdAt: new Date(),
                 completedAt: null,
@@ -38,7 +38,7 @@ export default (state = initialBlockerState, action) => {
                 color: "#D8A1D5",
               },
               {
-                id: uuid(),
+                id: UUIDGenerator.getRandomUUID(),
                 description: "Go for a 3 mile run",
                 createdAt: new Date(),
                 completedAt: null,
@@ -49,7 +49,7 @@ export default (state = initialBlockerState, action) => {
           },
           {
             category: "exercise",
-            id: uuid(),
+            id: UUIDGenerator.getRandomUUID(),
             description: "Do you have a bike?",
             createdAt: new Date(),
             completedAt: null,
@@ -57,7 +57,7 @@ export default (state = initialBlockerState, action) => {
             color: "#D8A1D5",
             suggestions: [
               {
-                id: uuid(),
+                id: UUIDGenerator.getRandomUUID(),
                 description: "Go for a 1 mile bike",
                 createdAt: new Date(),
                 completedAt: null,
@@ -65,7 +65,7 @@ export default (state = initialBlockerState, action) => {
                 color: "#D8A1D5",
               },
               {
-                id: uuid(),
+                id: UUIDGenerator.getRandomUUID(),
                 description: "Go for a 3 mile bike",
                 createdAt: new Date(),
                 completedAt: null,
@@ -76,7 +76,7 @@ export default (state = initialBlockerState, action) => {
           },
           {
             category: "exercise",
-            id: uuid(),
+            id: UUIDGenerator.getRandomUUID(),
             description: "Do you have a yoga mat?",
             createdAt: new Date(),
             completedAt: null,
@@ -84,7 +84,7 @@ export default (state = initialBlockerState, action) => {
             color: "#D8A1D5",
             suggestions: [
               {
-                id: uuid(),
+                id: UUIDGenerator.getRandomUUID(),
                 description: "Do 15 mins yoga",
                 createdAt: new Date(),
                 completedAt: null,
@@ -92,7 +92,7 @@ export default (state = initialBlockerState, action) => {
                 color: "#D8A1D5",
               },
               {
-                id: uuid(),
+                id: UUIDGenerator.getRandomUUID(),
                 description: "Do 30 mins yoga",
                 createdAt: new Date(),
                 completedAt: null,
@@ -103,7 +103,7 @@ export default (state = initialBlockerState, action) => {
           },
           {
             category: "music",
-            id: uuid(),
+            id: UUIDGenerator.getRandomUUID(),
             description: "Do you know how to make a playlist?",
             createdAt: new Date(),
             completedAt: null,
@@ -111,7 +111,7 @@ export default (state = initialBlockerState, action) => {
             color: "#94D7B5",
             suggestions: [
               {
-                id: uuid(),
+                id: UUIDGenerator.getRandomUUID(),
                 description: "...",
                 createdAt: new Date(),
                 completedAt: null,
@@ -119,7 +119,7 @@ export default (state = initialBlockerState, action) => {
                 color: "#D8A1D5",
               },
               {
-                id: uuid(),
+                id: UUIDGenerator.getRandomUUID(),
                 description: "......",
                 createdAt: new Date(),
                 completedAt: null,
@@ -130,7 +130,7 @@ export default (state = initialBlockerState, action) => {
           },
           {
             category: "music",
-            id: uuid(),
+            id: UUIDGenerator.getRandomUUID(),
             description: "Are you folowing multiple artists?",
             createdAt: new Date(),
             completedAt: null,
@@ -138,7 +138,7 @@ export default (state = initialBlockerState, action) => {
             color: "#94D7B5",
             suggestions: [
               {
-                id: uuid(),
+                id: UUIDGenerator.getRandomUUID(),
                 description: "...",
                 createdAt: new Date(),
                 completedAt: null,
@@ -146,7 +146,7 @@ export default (state = initialBlockerState, action) => {
                 color: "#D8A1D5",
               },
               {
-                id: uuid(),
+                id: UUIDGenerator.getRandomUUID(),
                 description: "......",
                 createdAt: new Date(),
                 completedAt: null,
@@ -157,7 +157,7 @@ export default (state = initialBlockerState, action) => {
           },
           {
             category: "music",
-            id: uuid(),
+            id: UUIDGenerator.getRandomUUID(),
             description: "Do you follow other users?",
             createdAt: new Date(),
             completedAt: null,
@@ -165,7 +165,7 @@ export default (state = initialBlockerState, action) => {
             color: "#94D7B5",
             suggestions: [
               {
-                id: uuid(),
+                id: UUIDGenerator.getRandomUUID(),
                 description: "...",
                 createdAt: new Date(),
                 completedAt: null,
@@ -173,7 +173,7 @@ export default (state = initialBlockerState, action) => {
                 color: "#D8A1D5",
               },
               {
-                id: uuid(),
+                id: UUIDGenerator.getRandomUUID(),
                 description: "......",
                 createdAt: new Date(),
                 completedAt: null,
@@ -184,7 +184,7 @@ export default (state = initialBlockerState, action) => {
           },
           {
             category: "social",
-            id: uuid(),
+            id: UUIDGenerator.getRandomUUID(),
             description: "Do you...?",
             createdAt: new Date(),
             completedAt: null,
@@ -192,7 +192,7 @@ export default (state = initialBlockerState, action) => {
             color: "#E0C45E",
             suggestions: [
               {
-                id: uuid(),
+                id: UUIDGenerator.getRandomUUID(),
                 description: "...",
                 createdAt: new Date(),
                 completedAt: null,
@@ -200,7 +200,7 @@ export default (state = initialBlockerState, action) => {
                 color: "#D8A1D5",
               },
               {
-                id: uuid(),
+                id: UUIDGenerator.getRandomUUID(),
                 description: "......",
                 createdAt: new Date(),
                 completedAt: null,
@@ -211,7 +211,7 @@ export default (state = initialBlockerState, action) => {
           },
           {
             category: "social",
-            id: uuid(),
+            id: UUIDGenerator.getRandomUUID(),
             description: "Are you...?",
             createdAt: new Date(),
             completedAt: null,
@@ -219,7 +219,7 @@ export default (state = initialBlockerState, action) => {
             color: "#E0C45E",
             suggestions: [
               {
-                id: uuid(),
+                id: UUIDGenerator.getRandomUUID(),
                 description: "...",
                 createdAt: new Date(),
                 completedAt: null,
@@ -227,7 +227,7 @@ export default (state = initialBlockerState, action) => {
                 color: "#D8A1D5",
               },
               {
-                id: uuid(),
+                id: UUIDGenerator.getRandomUUID(),
                 description: "......",
                 createdAt: new Date(),
                 completedAt: null,
@@ -238,7 +238,7 @@ export default (state = initialBlockerState, action) => {
           },
           {
             category: "social",
-            id: uuid(),
+            id: UUIDGenerator.getRandomUUID(),
             description: "Do you have...?",
             createdAt: new Date(),
             completedAt: null,
@@ -246,7 +246,7 @@ export default (state = initialBlockerState, action) => {
             color: "#E0C45E",
             suggestions: [
               {
-                id: uuid(),
+                id: UUIDGenerator.getRandomUUID(),
                 description: "...",
                 createdAt: new Date(),
                 completedAt: null,
@@ -254,7 +254,7 @@ export default (state = initialBlockerState, action) => {
                 color: "#D8A1D5",
               },
               {
-                id: uuid(),
+                id: UUIDGenerator.getRandomUUID(),
                 description: "......",
                 createdAt: new Date(),
                 completedAt: null,
