@@ -3,13 +3,14 @@ import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Provider } from "react-redux";
-import { store } from "../src/rdx/store";
-import LoginPage from "./screens/LoginPage.js";
-import DashboardPage from "./screens/DashboardPage.js";
-import ForgotPassword from "./screens/ForgotPassword.js";
-import SignupPage from "./screens/SignupPage.js";
-import ResetSent from "./screens/ResetSent.js";
-import TokenAuth from "./screens/TokenAuth.js";
+import { PersistGate } from "redux-persist/integration/react";
+import { store, persistor } from "./rdx/store";
+import LoginPage from "./screens/standard/LoginPage";
+import StandardNavigation from "./screens/standard/StandardNavigation.js";
+import CheckinExercise from "./screens/standard/checkins/CheckinExercise.js";
+import CheckinMusic from "./screens/standard/checkins/CheckinMusic.js";
+import CheckinSocial from "./screens/standard/checkins/CheckinSocial.js";
+import LandingNavigation from "./screens/landing/LandingNavigation.js";
 
 const RootStack = createStackNavigator();
 
@@ -17,18 +18,30 @@ export default function App() {
   return (
     <>
       <Provider store={store}>
-        <StatusBar style="auto" />
+        <PersistGate loading={null} persistor={persistor}>
+          <StatusBar style="auto" />
+          <NavigationContainer>
+            <RootStack.Navigator
+              screenOptions={{
+                headerShown: false,
+              }}
+            >
+              <RootStack.Screen name="Login" component={LoginPage} />
+              <RootStack.Screen name="CheckinExercise" component={CheckinExercise} />
+              <RootStack.Screen name="CheckinMusic" component={CheckinMusic} />
+              <RootStack.Screen name="CheckinSocial" component={CheckinSocial} />
+              <RootStack.Screen
+                name="StandardNavigation"
+                component={StandardNavigation}
+              />
+              <RootStack.Screen
+                name="LandingNavigation"
+                component={LandingNavigation}
+              />
+            </RootStack.Navigator>
+          </NavigationContainer>
 
-        <NavigationContainer>
-          <RootStack.Navigator>
-            <RootStack.Screen name="Login" component={LoginPage} />
-            <RootStack.Screen name="Dash" component={DashboardPage} />
-            <RootStack.Screen name="Forgot" component={ForgotPassword} />
-            <RootStack.Screen name="Signup" component={SignupPage} />
-            <RootStack.Screen name="Reset" component={ResetSent} />
-            <RootStack.Screen name="Token" component={TokenAuth} />
-          </RootStack.Navigator>
-        </NavigationContainer>
+        </PersistGate>
       </Provider>
     </>
   );

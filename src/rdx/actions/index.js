@@ -1,20 +1,26 @@
 import * as c from "./types";
 
-export const signUpWatcher = (payload) => {
+export const loggedIn = (code) => {
   return {
-    type: c.SIGNUP_WATCHER,
-    payload,
+    type: c.LOGGED_IN,
+    code
   };
 };
-export const confirmUserWatcher = (payload) => {
+export const addedBlockers = () => {
   return {
-    type: c.CONFIRM_USER_WATCHER,
-    payload,
+    type: c.ADDED_BLOCKERS
   };
 };
-export const logInWatcher = (payload) => {
+export const completedBlocker = (id) => {
   return {
-    type: c.LOGIN_WATCHER,
-    payload,
+    type: c.COMPLETED_BLOCKER,
+    id
+  };
+};
+export const completedSuggestion = (blockerId, suggestionId) => {
+  return {
+    type: c.COMPLETED_SUGGESTION,
+    blockerId,
+    suggestionId,
   };
 };

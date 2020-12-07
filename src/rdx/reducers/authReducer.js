@@ -7,35 +7,19 @@ const initialAuthState = {
   confirmationMessage: null,
   status: "Logged out",
   redirect: false,
+  code: null,
 };
 
 export default (state = initialAuthState, action) => {
   switch (action.type) {
-    case c.SIGNUP_SUCCESS:
+    case c.LOGGED_IN:
       return {
         ...state,
         data: null,
         errorMessage: null,
-        signupMessage: "Signed up successfully!",
         confirmationMessage: null,
-        status: "Signed up",
-      };
-    case c.CONFIRM_USER_SUCCESS:
-      return {
-        ...state,
-        data: null,
-        errorMessage: null,
-        signUpMessage: null,
-        confirmationMessage: "User Confirmed",
-      };
-    case c.LOGIN_SUCCESS:
-      return {
-        ...state,
-        data: null,
-        errorMessage: null,
-        signupMessage: "Signed up successfully!",
-        confirmationMessage: null,
-        status: "Logged in",
+        status: "Signed in",
+        code: action.code,
       };
     default:
       return state;
