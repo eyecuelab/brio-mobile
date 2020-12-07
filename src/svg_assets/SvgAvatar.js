@@ -24,7 +24,7 @@ export default function SvgAvatar() {
   </defs>
   </svg>    
   `;
-  const SvgImage = () => <SvgXml xml={svgMarkup} width="100px" />;
+  const SvgImage = () => <SvgXml xml={svgMarkup} width="200px" />;
 
   return <SvgImage />;
 }
