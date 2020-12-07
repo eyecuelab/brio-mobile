@@ -6,7 +6,7 @@ import SvgSomethingFun from "../../svg_assets/SvgSomethingFun"
 
 function BrioSuggestions() {
     return (
-        <View style={bg.grape}>
+        <View style={bg.basic}>
                 <SvgSomethingFun />
         </View>
     )

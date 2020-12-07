@@ -6,7 +6,7 @@ import SvgBrioIntro from "../../svg_assets/SvgBrioIntro"
 
 function BrioGeneral() {
     return (
-        <View style={bg.grape}>
+        <View style={bg.basic}>
                 <SvgBrioIntro />
         </View>
     )
