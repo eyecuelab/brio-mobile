@@ -50,7 +50,7 @@ export const DashList = (props) => {
       });
       const mostRecentCompletedBlocker = sortedBlockersByCompletedAt[0];
 
-      const mostRecentCompletedDate = mostRecentCompletedBlocker.completedAt;
+      const mostRecentCompletedDate = new Date(mostRecentCompletedBlocker.completedAt);
 
       const month = months[mostRecentCompletedDate.getMonth()];
       const day = days[mostRecentCompletedDate.getDay()];
