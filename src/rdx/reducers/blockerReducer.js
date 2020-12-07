@@ -1,16 +1,8 @@
 import * as c from "../actions/types";
 import UUIDGenerator from 'react-native-uuid-generator';
+import initBlockers from './initBlockers'
 
-const initialBlockerState = {
-  blockers: [],
-  currentPoints: {
-    exercise: 0,
-    music: 0,
-    social: 0,
-  },
-};
-
-export default (state = initialBlockerState, action) => {
+export default (state = initBlockers, action) => {
   switch (action.type) {
     case c.ADDED_BLOCKERS: {
       return {
