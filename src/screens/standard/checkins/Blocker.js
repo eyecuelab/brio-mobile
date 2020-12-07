@@ -192,7 +192,7 @@ const getCompletedDate = (blocker) => {
     "Nov",
     "Dec",
   ];
-  const completedDate = blocker.completedAt;
+  const completedDate = new Date(blocker.completedAt);
   const month = months[completedDate.getMonth()];
   const day = days[completedDate.getDay()];
   const date = completedDate.getDate();
