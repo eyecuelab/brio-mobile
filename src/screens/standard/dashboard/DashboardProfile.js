@@ -1,13 +1,14 @@
 import React from "react";
 import { Text, View } from "react-native";
 import { connect } from "react-redux";
-import text from "../../../styles/TextStyle";
+import bg from "../../../styles/ScreenStyle";
+import SvgAvatar from "../../../svg_assets/SvgAvatar";
 
 export const DashboardProfile = () => {
   return (
     <>
-      <View>
-        <Text style={text.header}>Hello</Text>
+      <View style={bg.basic}>
+       <SvgAvatar />
       </View>
     </>
   );
