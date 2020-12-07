@@ -7,7 +7,7 @@ import SvgLetsDoThis from "../../svg_assets/SvgLetsDoThis"
 
 function BrioSuccess() {
     return (
-        <View style={bg.grape}>
+        <View style={bg.basic}>
                 <SvgLetsDoThis />
         </View>
     )
