@@ -1,14 +1,33 @@
 import React from 'react';
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import bg from "../../styles/ScreenStyle.js";
-import text from "../../styles/TextStyle.js";
-
+import SvgSomethingFun from "../../svg_assets/SvgSomethingFun"
+import styled from "styled-components/native";
+import GetStartedBtn from "./GetStartedBtn";
 
 function BrioSuggestions() {
     return (
-        <View style={bg.grape}>
-                <Text style={text.header}>Second Page</Text>
+        <View style={bg.basic}>
+                <DiagramContainer>
+                    <Diagram>
+                        <SvgSomethingFun />
+                    </Diagram>
+                </DiagramContainer>
+                <GetStartedBtn text="Get Started" textColor="#ffffff" backgroundColor="#51ADE0" />
         </View>
     )
 }
+
+const DiagramContainer = styled.View`
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 36px;
+`;
+const Diagram = styled.View`
+    margin-top: 36px;
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
+`;
 export default BrioSuggestions
