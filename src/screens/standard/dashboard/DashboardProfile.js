@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
+import { TextInput } from "react-native";
 import styled from "styled-components/native";
 import bg from "../../../styles/ScreenStyle";
 import SvgAvatar from "../../../svg_assets/SvgAvatar";
 
 export const DashboardProfile = () => {
+  const [value, onChangeText] = useState("");
   return (
     <>
       <Container style={bg.basic}>
@@ -12,6 +14,17 @@ export const DashboardProfile = () => {
           <SvgAvatar />
           <AvatarNameText>Kiwi</AvatarNameText>
         </AvatarContainer>
+
+        <ListContainer>
+          <UsernameInput
+            onChangeText={(text) => onChangeText(text)}
+            value={value}
+            autoCapitalize="none"
+          />
+          <FieldTextContainer>
+            <FieldText>CHANGE USERNAME</FieldText>
+          </FieldTextContainer>
+        </ListContainer>
       </Container>
     </>
   );
@@ -27,8 +40,27 @@ const AvatarContainer = styled.View`
   justify-content: center;
 `;
 const AvatarNameText = styled.Text`
-  color: #7E6200;
+  color: #7e6200;
   font-size: 28px;
+  font-weight: 900;
+`;
+const UsernameInput = styled.TextInput`
+  width: 90%;
+  height: 50;
+  padding: 10px;
+  border-radius: 10;
+  background-color: white;
+`;
+const ListContainer = styled.View`
+  margin-top: 24;
+  margin-left: 24;
+`;
+const FieldTextContainer = styled.View`
+  margin-top: 8;
+`;
+const FieldText = styled.Text`
+  color: #dea768;
+  font-size: 10px;
   font-weight: 900;
 `;
 
