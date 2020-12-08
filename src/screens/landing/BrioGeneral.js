@@ -31,14 +31,5 @@ const Diagram = styled.View`
         flex-direction: column;
     }
 `;
-const InteractiveContainer = styled.View`
-    flex: 1
-    justify-content: center;
-`
-const GetStarted = styled.TouchableOpacity`
-    height: 76px;
-    width: 288px;
-    background-color: #94D7B5;
-`;
 
 export default BrioGeneral
