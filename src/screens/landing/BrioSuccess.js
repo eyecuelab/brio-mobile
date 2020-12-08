@@ -14,7 +14,7 @@ function BrioSuccess() {
                         <SvgLetsDoThis />
                     </Diagram>
                 </DiagramContainer>
-                <GetStartedBtn text="Get Started" textColor="#ffffff" backgroundColor="#94D7B5" />
+                <GetStartedBtn text="Get Started" textColor="#ffffff" backgroundColor="#F66A7B" />
         </View>
     )
 }
