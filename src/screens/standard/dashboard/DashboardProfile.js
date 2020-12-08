@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { TextInput } from "react-native";
 import styled from "styled-components/native";
 import bg from "../../../styles/ScreenStyle";
 import SvgAvatar from "../../../svg_assets/SvgAvatar";
+import SvgEyeball from "../../../svg_assets/SvgEyeball";
 
 export const DashboardProfile = () => {
   const [value, onChangeText] = useState("");
@@ -14,6 +14,19 @@ export const DashboardProfile = () => {
           <SvgAvatar />
           <AvatarNameText>Kiwi</AvatarNameText>
         </AvatarContainer>
+
+        <ListContainer>
+          <EyecolorView>
+            <SvgEyeball style={{ justifyContent: "space-between" }} />
+            <SvgEyeball />
+            <SvgEyeball />
+            <SvgEyeball />
+            <SvgEyeball />
+          </EyecolorView>
+          <FieldTextContainer>
+            <FieldText>EYE COLOR</FieldText>
+          </FieldTextContainer>
+        </ListContainer>
 
         <ListContainer>
           <UsernameInput
@@ -40,6 +53,7 @@ const AvatarContainer = styled.View`
   justify-content: center;
 `;
 const AvatarNameText = styled.Text`
+  margin-top: 16;
   color: #7e6200;
   font-size: 28px;
   font-weight: 900;
@@ -63,7 +77,17 @@ const FieldText = styled.Text`
   font-size: 10px;
   font-weight: 900;
 `;
-
+const EyecolorView = styled.View`
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 90%;
+  height: 55;
+  padding: 10px;
+  border-radius: 10;
+  background-color: white;
+  margin-top: 8;
+`;
 const mapStateToProps = (state) => ({});
 
 const mapDispatchToProps = {};
