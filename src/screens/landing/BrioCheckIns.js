@@ -13,7 +13,7 @@ function BrioCheckIns() {
                         <SvgTellMeWhen />
                     </Diagram>
                 </DiagramContainer>
-                <GetStartedBtn text="Get Started" textColor="#ffffff" backgroundColor="#94D7B5" />
+                <GetStartedBtn text="Get Started" textColor="#ffffff" backgroundColor="#B96AF6" />
         </View>
     )
 }
