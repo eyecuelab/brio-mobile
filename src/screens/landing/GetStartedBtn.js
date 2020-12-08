@@ -1,14 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigation } from "@react-navigation/native";
 
-const GetStartedBtn = props => (
-	<ButtonContainer
-		onPress={() => alert('Hi!')}
-		backgroundColor={props.backgroundColor}
-	>
-		<ButtonText textColor={props.textColor}>{props.text}</ButtonText>
-	</ButtonContainer>
-);
+const GetStartedBtn = (props) => {
+    const navigation = useNavigation();
+
+    
+    return(
+        <>
+	    <ButtonContainer
+            onPress={() => navigation.navigate("Login")}
+            backgroundColor={props.backgroundColor}
+	    >
+            <ButtonText 
+                textColor={props.textColor}>{props.text}
+            </ButtonText>
+	    </ButtonContainer>
+        </>
+    )
+};
 
 export default GetStartedBtn;
 
@@ -18,7 +28,7 @@ const ButtonContainer = styled.TouchableOpacity`
     }
     margin-left: 25px;
     margin-right: 25px;
-	height: 76px;
+    height: 76px;
     border-radius: 10px;
     justify-content: space-around;
 	background-color: ${props => props.backgroundColor};

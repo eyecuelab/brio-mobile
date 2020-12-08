@@ -22,12 +22,9 @@ const DiagramContainer = styled.View`
     flex: 1;
     flex-direction: row;
     justify-content: space-around;
-    margin-top: 36px;
 `;
 const Diagram = styled.View`
     margin-top: 36px;
-    @media (max-width: 768px) {
-        flex-direction: column;
-    }
 `;
+
 export default BrioSuggestions

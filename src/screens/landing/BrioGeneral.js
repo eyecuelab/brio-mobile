@@ -3,7 +3,7 @@ import { View, TouchableOpacity, Text } from "react-native";
 import bg from "../../styles/ScreenStyle.js";
 import SvgBrioIntro from "../../svg_assets/SvgBrioIntro"
 import styled from "styled-components/native";
-import GetStartedBtn from "./GetStartedBtn"
+import GetStartedBtn from "./GetStartedBtn";
 
 function BrioGeneral() {
     return (
@@ -23,7 +23,6 @@ const DiagramContainer = styled.View`
     flex: 1;
     flex-direction: row;
     justify-content: space-around;
-    margin-top: 36px;
 `;
 const Diagram = styled.View`
     margin-top: 36px;

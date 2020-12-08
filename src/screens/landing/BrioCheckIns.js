@@ -22,7 +22,6 @@ const DiagramContainer = styled.View`
     flex: 1;
     flex-direction: row;
     justify-content: space-around;
-    margin-top: 36px;
 `;
 const Diagram = styled.View`
     margin-top: 36px;
