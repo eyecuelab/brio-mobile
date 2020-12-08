@@ -26,7 +26,7 @@ const discovery = {
 };
 
 const LoginPage = (props) => {
-  const { dispatch, allBlockers } = props;
+  const { dispatch } = props;
   const [value, onChangeText] = useState("");
   const navigation = useNavigation();
   const [request, response, promptAsync] = useAuthRequest(
@@ -183,7 +183,6 @@ const LoginBtnText = styled.Text`
 
 const mapStateToProps = (state) => {
   return {
-    allBlockers: state.blockersState.blockers,
   };
 };
 
