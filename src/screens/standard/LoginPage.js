@@ -1,5 +1,5 @@
 // REACT, REACT NATIVE //
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, View, Image, Button, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { connect } from "react-redux";
@@ -9,6 +9,10 @@ import text from "../../styles/TextStyle.js";
 import bg from "../../styles/ScreenStyle.js";
 import brio from "../../../assets/Brio_Star.png";
 import arrow from "../../styles/ArrowStyle.js";
+import styled from "styled-components/native";
+import SvgAvatar from "../../svg_assets/SvgAvatar";
+import SvgEyeball from "../../svg_assets/SvgEyeball";
+import Icon from "react-native-vector-icons/FontAwesome";
 // EXPO AUTH
 import * as WebBrowser from "expo-web-browser";
 import { makeRedirectUri, useAuthRequest } from "expo-auth-session";
@@ -23,6 +27,7 @@ const discovery = {
 
 const LoginPage = (props) => {
   const { dispatch, allBlockers } = props;
+  const [value, onChangeText] = useState("");
   const navigation = useNavigation();
   const [request, response, promptAsync] = useAuthRequest(
     {
@@ -47,28 +52,134 @@ const LoginPage = (props) => {
 
   return (
     <>
-      <ScrollView>
-        <View style={bg.basic}>
-          <Text style={text.header}>Hello, friend...</Text>
-          <Image source={brio} style={{ marginTop: 100 }} />
-          <Text style={text.text}>
-            Brio uses Spotify's built-in credentials to access the app. You will
-            need to make an account before proceeding.
-          </Text>
-          <View style={arrow.bottom}>
-            <Button
-              disabled={!request}
-              title="Login"
-              onPress={() => {
-                promptAsync();
-              }}
-            />
-          </View>
-        </View>
-      </ScrollView>
+      <Container style={bg.basic}>
+        <AvatarContainer>
+          <SvgAvatar />
+          <AvatarNameText>Kiwi</AvatarNameText>
+        </AvatarContainer>
+
+        <FieldContainer>
+          <EyecolorView>
+            <SvgEyeball style={{ justifyContent: "space-between" }} />
+            <SvgEyeball />
+            <SvgEyeball />
+            <SvgEyeball />
+            <SvgEyeball />
+          </EyecolorView>
+          <FieldTextContainer>
+            <FieldText>EYE COLOR</FieldText>
+          </FieldTextContainer>
+        </FieldContainer>
+
+        <FieldContainer>
+          <UsernameInput
+            onChangeText={(text) => onChangeText(text)}
+            value={value}
+            autoCapitalize="none"
+          />
+          <FieldTextContainer>
+            <FieldText>CREATE USERNAME</FieldText>
+          </FieldTextContainer>
+        </FieldContainer>
+
+        <FieldContainer>
+          <SpotifyLoginBtn onPress={() => promptAsync()}>
+            <TextWrapper>
+              <Icon
+                name="spotify"
+                size={22}
+                color="#fff"
+                style={{ marginRight: 20 }}
+              />
+              <LoginBtnText>LOGIN</LoginBtnText>
+            </TextWrapper>
+          </SpotifyLoginBtn>
+          <FieldTextContainer>
+            <FieldText>SYNC YOUR SPOTIFY</FieldText>
+          </FieldTextContainer>
+        </FieldContainer>
+
+      </Container>
     </>
   );
 };
+
+const Container = styled.View`
+  flex: 1;
+  height: 100%;
+`;
+const AvatarContainer = styled.View`
+  margin-top: 64;
+  align-items: center;
+  justify-content: center;
+`;
+const AvatarNameText = styled.Text`
+  margin-top: 16;
+  color: #7e6200;
+  font-size: 28px;
+  font-weight: 900;
+`;
+const UsernameInput = styled.TextInput`
+  width: 90%;
+  height: 50;
+  padding: 10px;
+  border-radius: 10;
+  background-color: white;
+`;
+const FieldContainer = styled.View`
+  margin-top: 24;
+  margin-left: 24;
+`;
+const FieldTextContainer = styled.View`
+  margin-top: 8;
+`;
+const FieldText = styled.Text`
+  color: #dea768;
+  font-size: 10px;
+  font-weight: 900;
+`;
+const EyecolorView = styled.View`
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 90%;
+  height: 55;
+  padding: 10px;
+  border-radius: 10;
+  background-color: white;
+  margin-top: 8;
+`;
+const TextWrapper = styled.View`
+  flex-direction: row;
+`;
+const SpotifyLoginBtn = styled.TouchableHighlight`
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 55;
+  padding: 10px;
+  border-radius: 10;
+  background-color: #1ed760;
+  margin-top: 8;
+`;
+const LogoutBtn = styled.TouchableHighlight`
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 55;
+  padding: 10px;
+  border-radius: 10;
+  background-color: #d8a1d5;
+  margin-top: 8;
+  text-align: center;
+`;
+const LoginBtnText = styled.Text`
+  color: white;
+  font-size: 18px;
+  font-weight: 900;
+`;
 
 const mapStateToProps = (state) => {
   return {
