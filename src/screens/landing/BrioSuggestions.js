@@ -13,7 +13,7 @@ function BrioSuggestions() {
                         <SvgSomethingFun />
                     </Diagram>
                 </DiagramContainer>
-                <GetStartedBtn text="Get Started" textColor="#ffffff" backgroundColor="#94D7B5" />
+                <GetStartedBtn text="Get Started" textColor="#ffffff" backgroundColor="#51ADE0" />
         </View>
     )
 }
