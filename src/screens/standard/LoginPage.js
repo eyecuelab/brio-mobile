@@ -48,7 +48,7 @@ const LoginPage = (props) => {
   return (
     <>
       <ScrollView>
-        <View style={bg.brick}>
+        <View style={bg.basic}>
           <Text style={text.header}>Hello, friend...</Text>
           <Image source={brio} style={{ marginTop: 100 }} />
           <Text style={text.text}>
