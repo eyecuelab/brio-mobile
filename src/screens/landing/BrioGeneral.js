@@ -1,14 +1,17 @@
 import React from 'react';
 import { View, TouchableOpacity, Text } from "react-native";
 import bg from "../../styles/ScreenStyle.js";
-import SvgBrioIntro from "../../svg_assets/SvgBrioIntro"
+import SvgBrioIntro from "../../svg_assets/landing/SvgBrioIntro"
 import styled from "styled-components/native";
 import GetStartedBtn from "./GetStartedBtn";
 
 function BrioGeneral() {
+    // in useEffect run the promptAsync() to check if user has token already
+    // if it has code(token) add navigation to DashboardHome 
+    // if not show landing pages as is
+
     return (
         <View style={bg.basic}>
-
                 <DiagramContainer>
                     <Diagram>
                         <SvgBrioIntro />

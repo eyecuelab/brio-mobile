@@ -5,7 +5,6 @@ import { useNavigation } from "@react-navigation/native";
 const GetStartedBtn = (props) => {
     const navigation = useNavigation();
 
-    
     return(
         <>
 	    <ButtonContainer

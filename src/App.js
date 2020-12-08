@@ -10,7 +10,6 @@ import StandardNavigation from "./screens/standard/StandardNavigation.js";
 import CheckinExercise from "./screens/standard/checkins/CheckinExercise.js";
 import CheckinMusic from "./screens/standard/checkins/CheckinMusic.js";
 import CheckinSocial from "./screens/standard/checkins/CheckinSocial.js";
-import DashboardProfile from "./screens/standard/dashboard/DashboardProfile.js";
 import LandingNavigation from "./screens/landing/LandingNavigation.js";
 import BrioGeneral from "./screens/landing/BrioGeneral";
 import BrioSuggestions from "./screens/landing/BrioSuggestions"

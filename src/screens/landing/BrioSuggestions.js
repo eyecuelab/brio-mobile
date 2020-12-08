@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from "react-native";
 import bg from "../../styles/ScreenStyle.js";
-import SvgSomethingFun from "../../svg_assets/SvgSomethingFun"
+import SvgSomethingFun from "../../svg_assets/landing/SvgSomethingFun"
 import styled from "styled-components/native";
 import GetStartedBtn from "./GetStartedBtn";
 
