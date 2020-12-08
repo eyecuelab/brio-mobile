@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { View } from "react-native";
 import styled from "styled-components/native";
 import bg from "../../../styles/ScreenStyle";
 import SvgAvatar from "../../../svg_assets/SvgAvatar";
 import SvgEyeball from "../../../svg_assets/SvgEyeball";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 export const DashboardProfile = () => {
   const [value, onChangeText] = useState("");
@@ -15,7 +17,7 @@ export const DashboardProfile = () => {
           <AvatarNameText>Kiwi</AvatarNameText>
         </AvatarContainer>
 
-        <ListContainer>
+        <FieldContainer>
           <EyecolorView>
             <SvgEyeball style={{ justifyContent: "space-between" }} />
             <SvgEyeball />
@@ -26,9 +28,9 @@ export const DashboardProfile = () => {
           <FieldTextContainer>
             <FieldText>EYE COLOR</FieldText>
           </FieldTextContainer>
-        </ListContainer>
+        </FieldContainer>
 
-        <ListContainer>
+        <FieldContainer>
           <UsernameInput
             onChangeText={(text) => onChangeText(text)}
             value={value}
@@ -37,7 +39,33 @@ export const DashboardProfile = () => {
           <FieldTextContainer>
             <FieldText>CHANGE USERNAME</FieldText>
           </FieldTextContainer>
-        </ListContainer>
+        </FieldContainer>
+
+        <FieldContainer>
+          <SpotifyLoginBtn onPress={() => console.log("SPOTIFY LOGIN PRESSED")}>
+            <TextWrapper>
+              <Icon
+                name="spotify"
+                size={22}
+                color="#fff"
+                style={{ marginRight: 20 }}
+              />
+              <LoginBtnText>Connect Spotify</LoginBtnText>
+            </TextWrapper>
+          </SpotifyLoginBtn>
+          <FieldTextContainer>
+            <FieldText>SYNC YOUR SPOTIFY</FieldText>
+          </FieldTextContainer>
+        </FieldContainer>
+
+        <FieldContainer>
+          <LogoutBtn onPress={() => console.log("LOG OUT PRESSED")}>
+            <LoginBtnText>Log out</LoginBtnText>
+          </LogoutBtn>
+          <FieldTextContainer>
+            <FieldText>LOG OUT OF THE APP</FieldText>
+          </FieldTextContainer>
+        </FieldContainer>
       </Container>
     </>
   );
@@ -65,7 +93,7 @@ const UsernameInput = styled.TextInput`
   border-radius: 10;
   background-color: white;
 `;
-const ListContainer = styled.View`
+const FieldContainer = styled.View`
   margin-top: 24;
   margin-left: 24;
 `;
@@ -87,6 +115,37 @@ const EyecolorView = styled.View`
   border-radius: 10;
   background-color: white;
   margin-top: 8;
+`;
+const TextWrapper = styled.View`
+  flex-direction: row;
+`;
+const SpotifyLoginBtn = styled.TouchableHighlight`
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 55;
+  padding: 10px;
+  border-radius: 10;
+  background-color: #1ed760;
+  margin-top: 8;
+`;
+const LogoutBtn = styled.TouchableHighlight`
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 55;
+  padding: 10px;
+  border-radius: 10;
+  background-color: #d8a1d5;
+  margin-top: 8;
+  text-align: center;
+`;
+const LoginBtnText = styled.Text`
+  color: white;
+  font-size: 18px;
+  font-weight: 900;
 `;
 const mapStateToProps = (state) => ({});
 
