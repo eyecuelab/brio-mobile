@@ -28,7 +28,6 @@ function Blocker(props) {
       <>
         {catBlockers.map((blocker) => {
           if (blocker.completedAt === null) {
-            console.log(blocker.id)
             return (
               <TouchableHighlight
                 key={blocker.id}
@@ -86,9 +85,8 @@ function Blocker(props) {
         {catBlockers.map((blocker) => {
           if (blocker.completedAt !== null) {
             return (
-              <>
+              <React.Fragment key={blocker.id}>
                 <TouchableHighlight
-                  key={blocker.id}
                   style={{
                     marginTop: 12,
                     marginBottom: 24,
@@ -105,7 +103,7 @@ function Blocker(props) {
                   />
                 </TouchableHighlight>
                 {displayCompletedSuggestions(blocker.suggestions)}
-              </>
+              </React.Fragment>
             );
           }
         })}

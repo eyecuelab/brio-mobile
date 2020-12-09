@@ -1,4 +1,6 @@
-import UUIDGenerator from 'react-native-uuid-generator';
+import "react-native-get-random-values";
+import { v4 as v4 } from "uuid";
+
 export default function initBlockers() {
   return {
     currentPoints: {
@@ -9,7 +11,7 @@ export default function initBlockers() {
     blockers: [
       {
         category: "exercise",
-        id: UUIDGenerator.getRandomUUID(),
+        id: v4(),
         description: "Do you have running shoes?",
         createdAt: new Date(),
         completedAt: null,
@@ -17,7 +19,7 @@ export default function initBlockers() {
         color: "#D8A1D5",
         suggestions: [
           {
-            id: UUIDGenerator.getRandomUUID(),
+            id: v4(),
             description: "Go for a 1 mile jog",
             createdAt: new Date(),
             completedAt: null,
@@ -25,7 +27,7 @@ export default function initBlockers() {
             color: "#D8A1D5",
           },
           {
-            id: UUIDGenerator.getRandomUUID(),
+            id: v4(),
             description: "Go for a 3 mile run",
             createdAt: new Date(),
             completedAt: null,
@@ -36,7 +38,7 @@ export default function initBlockers() {
       },
       {
         category: "exercise",
-        id: UUIDGenerator.getRandomUUID(),
+        id: v4(),
         description: "Do you have a bike?",
         createdAt: new Date(),
         completedAt: null,
@@ -44,7 +46,7 @@ export default function initBlockers() {
         color: "#D8A1D5",
         suggestions: [
           {
-            id: UUIDGenerator.getRandomUUID(),
+            id: v4(),
             description: "Go for a 1 mile bike",
             createdAt: new Date(),
             completedAt: null,
@@ -52,7 +54,7 @@ export default function initBlockers() {
             color: "#D8A1D5",
           },
           {
-            id: UUIDGenerator.getRandomUUID(),
+            id: v4(),
             description: "Go for a 3 mile bike",
             createdAt: new Date(),
             completedAt: null,
@@ -63,7 +65,7 @@ export default function initBlockers() {
       },
       {
         category: "exercise",
-        id: UUIDGenerator.getRandomUUID(),
+        id: v4(),
         description: "Do you have a yoga mat?",
         createdAt: new Date(),
         completedAt: null,
@@ -71,7 +73,7 @@ export default function initBlockers() {
         color: "#D8A1D5",
         suggestions: [
           {
-            id: UUIDGenerator.getRandomUUID(),
+            id: v4(),
             description: "Do 15 mins yoga",
             createdAt: new Date(),
             completedAt: null,
@@ -79,7 +81,7 @@ export default function initBlockers() {
             color: "#D8A1D5",
           },
           {
-            id: UUIDGenerator.getRandomUUID(),
+            id: v4(),
             description: "Do 30 mins yoga",
             createdAt: new Date(),
             completedAt: null,
@@ -90,7 +92,7 @@ export default function initBlockers() {
       },
       {
         category: "music",
-        id: UUIDGenerator.getRandomUUID(),
+        id: v4(),
         description: "Do you know how to make a playlist?",
         createdAt: new Date(),
         completedAt: null,
@@ -98,7 +100,7 @@ export default function initBlockers() {
         color: "#94D7B5",
         suggestions: [
           {
-            id: UUIDGenerator.getRandomUUID(),
+            id: v4(),
             description: "...",
             createdAt: new Date(),
             completedAt: null,
@@ -106,7 +108,7 @@ export default function initBlockers() {
             color: "#D8A1D5",
           },
           {
-            id: UUIDGenerator.getRandomUUID(),
+            id: v4(),
             description: "......",
             createdAt: new Date(),
             completedAt: null,
@@ -117,7 +119,7 @@ export default function initBlockers() {
       },
       {
         category: "music",
-        id: UUIDGenerator.getRandomUUID(),
+        id: v4(),
         description: "Are you folowing multiple artists?",
         createdAt: new Date(),
         completedAt: null,
@@ -125,7 +127,7 @@ export default function initBlockers() {
         color: "#94D7B5",
         suggestions: [
           {
-            id: UUIDGenerator.getRandomUUID(),
+            id: v4(),
             description: "...",
             createdAt: new Date(),
             completedAt: null,
@@ -133,7 +135,7 @@ export default function initBlockers() {
             color: "#D8A1D5",
           },
           {
-            id: UUIDGenerator.getRandomUUID(),
+            id: v4(),
             description: "......",
             createdAt: new Date(),
             completedAt: null,
@@ -144,7 +146,7 @@ export default function initBlockers() {
       },
       {
         category: "music",
-        id: UUIDGenerator.getRandomUUID(),
+        id: v4(),
         description: "Do you follow other users?",
         createdAt: new Date(),
         completedAt: null,
@@ -152,7 +154,7 @@ export default function initBlockers() {
         color: "#94D7B5",
         suggestions: [
           {
-            id: UUIDGenerator.getRandomUUID(),
+            id: v4(),
             description: "...",
             createdAt: new Date(),
             completedAt: null,
@@ -160,7 +162,7 @@ export default function initBlockers() {
             color: "#D8A1D5",
           },
           {
-            id: UUIDGenerator.getRandomUUID(),
+            id: v4(),
             description: "......",
             createdAt: new Date(),
             completedAt: null,
@@ -171,7 +173,7 @@ export default function initBlockers() {
       },
       {
         category: "social",
-        id: UUIDGenerator.getRandomUUID(),
+        id: v4(),
         description: "Do you...?",
         createdAt: new Date(),
         completedAt: null,
@@ -179,7 +181,7 @@ export default function initBlockers() {
         color: "#E0C45E",
         suggestions: [
           {
-            id: UUIDGenerator.getRandomUUID(),
+            id: v4(),
             description: "...",
             createdAt: new Date(),
             completedAt: null,
@@ -187,7 +189,7 @@ export default function initBlockers() {
             color: "#D8A1D5",
           },
           {
-            id: UUIDGenerator.getRandomUUID(),
+            id: v4(),
             description: "......",
             createdAt: new Date(),
             completedAt: null,
@@ -198,7 +200,7 @@ export default function initBlockers() {
       },
       {
         category: "social",
-        id: UUIDGenerator.getRandomUUID(),
+        id: v4(),
         description: "Are you...?",
         createdAt: new Date(),
         completedAt: null,
@@ -206,7 +208,7 @@ export default function initBlockers() {
         color: "#E0C45E",
         suggestions: [
           {
-            id: UUIDGenerator.getRandomUUID(),
+            id: v4(),
             description: "...",
             createdAt: new Date(),
             completedAt: null,
@@ -214,7 +216,7 @@ export default function initBlockers() {
             color: "#D8A1D5",
           },
           {
-            id: UUIDGenerator.getRandomUUID(),
+            id: v4(),
             description: "......",
             createdAt: new Date(),
             completedAt: null,
@@ -225,7 +227,7 @@ export default function initBlockers() {
       },
       {
         category: "social",
-        id: UUIDGenerator.getRandomUUID(),
+        id: v4(),
         description: "Do you have...?",
         createdAt: new Date(),
         completedAt: null,
@@ -233,7 +235,7 @@ export default function initBlockers() {
         color: "#E0C45E",
         suggestions: [
           {
-            id: UUIDGenerator.getRandomUUID(),
+            id: v4(),
             description: "...",
             createdAt: new Date(),
             completedAt: null,
@@ -241,7 +243,7 @@ export default function initBlockers() {
             color: "#D8A1D5",
           },
           {
-            id: UUIDGenerator.getRandomUUID(),
+            id: v4(),
             description: "......",
             createdAt: new Date(),
             completedAt: null,
