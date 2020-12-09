@@ -30,7 +30,7 @@ function Blocker(props) {
           if (blocker.completedAt === null) {
             return (
               <TouchableHighlight
-                key={blocker.id}
+                key={blocker}
                 activeOpacity="0.75"
                 underlayColor={color1}
                 onPress={() => {
@@ -55,7 +55,7 @@ function Blocker(props) {
             if (uncompletedSuggestion) {
               return (
                 <TouchableHighlight
-                  key={uncompletedSuggestion.id}
+                  key={uncompletedSuggestion}
                   activeOpacity="0.75"
                   underlayColor={color1}
                   onPress={() => {
@@ -89,7 +89,7 @@ function Blocker(props) {
             return (
               <>
                 <TouchableHighlight
-                  key={blocker.id}
+                  key={blocker}
                   style={{
                     marginTop: 12,
                     marginBottom: 24,

@@ -6,11 +6,6 @@ export const loggedIn = (code) => {
     code
   };
 };
-export const addedBlockers = () => {
-  return {
-    type: c.ADDED_BLOCKERS
-  };
-};
 export const completedBlocker = (id) => {
   return {
     type: c.COMPLETED_BLOCKER,

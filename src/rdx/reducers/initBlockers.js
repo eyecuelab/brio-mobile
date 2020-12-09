@@ -1,3 +1,4 @@
+import UUIDGenerator from 'react-native-uuid-generator';
 export default function initBlockers() {
   return {
     currentPoints: {
