@@ -32,7 +32,10 @@ function Blocker(props) {
             return (
               <>
                 <BlockerListContainer key={blocker.id}>
-                  <IconWrapper onPress={() => console.log("hello")}>
+                  <IconWrapper
+                    underlayColor={`${color1}`}
+                    onPress={() => console.log("hello")}
+                  >
                     <SvgStarIcon color1={`${color1}`} color2={`${color2}`} />
                   </IconWrapper>
                   <ListWrapper
@@ -54,7 +57,10 @@ function Blocker(props) {
             if (uncompletedSuggestion) {
               return (
                 <BlockerListContainer key={uncompletedSuggestion.id}>
-                  <IconWrapper onPress={() => console.log("HELLO")}>
+                  <IconWrapper
+                    underlayColor={`${color1}`}
+                    onPress={() => console.log("HELLO")}
+                  >
                     <SvgStarIcon color1={`${color1}`} color2={`${color2}`} />
                   </IconWrapper>
                   <ListWrapper
@@ -88,6 +94,7 @@ function Blocker(props) {
                     marginTop: 12,
                     marginBottom: 24,
                     backgroundColor: `${color1}`,
+                    borderRadius: 25,
                   }}
                 >
                   <List.Item
@@ -120,6 +127,7 @@ function Blocker(props) {
               marginTop: 12,
               marginBottom: 24,
               backgroundColor: `${color1}`,
+              borderRadius: 25,
             }}
           >
             <List.Item
@@ -204,6 +212,7 @@ const ListWrapper = styled.TouchableHighlight`
   align-items: center;
   height: 50px;
   padding: 12px;
+  border-radius: 15px;
 `;
 const ListText = styled.Text`
   font-size: 14px;
@@ -213,7 +222,11 @@ const ListText = styled.Text`
 const IconWrapper = styled.TouchableHighlight`
   justify-content: center;
   align-items: center;
-  height: 50px;
+  height: 70px;
+  width: 70px;
+  margin-right: 16px;
+  margin-left: 18px;
+  border-radius: 25px;
 `;
 
 const mapStateToProps = (state) => {
