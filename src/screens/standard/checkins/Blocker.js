@@ -95,7 +95,9 @@ function Blocker(props) {
                     left={() => <SvgStarIconComplete />}
                   />
                 </TouchableHighlight>
-                {displayCompletedSuggestions(blocker.suggestions)}
+                {blocker.suggestions.map((suggestion) => {
+                  return displayCompletedSuggestion(suggestion);
+                })}
               </React.Fragment>
             );
           }
@@ -104,31 +106,29 @@ function Blocker(props) {
     );
   };
 
-  const displayCompletedSuggestions = (suggestions) => {
+  const displayCompletedSuggestion = (suggestion) => {
     {
-      suggestions.map((suggestion) => {
-        if (suggestion.completedAt !== null) {
-          return (
-            <TouchableHighlight
-              key={suggestion.id}
-              style={{
-                marginTop: 12,
-                marginBottom: 24,
-                backgroundColor: `${color1}`,
-              }}
-            >
-              <List.Item
-                title={suggestion.description}
-                titleNumberOfLines={3}
-                titleStyle={{ color: "#FFFFFF" }}
-                description={getCompletedDate(suggestion)}
-                descriptionStyle={{ color: "#FFFFFF" }}
-                left={() => <SvgStarIconComplete />}
-              />
-            </TouchableHighlight>
-          );
-        }
-      });
+      if (suggestion.completedAt !== null) {
+        return (
+          <TouchableHighlight
+            key={suggestion.id}
+            style={{
+              marginTop: 12,
+              marginBottom: 24,
+              backgroundColor: `${color1}`,
+            }}
+          >
+            <List.Item
+              title={suggestion.description}
+              titleNumberOfLines={3}
+              titleStyle={{ color: "#FFFFFF" }}
+              description={getCompletedDate(suggestion)}
+              descriptionStyle={{ color: "#FFFFFF" }}
+              left={() => <SvgStarIconComplete />}
+            />
+          </TouchableHighlight>
+        );
+      }
     }
   };
 

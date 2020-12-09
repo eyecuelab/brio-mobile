@@ -1,5 +1,5 @@
 import * as c from "../actions/types";
-import initBlockers from './initBlockers'
+import initBlockers from "./initBlockers";
 
 export default (state = initBlockers(), action) => {
   switch (action.type) {
