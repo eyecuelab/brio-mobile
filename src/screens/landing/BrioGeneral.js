@@ -15,9 +15,7 @@ const navigation = useNavigation();
      if (spotifyToken != null) {
         navigation.navigate("StandardNavigation");
          }
-      }, [spotifyToken]);
-// commit this :D
-// TRY IT!!! it works!!! just  boots to dashboard
+      }, [spotifyToken])
 
     return (
         <View style={bg.basic}>
