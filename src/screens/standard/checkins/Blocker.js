@@ -6,6 +6,7 @@ import { List } from "react-native-paper";
 import SvgStarIcon from "../../../svg_assets/SvgStarIcon";
 import SvgStarIconComplete from "../../../svg_assets/SvgStarIconComplete";
 import styled from "styled-components/native";
+import ModalContents from "./ModalContents";
 
 function Blocker(props) {
   const { dispatch, blockers, category, color1, color2 } = props;
@@ -24,6 +25,10 @@ function Blocker(props) {
     dispatch(action2);
   };
 
+  const showModal = () => {
+    return (<ModalContents />);
+  };
+
   const displayBlockers = () => {
     return (
       <>
@@ -34,7 +39,7 @@ function Blocker(props) {
                 <BlockerListContainer key={blocker.id}>
                   <IconWrapper
                     underlayColor={`${color1}`}
-                    onPress={() => console.log("hello")}
+                    onPress={() => showModal()}
                   >
                     <SvgStarIcon color1={`${color1}`} color2={`${color2}`} />
                   </IconWrapper>
