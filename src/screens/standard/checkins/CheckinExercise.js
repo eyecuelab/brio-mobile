@@ -7,24 +7,25 @@ import Blocker from "./Blocker";
 import DashBar from "../dashboard/DashBar";
 
 export const CheckinExercise = () => {
-  
-  return (
-    <ScrollView>
-      <Container style={bg.berry}>
-        <CheckinContainer>
-          <SvgCheckinExercise />
-          <DashBar category={"Exercise"} color={"#d8a1d5"} from={"Checkin"} />
-        </CheckinContainer>
-        <ListContainer>
-          <ListHeaderTextWrapper>
-            <ListHeaderText>TAP TO COMPLETE</ListHeaderText>
-            <ListHeaderText>REFRESH</ListHeaderText>
-          </ListHeaderTextWrapper>
-          <Blocker category={"exercise"} color1={"#D8A1D5"} color2={"#FFE3E3"} />
-        </ListContainer>
-      </Container>
-    </ScrollView>
-  );
+    return (
+      <ScrollView>
+        <Container style={bg.berry}>
+          <CheckinContainer>
+            <SvgCheckinExercise />
+            <DashBar category={"Exercise"} color={"#d8a1d5"} from={"Checkin"} />
+          </CheckinContainer>
+          <ListContainer>
+            <ListHeaderTextWrapper>
+              <ListHeaderText>TAP TO COMPLETE</ListHeaderText>
+              <ListHeaderText>REFRESH</ListHeaderText>
+            </ListHeaderTextWrapper>
+            <Blocker category={"exercise"} color1={"#D8A1D5"} color2={"#FFE3E3"} />
+          </ListContainer>
+        </Container>
+      </ScrollView>
+    );
+
+
 };
 
 const Container = styled.View`

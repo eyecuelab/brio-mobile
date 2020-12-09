@@ -1,5 +1,5 @@
 import React from "react";
-import { ImageBackground, Text, View } from "react-native";
+import { ImageBackground, Text, View, Alert } from "react-native";
 import { connect } from "react-redux";
 
 export const ModalContents = () => {
@@ -10,8 +10,8 @@ export const ModalContents = () => {
       style={{
         flex: 1,
         flexDirection: "column",
-        justifyContent: "center",
-        position: "absolute",
+        // justifyContent: "center",
+        position: "fixed",
         left: 0,
         top: 0,
         opacity: 0.5,
@@ -22,6 +22,7 @@ export const ModalContents = () => {
       <ImageBackground
         source={image}
         style={{
+          backgroundColor: "#ffffff",
           resizeMode: "cover",
           justifyContent: "center",
         }}

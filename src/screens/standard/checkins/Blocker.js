@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, TouchableHighlight } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../rdx/actions";
@@ -10,6 +10,7 @@ import ModalContents from "./ModalContents";
 
 function Blocker(props) {
   const { dispatch, blockers, category, color1, color2 } = props;
+  const [modal, setModal] = useState(false);
 
   const catBlockers = blockers.filter(
     (blocker) => blocker.category === `${category}`
@@ -25,8 +26,18 @@ function Blocker(props) {
     dispatch(action2);
   };
 
+  const callModal = () => {
+    if (!modal) {
+      setModal(true);
+    } else {
+      setModal(false);
+    }
+  };
+
   const showModal = () => {
-    return <ModalContents />;
+    if (modal) {
+      return <ModalContents />;
+    }
   };
 
   const displayBlockers = () => {
@@ -36,10 +47,11 @@ function Blocker(props) {
           if (blocker.completedAt === null) {
             return (
               <>
+                {showModal()}
                 <BlockerListContainer key={blocker.id}>
                   <IconWrapper
                     underlayColor={`${color1}`}
-                    onPress={() => showModal()}
+                    onPress={() => callModal()}
                   >
                     <SvgStarIcon color1={`${color1}`} color2={`${color2}`} />
                   </IconWrapper>
