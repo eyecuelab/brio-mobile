@@ -1,23 +1,33 @@
-import React from 'react';
+import React, { useEffect } from "react";
 import { View, TouchableOpacity, Text } from "react-native";
 import bg from "../../styles/ScreenStyle.js";
 import SvgBrioIntro from "../../svg_assets/landing/SvgBrioIntro"
 import styled from "styled-components/native";
 import GetStartedBtn from "./GetStartedBtn";
+import { connect } from "react-redux";
+// EXPO AUTH
+import * as WebBrowser from "expo-web-browser";
+import { makeRedirectUri, useAuthRequest } from "expo-auth-session";
+import { SPOTIFY_CLIENT_ID } from "@env";
 
-function BrioGeneral() {
-    // in useEffect run the promptAsync() to check if user has token already
-    // if it has code(token) add navigation to DashboardHome 
-    // if not show landing pages as is
+function BrioGeneral(props) {
+    // useEffect(() => {
+    //     if (authReducer.code) {
+    //       const { code } = response.params;
+    //       const action = actions.loggedIn(code);
+    //       dispatch(action);
+    //       navigation.navigate("StandardNavigation");
+    //     }
+    //   }, [response]);
 
     return (
         <View style={bg.basic}>
-                <DiagramContainer>
-                    <Diagram>
-                        <SvgBrioIntro />
-                    </Diagram>
-                </DiagramContainer>
-                <GetStartedBtn text="Get Started" textColor="#ffffff" backgroundColor="#94D7B5" />
+          <DiagramContainer>
+              <Diagram>
+                  <SvgBrioIntro />
+              </Diagram>
+          </DiagramContainer>
+          <GetStartedBtn text="Get Started" textColor="#ffffff" backgroundColor="#94D7B5" />
         </View>
     )
 }
@@ -34,4 +44,16 @@ const Diagram = styled.View`
     }
 `;
 
-export default BrioGeneral
+const mapStateToProps = (state) => {
+   return {
+    spotifyToken: state.user.code,
+    }
+}
+const BrioGeneralConnected = connect(mapStateToProps)(BrioGeneral);
+export default BrioGeneralConnected
+
+
+//wtf
+
+// lol VS code be like that sometimes
+// not sure

@@ -98,7 +98,6 @@ const LoginPage = (props) => {
             <FieldText>SYNC YOUR SPOTIFY</FieldText>
           </FieldTextContainer>
         </FieldContainer>
-
       </Container>
     </>
   );
