@@ -67,10 +67,9 @@ export default function SvgSomethingFun(){
     <path d="M198 547C194.133 547 191 550.133 191 554C191 557.867 194.133 561 198 561C201.867 561 205 557.867 205 554C205 550.133 201.867 547 198 547Z" fill="#ECC08D"/>
     <path d="M222 547C218.133 547 215 550.133 215 554C215 557.867 218.133 561 222 561C225.867 561 229 557.867 229 554C229 550.133 225.867 547 222 547Z" fill="#ECC08D"/>
     </svg>
-
     `;
 
-    const SvgImage = () => <SvgXml xml={svgMarkup} width="100px" />;
+    const SvgImage = () => <SvgXml xml={svgMarkup} width="768px" />;
 
     return <SvgImage />;
 }

@@ -1,20 +1,29 @@
-import React from 'react';
+import React, { useEffect } from "react";
 import { View, TouchableOpacity, Text } from "react-native";
 import bg from "../../styles/ScreenStyle.js";
-import SvgBrioIntro from "../../svg_assets/SvgBrioIntro"
+import SvgBrioIntro from "../../svg_assets/landing/SvgBrioIntro"
 import styled from "styled-components/native";
-import GetStartedBtn from "./GetStartedBtn"
+import GetStartedBtn from "./GetStartedBtn";
+import { connect } from "react-redux";
+import { useNavigation } from "@react-navigation/native"
 
-function BrioGeneral() {
+function BrioGeneral(props) {
+const spotifyToken = props.spotifyToken;
+const navigation = useNavigation();
+    useEffect(() => {
+     if (spotifyToken != null) {
+        navigation.navigate("StandardNavigation");
+         }
+      }, [spotifyToken])
+
     return (
         <View style={bg.basic}>
-
-                <DiagramContainer>
-                    <Diagram>
-                        <SvgBrioIntro />
-                    </Diagram>
-                </DiagramContainer>
-                <GetStartedBtn text="Get Started" textColor="#ffffff" backgroundColor="#94D7B5" />
+          <DiagramContainer>
+              <Diagram>
+                  <SvgBrioIntro />
+              </Diagram>
+          </DiagramContainer>
+          <GetStartedBtn text="Get Started" textColor="#ffffff" backgroundColor="#94D7B5" />
         </View>
     )
 }
@@ -23,7 +32,6 @@ const DiagramContainer = styled.View`
     flex: 1;
     flex-direction: row;
     justify-content: space-around;
-    margin-top: 36px;
 `;
 const Diagram = styled.View`
     margin-top: 36px;
@@ -32,4 +40,10 @@ const Diagram = styled.View`
     }
 `;
 
-export default BrioGeneral
+const mapStateToProps = (state) => {
+    return {
+        spotifyToken: state.user.code,
+    }
+}
+const BrioGeneralConnected = connect(mapStateToProps)(BrioGeneral);
+export default BrioGeneralConnected

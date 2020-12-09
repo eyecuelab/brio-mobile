@@ -42,25 +42,8 @@ export const DashboardProfile = () => {
         </FieldContainer>
 
         <FieldContainer>
-          <SpotifyLoginBtn onPress={() => console.log("SPOTIFY LOGIN PRESSED")}>
-            <TextWrapper>
-              <Icon
-                name="spotify"
-                size={22}
-                color="#fff"
-                style={{ marginRight: 20 }}
-              />
-              <LoginBtnText>Connect Spotify</LoginBtnText>
-            </TextWrapper>
-          </SpotifyLoginBtn>
-          <FieldTextContainer>
-            <FieldText>SYNC YOUR SPOTIFY</FieldText>
-          </FieldTextContainer>
-        </FieldContainer>
-
-        <FieldContainer>
           <LogoutBtn onPress={() => console.log("LOG OUT PRESSED")}>
-            <LoginBtnText>Log out</LoginBtnText>
+            <LogoutBtnText>Log out</LogoutBtnText>
           </LogoutBtn>
           <FieldTextContainer>
             <FieldText>LOG OUT OF THE APP</FieldText>
@@ -76,29 +59,29 @@ const Container = styled.View`
   height: 100%;
 `;
 const AvatarContainer = styled.View`
-  margin-top: 64;
+  margin-top: 64px;
   align-items: center;
   justify-content: center;
 `;
 const AvatarNameText = styled.Text`
-  margin-top: 16;
+  margin-top: 16px;
   color: #7e6200;
   font-size: 28px;
   font-weight: 900;
 `;
 const UsernameInput = styled.TextInput`
   width: 90%;
-  height: 50;
+  height: 50px;
   padding: 10px;
-  border-radius: 10;
+  border-radius: 10px;
   background-color: white;
 `;
 const FieldContainer = styled.View`
-  margin-top: 24;
-  margin-left: 24;
+  margin-top: 24px;
+  margin-left: 24px;
 `;
 const FieldTextContainer = styled.View`
-  margin-top: 8;
+  margin-top: 8px;
 `;
 const FieldText = styled.Text`
   color: #dea768;
@@ -110,26 +93,16 @@ const EyecolorView = styled.View`
   justify-content: space-around;
   align-items: center;
   width: 90%;
-  height: 55;
+  height: 55px;
   padding: 10px;
-  border-radius: 10;
+  border-radius: 10px;
   background-color: white;
-  margin-top: 8;
+  margin-top: 8px;
 `;
 const TextWrapper = styled.View`
   flex-direction: row;
 `;
-const SpotifyLoginBtn = styled.TouchableHighlight`
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 90%;
-  height: 55;
-  padding: 10px;
-  border-radius: 10;
-  background-color: #1ed760;
-  margin-top: 8;
-`;
+
 const LogoutBtn = styled.TouchableHighlight`
   flex-direction: row;
   justify-content: center;
@@ -137,12 +110,12 @@ const LogoutBtn = styled.TouchableHighlight`
   width: 90%;
   height: 55;
   padding: 10px;
-  border-radius: 10;
+  border-radius: 10px;
   background-color: #d8a1d5;
   margin-top: 8;
   text-align: center;
 `;
-const LoginBtnText = styled.Text`
+const LogoutBtnText = styled.Text`
   color: white;
   font-size: 18px;
   font-weight: 900;

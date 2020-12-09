@@ -22,7 +22,7 @@ export default function SvgBrioIntro(){
 <path d="M223 533C219.133 533 216 536.133 216 540C216 543.867 219.133 547 223 547C226.867 547 230 543.867 230 540C230 536.133 226.867 533 223 533Z" fill="#ECC08D"/>
 </svg>
  `;
- const SvgImage = () => <SvgXml xml={svgMarkup} width="100px" />;  
+ const SvgImage = () => <SvgXml xml={svgMarkup} width="768px" />;  
 
  return <SvgImage />;
 }

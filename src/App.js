@@ -33,14 +33,10 @@ export default function App() {
                 component={LandingNavigation}
               />
               <RootStack.Screen name="Login" component={LoginPage} />
-              <RootStack.Screen name="CheckinExercise" component={CheckinExercise} />
-              <RootStack.Screen name="CheckinMusic" component={CheckinMusic} />
-              <RootStack.Screen name="CheckinSocial" component={CheckinSocial} />
               <RootStack.Screen
                 name="StandardNavigation"
                 component={StandardNavigation}
               />
-              
             </RootStack.Navigator>
           </NavigationContainer>
 

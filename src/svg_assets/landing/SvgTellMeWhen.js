@@ -46,7 +46,7 @@ export default function SvgTellMeWhen(){
     </svg>
     `;
 
-const SvgImage = () => <SvgXml xml={svgMarkup} width="100px" />;
+const SvgImage = () => <SvgXml xml={svgMarkup} width="768px" />;
 
 return <SvgImage />;
 }
