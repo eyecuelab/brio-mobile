@@ -24,9 +24,10 @@ function DashboardMain(props) {
             <DiagramContainer>
               <SvgBrioFront />
               <Diagram>
-                <DiagramText>You haven't got points yet </DiagramText>
+                <DiagramText>You haven't got points yet!</DiagramText>
               </Diagram>
             </DiagramContainer>
+            <PieChart />
           </>
         );
       } else {

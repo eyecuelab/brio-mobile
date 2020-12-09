@@ -22,7 +22,11 @@ export const PieChart = (props) => {
   const exerciseColor = "#D8A1D5";
   const musicColor = "#94D7B5";
   const socialColor = "#E0C45E";
+  const exerciseGrey = "#8A8A8A";
+  const musicGrey = "#5E5E5E";
+  const socialGrey = "#BEBEBE";
   const colorScale = [exerciseColor, musicColor, socialColor];
+  const greyScale = [exerciseGrey, musicGrey, socialGrey];
   const navs = ["CheckinExercise", "CheckinMusic", "CheckinSocial"];
 
   const displayPieChart = () => {
@@ -32,38 +36,78 @@ export const PieChart = (props) => {
       { x: "Social", y: calculatePts(socialBlockers) },
     ];
 
-    return (
-      <>
-        <VictoryPie
-          standalone={false}
-          innerRadius={100}
-          labelRadius={125}
-          data={data}
-          colorScale={colorScale}
-          style={{ labels: { display: "none" } }}
-          events={[
-            {
-              target: "data",
-              eventHandlers: {
-                onPressIn: () => {
-                  return [
-                    {
-                      target: "data",
-                      mutation: (dataProps) => {
-                        navigation.navigate(navs[dataProps.index]);
-                        return {};
-                      },
+    const blankData = [
+      { x: "Exercise", y: 1 },
+      { x: "Music", y: 1 },
+      { x: "Social", y: 1 },
+    ];
+
+      if (data === null) {
+        return (
+          <>
+            <VictoryPie
+              standalone={false}
+              innerRadius={100}
+              labelRadius={125}
+              data={blankData}
+              colorScale={greyScale}
+              style={{ labels: { display: "none" } }}
+              events={[
+                {
+                  target: "data",
+                  eventHandlers: {
+                    onPressIn: () => {
+                      return [
+                        {
+                          target: "data",
+                          mutation: (dataProps) => {
+                            navigation.navigate(navs[dataProps.index]);
+                            return {};
+                          },
+                        },
+                      ];
                     },
-                  ];
+                    onPressOut: () => {},
+                  },
                 },
-                onPressOut: () => {},
-              },
-            },
-          ]}
-        />
-      </>
-    );
-  };
+              ]}
+            />
+          </>
+        );
+      } else {
+        return (
+          <>
+            <VictoryPie
+              standalone={false}
+              innerRadius={100}
+              labelRadius={125}
+              data={data}
+              colorScale={colorScale}
+              style={{ labels: { display: "none" } }}
+              events={[
+                {
+                  target: "data",
+                  eventHandlers: {
+                    onPressIn: () => {
+                      return [
+                        {
+                          target: "data",
+                          mutation: (dataProps) => {
+                            navigation.navigate(navs[dataProps.index]);
+                            return {};
+                          },
+                        },
+                      ];
+                    },
+                    onPressOut: () => {},
+                  },
+                },
+              ]}
+            />
+          </>
+        );
+      }
+    }
 
   const showEyeball = () => {
     return (
@@ -127,12 +171,13 @@ export const PieChart = (props) => {
       </View>
     </>
   );
-};
+}
 
 const mapStateToProps = (state) => {
   return {
     allBlockers: state.blockersState.blockers,
   };
-};
+}
+
 
 export default connect(mapStateToProps)(PieChart);
