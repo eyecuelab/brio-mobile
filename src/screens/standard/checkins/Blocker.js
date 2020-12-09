@@ -32,7 +32,9 @@ function Blocker(props) {
             return (
               <>
                 <BlockerListContainer key={blocker.id}>
-                  <SvgStarIcon color1={`${color1}`} color2={`${color2}`} />
+                  <IconWrapper onPress={() => console.log("hello")}>
+                    <SvgStarIcon color1={`${color1}`} color2={`${color2}`} />
+                  </IconWrapper>
                   <ListWrapper
                     activeOpacity="0.75"
                     underlayColor={color1}
@@ -52,7 +54,9 @@ function Blocker(props) {
             if (uncompletedSuggestion) {
               return (
                 <BlockerListContainer key={uncompletedSuggestion.id}>
-                  <SvgStarIcon color1={`${color1}`} color2={`${color2}`} />
+                  <IconWrapper onPress={() => console.log("HELLO")}>
+                    <SvgStarIcon color1={`${color1}`} color2={`${color2}`} />
+                  </IconWrapper>
                   <ListWrapper
                     activeOpacity="0.75"
                     underlayColor={color1}
@@ -205,6 +209,11 @@ const ListText = styled.Text`
   font-size: 14px;
   text-align: center;
   flex-shrink: 1;
+`;
+const IconWrapper = styled.TouchableHighlight`
+  justify-content: center;
+  align-items: center;
+  height: 50px;
 `;
 
 const mapStateToProps = (state) => {
