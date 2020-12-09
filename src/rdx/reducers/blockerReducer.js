@@ -1,7 +1,7 @@
 import * as c from "../actions/types";
 import initBlockers from './initBlockers'
 
-export default (state = initBlockers, action) => {
+export default (state = initBlockers(), action) => {
   switch (action.type) {
     case c.COMPLETED_BLOCKER: {
       const currentState = { ...state };
@@ -63,6 +63,10 @@ export default (state = initBlockers, action) => {
         blockers: updatedBlockers,
         currentPoints: updatedPoints,
       };
+    }
+
+    case c.RESET_PROGRESS: {
+      return initBlockers();
     }
 
     default:

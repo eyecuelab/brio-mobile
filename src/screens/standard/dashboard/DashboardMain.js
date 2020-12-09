@@ -1,6 +1,7 @@
 import React from "react";
 import { View, ScrollView } from "react-native";
 import { connect } from "react-redux";
+import * as actions from "../../../rdx/actions";
 import bg from "../../../styles/ScreenStyle";
 import { Button } from 'react-native-paper';
 import PieChart from "./PieChart";
@@ -12,7 +13,7 @@ import SvgMusic from "../../../svg_assets/SvgMusic";
 import SvgSocial from "../../../svg_assets/SvgSocial";
 
 function DashboardMain(props) {
-  const { allBlockers } = props;
+  const { allBlockers, dispatch } = props;
 
   const pieOrMsg = () => {
     if (allBlockers && allBlockers.length > 0) {
@@ -47,6 +48,11 @@ function DashboardMain(props) {
     }
   };
 
+  const resetProgress = () => {
+    const action = actions.resetProgress();
+    dispatch(action);
+  }
+
   return (
     <>
       <ScrollView>
@@ -75,9 +81,7 @@ function DashboardMain(props) {
             mode="contained"
             color="#FFCD1A"
             labelStyle={{color: "#fff"}}
-            onPress={() => {
-              console.log("RESET PRESSED");
-            }}
+            onPress={() => {resetProgress()}}
           >
             {" "}
             Reset Progress{" "}

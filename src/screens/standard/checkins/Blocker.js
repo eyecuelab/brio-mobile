@@ -28,9 +28,10 @@ function Blocker(props) {
       <>
         {catBlockers.map((blocker) => {
           if (blocker.completedAt === null) {
+            console.log(blocker.id)
             return (
               <TouchableHighlight
-                key={blocker}
+                key={blocker.id}
                 activeOpacity="0.75"
                 underlayColor={color1}
                 onPress={() => {
@@ -39,7 +40,6 @@ function Blocker(props) {
                 style={{ marginTop: 12, marginBottom: 24 }}
               >
                 <List.Item
-                  key={blocker.id}
                   title={blocker.description}
                   titleNumberOfLines={3}
                   left={() => (
@@ -55,7 +55,7 @@ function Blocker(props) {
             if (uncompletedSuggestion) {
               return (
                 <TouchableHighlight
-                  key={uncompletedSuggestion}
+                  key={uncompletedSuggestion.id}
                   activeOpacity="0.75"
                   underlayColor={color1}
                   onPress={() => {
@@ -64,7 +64,6 @@ function Blocker(props) {
                   style={{ marginTop: 12, marginBottom: 24 }}
                 >
                   <List.Item
-                    key={uncompletedSuggestion.id}
                     title={uncompletedSuggestion.description}
                     titleNumberOfLines={3}
                     left={() => (
@@ -89,7 +88,7 @@ function Blocker(props) {
             return (
               <>
                 <TouchableHighlight
-                  key={blocker}
+                  key={blocker.id}
                   style={{
                     marginTop: 12,
                     marginBottom: 24,
@@ -97,7 +96,6 @@ function Blocker(props) {
                   }}
                 >
                   <List.Item
-                    key={blocker.id}
                     title={blocker.description}
                     titleNumberOfLines={3}
                     titleStyle={{ color: "#FFFFFF" }}
@@ -129,7 +127,6 @@ function Blocker(props) {
               }}
             >
               <List.Item
-                key={suggestion.id}
                 title={suggestion.description}
                 titleNumberOfLines={3}
                 titleStyle={{ color: "#FFFFFF" }}

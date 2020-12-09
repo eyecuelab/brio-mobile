@@ -19,3 +19,8 @@ export const completedSuggestion = (blockerId, suggestionId) => {
     suggestionId,
   };
 };
+export const resetProgress = () => {
+  return {
+    type: c.RESET_PROGRESS,
+  };
+};
