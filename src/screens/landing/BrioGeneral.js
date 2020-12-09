@@ -5,20 +5,19 @@ import SvgBrioIntro from "../../svg_assets/landing/SvgBrioIntro"
 import styled from "styled-components/native";
 import GetStartedBtn from "./GetStartedBtn";
 import { connect } from "react-redux";
-// EXPO AUTH
-import * as WebBrowser from "expo-web-browser";
-import { makeRedirectUri, useAuthRequest } from "expo-auth-session";
-import { SPOTIFY_CLIENT_ID } from "@env";
+import { useNavigation } from "@react-navigation/native"
 
+// :D :D :D XD we dont need else
 function BrioGeneral(props) {
-    // useEffect(() => {
-    //     if (authReducer.code) {
-    //       const { code } = response.params;
-    //       const action = actions.loggedIn(code);
-    //       dispatch(action);
-    //       navigation.navigate("StandardNavigation");
-    //     }
-    //   }, [response]);
+const spotifyToken = props.spotifyToken;
+const navigation = useNavigation();
+    useEffect(() => {
+     if (spotifyToken != null) {
+        navigation.navigate("StandardNavigation");
+         }
+      }, [spotifyToken]);
+// commit this :D
+// TRY IT!!! it works!!! just  boots to dashboard
 
     return (
         <View style={bg.basic}>
@@ -45,15 +44,9 @@ const Diagram = styled.View`
 `;
 
 const mapStateToProps = (state) => {
-   return {
-    spotifyToken: state.user.code,
+    return {
+        spotifyToken: state.user.code,
     }
 }
 const BrioGeneralConnected = connect(mapStateToProps)(BrioGeneral);
 export default BrioGeneralConnected
-
-
-//wtf
-
-// lol VS code be like that sometimes
-// not sure
