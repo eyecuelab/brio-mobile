@@ -2,6 +2,7 @@ import React from "react";
 import { View, ScrollView } from "react-native";
 import { connect } from "react-redux";
 import bg from "../../../styles/ScreenStyle";
+import { Button } from 'react-native-paper';
 import PieChart from "./PieChart";
 import DashBar from "./DashBar";
 import styled from "styled-components/native";
@@ -69,6 +70,19 @@ function DashboardMain(props) {
             image={<SvgSocial />}
             from={"DashboardMain"}
           />
+          {/* temporary reset button here */}
+          <Button
+            mode="contained"
+            color="#FFCD1A"
+            labelStyle={{color: "#fff"}}
+            onPress={() => {
+              console.log("RESET PRESSED");
+            }}
+          >
+            {" "}
+            Reset Progress{" "}
+          </Button>
+
         </View>
       </ScrollView>
     </>
