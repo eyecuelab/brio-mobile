@@ -26,7 +26,7 @@ function Blocker(props) {
   };
 
   const showModal = () => {
-    return (<ModalContents />);
+    return <ModalContents />;
   };
 
   const displayBlockers = () => {
