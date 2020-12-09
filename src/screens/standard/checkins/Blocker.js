@@ -7,6 +7,7 @@ import SvgStarIcon from "../../../svg_assets/SvgStarIcon";
 import SvgStarIconComplete from "../../../svg_assets/SvgStarIconComplete";
 import styled from "styled-components/native";
 import ModalContents from "./ModalContents";
+import Tooltip from 'react-native-walkthrough-tooltip';
 
 function Blocker(props) {
   const { dispatch, blockers, category, color1, color2 } = props;
