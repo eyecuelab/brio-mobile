@@ -5,6 +5,7 @@ import * as actions from "../../../rdx/actions";
 import { List } from "react-native-paper";
 import SvgStarIcon from "../../../svg_assets/SvgStarIcon";
 import SvgStarIconComplete from "../../../svg_assets/SvgStarIconComplete";
+import styled from "styled-components/native";
 
 function Blocker(props) {
   const { dispatch, blockers, category, color1, color2 } = props;
@@ -29,23 +30,20 @@ function Blocker(props) {
         {catBlockers.map((blocker) => {
           if (blocker.completedAt === null) {
             return (
-              <TouchableHighlight
-                key={blocker.id}
-                activeOpacity="0.75"
-                underlayColor={color1}
-                onPress={() => {
-                  completedBlocker(blocker.id);
-                }}
-                style={{ marginTop: 12, marginBottom: 24 }}
-              >
-                <List.Item
-                  title={blocker.description}
-                  titleNumberOfLines={3}
-                  left={() => (
-                    <SvgStarIcon color1={`${color1}`} color2={`${color2}`} />
-                  )}
-                />
-              </TouchableHighlight>
+              <>
+                <BlockerListContainer key={blocker.id}>
+                  <SvgStarIcon color1={`${color1}`} color2={`${color2}`} />
+                  <TouchableHighlight
+                    activeOpacity="0.75"
+                    underlayColor={color1}
+                    onPress={() => {
+                      completedBlocker(blocker.id);
+                    }}
+                  >
+                    <ListText>{blocker.description}</ListText>
+                  </TouchableHighlight>
+                </BlockerListContainer>
+              </>
             );
           } else {
             const uncompletedSuggestion = blocker.suggestions.find(
@@ -53,23 +51,18 @@ function Blocker(props) {
             );
             if (uncompletedSuggestion) {
               return (
-                <TouchableHighlight
-                  key={uncompletedSuggestion.id}
-                  activeOpacity="0.75"
-                  underlayColor={color1}
-                  onPress={() => {
-                    completedSuggestion(blocker.id, uncompletedSuggestion.id);
-                  }}
-                  style={{ marginTop: 12, marginBottom: 24 }}
-                >
-                  <List.Item
-                    title={uncompletedSuggestion.description}
-                    titleNumberOfLines={3}
-                    left={() => (
-                      <SvgStarIcon color1={`${color1}`} color2={`${color2}`} />
-                    )}
-                  />
-                </TouchableHighlight>
+                <BlockerListContainer key={uncompletedSuggestion.id}>
+                  <SvgStarIcon color1={`${color1}`} color2={`${color2}`} />
+                  <TouchableHighlight
+                    activeOpacity="0.75"
+                    underlayColor={color1}
+                    onPress={() => {
+                      completedSuggestion(blocker.id, uncompletedSuggestion.id);
+                    }}
+                  >
+                    <ListText>{uncompletedSuggestion.description}</ListText>
+                  </TouchableHighlight>
+                </BlockerListContainer>
               );
             }
           }
@@ -195,6 +188,18 @@ const getCompletedDate = (blocker) => {
 
   return `${day} ${month} ${date}, ${year}`;
 };
+
+const BlockerListContainer = styled.View`
+  flex: 1;
+  flex-direction: row;
+  margin-bottom: 12px;
+  align-items: center;
+`;
+const ListText = styled.Text`
+  font-size: 16px;
+  font-weight: 900;
+  text-align: center;
+`;
 
 const mapStateToProps = (state) => {
   const blockers = state.blockersState.blockers;
