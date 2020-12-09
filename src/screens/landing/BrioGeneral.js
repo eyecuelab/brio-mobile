@@ -7,7 +7,6 @@ import GetStartedBtn from "./GetStartedBtn";
 import { connect } from "react-redux";
 import { useNavigation } from "@react-navigation/native"
 
-// :D :D :D XD we dont need else
 function BrioGeneral(props) {
 const spotifyToken = props.spotifyToken;
 const navigation = useNavigation();
