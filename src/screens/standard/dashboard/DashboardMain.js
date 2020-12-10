@@ -3,7 +3,7 @@ import { View, ScrollView } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../rdx/actions";
 import bg from "../../../styles/ScreenStyle";
-import { Button } from 'react-native-paper';
+import { Button } from "react-native-paper";
 import PieChart from "./PieChart";
 import DashBar from "./DashBar";
 import styled from "styled-components/native";
@@ -11,6 +11,7 @@ import SvgBrioFront from "../../../svg_assets/SvgBrioFront";
 import SvgExercise from "../../../svg_assets/SvgExercise";
 import SvgMusic from "../../../svg_assets/SvgMusic";
 import SvgSocial from "../../../svg_assets/SvgSocial";
+import SadPieChart from "./SadPieChart";
 
 function DashboardMain(props) {
   const { allBlockers, dispatch } = props;
@@ -26,9 +27,10 @@ function DashboardMain(props) {
             <DiagramContainer>
               <SvgBrioFront />
               <Diagram>
-                <DiagramText>You haven't got points yet </DiagramText>
+                <DiagramText>You haven't got points yet!</DiagramText>
               </Diagram>
             </DiagramContainer>
+            <SadPieChart />
           </>
         );
       } else {
@@ -86,7 +88,6 @@ function DashboardMain(props) {
             {" "}
             Reset Progress{" "}
           </Button>
-
         </View>
       </ScrollView>
     </>

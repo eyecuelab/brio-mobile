@@ -75,17 +75,17 @@ export const PieChart = (props) => {
     );
   };
 
+  //REFACTOR LATER
+
   const calculatePts = (blockers) => {
-    let currentPts = 0
+    let currentPts = 0;
     const completedBlockers = blockers.filter(
       (blocker) => blocker.completedAt !== null
     );
     if (completedBlockers && completedBlockers.length > 0) {
-      const currentPtsArr = completedBlockers.map(
-        (completedBlocker) => {
-          return completedBlocker.points;
-        }
-      );
+      const currentPtsArr = completedBlockers.map((completedBlocker) => {
+        return completedBlocker.points;
+      });
       currentPts = currentPtsArr.reduce((acc, cur) => {
         return acc + cur;
       });
