@@ -7,18 +7,9 @@ import { Svg, Circle } from "react-native-svg";
 import SvgEyeballPie from "../../../svg_assets/SvgEyeballPie";
 
 export const PieChart = (props) => {
-  const { allBlockers } = props;
+  const { catPoints } = props;
   const navigation = useNavigation();
 
-  const exerciseBlockers = allBlockers.filter(
-    (blocker) => blocker.category === "exercise"
-  );
-  const musicBlockers = allBlockers.filter(
-    (blocker) => blocker.category === "music"
-  );
-  const socialBlockers = allBlockers.filter(
-    (blocker) => blocker.category === "social"
-  );
   const exerciseColor = "#D8A1D5";
   const musicColor = "#94D7B5";
   const socialColor = "#E0C45E";
@@ -27,9 +18,9 @@ export const PieChart = (props) => {
 
   const displayPieChart = () => {
     const data = [
-      { x: "Exercise", y: calculatePts(exerciseBlockers) },
-      { x: "Music", y: calculatePts(musicBlockers) },
-      { x: "Social", y: calculatePts(socialBlockers) },
+      { x: "Exercise", y: catPoints.exercise },
+      { x: "Music", y: catPoints.music },
+      { x: "Social", y: catPoints.social },
     ];
 
     return (
@@ -75,42 +66,6 @@ export const PieChart = (props) => {
     );
   };
 
-  //REFACTOR LATER
-
-  const calculatePts = (blockers) => {
-    let currentPts = 0;
-    const completedBlockers = blockers.filter(
-      (blocker) => blocker.completedAt !== null
-    );
-    if (completedBlockers && completedBlockers.length > 0) {
-      const currentPtsArr = completedBlockers.map((completedBlocker) => {
-        return completedBlocker.points;
-      });
-      currentPts = currentPtsArr.reduce((acc, cur) => {
-        return acc + cur;
-      });
-
-      const completedSuggestions = completedBlockers
-        .map((blocker) =>
-          blocker.suggestions.filter(
-            (suggestion) => suggestion.completedAt !== null
-          )
-        )
-        .flat();
-      if (completedSuggestions && completedSuggestions.length > 0) {
-        const completedSuggestionsPts = completedSuggestions.map(
-          (completedBlocker) => {
-            return completedBlocker.points;
-          }
-        );
-        currentPts += completedSuggestionsPts.reduce((acc, cur) => {
-          return acc + cur;
-        });
-      }
-    }
-    return currentPts;
-  };
-
   return (
     <>
       <View style={{ alignItems: "center", justifyContent: "center" }}>
@@ -131,7 +86,7 @@ export const PieChart = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    allBlockers: state.blockersState.blockers,
+    catPoints: state.blockersState.currentPoints,
   };
 };
 
