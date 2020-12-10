@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View, TouchableOpacity, Text } from "react-native";
+import { View } from "react-native";
 import bg from "../../styles/ScreenStyle.js";
 import SvgBrioIntro from "../../svg_assets/landing/SvgBrioIntro";
 import styled from "styled-components/native";
@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 
 function BrioGeneral(props) {
+
   const spotifyToken = props.spotifyToken;
   const navigation = useNavigation();
   useEffect(() => {

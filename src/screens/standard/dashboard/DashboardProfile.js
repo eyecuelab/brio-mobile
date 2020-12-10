@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { View } from "react-native";
 import styled from "styled-components/native";
 import bg from "../../../styles/ScreenStyle";
 import SvgAvatar from "../../../svg_assets/SvgAvatar";
 import SvgEyeball from "../../../svg_assets/SvgEyeball";
-import Icon from "react-native-vector-icons/FontAwesome";
 
 export const DashboardProfile = () => {
   const [value, onChangeText] = useState("");

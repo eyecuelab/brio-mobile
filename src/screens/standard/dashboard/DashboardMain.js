@@ -53,7 +53,7 @@ function DashboardMain(props) {
   const resetProgress = () => {
     const action = actions.resetProgress();
     dispatch(action);
-  };
+  }
 
   return (
     <>
@@ -82,10 +82,8 @@ function DashboardMain(props) {
           <Button
             mode="contained"
             color="#FFCD1A"
-            labelStyle={{ color: "#fff" }}
-            onPress={() => {
-              resetProgress();
-            }}
+            labelStyle={{color: "#fff"}}
+            onPress={() => {resetProgress()}}
           >
             {" "}
             Reset Progress{" "}
