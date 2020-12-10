@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { ScrollView } from "react-native";
 import styled from "styled-components/native";
 import bg from "../../../styles/ScreenStyle.js";
 import SvgCheckinSocial from "../../../svg_assets/SvgCheckinSocial";
 import Blocker from "./Blocker";
 import DashBar from "../dashboard/DashBar";
+import ModalContents from "./ModalContents";
 
 export const CheckinSocial = () => {
+  const [showModal, setShowModal] = useState(false);
   return (
     <ScrollView>
-      <Container style={bg.citrus} >
+      <Container style={bg.citrus}>
         <CheckinContainer>
           <SvgCheckinSocial />
           <DashBar category={"Social"} color={"#E0C45E"} from={"Checkin"} />
@@ -19,16 +21,22 @@ export const CheckinSocial = () => {
             <ListHeaderText>TAP TO COMPLETE</ListHeaderText>
             <ListHeaderText>REFRESH</ListHeaderText>
           </ListHeaderTextWrapper>
-          <Blocker category={"social"} color1={"#E0C45E"} color2={"#E0C45E"}/>
+          <Blocker
+            setShowModal={setShowModal}
+            category={"social"}
+            color1={"#E0C45E"}
+            color2={"#E0C45E"}
+          />
         </ListContainer>
+        <ModalContents showModal={showModal} setShowModal={setShowModal} />
       </Container>
     </ScrollView>
   );
 };
 
 const Container = styled.View`
-flex: 1;
-height: 100%;
+  flex: 1;
+  height: 100%;
 `;
 const CheckinContainer = styled.View`
   align-items: center;
