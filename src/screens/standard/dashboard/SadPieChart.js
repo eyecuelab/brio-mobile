@@ -6,7 +6,7 @@ import { VictoryPie } from "victory-native";
 import { Svg, Circle } from "react-native-svg";
 import SvgEyeballPie from "../../../svg_assets/SvgEyeballPie";
 
-export const PieChart = (props) => {
+export const SadPieChart = (props) => {
   const { allBlockers } = props;
   const navigation = useNavigation();
 
@@ -19,17 +19,17 @@ export const PieChart = (props) => {
   const socialBlockers = allBlockers.filter(
     (blocker) => blocker.category === "social"
   );
-  const exerciseColor = "#D8A1D5";
-  const musicColor = "#94D7B5";
-  const socialColor = "#E0C45E";
-  const colorScale = [exerciseColor, musicColor, socialColor];
+  const exerciseGrey = "#8A8A8A";
+  const musicGrey = "#5E5E5E";
+  const socialGrey = "#BEBEBE";
+  const colorScale = [exerciseGrey, musicGrey, socialGrey];
   const navs = ["CheckinExercise", "CheckinMusic", "CheckinSocial"];
 
   const displayPieChart = () => {
     const data = [
-      { x: "Exercise", y: calculatePts(exerciseBlockers) },
-      { x: "Music", y: calculatePts(musicBlockers) },
-      { x: "Social", y: calculatePts(socialBlockers) },
+      { x: "Exercise", y: 1 },
+      { x: "Music", y: 1 },
+      { x: "Social", y: 1 },
     ];
 
     return (
@@ -75,7 +75,6 @@ export const PieChart = (props) => {
     );
   };
 
-  //REFACTOR LATER
   const calculatePts = (blockers) => {
     let currentPts = 0;
     const completedBlockers = blockers.filter(
@@ -134,4 +133,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(PieChart);
+export default connect(mapStateToProps)(SadPieChart);
