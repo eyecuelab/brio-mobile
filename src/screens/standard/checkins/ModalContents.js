@@ -1,10 +1,10 @@
 import React from "react";
 import {
   ImageBackground,
-  Text,
   TouchableOpacity,
   useWindowDimensions,
 } from "react-native";
+import styled from "styled-components/native";
 import { connect } from "react-redux";
 
 export const ModalContents = (props) => {
@@ -27,6 +27,8 @@ export const ModalContents = (props) => {
               backgroundColor: "black",
               height,
               width,
+              justifyContent: "center",
+              alignItems: "center",
             }
           : {
               flex: 1,
@@ -48,25 +50,45 @@ export const ModalContents = (props) => {
         style={{
           backgroundColor: "#ffffff",
           resizeMode: "cover",
-          justifyContent: "center",
+          alignItems: "center",
         }}
       >
-        <Text
-          style={{
-            color: "white",
-            fontSize: 42,
-            fontWeight: "bold",
-            textAlign: "center",
-            backgroundColor: "#000000a0",
-          }}
-        >
-          Hello
-        </Text>
+        <ContentsContainer>
+          <ContentsTextWrapper>
+            <ContentsHeader>Contents header</ContentsHeader>
+          </ContentsTextWrapper>
+          <ContentsTextWrapper>
+            <ContentsText>This is contents</ContentsText>
+          </ContentsTextWrapper>
+        </ContentsContainer>
       </ImageBackground>
     </TouchableOpacity>
   );
 };
 
+const ContentsContainer = styled.View`
+  margin-top: 36;
+  margin-right: 12;
+  margin-left: 12;
+  margin-bottom: 36;
+  justify-content: center;
+`;
+const ContentsTextWrapper = styled.View`
+  margin: 12px;
+`;
+const ContentsHeader = styled.Text`
+  color: #fff;
+  font-size: 24px;
+  font-weight: 900;
+  text-align: center;
+  background-color: #000000a0;
+`;
+const ContentsText = styled.Text`
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  background-color: #000000a0;
+`;
 const mapStateToProps = (state) => ({});
 
 export default connect(mapStateToProps)(ModalContents);

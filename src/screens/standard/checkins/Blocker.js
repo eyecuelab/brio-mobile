@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, TouchableHighlight } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../rdx/actions";
@@ -71,7 +71,7 @@ function Blocker(props) {
                 <BlockerListContainer key={uncompletedSuggestion.id}>
                   <IconWrapper
                     underlayColor={`${color1}`}
-                    onPress={() => console.log("HELLO")}
+                    onPress={() => callModal()}
                   >
                     <SvgStarIcon color1={`${color1}`} color2={`${color2}`} />
                   </IconWrapper>

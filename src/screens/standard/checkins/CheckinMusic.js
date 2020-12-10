@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { ScrollView } from "react-native";
 import styled from "styled-components/native";
 import bg from "../../../styles/ScreenStyle.js";
 import SvgCheckinMusic from "../../../svg_assets/SvgCheckinMusic";
 import Blocker from "./Blocker";
 import DashBar from "../dashboard/DashBar";
+import ModalContents from "./ModalContents";
 
 export const CheckinMusic = () => {
+  const [showModal, setShowModal] = useState(false);
   return (
     <ScrollView>
       <Container style={bg.mint}>
@@ -19,13 +21,18 @@ export const CheckinMusic = () => {
             <ListHeaderText>TAP TO COMPLETE</ListHeaderText>
             <ListHeaderText>REFRESH</ListHeaderText>
           </ListHeaderTextWrapper>
-          <Blocker category={"music"} color1={"#94D7B5"} color2={"#DAF3E6"}/>
+          <Blocker
+            setShowModal={setShowModal}
+            category={"music"}
+            color1={"#94D7B5"}
+            color2={"#DAF3E6"}
+          />
         </ListContainer>
+        <ModalContents showModal={showModal} setShowModal={setShowModal} />
       </Container>
     </ScrollView>
   );
 };
-
 
 const Container = styled.View`
   flex: 1;
