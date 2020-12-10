@@ -64,7 +64,7 @@ export default (state = initBlockers(), action) => {
         currentPoints: updatedPoints,
       };
     }
-
+    
     case c.RESET_PROGRESS: {
       return initBlockers();
     }

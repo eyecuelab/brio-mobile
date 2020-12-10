@@ -1,23 +1,47 @@
 import React from "react";
-import { ImageBackground, Text, View, Alert } from "react-native";
+import {
+  ImageBackground,
+  Text,
+  TouchableOpacity,
+  useWindowDimensions,
+} from "react-native";
 import { connect } from "react-redux";
 
-export const ModalContents = () => {
+export const ModalContents = (props) => {
+  const { showModal, setShowModal } = props;
   const image = { uri: "https://reactjs.org/logo-og.png" };
+  const { height, width } = useWindowDimensions();
 
   return (
-    <View
-      style={{
-        flex: 1,
-        flexDirection: "column",
-        // justifyContent: "center",
-        position: "fixed",
-        left: 0,
-        top: 0,
-        opacity: 0.5,
-        backgroundColor: "black",
-        height: 360,
-      }}
+    <TouchableOpacity
+      style={
+        showModal
+          ? {
+              flex: 1,
+              display: "flex",
+              flexDirection: "column",
+              position: "absolute",
+              left: 0,
+              top: 0,
+              opacity: 0.5,
+              backgroundColor: "black",
+              height,
+              width,
+            }
+          : {
+              flex: 1,
+              display: "none",
+              flexDirection: "column",
+              position: "absolute",
+              left: 0,
+              top: 0,
+              opacity: 0.5,
+              backgroundColor: "black",
+              height: 0,
+              width: 0,
+            }
+      }
+      onPress={() => setShowModal(false)}
     >
       <ImageBackground
         source={image}
@@ -39,7 +63,7 @@ export const ModalContents = () => {
           Hello
         </Text>
       </ImageBackground>
-    </View>
+    </TouchableOpacity>
   );
 };
 

@@ -6,12 +6,17 @@ import { List } from "react-native-paper";
 import SvgStarIcon from "../../../svg_assets/SvgStarIcon";
 import SvgStarIconComplete from "../../../svg_assets/SvgStarIconComplete";
 import styled from "styled-components/native";
-import ModalContents from "./ModalContents";
-import Tooltip from 'react-native-walkthrough-tooltip';
 
 function Blocker(props) {
-  const { dispatch, blockers, category, color1, color2 } = props;
-  const [modal, setModal] = useState(false);
+  const {
+    dispatch,
+    blockers,
+    category,
+    color1,
+    color2,
+    setShowModal,
+    showModal,
+  } = props;
 
   const catBlockers = blockers.filter(
     (blocker) => blocker.category === `${category}`
@@ -28,17 +33,7 @@ function Blocker(props) {
   };
 
   const callModal = () => {
-    if (!modal) {
-      setModal(true);
-    } else {
-      setModal(false);
-    }
-  };
-
-  const showModal = () => {
-    if (modal) {
-      return <ModalContents />;
-    }
+    setShowModal(!showModal);
   };
 
   const displayBlockers = () => {
@@ -48,7 +43,6 @@ function Blocker(props) {
           if (blocker.completedAt === null) {
             return (
               <>
-                {showModal()}
                 <BlockerListContainer key={blocker.id}>
                   <IconWrapper
                     underlayColor={`${color1}`}

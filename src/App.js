@@ -6,7 +6,6 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "./rdx/store";
 import LoginPage from "./screens/standard/LoginPage";
-import ModalContents from "./screens/standard/checkins/ModalContents";
 import StandardNavigation from "./screens/standard/StandardNavigation.js";
 import LandingNavigation from "./screens/landing/LandingNavigation.js";
 
