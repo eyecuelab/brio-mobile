@@ -7,12 +7,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "./rdx/store";
 import LoginPage from "./screens/standard/LoginPage";
 import StandardNavigation from "./screens/standard/StandardNavigation.js";
-import CheckinExercise from "./screens/standard/checkins/CheckinExercise.js";
-import CheckinMusic from "./screens/standard/checkins/CheckinMusic.js";
-import CheckinSocial from "./screens/standard/checkins/CheckinSocial.js";
 import LandingNavigation from "./screens/landing/LandingNavigation.js";
-import BrioGeneral from "./screens/landing/BrioGeneral";
-import BrioSuggestions from "./screens/landing/BrioSuggestions"
 
 const RootStack = createStackNavigator();
 
@@ -39,7 +34,6 @@ export default function App() {
               />
             </RootStack.Navigator>
           </NavigationContainer>
-
         </PersistGate>
       </Provider>
     </>

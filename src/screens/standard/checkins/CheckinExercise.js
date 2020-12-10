@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { ScrollView } from "react-native";
 import styled from "styled-components/native";
 import bg from "../../../styles/ScreenStyle.js";
 import SvgCheckinExercise from "../../../svg_assets/SvgCheckinExercise";
 import Blocker from "./Blocker";
 import DashBar from "../dashboard/DashBar";
+import ModalContents from "./ModalContents";
 
 export const CheckinExercise = () => {
-  
+  const [showModal, setShowModal] = useState(false);
   return (
     <ScrollView>
       <Container style={bg.berry}>
@@ -20,8 +21,15 @@ export const CheckinExercise = () => {
             <ListHeaderText>TAP TO COMPLETE</ListHeaderText>
             <ListHeaderText>REFRESH</ListHeaderText>
           </ListHeaderTextWrapper>
-          <Blocker category={"exercise"} color1={"#D8A1D5"} color2={"#FFE3E3"} />
+          <Blocker
+            setShowModal={setShowModal}
+            showModal={showModal}
+            category={"exercise"}
+            color1={"#D8A1D5"}
+            color2={"#FFE3E3"}
+          />
         </ListContainer>
+        <ModalContents showModal={showModal} setShowModal={setShowModal} />
       </Container>
     </ScrollView>
   );
