@@ -1,24 +1,12 @@
 import React from "react";
 import { View } from "react-native";
-import { connect } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { VictoryPie } from "victory-native";
-import { Svg, Circle } from "react-native-svg";
+import { Svg } from "react-native-svg";
 import SvgEyeballPie from "../../../svg_assets/SvgEyeballPie";
 
-export const SadPieChart = (props) => {
-  const { allBlockers } = props;
+export const SadPieChart = () => {
   const navigation = useNavigation();
-
-  const exerciseBlockers = allBlockers.filter(
-    (blocker) => blocker.category === "exercise"
-  );
-  const musicBlockers = allBlockers.filter(
-    (blocker) => blocker.category === "music"
-  );
-  const socialBlockers = allBlockers.filter(
-    (blocker) => blocker.category === "social"
-  );
   const exerciseGrey = "#8A8A8A";
   const musicGrey = "#5E5E5E";
   const socialGrey = "#BEBEBE";
@@ -75,40 +63,6 @@ export const SadPieChart = (props) => {
     );
   };
 
-  const calculatePts = (blockers) => {
-    let currentPts = 0;
-    const completedBlockers = blockers.filter(
-      (blocker) => blocker.completedAt !== null
-    );
-    if (completedBlockers && completedBlockers.length > 0) {
-      const currentPtsArr = completedBlockers.map((completedBlocker) => {
-        return completedBlocker.points;
-      });
-      currentPts = currentPtsArr.reduce((acc, cur) => {
-        return acc + cur;
-      });
-
-      const completedSuggestions = completedBlockers
-        .map((blocker) =>
-          blocker.suggestions.filter(
-            (suggestion) => suggestion.completedAt !== null
-          )
-        )
-        .flat();
-      if (completedSuggestions && completedSuggestions.length > 0) {
-        const completedSuggestionsPts = completedSuggestions.map(
-          (completedBlocker) => {
-            return completedBlocker.points;
-          }
-        );
-        currentPts += completedSuggestionsPts.reduce((acc, cur) => {
-          return acc + cur;
-        });
-      }
-    }
-    return currentPts;
-  };
-
   return (
     <>
       <View style={{ alignItems: "center", justifyContent: "center" }}>
@@ -118,7 +72,6 @@ export const SadPieChart = (props) => {
           viewBox="0 0 400 400"
           style={{ width: "100%", height: "auto" }}
         >
-          {/* <Circle cx={200} cy={200} r={110} fill="#fff"/> */}
           {displayPieChart()}
         </Svg>
         {showEyeball()}
@@ -127,10 +80,4 @@ export const SadPieChart = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    allBlockers: state.blockersState.blockers,
-  };
-};
-
-export default connect(mapStateToProps)(SadPieChart);
+export default SadPieChart;

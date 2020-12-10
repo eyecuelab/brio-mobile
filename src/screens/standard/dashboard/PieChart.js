@@ -76,6 +76,7 @@ export const PieChart = (props) => {
   };
 
   //REFACTOR LATER
+
   const calculatePts = (blockers) => {
     let currentPts = 0;
     const completedBlockers = blockers.filter(
