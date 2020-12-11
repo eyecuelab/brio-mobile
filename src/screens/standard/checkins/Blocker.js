@@ -34,12 +34,18 @@ function Blocker(props) {
       native: "brio-mobile://redirect",
     }),
   };
-  const spotifyApi = new SpotifyWebApi(spotifyConfig);
 
+  //const spotifyApi = new SpotifyWebApi(spotifyConfig);
+  
   const completedBlocker = (id) => {
     const action = actions.completedBlocker(id);
     dispatch(action);
   };
+  
+  const getAccessToken = (authToken) => {
+    const action2 = actions.getAccessToken(authToken)
+    dispatch(action2)
+  }
 
   const completedSuggestion = (blockerId, suggestionId) => {
     const action2 = actions.completedSuggestion(blockerId, suggestionId);
@@ -49,14 +55,15 @@ function Blocker(props) {
   const callModal = () => {
     setShowModal(!showModal);
     if (spotifyAuthToken) {
-      spotifyApi.authorizationCodeGrant(spotifyAuthToken).then(
-        (data) => {
-          return console.log("RESPONSE", res.json(data.body));
-        },
-        (err) => {
-          console.log("ERROR", err);
-        }
-      );
+      getAccessToken(spotifyAuthToken)
+      // spotifyApi.authorizationCodeGrant(spotifyAuthToken).then(
+      //   (data) => {
+      //     return console.log("RESPONSE", res.json(data.body));
+      //   },
+      //   (err) => {
+      //     console.log("ERROR", err);
+      //   }
+      // );
     }
   };
 

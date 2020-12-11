@@ -25,3 +25,9 @@ export const resetProgress = () => {
     type: c.RESET_PROGRESS,
   };
 };
+export const getAccessToken = (spotifyAuthToken) => {
+  return {
+    type: c.GET_ACCESS_TOKEN,
+    spotifyAuthToken,
+  };
+};
