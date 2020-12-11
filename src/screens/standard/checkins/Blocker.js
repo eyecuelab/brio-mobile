@@ -6,8 +6,6 @@ import { List } from "react-native-paper";
 import SvgStarIcon from "../../../svg_assets/SvgStarIcon";
 import SvgStarIconComplete from "../../../svg_assets/SvgStarIconComplete";
 import styled from "styled-components/native";
-import { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET } from "@env";
-import { makeRedirectUri } from "expo-auth-session";
 
 function Blocker(props) {
   const {
@@ -24,18 +22,6 @@ function Blocker(props) {
   const catBlockers = blockers.filter(
     (blocker) => blocker.category === `${category}`
   );
-
-  //SPOTIFY CONFIG
-  // const SpotifyWebApi = require("spotify-web-api-node");
-  // const spotifyConfig = {
-  //   clientId: SPOTIFY_CLIENT_ID,
-  //   clientSecret: SPOTIFY_CLIENT_SECRET,
-  //   redirectUrl: makeRedirectUri({
-  //     native: "brio-mobile://redirect",
-  //   }),
-  // };
-
-  //const spotifyApi = new SpotifyWebApi(spotifyConfig);
   
   const completedBlocker = (id) => {
     const action = actions.completedBlocker(id);
@@ -56,14 +42,6 @@ function Blocker(props) {
     setShowModal(!showModal);
     if (spotifyAuthToken) {
       getAccessTokenWatcher(spotifyAuthToken)
-      // spotifyApi.authorizationCodeGrant(spotifyAuthToken).then(
-      //   (data) => {
-      //     return console.log("RESPONSE", res.json(data.body));
-      //   },
-      //   (err) => {
-      //     console.log("ERROR", err);
-      //   }
-      // );
     }
   };
 
@@ -73,8 +51,8 @@ function Blocker(props) {
         {catBlockers.map((blocker) => {
           if (blocker.completedAt === null) {
             return (
-              <>
-                <BlockerListContainer key={blocker.id}>
+              <React.Fragment  key={blocker.id}>
+                <BlockerListContainer>
                   <IconWrapper
                     underlayColor={`${color1}`}
                     onPress={() => callModal()}
@@ -91,7 +69,7 @@ function Blocker(props) {
                     <ListText>{blocker.description}</ListText>
                   </ListWrapper>
                 </BlockerListContainer>
-              </>
+              </ React.Fragment>
             );
           } else {
             const uncompletedSuggestion = blocker.suggestions.find(
