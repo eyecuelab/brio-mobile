@@ -36,6 +36,11 @@ function Blocker(props) {
     setShowModal(!showModal);
   };
 
+  const callSongList = () => {
+    
+    console.log("SONG LIST CALLED")
+  }
+
   const displayBlockers = () => {
     return (
       <>
@@ -46,8 +51,8 @@ function Blocker(props) {
                 <BlockerListContainer key={blocker.id}>
                   <IconWrapper
                     underlayColor={`${color1}`}
-                    onPress={() => callModal()}
-                  >
+                    onPress={() => callModal(), callSongList()}
+                  > 
                     <SvgStarIcon color1={`${color1}`} color2={`${color2}`} />
                   </IconWrapper>
                   <ListWrapper

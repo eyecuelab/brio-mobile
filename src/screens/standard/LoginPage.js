@@ -28,6 +28,7 @@ const LoginPage = (props) => {
   const [request, response, promptAsync] = useAuthRequest(
     {
       clientId: SPOTIFY_CLIENT_ID,
+      clientSecret: SPOTIFY_CLIENT_SECRET,
       scopes: ["user-read-email", "playlist-modify-public"],
       usePKCE: false,
       redirectUri: makeRedirectUri({
