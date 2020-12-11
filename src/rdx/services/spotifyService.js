@@ -2,7 +2,7 @@ import { makeRedirectUri } from "expo-auth-session";
 import Base64 from "Base64";
 import { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET } from "@env";
 
-export const spotifyService = (spotifyAuthToken) => {
+export const spotifyAccessTokenService = (spotifyAuthToken) => {
   const SPOTIFY_TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";
 
   const details = {
