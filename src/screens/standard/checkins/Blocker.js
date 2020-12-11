@@ -6,6 +6,8 @@ import { List } from "react-native-paper";
 import SvgStarIcon from "../../../svg_assets/SvgStarIcon";
 import SvgStarIconComplete from "../../../svg_assets/SvgStarIconComplete";
 import styled from "styled-components/native";
+import { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET } from "@env";
+import { makeRedirectUri } from "expo-auth-session";
 
 function Blocker(props) {
   const {
@@ -16,11 +18,23 @@ function Blocker(props) {
     color2,
     setShowModal,
     showModal,
+    spotifyAuthToken,
   } = props;
 
   const catBlockers = blockers.filter(
     (blocker) => blocker.category === `${category}`
   );
+
+  //SPOTIFY CONFIG
+  const SpotifyWebApi = require("spotify-web-api-node");
+  const spotifyConfig = {
+    clientId: SPOTIFY_CLIENT_ID,
+    clientSecret: SPOTIFY_CLIENT_SECRET,
+    redirectUrl: makeRedirectUri({
+      native: "brio-mobile://redirect",
+    }),
+  };
+  const spotifyApi = new SpotifyWebApi(spotifyConfig);
 
   const completedBlocker = (id) => {
     const action = actions.completedBlocker(id);
@@ -34,12 +48,17 @@ function Blocker(props) {
 
   const callModal = () => {
     setShowModal(!showModal);
+    if (spotifyAuthToken) {
+      spotifyApi.authorizationCodeGrant(spotifyAuthToken).then(
+        (data) => {
+          return console.log("RESPONSE", res.json(data.body));
+        },
+        (err) => {
+          console.log("ERROR", err);
+        }
+      );
+    }
   };
-
-  const callSongList = () => {
-    
-    console.log("SONG LIST CALLED")
-  }
 
   const displayBlockers = () => {
     return (
@@ -51,8 +70,8 @@ function Blocker(props) {
                 <BlockerListContainer key={blocker.id}>
                   <IconWrapper
                     underlayColor={`${color1}`}
-                    onPress={() => callModal(), callSongList()}
-                  > 
+                    onPress={() => callModal()}
+                  >
                     <SvgStarIcon color1={`${color1}`} color2={`${color2}`} />
                   </IconWrapper>
                   <ListWrapper
@@ -249,6 +268,7 @@ const IconWrapper = styled.TouchableHighlight`
 const mapStateToProps = (state) => {
   const blockers = state.blockersState.blockers;
   return {
+    spotifyAuthToken: state.user.code,
     blockers: blockers,
   };
 };
