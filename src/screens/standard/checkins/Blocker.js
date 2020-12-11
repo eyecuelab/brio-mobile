@@ -26,14 +26,14 @@ function Blocker(props) {
   );
 
   //SPOTIFY CONFIG
-  const SpotifyWebApi = require("spotify-web-api-node");
-  const spotifyConfig = {
-    clientId: SPOTIFY_CLIENT_ID,
-    clientSecret: SPOTIFY_CLIENT_SECRET,
-    redirectUrl: makeRedirectUri({
-      native: "brio-mobile://redirect",
-    }),
-  };
+  // const SpotifyWebApi = require("spotify-web-api-node");
+  // const spotifyConfig = {
+  //   clientId: SPOTIFY_CLIENT_ID,
+  //   clientSecret: SPOTIFY_CLIENT_SECRET,
+  //   redirectUrl: makeRedirectUri({
+  //     native: "brio-mobile://redirect",
+  //   }),
+  // };
 
   //const spotifyApi = new SpotifyWebApi(spotifyConfig);
   
@@ -42,8 +42,8 @@ function Blocker(props) {
     dispatch(action);
   };
   
-  const getAccessToken = (authToken) => {
-    const action2 = actions.getAccessToken(authToken)
+  const getAccessTokenWatcher = (authToken) => {
+    const action2 = actions.getAccessTokenWatcher(authToken)
     dispatch(action2)
   }
 
@@ -55,7 +55,7 @@ function Blocker(props) {
   const callModal = () => {
     setShowModal(!showModal);
     if (spotifyAuthToken) {
-      getAccessToken(spotifyAuthToken)
+      getAccessTokenWatcher(spotifyAuthToken)
       // spotifyApi.authorizationCodeGrant(spotifyAuthToken).then(
       //   (data) => {
       //     return console.log("RESPONSE", res.json(data.body));

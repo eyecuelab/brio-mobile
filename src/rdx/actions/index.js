@@ -25,9 +25,9 @@ export const resetProgress = () => {
     type: c.RESET_PROGRESS,
   };
 };
-export const getAccessToken = (spotifyAuthToken) => {
+export const getAccessTokenWatcher = (spotifyAuthToken) => {
   return {
-    type: c.GET_ACCESS_TOKEN,
+    type: c.GET_ACCESS_TOKEN_WATCHER,
     spotifyAuthToken,
   };
 };
