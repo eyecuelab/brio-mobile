@@ -1,4 +1,4 @@
-import * as c from "../actions/types";
+;import * as c from "../actions/types";
 
 const initialAuthState = {
   access_token: null,

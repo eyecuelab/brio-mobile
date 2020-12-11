@@ -39,5 +39,19 @@ export const spotifyAccessTokenService = (spotifyAuthToken) => {
 };
 
 export const getApiContentsService = (spotifyAccessToken) => {
+
+  const SPOTIFY_RECENT_PLAYED_ENDPOINT = "https://api.spotify.com/v1/me/player/recently-played";
   
+  const parameters = {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+      Authorization: `Bearer ${spotifyAccessToken.access_token}`,
+    },
+  };
+
+  return fetch(SPOTIFY_RECENT_PLAYED_ENDPOINT, parameters)
+  .then((resp) => resp.json())
+  .then((resp) => (console.log("FINAL", resp)))
 }

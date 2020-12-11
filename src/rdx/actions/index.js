@@ -25,6 +25,11 @@ export const resetProgress = () => {
     type: c.RESET_PROGRESS,
   };
 };
+export const logoutButton = () => {
+  return {
+    type: c.LOGGED_OUT,
+  };
+};
 export const getAccessTokenWatcher = (spotifyAuthToken) => {
   return {
     type: c.GET_ACCESS_TOKEN_WATCHER,
