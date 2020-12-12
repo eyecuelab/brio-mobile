@@ -8,7 +8,7 @@ import styled from "styled-components/native";
 import { connect } from "react-redux";
 
 export const ModalContents = (props) => {
-  const { showModal, setShowModal } = props;
+  const { showModal, setShowModal, contents } = props;
   const image = { uri: "https://reactjs.org/logo-og.png" };
   const { height, width } = useWindowDimensions();
 
@@ -55,10 +55,10 @@ export const ModalContents = (props) => {
       >
         <ContentsContainer>
           <ContentsTextWrapper>
-            <ContentsHeader>Contents header</ContentsHeader>
+            <ContentsHeader>Kiwi's Last Album:</ContentsHeader>
           </ContentsTextWrapper>
           <ContentsTextWrapper>
-            <ContentsText>This is contents</ContentsText>
+            <ContentsText>{contents[0].track.album.name}</ContentsText>
           </ContentsTextWrapper>
         </ContentsContainer>
       </ImageBackground>
