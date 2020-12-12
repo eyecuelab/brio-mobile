@@ -42,3 +42,9 @@ export const getApiContentsWatcher = (spotifyAccessToken) => {
     spotifyAccessToken,
   };
 };
+export const storeContents = (contents) => {
+  return {
+    type: c.STORE_CONTENTS,
+    contents,
+  };
+};

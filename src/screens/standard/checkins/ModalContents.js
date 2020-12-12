@@ -89,6 +89,10 @@ const ContentsText = styled.Text`
   text-align: center;
   background-color: #000000a0;
 `;
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => {
+  return{
+    contents: state.spotifyApi.contents
+  }
+};
 
 export default connect(mapStateToProps)(ModalContents);

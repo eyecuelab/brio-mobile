@@ -1,6 +1,6 @@
 import { takeLatest } from "redux-saga/effects";
 import { signUpSaga, confirmUserSaga, logInSaga } from "./authSaga";
-import { getAccessTokenSaga, getApiContentsSaga } from "./SpotifyTokenSaga";
+import { getAccessTokenSaga, getApiContentsSaga } from "./spotifySaga";
 import * as c from "../actions/types";
 
 export function* watchUserAuthentication() {

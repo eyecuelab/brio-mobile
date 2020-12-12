@@ -6,7 +6,7 @@ import spotifyApiReducer from "./spotifyApiReducer";
 const rootReducer = combineReducers({
   user: authReducer,
   blockersState: blockerReducer,
-  spotifyToken: spotifyApiReducer,
+  spotifyApi: spotifyApiReducer,
 });
 
 export default rootReducer;

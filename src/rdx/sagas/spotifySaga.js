@@ -25,18 +25,18 @@ export function* getAccessTokenSaga(action) {
   }
 }
 
-export const getAccessToken = (state) => state.spotifyToken;
+export const getAccessToken = (state) => state.spotifyApi;
 
 export function* getApiContentsSaga(action) {
   const token = yield select(getAccessToken);
   console.log("3.ACCESS TOKEN", token);
   try {
     let resp = yield call(getApiContentsService, token);
-    // if (resp.access_token) {
-    //   yield put(actions.getApiContentsWatcher(resp.access_token));
-    // } else {
-    //   throw yield resp.json();
-    // }
+    if (resp.items) {
+      yield put(actions.storeContents(resp.items));
+    } else {
+      throw yield resp.json();
+    }
   } catch (err) {
     yield put({ type: "hello", error: err.message });
   }

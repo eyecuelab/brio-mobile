@@ -1,7 +1,8 @@
-;import * as c from "../actions/types";
+import * as c from "../actions/types";
 
 const initialAuthState = {
   access_token: null,
+  contents: null,
 };
 
 export default (state = initialAuthState, action) => {
@@ -11,6 +12,11 @@ export default (state = initialAuthState, action) => {
       return {
         ...state,
         access_token: action.access_token,
+      };
+    case c.STORE_CONTENTS:
+      return {
+        ...state,
+        contents: action.contents,
       };
     default:
       return state;
