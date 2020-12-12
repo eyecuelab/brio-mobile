@@ -9,13 +9,13 @@ import { useNavigation } from "@react-navigation/native";
 
 function BrioGeneral(props) {
 
-  const spotifyToken = props.spotifyToken;
+  const spotifyAuthToken = props.spotifyAuthToken;
   const navigation = useNavigation();
   useEffect(() => {
-    if (spotifyToken != null) {
+    if (spotifyAuthToken != null) {
       navigation.navigate("StandardNavigation");
     }
-  }, [spotifyToken]);
+  }, [spotifyAuthToken]);
 
   return (
     <View style={bg.basic}>
@@ -47,7 +47,7 @@ const Diagram = styled.View`
 
 const mapStateToProps = (state) => {
   return {
-    spotifyToken: state.user.code,
+    spotifyAuthToken: state.user.code,
   };
 };
 const BrioGeneralConnected = connect(mapStateToProps)(BrioGeneral);

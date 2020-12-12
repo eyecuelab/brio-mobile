@@ -16,16 +16,22 @@ function Blocker(props) {
     color2,
     setShowModal,
     showModal,
+    spotifyAuthToken,
   } = props;
 
   const catBlockers = blockers.filter(
     (blocker) => blocker.category === `${category}`
   );
-
+  
   const completedBlocker = (id) => {
     const action = actions.completedBlocker(id);
     dispatch(action);
   };
+  
+  const getAccessTokenWatcher = (authToken) => {
+    const action2 = actions.getAccessTokenWatcher(authToken)
+    dispatch(action2)
+  }
 
   const completedSuggestion = (blockerId, suggestionId) => {
     const action2 = actions.completedSuggestion(blockerId, suggestionId);
@@ -34,6 +40,9 @@ function Blocker(props) {
 
   const callModal = () => {
     setShowModal(!showModal);
+    if (spotifyAuthToken) {
+      getAccessTokenWatcher(spotifyAuthToken)
+    }
   };
 
   const displayBlockers = () => {
@@ -42,8 +51,8 @@ function Blocker(props) {
         {catBlockers.map((blocker) => {
           if (blocker.completedAt === null) {
             return (
-              <>
-                <BlockerListContainer key={blocker.id}>
+              <React.Fragment  key={blocker.id}>
+                <BlockerListContainer>
                   <IconWrapper
                     underlayColor={`${color1}`}
                     onPress={() => callModal()}
@@ -60,7 +69,7 @@ function Blocker(props) {
                     <ListText>{blocker.description}</ListText>
                   </ListWrapper>
                 </BlockerListContainer>
-              </>
+              </ React.Fragment>
             );
           } else {
             const uncompletedSuggestion = blocker.suggestions.find(
@@ -244,6 +253,7 @@ const IconWrapper = styled.TouchableHighlight`
 const mapStateToProps = (state) => {
   const blockers = state.blockersState.blockers;
   return {
+    spotifyAuthToken: state.user.code,
     blockers: blockers,
   };
 };

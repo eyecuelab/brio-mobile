@@ -93,7 +93,7 @@ export default function initBlockers() {
       {
         category: "music",
         id: v4(),
-        description: "Do you know how to make a playlist?",
+        description: "Play one song",
         createdAt: new Date(),
         completedAt: null,
         points: 10,
@@ -101,7 +101,7 @@ export default function initBlockers() {
         suggestions: [
           {
             id: v4(),
-            description: "...",
+            description: "Let's make a playlist?",
             createdAt: new Date(),
             completedAt: null,
             points: 20,

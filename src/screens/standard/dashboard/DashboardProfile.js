@@ -1,12 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import * as actions from "../../../rdx/actions";
 import styled from "styled-components/native";
 import bg from "../../../styles/ScreenStyle";
 import SvgAvatar from "../../../svg_assets/SvgAvatar";
 import SvgEyeball from "../../../svg_assets/SvgEyeball";
+import { useNavigation } from "@react-navigation/native";
 
-export const DashboardProfile = () => {
+export const DashboardProfile = (props) => {
   const [value, onChangeText] = useState("");
+  const { dispatch, code } = props;
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    if (code === null) {
+      navigation.navigate("general");
+    }
+  }, [code]);
+
+  const logoutButton = () => {
+    const action = actions.logoutButton();
+    dispatch(action);
+  };
+
   return (
     <>
       <Container style={bg.basic}>
@@ -40,7 +56,7 @@ export const DashboardProfile = () => {
         </FieldContainer>
 
         <FieldContainer>
-          <LogoutBtn onPress={() => console.log("LOG OUT PRESSED")}>
+          <LogoutBtn onPress={() => logoutButton()}>
             <LogoutBtnText>Log out</LogoutBtnText>
           </LogoutBtn>
           <FieldTextContainer>
@@ -118,8 +134,11 @@ const LogoutBtnText = styled.Text`
   font-size: 18px;
   font-weight: 900;
 `;
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => {
+  return {
+    code: state.user.code,
+  };
+};
 
-const mapDispatchToProps = {};
-
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardProfile);
+const DashboardProfileConnected = connect(mapStateToProps)(DashboardProfile);
+export default DashboardProfileConnected;
