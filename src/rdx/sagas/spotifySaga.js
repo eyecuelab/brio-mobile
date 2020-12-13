@@ -7,6 +7,8 @@ import {
 } from "../services/spotifyService";
 import { call } from "redux-saga/effects";
 
+export const getAccessToken = (state) => state.spotifyApi;
+
 export function* getAccessTokenSaga(action) {
   try {
     let resp = yield call(spotifyAccessTokenService, action.spotifyAuthToken);
@@ -24,8 +26,6 @@ export function* getAccessTokenSaga(action) {
     yield put({ type: "hello", error: err.message });
   }
 }
-
-export const getAccessToken = (state) => state.spotifyApi;
 
 export function* getApiContentsSaga(action) {
   const token = yield select(getAccessToken);

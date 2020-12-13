@@ -22,7 +22,6 @@ export default function StandardNavigation() {
           name="dashboardMain"
           component={DashMainStackScreen}
           options={{
-            tabBarLabel: "Overview",
             tabBarIcon: ({ color }) => (
               <SvgStarMainIcon name="star" color={color} size={26} />
             ),
@@ -33,7 +32,6 @@ export default function StandardNavigation() {
           name="dashboardHome"
           component={DashHomeStackScreen}
           options={{
-            tabBarLabel: "Home",
             tabBarIcon: ({ color }) => (
               <SvgHomeIcon name="group" color={color} size={26} />
             ),
@@ -44,7 +42,6 @@ export default function StandardNavigation() {
           name="profile"
           component={DashProfileStackScreen}
           options={{
-            tabBarLabel: "Profile",
             tabBarIcon: ({ color }) => (
               <SvgProfileIcon name="account" color={color} size={26} />
             ),
