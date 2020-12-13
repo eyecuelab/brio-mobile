@@ -7,11 +7,12 @@ const initialAuthState = {
 
 export default (state = initialAuthState, action) => {
   switch (action.type) {
-    case c.GET_API_CONTENTS_WATCHER:
-      console.log("2. ACCESS TOKEN REDUCER");
+    case c.GET_API_TOKENS_WATCHER:
+      console.log("2. REFRESHTOKEN REDUCER");
       return {
         ...state,
         access_token: action.access_token,
+        refresh_token: action.refresh_token,
       };
     case c.STORE_CONTENTS:
       return {

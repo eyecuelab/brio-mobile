@@ -38,7 +38,7 @@ export const spotifyAccessTokenService = (spotifyAuthToken) => {
     .then((resp) => resp);
 };
 
-export const getApiContentsService = (spotifyAccessToken) => {
+export const getApiContentsService = (contentsWithTokens) => {
   const SPOTIFY_RECENT_PLAYED_ENDPOINT =
     "https://api.spotify.com/v1/me/player/recently-played";
 
@@ -47,7 +47,7 @@ export const getApiContentsService = (spotifyAccessToken) => {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/x-www-form-urlencoded",
-      Authorization: `Bearer ${spotifyAccessToken.access_token}`,
+      Authorization: `Bearer ${contentsWithTokens.access_token}`,
     },
   };
 
@@ -56,12 +56,12 @@ export const getApiContentsService = (spotifyAccessToken) => {
     .then((resp) => resp);
 };
 
-export const spotifyRefreshAccessTokenService = (refreshToken) => {
+export const spotifyRefreshAccessTokenService = (contentsWithTokens) => {
   const SPOTIFY_REFRESH_TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";
 
   const details = {
     grant_type: "refresh_token",
-    refresh_token: refreshToken,
+    refresh_token: contentsWithTokens.refresh_token,
     redirect_uri: makeRedirectUri({
       native: "brio-mobile://redirect",
     }),
