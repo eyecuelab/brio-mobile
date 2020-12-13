@@ -55,6 +55,39 @@ export const getApiContentsService = (spotifyAccessToken) => {
     .then((resp) => resp.json())
     .then((resp) => resp);
 };
-export const spotifyRefreshAccessTokenService = () => {
-  
+
+export const spotifyRefreshAccessTokenService = (refreshToken) => {
+  const SPOTIFY_REFRESH_TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";
+
+  const details = {
+    grant_type: "refresh_token",
+    refresh_token: refreshToken,
+    redirect_uri: makeRedirectUri({
+      native: "brio-mobile://redirect",
+    }),
+  };
+
+  let formBody = [];
+  for (let property in details) {
+    let encodedKey = encodeURIComponent(property);
+    let encodedValue = encodeURIComponent(details[property]);
+    formBody.push(encodedKey + "=" + encodedValue);
+  }
+  formBody = formBody.join("&");
+
+  const encoded = Base64.btoa(`${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`);
+
+  const parameters = {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+      Authorization: `Basic ${encoded}`,
+    },
+    body: formBody,
+  };
+
+  return fetch(SPOTIFY_REFRESH_TOKEN_ENDPOINT, parameters)
+    .then((resp) => resp.json())
+    .then((resp) => resp);
 };
