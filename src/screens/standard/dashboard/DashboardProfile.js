@@ -18,15 +18,16 @@ export const DashboardProfile = (props) => {
     }
   }, [code]);
 
+  console.log("USERNAME", username);
   const logoutButton = () => {
     const action = actions.logoutButton();
     dispatch(action);
   };
 
   const changedUsername = (username) => {
-    console.log("CHANGED USERNAME PRESSED")
-  }
-
+    const action2 = actions.changedUsername(username);
+    dispatch(action2);
+  };
 
   return (
     <>

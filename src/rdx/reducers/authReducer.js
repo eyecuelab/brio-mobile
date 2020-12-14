@@ -18,15 +18,15 @@ export default (state = initialAuthState, action) => {
         ...state,
         code: null,
       };
-    };
+    }
     case c.CHANGED_USERNAME: {
       return {
         ...state,
         username: action.username,
       };
-    };
+    }
 
     default:
       return state;
-    };
+  }
 };
