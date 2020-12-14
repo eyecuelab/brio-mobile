@@ -40,11 +40,9 @@ function Blocker(props) {
 
   const callModal = (id) => {
     const clickedBlocker = catBlockers.find((blocker) => blocker.id === id);
+    getAccessTokenWatcher(spotifyAuthToken);
     if (clickedBlocker.apiEndpoint !== null) {
       setShowModal(!showModal);
-      if (spotifyAuthToken) {
-        getAccessTokenWatcher(spotifyAuthToken);
-      }
     }
   };
 
