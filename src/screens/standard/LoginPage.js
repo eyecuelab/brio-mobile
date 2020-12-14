@@ -44,7 +44,7 @@ const LoginPage = (props) => {
   useEffect(() => {
     if (response?.type === "success") {
       const { code } = response.params;
-      const action = actions.loggedIn(code);
+      const action = actions.loggedIn(code, username);
       dispatch(action);
       navigation.navigate("StandardNavigation");
     }

@@ -1,10 +1,11 @@
 import * as c from "./types";
 
 
-export const loggedIn = (code) => {
+export const loggedIn = (code, username) => {
   return {
     type: c.LOGGED_IN,
-    code
+    code,
+    username
   };
 };
 export const completedBlocker = (id) => {

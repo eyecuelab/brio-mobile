@@ -10,6 +10,7 @@ export default (state = initialAuthState, action) => {
       return {
         ...state,
         code: action.code,
+        username: action.username,
       };
     }
 
@@ -18,9 +19,9 @@ export default (state = initialAuthState, action) => {
         ...state,
         code: null,
       };
-    };
+    }
 
     default:
       return state;
-    };
+  }
 };
