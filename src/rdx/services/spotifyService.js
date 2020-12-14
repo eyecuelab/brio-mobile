@@ -57,7 +57,8 @@ export const getApiContentsService = (contentsWithTokens) => {
 };
 
 export const spotifyRefreshAccessTokenService = (contentsWithTokens) => {
-  const SPOTIFY_REFRESH_TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";
+  const SPOTIFY_REFRESH_TOKEN_ENDPOINT =
+    "https://accounts.spotify.com/api/token";
 
   const details = {
     grant_type: "refresh_token",
