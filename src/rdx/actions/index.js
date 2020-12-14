@@ -36,10 +36,10 @@ export const getAccessTokenWatcher = (spotifyAuthToken) => {
     spotifyAuthToken,
   };
 };
-export const getApiContentsWatcher = (spotifyAccessToken) => {
+export const getApiTokensWatcher = (contentsWithTokens) => {
   return {
-    type: c.GET_API_CONTENTS,
-    spotifyAccessToken,
+    type: c.GET_API_TOKENS_WATCHER,
+    refresh_token: contentsWithTokens.refresh_token,
   };
 };
 export const storeContents = (contents) => {

@@ -5,7 +5,7 @@ import styled from "styled-components/native";
 
 export const DashBar = (props) => {
   const { allBlockers, catPoints, category, color, image, from } = props;
-  
+
   const catBlockers = allBlockers.filter(
     (blocker) => blocker.category === category.toLowerCase()
   );
@@ -31,60 +31,34 @@ export const DashBar = (props) => {
 
   const currentCatPts = catPoints[category.toLowerCase()];
 
-  const showProgressBarInDashboardHome = () => {
-    if (currentCatPts > 0) {
-      return (
-        <>
-          <ProgressBar
-            progress={currentCatPts / totalCatPts}
-            color={color}
-            transform={[{ scaleX: 1.0 }, { scaleY: 2.5 }]}
-          />
-          <ProgressText>
-            {currentCatPts} OUT OF {totalCatPts} POINTS
-          </ProgressText>
-        </>
-      );
-    } else {
-      return (
-        <>
-          <ProgressBar
-            progress={0}
-            color={color}
-            transform={[{ scaleX: 1.0 }, { scaleY: 2.5 }]}
-          />
-          <ProgressText>0 OUT OF {totalCatPts} POINTS</ProgressText>
-        </>
-      );
-    }
+  const showProgressBarInDashboardMain = () => {
+    return (
+      <>
+        <ProgressBar
+          progress={currentCatPts / totalCatPts}
+          color={color}
+          transform={[{ scaleX: 1.0 }, { scaleY: 2.5 }]}
+        />
+        <ProgressText>
+          {currentCatPts} OUT OF {totalCatPts} POINTS
+        </ProgressText>
+      </>
+    );
   };
 
   const showProgressBarInBlockers = () => {
-    if (currentCatPts > 0) {
-      return (
-        <>
-          <ProgressText>
-            {currentCatPts} OUT OF {totalCatPts} POINTS
-          </ProgressText>
-          <ProgressBar
-            progress={currentCatPts / totalCatPts}
-            color={color}
-            transform={[{ scaleX: 1.3 }, { scaleY: 2.5 }]}
-          />
-        </>
-      );
-    } else {
-      return (
-        <>
-          <ProgressText>0 OUT OF {totalCatPts} POINTS</ProgressText>
-          <ProgressBar
-            progress={0}
-            color={color}
-            transform={[{ scaleX: 1.3 }, { scaleY: 2.5 }]}
-          />
-        </>
-      );
-    }
+    return (
+      <>
+        <ProgressText>
+          {currentCatPts} OUT OF {totalCatPts} POINTS
+        </ProgressText>
+        <ProgressBar
+          progress={currentCatPts / totalCatPts}
+          color={color}
+          transform={[{ scaleX: 1.0 }, { scaleY: 2.5 }]}
+        />
+      </>
+    );
   };
 
   const checkPrevComp = () => {
@@ -94,18 +68,20 @@ export const DashBar = (props) => {
           <ProgressWrapper>{image}</ProgressWrapper>
           <ProgressWrapper>
             <CategoryText style={{ color: color }}>{category}</CategoryText>
-            {showProgressBarInDashboardHome()}
+            {showProgressBarInDashboardMain()}
           </ProgressWrapper>
         </ProgressContainer>
       );
     } else if (from === "Checkin") {
       return (
-        <ProgressWrapperBlockers>
-          <CategoryTextBlockers style={{ color: color }}>
-            {category}
-          </CategoryTextBlockers>
-          {showProgressBarInBlockers()}
-        </ProgressWrapperBlockers>
+        <ProgressContainer2>
+          <ProgressWrapperBlockers>
+            <CategoryTextBlockers style={{ color: color }}>
+              {category}
+            </CategoryTextBlockers>
+            {showProgressBarInBlockers()}
+          </ProgressWrapperBlockers>
+        </ProgressContainer2>
       );
     }
   };
@@ -116,6 +92,9 @@ export const DashBar = (props) => {
 const ProgressContainer = styled.View`
   flex: 1;
   flex-direction: row;
+  margin-bottom: 12px;
+`;
+const ProgressContainer2 = styled.View`
   margin-bottom: 12px;
 `;
 const ProgressWrapper = styled.View`
@@ -142,6 +121,7 @@ const ProgressText = styled.Text`
   font-size: 10px;
   color: #dea768;
   font-weight: 900;
+  text-align: center;
 `;
 
 const mapStateToProps = (state) => {

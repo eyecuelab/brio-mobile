@@ -28,7 +28,11 @@ const LoginPage = (props) => {
   const [request, response, promptAsync] = useAuthRequest(
     {
       clientId: SPOTIFY_CLIENT_ID,
-      scopes: ["user-read-email", "playlist-modify-public", "user-read-recently-played"],
+      scopes: [
+        "user-read-email",
+        "playlist-modify-public",
+        "user-read-recently-played",
+      ],
       usePKCE: false,
       redirectUri: makeRedirectUri({
         native: "brio-mobile://redirect",

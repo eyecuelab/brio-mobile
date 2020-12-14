@@ -23,7 +23,6 @@ export const CheckinExercise = () => {
           </ListHeaderTextWrapper>
           <Blocker
             setShowModal={setShowModal}
-            showModal={showModal}
             category={"exercise"}
             color1={"#D8A1D5"}
             color2={"#FFE3E3"}

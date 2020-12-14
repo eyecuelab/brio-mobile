@@ -101,7 +101,7 @@ export default function initBlockers() {
         suggestions: [
           {
             id: v4(),
-            description: "Let's make a playlist?",
+            description: "Let's make a playlist",
             createdAt: new Date(),
             completedAt: null,
             points: 20,
