@@ -50,6 +50,36 @@ const LoginPage = (props) => {
     }
   }, [response]);
 
+  const usernameInputLabel = () => {
+    if (existingUsername) {
+      return (
+        <>
+          <UsernameInput
+            // onChangeText={(text) => onChangeText(text)}
+            value={value}
+            // autoCapitalize="none"
+          />
+          <FieldTextContainer>
+            <FieldText>USERNAME</FieldText>
+          </FieldTextContainer>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <UsernameInput
+            onChangeText={(text) => onChangeText(text)}
+            value={value}
+            autoCapitalize="none"
+          />
+          <FieldTextContainer>
+            <FieldText>CREATE USERNAME</FieldText>
+          </FieldTextContainer>
+        </>
+      );
+    }
+  };
+
   return (
     <>
       <Container style={bg.basic}>
@@ -71,16 +101,7 @@ const LoginPage = (props) => {
           </FieldTextContainer>
         </FieldContainer>
 
-        <FieldContainer>
-          <UsernameInput
-            onChangeText={(text) => onChangeText(text)}
-            value={value}
-            autoCapitalize="none"
-          />
-          <FieldTextContainer>
-            <FieldText>CREATE USERNAME</FieldText>
-          </FieldTextContainer>
-        </FieldContainer>
+        <FieldContainer>{usernameInputLabel()}</FieldContainer>
 
         <FieldContainer>
           <SpotifyLoginBtn onPress={() => promptAsync()}>
