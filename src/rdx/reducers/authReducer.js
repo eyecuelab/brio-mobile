@@ -13,11 +13,16 @@ export default (state = initialAuthState, action) => {
         username: action.username,
       };
     }
-
     case c.LOGGED_OUT: {
       return {
         ...state,
         code: null,
+      };
+    };
+    case c.CHANGED_USERNAME: {
+      return {
+        ...state,
+        username: action.username,
       };
     };
 

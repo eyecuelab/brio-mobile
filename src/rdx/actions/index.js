@@ -49,3 +49,9 @@ export const storeContents = (contents) => {
     contents,
   };
 };
+export const changedUsername = (username) => {
+  return {
+    type: c.CHANGED_USERNAME,
+    username,
+  };
+};

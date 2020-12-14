@@ -54,11 +54,7 @@ const LoginPage = (props) => {
     if (existingUsername) {
       return (
         <>
-          <UsernameInput
-            // onChangeText={(text) => onChangeText(text)}
-            value={value}
-            // autoCapitalize="none"
-          />
+          <UsernameInput value={value} />
           <FieldTextContainer>
             <FieldText>USERNAME</FieldText>
           </FieldTextContainer>
