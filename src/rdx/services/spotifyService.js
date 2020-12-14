@@ -38,28 +38,28 @@ export const spotifyAccessTokenService = (spotifyAuthToken) => {
     .then((resp) => resp);
 };
 
-export const getApiContentsService = (contentsWithTokens) => {
-  const SPOTIFY_RECENT_PLAYED_ENDPOINT =
-    "https://api.spotify.com/v1/me/player/recently-played";
+export const getApiContentsService = (spotifyState) => {
+  console.log("PASSED STATE", spotifyState)
+  const SPOTIFY_ENDPOINT = spotifyState.apiEndpoint;
 
   const parameters = {
     method: "GET",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/x-www-form-urlencoded",
-      Authorization: `Bearer ${contentsWithTokens.access_token}`,
+      Authorization: `Bearer ${spotifyState.access_token}`,
     },
   };
 
-  return fetch(SPOTIFY_RECENT_PLAYED_ENDPOINT, parameters)
+  return fetch(SPOTIFY_ENDPOINT, parameters)
     .then((resp) => resp.json())
     .then((resp) => resp);
 };
 
-export const spotifyRefreshAccessTokenService = (contentsWithTokens) => {
+export const spotifyRefreshAccessTokenService = (spotifyState) => {
   const details = {
     grant_type: "refresh_token",
-    refresh_token: contentsWithTokens.refresh_token,
+    refresh_token: spotifyState.refresh_token,
     redirect_uri: makeRedirectUri({
       native: "brio-mobile://redirect",
     }),
