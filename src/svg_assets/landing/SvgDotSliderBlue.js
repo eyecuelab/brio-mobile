@@ -8,7 +8,6 @@ export default function SvgDotSliderBlue() {
   <path d="M55 0C51.1331 0 48 3.13306 48 7C48 10.8669 51.1331 14 55 14C58.8669 14 62 10.8669 62 7C62 3.13306 58.8669 0 55 0Z" fill="#ECC08D"/>
   <path d="M79 0C75.1331 0 72 3.13306 72 7C72 10.8669 75.1331 14 79 14C82.8669 14 86 10.8669 86 7C86 3.13306 82.8669 0 79 0Z" fill="#ECC08D"/>
   </svg>
-
   
  `;
   const SvgImage = () => <SvgXml xml={svgMarkup} width="768px" />;

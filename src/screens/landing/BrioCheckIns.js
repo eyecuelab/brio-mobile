@@ -4,6 +4,7 @@ import bg from "../../styles/ScreenStyle.js";
 import SvgTellMeWhen from "../../svg_assets/landing/SvgTellMeWhen";
 import styled from "styled-components/native";
 import GetStartedBtn from "./GetStartedBtn";
+import SvgDotSliderPurple from "../../svg_assets/landing/SvgDotSliderPurple";
 
 function BrioCheckIns() {
   return (
@@ -11,6 +12,7 @@ function BrioCheckIns() {
       <DiagramContainer>
         <Diagram>
           <SvgTellMeWhen />
+          <SvgDotSliderPurple />
         </Diagram>
       </DiagramContainer>
       <GetStartedBtn
