@@ -6,7 +6,7 @@ import {
 } from "react-native";
 import styled from "styled-components/native";
 import { connect } from "react-redux";
-import brio from "../../../../assets/BrioPng.png"
+import brio from "../../../../assets/BrioPng.png";
 
 export const ModalContents = (props) => {
   const { showModal, setShowModal, contents } = props;
@@ -75,7 +75,6 @@ const ContentsContainer = styled.View`
 `;
 const ContentsTextWrapper = styled.View`
   margin: 12px;
-  
 `;
 const ContentsHeader = styled.Text`
   color: #fff;
@@ -91,9 +90,9 @@ const ContentsText = styled.Text`
   background-color: #000000a0;
 `;
 const mapStateToProps = (state) => {
-  return{
-    contents: state.spotifyApi.contents
-  }
+  return {
+    contents: state.spotifyApi.contents,
+  };
 };
 
 export default connect(mapStateToProps)(ModalContents);

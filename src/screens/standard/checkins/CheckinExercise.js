@@ -9,9 +9,10 @@ import ModalContents from "./ModalContents";
 
 export const CheckinExercise = () => {
   const [showModal, setShowModal] = useState(false);
+
   return (
-    <ScrollView>
-      <Container style={bg.berry}>
+    <Container style={bg.berry}>
+      <ScrollView>
         <CheckinContainer>
           <SvgCheckinExercise />
           <DashBar category={"Exercise"} color={"#d8a1d5"} from={"Checkin"} />
@@ -29,8 +30,8 @@ export const CheckinExercise = () => {
           />
         </ListContainer>
         <ModalContents showModal={showModal} setShowModal={setShowModal} />
-      </Container>
-    </ScrollView>
+      </ScrollView>
+    </Container>
   );
 };
 

@@ -10,8 +10,8 @@ import ModalContents from "./ModalContents";
 export const CheckinSocial = () => {
   const [showModal, setShowModal] = useState(false);
   return (
-    <ScrollView>
-      <Container style={bg.citrus}>
+    <Container style={bg.citrus}>
+      <ScrollView>
         <CheckinContainer>
           <SvgCheckinSocial />
           <DashBar category={"Social"} color={"#E0C45E"} from={"Checkin"} />
@@ -29,8 +29,8 @@ export const CheckinSocial = () => {
           />
         </ListContainer>
         <ModalContents showModal={showModal} setShowModal={setShowModal} />
-      </Container>
-    </ScrollView>
+      </ScrollView>
+    </Container>
   );
 };
 
