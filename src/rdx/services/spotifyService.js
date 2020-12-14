@@ -2,9 +2,11 @@ import { makeRedirectUri } from "expo-auth-session";
 import Base64 from "Base64";
 import { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET } from "@env";
 
-export const spotifyAccessTokenService = (spotifyAuthToken) => {
-  const SPOTIFY_TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";
+const SPOTIFY_ENDPOINT = "https://accounts.spotify.com";
+const SPOTIFY_TOKEN_ENDPOINT = `${SPOTIFY_ENDPOINT}/api/token`;
+const encoded = Base64.btoa(`${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`);
 
+export const spotifyAccessTokenService = (spotifyAuthToken) => {
   const details = {
     grant_type: "authorization_code",
     code: spotifyAuthToken,
@@ -20,8 +22,6 @@ export const spotifyAccessTokenService = (spotifyAuthToken) => {
     formBody.push(encodedKey + "=" + encodedValue);
   }
   formBody = formBody.join("&");
-
-  const encoded = Base64.btoa(`${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`);
 
   const parameters = {
     method: "POST",
@@ -57,9 +57,6 @@ export const getApiContentsService = (contentsWithTokens) => {
 };
 
 export const spotifyRefreshAccessTokenService = (contentsWithTokens) => {
-  const SPOTIFY_REFRESH_TOKEN_ENDPOINT =
-    "https://accounts.spotify.com/api/token";
-
   const details = {
     grant_type: "refresh_token",
     refresh_token: contentsWithTokens.refresh_token,
@@ -76,8 +73,6 @@ export const spotifyRefreshAccessTokenService = (contentsWithTokens) => {
   }
   formBody = formBody.join("&");
 
-  const encoded = Base64.btoa(`${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`);
-
   const parameters = {
     method: "POST",
     headers: {
@@ -88,7 +83,7 @@ export const spotifyRefreshAccessTokenService = (contentsWithTokens) => {
     body: formBody,
   };
 
-  return fetch(SPOTIFY_REFRESH_TOKEN_ENDPOINT, parameters)
+  return fetch(SPOTIFY_TOKEN_ENDPOINT, parameters)
     .then((resp) => resp.json())
     .then((resp) => resp);
 };
