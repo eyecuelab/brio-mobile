@@ -39,11 +39,13 @@ function Blocker(props) {
   };
 
   const callModal = (id) => {
-    setShowModal(!showModal);
-    if (spotifyAuthToken) {
-      getAccessTokenWatcher(spotifyAuthToken);
+    const clickedBlocker = catBlockers.find((blocker) => blocker.id === id);
+    if (clickedBlocker.apiEndpoint !== null) {
+      setShowModal(!showModal);
+      if (spotifyAuthToken) {
+        getAccessTokenWatcher(spotifyAuthToken);
+      }
     }
-    console.log("ICON CLICKED", id)
   };
 
   const displayBlockers = () => {

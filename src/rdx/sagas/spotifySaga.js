@@ -13,7 +13,6 @@ export const getAccessToken = (state) => state.spotifyApi;
 export function* getAccessTokenSaga(action) {
   try {
     let resp = yield call(spotifyAccessTokenService, action.spotifyAuthToken);
-    console.log("SPOTIFY AUTH TOKEN",action.spotifyAuthToken)
     console.log("1. RESP", resp);
     if (resp.access_token) {
       yield put({
