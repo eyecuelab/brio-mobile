@@ -12,6 +12,7 @@ function BrioSuggestions() {
       <DiagramContainer>
         <Diagram>
           <SvgSomethingFun />
+          <SvgDotSliderBlue />
         </Diagram>
       </DiagramContainer>
       <GetStartedBtn
