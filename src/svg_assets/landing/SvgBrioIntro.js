@@ -16,7 +16,11 @@ export default function SvgBrioIntro() {
   <circle cx="163.088" cy="274.714" r="7.01907" transform="rotate(-9.32789 163.088 274.714)" fill="#51ADE0"/>
   <circle cx="164.948" cy="268.718" r="4.21144" transform="rotate(-9.32789 164.948 268.718)" fill="white"/>
   <circle cx="97.0506" cy="288.406" r="4.21144" transform="rotate(-9.32789 97.0506 288.406)" fill="white"/>
+  <circle cx="157.696" cy="346.696" r="4.13345" transform="rotate(-8.45414 157.696 346.696)" fill="#FFCC19"/>
+  <circle cx="148.312" cy="354.312" r="5.55572" transform="rotate(-8.45414 148.312 354.312)" fill="#FFCC19"/>
   </svg>
+  
+  
   
  `;
   const SvgImage = () => <SvgXml xml={svgMarkup} width="768px" />;
