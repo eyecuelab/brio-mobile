@@ -1,11 +1,11 @@
 import * as c from "../actions/types";
 
-const initialAuthState = {
+const initialState = {
   access_token: null,
   contents: null,
 };
 
-export default (state = initialAuthState, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case c.GET_API_TOKENS_WATCHER:
       console.log("2. REFRESHTOKEN REDUCER");
@@ -18,6 +18,11 @@ export default (state = initialAuthState, action) => {
       return {
         ...state,
         contents: action.contents,
+      };
+    case c.CALLED_API:
+      return {
+        ...state,
+        apiEndpoint: action.apiEndpoint,
       };
     default:
       return state;
