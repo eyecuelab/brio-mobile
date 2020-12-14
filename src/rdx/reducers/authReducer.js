@@ -19,9 +19,9 @@ export default (state = initialAuthState, action) => {
         ...state,
         code: null,
       };
-    }
+    };
 
     default:
       return state;
-  }
+    };
 };

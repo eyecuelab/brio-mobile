@@ -22,8 +22,8 @@ const discovery = {
 };
 
 const LoginPage = (props) => {
-  const { dispatch } = props;
-  const [username, onChangeText] = useState("");
+  const { dispatch, existingUsername } = props;
+  const [value, onChangeText] = useState(existingUsername);
   const navigation = useNavigation();
   const [request, response, promptAsync] = useAuthRequest(
     {
@@ -44,7 +44,7 @@ const LoginPage = (props) => {
   useEffect(() => {
     if (response?.type === "success") {
       const { code } = response.params;
-      const action = actions.loggedIn(code, username);
+      const action = actions.loggedIn(code, value);
       dispatch(action);
       navigation.navigate("StandardNavigation");
     }
@@ -55,7 +55,7 @@ const LoginPage = (props) => {
       <Container style={bg.basic}>
         <AvatarContainer>
           <SvgAvatar />
-          <AvatarNameText>{username}</AvatarNameText>
+          <AvatarNameText>{value}</AvatarNameText>
         </AvatarContainer>
 
         <FieldContainer>
@@ -74,7 +74,7 @@ const LoginPage = (props) => {
         <FieldContainer>
           <UsernameInput
             onChangeText={(text) => onChangeText(text)}
-            username={username}
+            value={value}
             autoCapitalize="none"
           />
           <FieldTextContainer>
@@ -181,7 +181,9 @@ const LoginBtnText = styled.Text`
 `;
 
 const mapStateToProps = (state) => {
-  return {};
+  return {
+    existingUsername: state.user.username,
+  };
 };
 
 const LoginPageConnected = connect(mapStateToProps)(LoginPage);
