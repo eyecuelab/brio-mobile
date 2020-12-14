@@ -54,9 +54,9 @@ export const ModalContents = (props) => {
         }}
       >
         <ContentsContainer>
-          <ContentsTextWrapper>
+          <ContentsHeaderWrapper>
             <ContentsHeader>Kiwi's Last Album:</ContentsHeader>
-          </ContentsTextWrapper>
+          </ContentsHeaderWrapper>
           <ContentsTextWrapper>
             <ContentsText>{contents[0].track.album.name}</ContentsText>
           </ContentsTextWrapper>
@@ -73,21 +73,27 @@ const ContentsContainer = styled.View`
   margin-bottom: 36;
   justify-content: center;
 `;
+const ContentsHeaderWrapper = styled.View`
+  margin: 24px;
+  padding: 24px;
+`;
 const ContentsTextWrapper = styled.View`
-  margin: 12px;
+  margin-bottom: 24px;
+  padding: 12px;
 `;
 const ContentsHeader = styled.Text`
   color: #fff;
   font-size: 24px;
   font-weight: 900;
   text-align: center;
-  background-color: #000000a0;
+  background-color: #212529;
 `;
 const ContentsText = styled.Text`
   color: #fff;
   font-size: 16px;
+  font-weight: 900;
   text-align: center;
-  background-color: #000000a0;
+  background-color: #212529;
 `;
 const mapStateToProps = (state) => {
   return {

@@ -244,6 +244,7 @@ const ListText = styled.Text`
   font-weight: 900;
   text-align: center;
   flex-shrink: 1;
+  color: #6c757d;
 `;
 const IconWrapper = styled.TouchableHighlight`
   justify-content: center;
