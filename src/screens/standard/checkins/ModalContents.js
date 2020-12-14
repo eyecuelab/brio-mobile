@@ -6,10 +6,10 @@ import {
 } from "react-native";
 import styled from "styled-components/native";
 import { connect } from "react-redux";
+import brio from "../../../../assets/BrioPng.png"
 
 export const ModalContents = (props) => {
   const { showModal, setShowModal, contents } = props;
-  const image = { uri: "https://reactjs.org/logo-og.png" };
   const { height, width } = useWindowDimensions();
 
   return (
@@ -46,7 +46,7 @@ export const ModalContents = (props) => {
       onPress={() => setShowModal(false)}
     >
       <ImageBackground
-        source={image}
+        source={brio}
         style={{
           backgroundColor: "#ffffff",
           resizeMode: "cover",
@@ -75,6 +75,7 @@ const ContentsContainer = styled.View`
 `;
 const ContentsTextWrapper = styled.View`
   margin: 12px;
+  
 `;
 const ContentsHeader = styled.Text`
   color: #fff;
