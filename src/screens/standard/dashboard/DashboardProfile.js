@@ -29,12 +29,27 @@ export const DashboardProfile = (props) => {
     dispatch(action2);
   };
 
+  const showUsername = () => {
+    if (value) {
+      return (
+        <>
+          <AvatarNameText>{value}</AvatarNameText>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <AvatarNameText>{username}</AvatarNameText>
+        </>
+      );
+    }
+  };
   return (
     <>
       <Container style={bg.basic}>
         <AvatarContainer>
           <SvgAvatar />
-          <AvatarNameText>{username}</AvatarNameText>
+          {showUsername()}
         </AvatarContainer>
 
         <FieldContainer>
@@ -53,6 +68,7 @@ export const DashboardProfile = (props) => {
         <FieldContainer>
           <UsernameInput
             onChangeText={(text) => onChangeText(text)}
+            placeholder={username}
             value={value}
             autoCapitalize="none"
           />
