@@ -55,3 +55,9 @@ export const changedUsername = (username) => {
     username,
   };
 };
+export const calledApi = (apiEndpoint) => {
+  return {
+    type: c.CALLED_API,
+    apiEndpoint,
+  };
+};
