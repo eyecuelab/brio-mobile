@@ -8,8 +8,8 @@ import SvgEyeball from "../../../svg_assets/SvgEyeball";
 import { useNavigation } from "@react-navigation/native";
 
 export const DashboardProfile = (props) => {
+  const { dispatch, code, username } = props;
   const [value, onChangeText] = useState("");
-  const { dispatch, code } = props;
   const navigation = useNavigation();
 
   useEffect(() => {
@@ -18,17 +18,38 @@ export const DashboardProfile = (props) => {
     }
   }, [code]);
 
+  console.log("USERNAME", username);
   const logoutButton = () => {
     const action = actions.logoutButton();
     dispatch(action);
   };
 
+  const changedUsername = (username) => {
+    const action2 = actions.changedUsername(username);
+    dispatch(action2);
+  };
+
+  const showUsername = () => {
+    if (value) {
+      return (
+        <>
+          <AvatarNameText>{value}</AvatarNameText>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <AvatarNameText>{username}</AvatarNameText>
+        </>
+      );
+    }
+  };
   return (
     <>
       <Container style={bg.basic}>
         <AvatarContainer>
           <SvgAvatar />
-          <AvatarNameText>Kiwi</AvatarNameText>
+          {showUsername()}
         </AvatarContainer>
 
         <FieldContainer>
@@ -47,17 +68,21 @@ export const DashboardProfile = (props) => {
         <FieldContainer>
           <UsernameInput
             onChangeText={(text) => onChangeText(text)}
+            placeholder={username}
             value={value}
             autoCapitalize="none"
           />
           <FieldTextContainer>
             <FieldText>CHANGE USERNAME</FieldText>
           </FieldTextContainer>
+          <SaveUsernameBtn onPress={() => changedUsername(value)}>
+            <BtnText>Save username</BtnText>
+          </SaveUsernameBtn>
         </FieldContainer>
 
         <FieldContainer>
           <LogoutBtn onPress={() => logoutButton()}>
-            <LogoutBtnText>Log out</LogoutBtnText>
+            <BtnText>Log out</BtnText>
           </LogoutBtn>
           <FieldTextContainer>
             <FieldText>LOG OUT OF THE APP</FieldText>
@@ -117,6 +142,18 @@ const TextWrapper = styled.View`
   flex-direction: row;
 `;
 
+const SaveUsernameBtn = styled.TouchableHighlight`
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 55;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #e0c45e;
+  margin-top: 8;
+  text-align: center;
+`;
 const LogoutBtn = styled.TouchableHighlight`
   flex-direction: row;
   justify-content: center;
@@ -129,7 +166,7 @@ const LogoutBtn = styled.TouchableHighlight`
   margin-top: 8;
   text-align: center;
 `;
-const LogoutBtnText = styled.Text`
+const BtnText = styled.Text`
   color: white;
   font-size: 18px;
   font-weight: 900;
@@ -137,6 +174,7 @@ const LogoutBtnText = styled.Text`
 const mapStateToProps = (state) => {
   return {
     code: state.user.code,
+    username: state.user.username,
   };
 };
 

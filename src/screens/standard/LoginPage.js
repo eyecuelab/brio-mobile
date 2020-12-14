@@ -22,8 +22,8 @@ const discovery = {
 };
 
 const LoginPage = (props) => {
-  const { dispatch } = props;
-  const [value, onChangeText] = useState("");
+  const { dispatch, existingUsername } = props;
+  const [value, onChangeText] = useState(existingUsername);
   const navigation = useNavigation();
   const [request, response, promptAsync] = useAuthRequest(
     {
@@ -44,18 +44,44 @@ const LoginPage = (props) => {
   useEffect(() => {
     if (response?.type === "success") {
       const { code } = response.params;
-      const action = actions.loggedIn(code);
+      const action = actions.loggedIn(code, value);
       dispatch(action);
       navigation.navigate("StandardNavigation");
     }
   }, [response]);
+
+  const usernameInputLabel = () => {
+    if (existingUsername) {
+      return (
+        <>
+          <UsernameInput value={value} />
+          <FieldTextContainer>
+            <FieldText>USERNAME</FieldText>
+          </FieldTextContainer>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <UsernameInput
+            onChangeText={(text) => onChangeText(text)}
+            value={value}
+            autoCapitalize="none"
+          />
+          <FieldTextContainer>
+            <FieldText>CREATE USERNAME</FieldText>
+          </FieldTextContainer>
+        </>
+      );
+    }
+  };
 
   return (
     <>
       <Container style={bg.basic}>
         <AvatarContainer>
           <SvgAvatar />
-          <AvatarNameText>Kiwi</AvatarNameText>
+          <AvatarNameText>{value}</AvatarNameText>
         </AvatarContainer>
 
         <FieldContainer>
@@ -71,16 +97,7 @@ const LoginPage = (props) => {
           </FieldTextContainer>
         </FieldContainer>
 
-        <FieldContainer>
-          <UsernameInput
-            onChangeText={(text) => onChangeText(text)}
-            value={value}
-            autoCapitalize="none"
-          />
-          <FieldTextContainer>
-            <FieldText>CREATE USERNAME</FieldText>
-          </FieldTextContainer>
-        </FieldContainer>
+        <FieldContainer>{usernameInputLabel()}</FieldContainer>
 
         <FieldContainer>
           <SpotifyLoginBtn onPress={() => promptAsync()}>
@@ -181,7 +198,9 @@ const LoginBtnText = styled.Text`
 `;
 
 const mapStateToProps = (state) => {
-  return {};
+  return {
+    existingUsername: state.user.username,
+  };
 };
 
 const LoginPageConnected = connect(mapStateToProps)(LoginPage);

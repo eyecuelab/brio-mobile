@@ -10,17 +10,23 @@ export default (state = initialAuthState, action) => {
       return {
         ...state,
         code: action.code,
+        username: action.username,
       };
     }
-
     case c.LOGGED_OUT: {
       return {
         ...state,
         code: null,
       };
-    };
+    }
+    case c.CHANGED_USERNAME: {
+      return {
+        ...state,
+        username: action.username,
+      };
+    }
 
     default:
       return state;
-    };
+  }
 };

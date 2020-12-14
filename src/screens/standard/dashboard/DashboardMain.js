@@ -15,7 +15,7 @@ import SadPieChart from "./SadPieChart";
 
 
 function DashboardMain(props) {
-  const { allBlockers, dispatch } = props;
+  const { allBlockers, dispatch, username } = props;
 
   const pieOrMsg = () => {
     if (allBlockers && allBlockers.length > 0) {
@@ -40,7 +40,7 @@ function DashboardMain(props) {
             <DiagramContainer>
               <SvgBrioFront />
               <Diagram>
-                <DiagramText>Welcome back Kiwi! </DiagramText>
+                <DiagramText>Welcome back {username}! </DiagramText>
                 <DiagramText> You look great!</DiagramText>
               </Diagram>
             </DiagramContainer>
@@ -54,7 +54,7 @@ function DashboardMain(props) {
   const resetProgress = () => {
     const action = actions.resetProgress();
     dispatch(action);
-  }
+  };
 
   return (
     <>
@@ -115,6 +115,7 @@ const DiagramText = styled.Text`
 const mapStateToProps = (state) => {
   return {
     allBlockers: state.blockersState.blockers,
+    username: state.user.username,
   };
 };
 
