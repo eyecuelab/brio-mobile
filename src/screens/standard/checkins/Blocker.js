@@ -22,26 +22,26 @@ function Blocker(props) {
   const catBlockers = blockers.filter(
     (blocker) => blocker.category === `${category}`
   );
-  
+
   const completedBlocker = (id) => {
     const action = actions.completedBlocker(id);
     dispatch(action);
   };
-  
+
   const getAccessTokenWatcher = (authToken) => {
-    const action2 = actions.getAccessTokenWatcher(authToken)
-    dispatch(action2)
-  }
+    const action = actions.getAccessTokenWatcher(authToken);
+    dispatch(action);
+  };
 
   const completedSuggestion = (blockerId, suggestionId) => {
-    const action2 = actions.completedSuggestion(blockerId, suggestionId);
-    dispatch(action2);
+    const action = actions.completedSuggestion(blockerId, suggestionId);
+    dispatch(action);
   };
 
   const callModal = () => {
     setShowModal(!showModal);
     if (spotifyAuthToken) {
-      getAccessTokenWatcher(spotifyAuthToken)
+      getAccessTokenWatcher(spotifyAuthToken);
     }
   };
 
@@ -51,8 +51,8 @@ function Blocker(props) {
         {catBlockers.map((blocker) => {
           if (blocker.completedAt === null) {
             return (
-              <React.Fragment  key={blocker.id}>
-                <BlockerListContainer>
+              <React.Fragment key={blocker.id}>
+                <BlockerListContainer style={{ backgroundColor: `${color2}` }}>
                   <IconWrapper
                     underlayColor={`${color1}`}
                     onPress={() => callModal()}
@@ -69,7 +69,7 @@ function Blocker(props) {
                     <ListText>{blocker.description}</ListText>
                   </ListWrapper>
                 </BlockerListContainer>
-              </ React.Fragment>
+              </React.Fragment>
             );
           } else {
             const uncompletedSuggestion = blocker.suggestions.find(
@@ -77,7 +77,10 @@ function Blocker(props) {
             );
             if (uncompletedSuggestion) {
               return (
-                <BlockerListContainer key={uncompletedSuggestion.id}>
+                <BlockerListContainer
+                  style={{ backgroundColor: `${color2}` }}
+                  key={uncompletedSuggestion.id}
+                >
                   <IconWrapper
                     underlayColor={`${color1}`}
                     onPress={() => callModal()}
@@ -227,16 +230,18 @@ const BlockerListContainer = styled.View`
   flex-direction: row;
   margin-bottom: 12px;
   align-items: center;
+  border-radius: 25px;
 `;
 const ListWrapper = styled.TouchableHighlight`
   justify-content: center;
   align-items: center;
   height: 50px;
   padding: 12px;
-  border-radius: 15px;
+  border-radius: 25px;
 `;
 const ListText = styled.Text`
   font-size: 14px;
+  font-weight: 900;
   text-align: center;
   flex-shrink: 1;
 `;
