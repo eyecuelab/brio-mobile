@@ -23,7 +23,7 @@ const discovery = {
 
 const LoginPage = (props) => {
   const { dispatch } = props;
-  const [value, onChangeText] = useState("");
+  const [username, onChangeText] = useState("");
   const navigation = useNavigation();
   const [request, response, promptAsync] = useAuthRequest(
     {
@@ -55,7 +55,7 @@ const LoginPage = (props) => {
       <Container style={bg.basic}>
         <AvatarContainer>
           <SvgAvatar />
-          <AvatarNameText>Kiwi</AvatarNameText>
+          <AvatarNameText>{username}</AvatarNameText>
         </AvatarContainer>
 
         <FieldContainer>
@@ -74,7 +74,7 @@ const LoginPage = (props) => {
         <FieldContainer>
           <UsernameInput
             onChangeText={(text) => onChangeText(text)}
-            value={value}
+            username={username}
             autoCapitalize="none"
           />
           <FieldTextContainer>
