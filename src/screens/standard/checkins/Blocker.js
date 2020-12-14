@@ -38,11 +38,12 @@ function Blocker(props) {
     dispatch(action);
   };
 
-  const callModal = () => {
+  const callModal = (id) => {
     setShowModal(!showModal);
     if (spotifyAuthToken) {
       getAccessTokenWatcher(spotifyAuthToken);
     }
+    console.log("ICON CLICKED", id)
   };
 
   const displayBlockers = () => {
@@ -55,7 +56,7 @@ function Blocker(props) {
                 <BlockerListContainer style={{ backgroundColor: `${color2}` }}>
                   <IconWrapper
                     underlayColor={`${color1}`}
-                    onPress={() => callModal()}
+                    onPress={() => callModal(blocker.id)}
                   >
                     <SvgStarIcon color1={`${color1}`} color2={`${color2}`} />
                   </IconWrapper>
