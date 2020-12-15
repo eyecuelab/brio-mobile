@@ -29,7 +29,11 @@ export const CheckinExercise = () => {
             color2={"#FFE3E3"}
           />
         </ListContainer>
-        <Modal showModal={showModal} setShowModal={setShowModal} />
+        <Modal
+          showModal={showModal}
+          setShowModal={setShowModal}
+          color={"#d587b5"}
+        />
       </ScrollView>
     </Container>
   );

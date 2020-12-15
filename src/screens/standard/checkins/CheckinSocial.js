@@ -28,7 +28,11 @@ export const CheckinSocial = () => {
             color2={"#E0C45E"}
           />
         </ListContainer>
-        <Modal showModal={showModal} setShowModal={setShowModal} />
+        <Modal
+          showModal={showModal}
+          setShowModal={setShowModal}
+          color={"#d86f4b"}
+        />
       </ScrollView>
     </Container>
   );

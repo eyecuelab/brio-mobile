@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import brio from "../../../../assets/BrioPng.png";
 import ModalContents from "./ModalContents";
 export const Modal = (props) => {
-  const { showModal, setShowModal, apiEndpoint } = props;
+  const { showModal, setShowModal, apiEndpoint, color } = props;
   const { height, width } = useWindowDimensions();
   const [apiContents, setApiContents] = useState("");
 
@@ -36,7 +36,7 @@ export const Modal = (props) => {
                 left: 0,
                 top: 0,
                 opacity: 0.5,
-                backgroundColor: "black",
+                backgroundColor: `${color}`,
                 height,
                 width,
                 justifyContent: "center",
@@ -50,7 +50,7 @@ export const Modal = (props) => {
                 left: 0,
                 top: 0,
                 opacity: 0.5,
-                backgroundColor: "black",
+                backgroundColor: `${color}`,
                 height: 0,
                 width: 0,
               }

@@ -28,7 +28,11 @@ export const CheckinMusic = () => {
             color2={"#DAF3E6"}
           />
         </ListContainer>
-        <Modal showModal={showModal} setShowModal={setShowModal} />
+        <Modal
+          showModal={showModal}
+          setShowModal={setShowModal}
+          color={"#12492E"}
+        />
       </ScrollView>
     </Container>
   );
