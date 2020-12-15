@@ -64,6 +64,7 @@ export const Modal = (props) => {
             resizeMode: "cover",
             alignItems: "center",
             marginRight: 15,
+            borderRadius: 25,
           }}
         >
           <ModalContents apiContents={apiContents} />
