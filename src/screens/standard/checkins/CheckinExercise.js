@@ -5,7 +5,7 @@ import bg from "../../../styles/ScreenStyle.js";
 import SvgCheckinExercise from "../../../svg_assets/SvgCheckinExercise";
 import Blocker from "./Blocker";
 import DashBar from "../dashboard/DashBar";
-import ModalContents from "./ModalContents";
+import Modal from "./Modal";
 
 export const CheckinExercise = () => {
   const [showModal, setShowModal] = useState(false);
@@ -29,7 +29,7 @@ export const CheckinExercise = () => {
             color2={"#FFE3E3"}
           />
         </ListContainer>
-        <ModalContents showModal={showModal} setShowModal={setShowModal} />
+        <Modal showModal={showModal} setShowModal={setShowModal} />
       </ScrollView>
     </Container>
   );
