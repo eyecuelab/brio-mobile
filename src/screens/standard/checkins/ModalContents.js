@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import styled from "styled-components/native";
 
 export const ModalContents = (props) => {
-  const { contents } = props;
+  const { contents, apiContents } = props;
 
   return (
     <>

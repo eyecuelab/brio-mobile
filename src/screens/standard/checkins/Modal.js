@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   ImageBackground,
   TouchableOpacity,
@@ -8,8 +8,18 @@ import { connect } from "react-redux";
 import brio from "../../../../assets/BrioPng.png";
 import ModalContents from "./ModalContents";
 export const Modal = (props) => {
-  const { showModal, setShowModal, contents } = props;
+  const { showModal, setShowModal, apiEndpoint } = props;
   const { height, width } = useWindowDimensions();
+  const [apiContents, setApiContents] = useState("");
+
+  useEffect(() => {
+    if (
+      apiEndpoint === "https://api.spotify.com/v1/me/player/recently-played"
+    ) {
+      setApiContents("recently-played");
+    }
+    return () => {};
+  }, [apiEndpoint]);
 
   return (
     <TouchableOpacity
@@ -52,7 +62,7 @@ export const Modal = (props) => {
           alignItems: "center",
         }}
       >
-        <ModalContents />
+        <ModalContents apiContents={apiContents} />
       </ImageBackground>
     </TouchableOpacity>
   );
@@ -61,7 +71,6 @@ export const Modal = (props) => {
 const mapStateToProps = (state) => {
   return {
     apiEndpoint: state.spotifyApi.apiEndpoint,
-    contents: state.spotifyApi.contents,
   };
 };
 
