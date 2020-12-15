@@ -8,7 +8,7 @@ export default function SvgEyeballPie() {
   <circle cx="80.9523" cy="75.1463" r="11.4286" fill="white"/>
   </svg>
   `;
-  const SvgImage = () => <SvgXml xml={svgMarkup} width="100px" />;
+  const SvgImage = () => <SvgXml xml={svgMarkup} width="130px" />;
 
   return <SvgImage />;
 }
