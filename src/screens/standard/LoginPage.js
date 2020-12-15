@@ -54,7 +54,7 @@ const LoginPage = (props) => {
     if (existingUsername) {
       return (
         <>
-          <UsernameInput value={value} />
+          <UsernameInput value={value} editable={false} />
           <FieldTextContainer>
             <FieldText>USERNAME</FieldText>
           </FieldTextContainer>

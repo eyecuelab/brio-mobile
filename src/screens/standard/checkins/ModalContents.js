@@ -48,7 +48,6 @@ const ContentsContainer = styled.View`
   margin-bottom: 36;
   justify-content: center;
   background-color: #212529;
-  border-width: 5;
 `;
 const ContentsHeaderWrapper = styled.View`
   margin: 12px;
