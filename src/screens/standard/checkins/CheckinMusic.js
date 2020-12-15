@@ -5,21 +5,21 @@ import bg from "../../../styles/ScreenStyle.js";
 import SvgCheckinMusic from "../../../svg_assets/SvgCheckinMusic";
 import Blocker from "./Blocker";
 import DashBar from "../dashboard/DashBar";
-import ModalContents from "./ModalContents";
+import Modal from "./Modal";
 
 export const CheckinMusic = () => {
   const [showModal, setShowModal] = useState(false);
   return (
-    <ScrollView>
-      <Container style={bg.mint}>
+    <Container style={bg.mint}>
+      <ScrollView>
         <CheckinContainer>
           <SvgCheckinMusic />
           <DashBar category={"Music"} color={"#94D7B5"} from={"Checkin"} />
         </CheckinContainer>
         <ListContainer>
           <ListHeaderTextWrapper>
-            <ListHeaderText>TAP TO COMPLETE</ListHeaderText>
-            <ListHeaderText>REFRESH</ListHeaderText>
+            <ListHeaderText>CLICK ICON FOR TIPS</ListHeaderText>
+            <ListHeaderText>TAP BAR TO COMPLETE</ListHeaderText>
           </ListHeaderTextWrapper>
           <Blocker
             setShowModal={setShowModal}
@@ -28,9 +28,13 @@ export const CheckinMusic = () => {
             color2={"#DAF3E6"}
           />
         </ListContainer>
-        <ModalContents showModal={showModal} setShowModal={setShowModal} />
-      </Container>
-    </ScrollView>
+        <Modal
+          showModal={showModal}
+          setShowModal={setShowModal}
+          color={"#12492E"}
+        />
+      </ScrollView>
+    </Container>
   );
 };
 

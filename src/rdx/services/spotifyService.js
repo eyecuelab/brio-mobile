@@ -2,9 +2,11 @@ import { makeRedirectUri } from "expo-auth-session";
 import Base64 from "Base64";
 import { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET } from "@env";
 
-export const spotifyAccessTokenService = (spotifyAuthToken) => {
-  const SPOTIFY_TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";
+const SPOTIFY_ENDPOINT = "https://accounts.spotify.com";
+const SPOTIFY_TOKEN_ENDPOINT = `${SPOTIFY_ENDPOINT}/api/token`;
+const encoded = Base64.btoa(`${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`);
 
+export const spotifyAccessTokenService = (spotifyAuthToken) => {
   const details = {
     grant_type: "authorization_code",
     code: spotifyAuthToken,
@@ -21,8 +23,6 @@ export const spotifyAccessTokenService = (spotifyAuthToken) => {
   }
   formBody = formBody.join("&");
 
-  const encoded = Base64.btoa(`${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`);
-
   const parameters = {
     method: "POST",
     headers: {
@@ -38,31 +38,28 @@ export const spotifyAccessTokenService = (spotifyAuthToken) => {
     .then((resp) => resp);
 };
 
-export const getApiContentsService = (contentsWithTokens) => {
-  const SPOTIFY_RECENT_PLAYED_ENDPOINT =
-    "https://api.spotify.com/v1/me/player/recently-played";
+export const getApiContentsService = (spotifyState) => {
+  console.log("PASSED STATE", spotifyState)
+  const SPOTIFY_ENDPOINT = spotifyState.apiEndpoint;
 
   const parameters = {
     method: "GET",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/x-www-form-urlencoded",
-      Authorization: `Bearer ${contentsWithTokens.access_token}`,
+      Authorization: `Bearer ${spotifyState.access_token}`,
     },
   };
 
-  return fetch(SPOTIFY_RECENT_PLAYED_ENDPOINT, parameters)
+  return fetch(SPOTIFY_ENDPOINT, parameters)
     .then((resp) => resp.json())
     .then((resp) => resp);
 };
 
-export const spotifyRefreshAccessTokenService = (contentsWithTokens) => {
-  const SPOTIFY_REFRESH_TOKEN_ENDPOINT =
-    "https://accounts.spotify.com/api/token";
-
+export const spotifyRefreshAccessTokenService = (spotifyState) => {
   const details = {
     grant_type: "refresh_token",
-    refresh_token: contentsWithTokens.refresh_token,
+    refresh_token: spotifyState.refresh_token,
     redirect_uri: makeRedirectUri({
       native: "brio-mobile://redirect",
     }),
@@ -76,8 +73,6 @@ export const spotifyRefreshAccessTokenService = (contentsWithTokens) => {
   }
   formBody = formBody.join("&");
 
-  const encoded = Base64.btoa(`${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`);
-
   const parameters = {
     method: "POST",
     headers: {
@@ -88,7 +83,7 @@ export const spotifyRefreshAccessTokenService = (contentsWithTokens) => {
     body: formBody,
   };
 
-  return fetch(SPOTIFY_REFRESH_TOKEN_ENDPOINT, parameters)
+  return fetch(SPOTIFY_TOKEN_ENDPOINT, parameters)
     .then((resp) => resp.json())
     .then((resp) => resp);
 };

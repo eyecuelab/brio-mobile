@@ -22,26 +22,46 @@ function Blocker(props) {
   const catBlockers = blockers.filter(
     (blocker) => blocker.category === `${category}`
   );
-  
+
+  const catSuggs = catBlockers
+    .map((catBlocker) => catBlocker.suggestions)
+    .flat();
+
   const completedBlocker = (id) => {
     const action = actions.completedBlocker(id);
     dispatch(action);
   };
-  
-  const getAccessTokenWatcher = (authToken) => {
-    const action2 = actions.getAccessTokenWatcher(authToken)
-    dispatch(action2)
-  }
 
-  const completedSuggestion = (blockerId, suggestionId) => {
-    const action2 = actions.completedSuggestion(blockerId, suggestionId);
-    dispatch(action2);
+  const getAccessTokenWatcher = (authToken) => {
+    const action = actions.getAccessTokenWatcher(authToken);
+    dispatch(action);
   };
 
-  const callModal = () => {
-    setShowModal(!showModal);
-    if (spotifyAuthToken) {
-      getAccessTokenWatcher(spotifyAuthToken)
+  const completedSuggestion = (blockerId, suggestionId) => {
+    const action = actions.completedSuggestion(blockerId, suggestionId);
+    dispatch(action);
+  };
+
+  const calledApi = (apiEndpoint) => {
+    const action = actions.calledApi(apiEndpoint);
+    dispatch(action);
+  };
+
+  const callModalBl = (id) => {
+    const clickedBlocker = catBlockers.find((blocker) => blocker.id === id);
+    getAccessTokenWatcher(spotifyAuthToken);
+    if (clickedBlocker.apiEndpoint !== null) {
+      calledApi(clickedBlocker.apiEndpoint);
+      setShowModal(!showModal);
+    }
+  };
+
+  const callModalSugg = (id) => {
+    const clickedSugg = catSuggs.find((sugg) => sugg.id === id);
+    getAccessTokenWatcher(spotifyAuthToken);
+    if (clickedSugg.apiEndpoint !== null) {
+      calledApi(clickedSugg.apiEndpoint);
+      setShowModal(!showModal);
     }
   };
 
@@ -51,11 +71,11 @@ function Blocker(props) {
         {catBlockers.map((blocker) => {
           if (blocker.completedAt === null) {
             return (
-              <React.Fragment  key={blocker.id}>
-                <BlockerListContainer>
+              <React.Fragment key={blocker.id}>
+                <BlockerListContainer style={{ backgroundColor: `${color2}` }}>
                   <IconWrapper
                     underlayColor={`${color1}`}
-                    onPress={() => callModal()}
+                    onPress={() => callModalBl(blocker.id)}
                   >
                     <SvgStarIcon color1={`${color1}`} color2={`${color2}`} />
                   </IconWrapper>
@@ -69,7 +89,7 @@ function Blocker(props) {
                     <ListText>{blocker.description}</ListText>
                   </ListWrapper>
                 </BlockerListContainer>
-              </ React.Fragment>
+              </React.Fragment>
             );
           } else {
             const uncompletedSuggestion = blocker.suggestions.find(
@@ -77,10 +97,13 @@ function Blocker(props) {
             );
             if (uncompletedSuggestion) {
               return (
-                <BlockerListContainer key={uncompletedSuggestion.id}>
+                <BlockerListContainer
+                  style={{ backgroundColor: `${color2}` }}
+                  key={uncompletedSuggestion.id}
+                >
                   <IconWrapper
                     underlayColor={`${color1}`}
-                    onPress={() => callModal()}
+                    onPress={() => callModalSugg(uncompletedSuggestion.id)}
                   >
                     <SvgStarIcon color1={`${color1}`} color2={`${color2}`} />
                   </IconWrapper>
@@ -227,18 +250,21 @@ const BlockerListContainer = styled.View`
   flex-direction: row;
   margin-bottom: 12px;
   align-items: center;
+  border-radius: 25px;
 `;
 const ListWrapper = styled.TouchableHighlight`
   justify-content: center;
   align-items: center;
   height: 50px;
   padding: 12px;
-  border-radius: 15px;
+  border-radius: 25px;
 `;
 const ListText = styled.Text`
   font-size: 14px;
+  font-weight: 900;
   text-align: center;
   flex-shrink: 1;
+  color: #6c757d;
 `;
 const IconWrapper = styled.TouchableHighlight`
   justify-content: center;

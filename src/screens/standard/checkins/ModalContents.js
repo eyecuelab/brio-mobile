@@ -1,71 +1,38 @@
 import React from "react";
-import {
-  ImageBackground,
-  TouchableOpacity,
-  useWindowDimensions,
-} from "react-native";
-import styled from "styled-components/native";
 import { connect } from "react-redux";
+import styled from "styled-components/native";
 
 export const ModalContents = (props) => {
-  const { showModal, setShowModal, contents } = props;
-  const image = { uri: "https://reactjs.org/logo-og.png" };
-  const { height, width } = useWindowDimensions();
+  const { contents, apiContents, username } = props;
 
-  return (
-    <TouchableOpacity
-      style={
-        showModal
-          ? {
-              flex: 1,
-              display: "flex",
-              flexDirection: "column",
-              position: "absolute",
-              left: 0,
-              top: 0,
-              opacity: 0.5,
-              backgroundColor: "black",
-              height,
-              width,
-              justifyContent: "center",
-              alignItems: "center",
-            }
-          : {
-              flex: 1,
-              display: "none",
-              flexDirection: "column",
-              position: "absolute",
-              left: 0,
-              top: 0,
-              opacity: 0.5,
-              backgroundColor: "black",
-              height: 0,
-              width: 0,
-            }
-      }
-      onPress={() => setShowModal(false)}
-    >
-      <ImageBackground
-        source={image}
-        style={{
-          backgroundColor: "#ffffff",
-          resizeMode: "cover",
-          alignItems: "center",
-        }}
-      >
+  const showContents = () => {
+    if (apiContents === "recently-played") {
+      
+      return (
         <ContentsContainer>
-          <ContentsTextWrapper>
-            <ContentsHeader>Kiwi's Last Album:</ContentsHeader>
-          </ContentsTextWrapper>
+          <ContentsHeaderWrapper>
+            <ContentsHeader>{`${username}'s Last 10 songs:`}</ContentsHeader>
+          </ContentsHeaderWrapper>
           <ContentsTextWrapper>
             <ContentsText>{contents[0].track.album.name}</ContentsText>
           </ContentsTextWrapper>
         </ContentsContainer>
-      </ImageBackground>
-    </TouchableOpacity>
-  );
+      );
+    } else {
+      return (
+        <ContentsContainer>
+          <ContentsHeaderWrapper>
+            <ContentsHeader>Other api call:</ContentsHeader>
+          </ContentsHeaderWrapper>
+          <ContentsTextWrapper>
+            <ContentsText>Other api contents</ContentsText>
+          </ContentsTextWrapper>
+        </ContentsContainer>
+      );
+    }
+  };
+  return <>{showContents()}</>;
 };
-
 const ContentsContainer = styled.View`
   margin-top: 36;
   margin-right: 12;
@@ -73,26 +40,33 @@ const ContentsContainer = styled.View`
   margin-bottom: 36;
   justify-content: center;
 `;
+const ContentsHeaderWrapper = styled.View`
+  margin: 24px;
+  padding: 24px;
+`;
 const ContentsTextWrapper = styled.View`
-  margin: 12px;
+  margin-bottom: 24px;
+  padding: 12px;
 `;
 const ContentsHeader = styled.Text`
   color: #fff;
   font-size: 24px;
   font-weight: 900;
   text-align: center;
-  background-color: #000000a0;
+  background-color: #212529;
 `;
 const ContentsText = styled.Text`
   color: #fff;
   font-size: 16px;
+  font-weight: 900;
   text-align: center;
-  background-color: #000000a0;
+  background-color: #212529;
 `;
 const mapStateToProps = (state) => {
-  return{
-    contents: state.spotifyApi.contents
-  }
+  return {
+    apiEndpoint: state.spotifyApi.apiEndpoint,
+    contents: state.spotifyApi.contents,
+    username: state.user.username,
+  };
 };
-
 export default connect(mapStateToProps)(ModalContents);

@@ -16,7 +16,6 @@ export default function initBlockers() {
         createdAt: new Date(),
         completedAt: null,
         points: 10,
-        color: "#D8A1D5",
         suggestions: [
           {
             id: v4(),
@@ -24,7 +23,6 @@ export default function initBlockers() {
             createdAt: new Date(),
             completedAt: null,
             points: 20,
-            color: "#D8A1D5",
           },
           {
             id: v4(),
@@ -32,7 +30,6 @@ export default function initBlockers() {
             createdAt: new Date(),
             completedAt: null,
             points: 30,
-            color: "#D8A1D5",
           },
         ],
       },
@@ -43,7 +40,6 @@ export default function initBlockers() {
         createdAt: new Date(),
         completedAt: null,
         points: 20,
-        color: "#D8A1D5",
         suggestions: [
           {
             id: v4(),
@@ -51,7 +47,6 @@ export default function initBlockers() {
             createdAt: new Date(),
             completedAt: null,
             points: 20,
-            color: "#D8A1D5",
           },
           {
             id: v4(),
@@ -59,7 +54,6 @@ export default function initBlockers() {
             createdAt: new Date(),
             completedAt: null,
             points: 30,
-            color: "#D8A1D5",
           },
         ],
       },
@@ -70,7 +64,6 @@ export default function initBlockers() {
         createdAt: new Date(),
         completedAt: null,
         points: 30,
-        color: "#D8A1D5",
         suggestions: [
           {
             id: v4(),
@@ -78,7 +71,6 @@ export default function initBlockers() {
             createdAt: new Date(),
             completedAt: null,
             points: 20,
-            color: "#D8A1D5",
           },
           {
             id: v4(),
@@ -86,7 +78,6 @@ export default function initBlockers() {
             createdAt: new Date(),
             completedAt: null,
             points: 30,
-            color: "#D8A1D5",
           },
         ],
       },
@@ -97,7 +88,7 @@ export default function initBlockers() {
         createdAt: new Date(),
         completedAt: null,
         points: 10,
-        color: "#94D7B5",
+        apiEndpoint: "https://api.spotify.com/v1/me/player/recently-played",
         suggestions: [
           {
             id: v4(),
@@ -105,7 +96,6 @@ export default function initBlockers() {
             createdAt: new Date(),
             completedAt: null,
             points: 20,
-            color: "#D8A1D5",
           },
           {
             id: v4(),
@@ -113,7 +103,6 @@ export default function initBlockers() {
             createdAt: new Date(),
             completedAt: null,
             points: 30,
-            color: "#D8A1D5",
           },
         ],
       },
@@ -124,7 +113,6 @@ export default function initBlockers() {
         createdAt: new Date(),
         completedAt: null,
         points: 20,
-        color: "#94D7B5",
         suggestions: [
           {
             id: v4(),
@@ -132,7 +120,6 @@ export default function initBlockers() {
             createdAt: new Date(),
             completedAt: null,
             points: 20,
-            color: "#D8A1D5",
           },
           {
             id: v4(),
@@ -140,7 +127,6 @@ export default function initBlockers() {
             createdAt: new Date(),
             completedAt: null,
             points: 30,
-            color: "#D8A1D5",
           },
         ],
       },
@@ -151,7 +137,6 @@ export default function initBlockers() {
         createdAt: new Date(),
         completedAt: null,
         points: 30,
-        color: "#94D7B5",
         suggestions: [
           {
             id: v4(),
@@ -159,7 +144,6 @@ export default function initBlockers() {
             createdAt: new Date(),
             completedAt: null,
             points: 20,
-            color: "#D8A1D5",
           },
           {
             id: v4(),
@@ -167,7 +151,6 @@ export default function initBlockers() {
             createdAt: new Date(),
             completedAt: null,
             points: 30,
-            color: "#D8A1D5",
           },
         ],
       },
@@ -178,7 +161,6 @@ export default function initBlockers() {
         createdAt: new Date(),
         completedAt: null,
         points: 10,
-        color: "#E0C45E",
         suggestions: [
           {
             id: v4(),
@@ -186,7 +168,6 @@ export default function initBlockers() {
             createdAt: new Date(),
             completedAt: null,
             points: 20,
-            color: "#D8A1D5",
           },
           {
             id: v4(),
@@ -194,7 +175,6 @@ export default function initBlockers() {
             createdAt: new Date(),
             completedAt: null,
             points: 30,
-            color: "#D8A1D5",
           },
         ],
       },
@@ -205,7 +185,6 @@ export default function initBlockers() {
         createdAt: new Date(),
         completedAt: null,
         points: 20,
-        color: "#E0C45E",
         suggestions: [
           {
             id: v4(),
@@ -213,7 +192,6 @@ export default function initBlockers() {
             createdAt: new Date(),
             completedAt: null,
             points: 20,
-            color: "#D8A1D5",
           },
           {
             id: v4(),
@@ -221,7 +199,6 @@ export default function initBlockers() {
             createdAt: new Date(),
             completedAt: null,
             points: 30,
-            color: "#D8A1D5",
           },
         ],
       },
@@ -232,7 +209,6 @@ export default function initBlockers() {
         createdAt: new Date(),
         completedAt: null,
         points: 30,
-        color: "#E0C45E",
         suggestions: [
           {
             id: v4(),
@@ -240,7 +216,6 @@ export default function initBlockers() {
             createdAt: new Date(),
             completedAt: null,
             points: 20,
-            color: "#D8A1D5",
           },
           {
             id: v4(),
@@ -248,7 +223,6 @@ export default function initBlockers() {
             createdAt: new Date(),
             completedAt: null,
             points: 30,
-            color: "#D8A1D5",
           },
         ],
       },

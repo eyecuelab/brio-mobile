@@ -75,7 +75,7 @@ export const PieChart = (props) => {
           viewBox="0 0 400 400"
           style={{ width: "100%", height: "auto" }}
         >
-          {/* <Circle cx={200} cy={200} r={110} fill="#fff"/> */}
+          <Circle cx={200} cy={200} r={110} fill="#fff" />
           {displayPieChart()}
         </Svg>
         {showEyeball()}
