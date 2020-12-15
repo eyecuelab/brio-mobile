@@ -18,8 +18,8 @@ export const CheckinSocial = () => {
         </CheckinContainer>
         <ListContainer>
           <ListHeaderTextWrapper>
-            <ListHeaderText>TAP TO COMPLETE</ListHeaderText>
-            <ListHeaderText>REFRESH</ListHeaderText>
+            <ListHeaderText>CLICK ICON FOR IDEAS</ListHeaderText>
+            <ListHeaderText>TAP BAR TO COMPLETE</ListHeaderText>
           </ListHeaderTextWrapper>
           <Blocker
             setShowModal={setShowModal}
