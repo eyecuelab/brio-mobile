@@ -5,18 +5,32 @@ import styled from "styled-components/native";
 export const ModalContents = (props) => {
   const { contents, apiContents } = props;
 
-  return (
-    <>
-      <ContentsContainer>
-        <ContentsHeaderWrapper>
-          <ContentsHeader>Kiwi's Last Album:</ContentsHeader>
-        </ContentsHeaderWrapper>
-        <ContentsTextWrapper>
-          <ContentsText>{contents[0].track.album.name}</ContentsText>
-        </ContentsTextWrapper>
-      </ContentsContainer>
-    </>
-  );
+  const showContents = () => {
+    if (apiContents === "recently-played") {
+      return (
+        <ContentsContainer>
+          <ContentsHeaderWrapper>
+            <ContentsHeader>Kiwi's Last Album:</ContentsHeader>
+          </ContentsHeaderWrapper>
+          <ContentsTextWrapper>
+            <ContentsText>{contents[0].track.album.name}</ContentsText>
+          </ContentsTextWrapper>
+        </ContentsContainer>
+      );
+    } else {
+      return (
+        <ContentsContainer>
+          <ContentsHeaderWrapper>
+            <ContentsHeader>Other api call:</ContentsHeader>
+          </ContentsHeaderWrapper>
+          <ContentsTextWrapper>
+            <ContentsText>Other api contents</ContentsText>
+          </ContentsTextWrapper>
+        </ContentsContainer>
+      );
+    }
+  };
+  return <>{showContents()}</>;
 };
 const ContentsContainer = styled.View`
   margin-top: 36;
