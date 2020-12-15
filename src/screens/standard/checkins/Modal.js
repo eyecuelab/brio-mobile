@@ -63,6 +63,7 @@ export const Modal = (props) => {
             backgroundColor: "#ffffff",
             resizeMode: "cover",
             alignItems: "center",
+            marginRight: 15,
           }}
         >
           <ModalContents apiContents={apiContents} />
