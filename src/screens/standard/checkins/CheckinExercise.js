@@ -19,7 +19,7 @@ export const CheckinExercise = () => {
         </CheckinContainer>
         <ListContainer>
           <ListHeaderTextWrapper>
-            <ListHeaderText>CLICK ICON FOR IDEAS</ListHeaderText>
+            <ListHeaderText>CLICK ICON FOR TIPS</ListHeaderText>
             <ListHeaderText>TAP BAR TO COMPLETE</ListHeaderText>
           </ListHeaderTextWrapper>
           <Blocker

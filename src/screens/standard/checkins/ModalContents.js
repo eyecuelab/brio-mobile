@@ -3,14 +3,15 @@ import { connect } from "react-redux";
 import styled from "styled-components/native";
 
 export const ModalContents = (props) => {
-  const { contents, apiContents } = props;
+  const { contents, apiContents, username } = props;
 
   const showContents = () => {
     if (apiContents === "recently-played") {
+      
       return (
         <ContentsContainer>
           <ContentsHeaderWrapper>
-            <ContentsHeader>Kiwi's Last Album:</ContentsHeader>
+            <ContentsHeader>{`${username}'s Last 10 songs:`}</ContentsHeader>
           </ContentsHeaderWrapper>
           <ContentsTextWrapper>
             <ContentsText>{contents[0].track.album.name}</ContentsText>
@@ -65,6 +66,7 @@ const mapStateToProps = (state) => {
   return {
     apiEndpoint: state.spotifyApi.apiEndpoint,
     contents: state.spotifyApi.contents,
+    username: state.user.username,
   };
 };
 export default connect(mapStateToProps)(ModalContents);
