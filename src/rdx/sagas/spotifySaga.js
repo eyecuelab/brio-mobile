@@ -8,7 +8,7 @@ import {
 } from "../services/spotifyService";
 import { call } from "redux-saga/effects";
 
-export const getAccessToken = (state) => state.spotifyApi;
+export const getSpotifyState = (state) => state.spotifyApi;
 
 export function* getAccessTokenSaga(action) {
   try {
@@ -21,17 +21,17 @@ export function* getAccessTokenSaga(action) {
         refresh_token: resp.refresh_token,
       });
     } else {
-      const contentsWithTokens = yield select(getAccessToken);
+      const spotifyState = yield select(getSpotifyState);
       let nextResp = yield call(
         spotifyRefreshAccessTokenService,
-        contentsWithTokens
+        spotifyState
       );
       if (nextResp.access_token) {
-        const contentsWithTokens = yield select(getAccessToken);
+        const spotifyState = yield select(getSpotifyState);
         yield put({
           type: c.GET_API_TOKENS_WATCHER,
           access_token: nextResp.access_token,
-          refresh_token: contentsWithTokens.refresh_token,
+          refresh_token: spotifyState.refresh_token,
         });
         console.log("4. refreshTokenresp", nextResp);
       }
@@ -42,10 +42,10 @@ export function* getAccessTokenSaga(action) {
 }
 
 export function* getApiContentsSaga(action) {
-  const contentsWithTokens = yield select(getAccessToken);
-  console.log("3.ACCESS TOKEN", contentsWithTokens);
+  const spotifyState = yield select(getSpotifyState);
+  console.log("3.SPOTIFY STATE", spotifyState);
   try {
-    let resp = yield call(getApiContentsService, contentsWithTokens);
+    let resp = yield call(getApiContentsService, spotifyState);
     if (resp.items) {
       yield put(actions.storeContents(resp.items));
     } else {
