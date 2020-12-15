@@ -23,6 +23,10 @@ function Blocker(props) {
     (blocker) => blocker.category === `${category}`
   );
 
+  const catSuggs = catBlockers
+    .map((catBlocker) => catBlocker.suggestions)
+    .flat();
+
   const completedBlocker = (id) => {
     const action = actions.completedBlocker(id);
     dispatch(action);
@@ -43,11 +47,20 @@ function Blocker(props) {
     dispatch(action);
   };
 
-  const callModal = (id) => {
+  const callModalBl = (id) => {
     const clickedBlocker = catBlockers.find((blocker) => blocker.id === id);
     getAccessTokenWatcher(spotifyAuthToken);
     if (clickedBlocker.apiEndpoint !== null) {
       calledApi(clickedBlocker.apiEndpoint);
+      setShowModal(!showModal);
+    }
+  };
+
+  const callModalSugg = (id) => {
+    const clickedSugg = catSuggs.find((sugg) => sugg.id === id);
+    getAccessTokenWatcher(spotifyAuthToken);
+    if (clickedSugg.apiEndpoint !== null) {
+      calledApi(clickedSugg.apiEndpoint);
       setShowModal(!showModal);
     }
   };
@@ -62,7 +75,7 @@ function Blocker(props) {
                 <BlockerListContainer style={{ backgroundColor: `${color2}` }}>
                   <IconWrapper
                     underlayColor={`${color1}`}
-                    onPress={() => callModal(blocker.id)}
+                    onPress={() => callModalBl(blocker.id)}
                   >
                     <SvgStarIcon color1={`${color1}`} color2={`${color2}`} />
                   </IconWrapper>
@@ -90,7 +103,7 @@ function Blocker(props) {
                 >
                   <IconWrapper
                     underlayColor={`${color1}`}
-                    onPress={() => callModal()}
+                    onPress={() => callModalSugg(uncompletedSuggestion.id)}
                   >
                     <SvgStarIcon color1={`${color1}`} color2={`${color2}`} />
                   </IconWrapper>
