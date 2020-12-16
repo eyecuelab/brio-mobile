@@ -55,7 +55,7 @@ export const DashboardProfile = (props) => {
   const showEyeBalls = () => {
     return eyeColors.map((color) => {
       return (
-        <EyeBallWrapper onPress={() => console.log(color.eyeColor)}>
+        <EyeBallWrapper onPress={() => setEyeColor(color.eyeColor)}>
           <SvgEyeball eyeColor={color.eyeColor} />
         </EyeBallWrapper>
       );
