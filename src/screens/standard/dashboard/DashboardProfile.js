@@ -8,10 +8,16 @@ import SvgEyeball from "../../../svg_assets/SvgEyeball";
 import { useNavigation } from "@react-navigation/native";
 
 export const DashboardProfile = (props) => {
-  const { dispatch, code, username, eyeColor } = props;
+  const { dispatch, code, username } = props;
   const [value, onChangeText] = useState("");
   const navigation = useNavigation();
-  const eyeColors = [{blue: "#51ADE0"}, {green: "#5EA782"}, {yellow: "#BDA41D"}, {brown: "#7E6200"}, {red: "#BF2F2F"}]
+  const eyeColors = [
+    { eyeColor: "#51ADE0" },
+    { eyeColor: "#5EA782" },
+    { eyeColor: "#BDA41D" },
+    { eyeColor: "#7E6200" },
+    { eyeColor: "#BF2F2F" },
+  ];
 
   useEffect(() => {
     if (code === null) {
@@ -44,6 +50,17 @@ export const DashboardProfile = (props) => {
       );
     }
   };
+
+  const showEyeBalls = () => {
+    return eyeColors.map((color) => {
+      return (
+        <EyeBallWrapper onPress={() => console.log(color.eyeColor)}>
+          <SvgEyeball eyeColor={color.eyeColor} />
+        </EyeBallWrapper>
+      );
+    });
+  };
+
   return (
     <>
       <Container style={bg.basic}>
@@ -57,7 +74,8 @@ export const DashboardProfile = (props) => {
             <FieldText>CHOOSE EYE COLOR</FieldText>
           </FieldTextContainer>
           <EyecolorView>
-            <EyeBallWrapper onPress={() => console.log("EYECOLOR PRESSED")}>
+            {showEyeBalls()}
+            {/* <EyeBallWrapper onPress={() => console.log("EYECOLOR PRESSED")}>
               <SvgEyeball eyeColor="#51ADE0"/>
             </EyeBallWrapper>
             <EyeBallWrapper onPress={() => console.log("EYECOLOR PRESSED")}>
@@ -71,7 +89,7 @@ export const DashboardProfile = (props) => {
             </EyeBallWrapper>
             <EyeBallWrapper onPress={() => console.log("EYECOLOR PRESSED")}>
               <SvgEyeball eyeColor="#BF2F2F"/>
-            </EyeBallWrapper>
+            </EyeBallWrapper> */}
           </EyecolorView>
           <SaveEyeColorBtn
             onPress={() => console.log("save eye color pressed")}
@@ -197,7 +215,7 @@ const BtnText = styled.Text`
 `;
 const EyeBallWrapper = styled.TouchableHighlight.attrs({
   underlayColor: "white",
-})``
+})``;
 
 const mapStateToProps = (state) => {
   return {
