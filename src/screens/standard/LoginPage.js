@@ -8,6 +8,7 @@ import bg from "../../styles/ScreenStyle.js";
 import styled from "styled-components/native";
 import SvgAvatar from "../../svg_assets/SvgAvatar";
 import SvgEyeball from "../../svg_assets/SvgEyeball";
+import SvgBrioBack from "../../svg_assets/SvgBrioBack";
 import Icon from "react-native-vector-icons/FontAwesome";
 // EXPO AUTH
 import * as WebBrowser from "expo-web-browser";
@@ -106,6 +107,10 @@ const LoginPage = (props) => {
             <FieldText>SYNC YOUR SPOTIFY</FieldText>
           </FieldTextContainer>
         </FieldContainer>
+        <BrioContainer>
+          <SvgBrioBack />
+          <BrioText>©Kevin D & Chee M @EyeCueLab</BrioText>
+        </BrioContainer>
       </Container>
     </>
   );
@@ -170,24 +175,21 @@ const SpotifyLoginBtn = styled.TouchableHighlight`
   background-color: #1ed760;
   margin-top: 8;
 `;
-const LogoutBtn = styled.TouchableHighlight`
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 90%;
-  height: 55;
-  padding: 10px;
-  border-radius: 10;
-  background-color: #d8a1d5;
-  margin-top: 8;
-  text-align: center;
-`;
 const LoginBtnText = styled.Text`
   color: white;
   font-size: 18px;
   font-weight: 900;
 `;
-
+const BrioContainer = styled.View`
+  margin-top: 64;
+  align-items: center;
+  justify-content: center;
+`;
+const BrioText = styled.Text`
+  color: #dea768;
+  font-size: 12px;
+  font-weight: 900;
+`;
 const mapStateToProps = (state) => {
   return {
     existingUsername: state.user.username,
