@@ -20,23 +20,27 @@ function BrioGeneral(props) {
   return (
     <View style={bg.basic}>
       <DiagramContainer>
-        <Diagram>
-          <SvgBrioIntro />
-          <SvgDotSliderGreen />
-        </Diagram>
+        <SvgBrioIntro />
+        <SvgDotSliderGreen />
+        <GetStartedBtn
+          text="Get Started"
+          textColor="#ffffff"
+          backgroundColor="#94D7B5"
+        />
       </DiagramContainer>
-      <GetStartedBtn
-        text="Get Started"
-        textColor="#ffffff"
-        backgroundColor="#94D7B5"
-      />
+      <SliderContainer></SliderContainer>
     </View>
   );
 }
 
+const SliderContainer = styled.View`
+  flex-direction: column;
+  justify-content: space-around;
+`;
+
 const DiagramContainer = styled.View`
   flex: 1;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
 `;
 const Diagram = styled.View`

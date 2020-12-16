@@ -13,7 +13,6 @@ import SvgMusic from "../../../svg_assets/SvgMusic";
 import SvgSocial from "../../../svg_assets/SvgSocial";
 import SadPieChart from "./SadPieChart";
 
-
 function DashboardMain(props) {
   const { allBlockers, dispatch, username } = props;
 
@@ -83,8 +82,10 @@ function DashboardMain(props) {
           <Button
             mode="contained"
             color="#FFCD1A"
-            labelStyle={{color: "#fff"}}
-            onPress={() => {resetProgress()}}
+            labelStyle={{ color: "#fff" }}
+            onPress={() => {
+              resetProgress();
+            }}
           >
             {" "}
             Reset Progress{" "}
@@ -99,12 +100,12 @@ const DiagramContainer = styled.View`
   flex: 1;
   flex-direction: row;
   justify-content: center;
-  margin-top: 28;
+  margin-top: 28px;
 `;
 const Diagram = styled.View`
   justify-content: center;
-  margin-right: 10;
-  margin-left: 10;
+  margin-right: 10px;
+  margin-left: 10px;
 `;
 const DiagramText = styled.Text`
   font-size: 18px;

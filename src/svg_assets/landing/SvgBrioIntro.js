@@ -20,8 +20,6 @@ export default function SvgBrioIntro() {
   <circle cx="148.312" cy="354.312" r="5.55572" transform="rotate(-8.45414 148.312 354.312)" fill="#FFCC19"/>
   </svg>
   
-  
-  
  `;
   const SvgImage = () => <SvgXml xml={svgMarkup} width="768px" />;
 

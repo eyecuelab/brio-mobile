@@ -14,13 +14,13 @@ function BrioSuccess() {
         <Diagram>
           <SvgLetsDoThis />
           <SvgDotSliderRed />
+          <GetStartedBtn
+            text="Get Started"
+            textColor="#ffffff"
+            backgroundColor="#F66A7B"
+          />
         </Diagram>
       </DiagramContainer>
-      <GetStartedBtn
-        text="Get Started"
-        textColor="#ffffff"
-        backgroundColor="#F66A7B"
-      />
     </View>
   );
 }
