@@ -17,11 +17,13 @@ export default function StandardNavigation() {
         activeColor="#757272"
         inactiveColor="#ECC08D"
         barStyle={{ backgroundColor: "#D9FFFFFF" }}
+        showLabel={false}
       >
         <Tab.Screen
           name="dashboardMain"
           component={DashMainStackScreen}
           options={{
+            tabBarLabel: false,
             tabBarIcon: ({ color }) => (
               <SvgStarMainIcon name="star" color={color} size={26} />
             ),
@@ -32,6 +34,7 @@ export default function StandardNavigation() {
           name="dashboardHome"
           component={DashHomeStackScreen}
           options={{
+            tabBarLabel: false,
             tabBarIcon: ({ color }) => (
               <SvgHomeIcon name="group" color={color} size={26} />
             ),
@@ -42,6 +45,7 @@ export default function StandardNavigation() {
           name="profile"
           component={DashProfileStackScreen}
           options={{
+            tabBarLabel: false,
             tabBarIcon: ({ color }) => (
               <SvgProfileIcon name="account" color={color} size={26} />
             ),
