@@ -2,9 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import { ProgressBar } from "react-native-paper";
 import styled from "styled-components/native";
+import { useNavigation } from "@react-navigation/native";
 
 export const DashBar = (props) => {
   const { allBlockers, catPoints, category, color, image, from } = props;
+  const navigation = useNavigation();
 
   const catBlockers = allBlockers.filter(
     (blocker) => blocker.category === category.toLowerCase()
@@ -64,38 +66,51 @@ export const DashBar = (props) => {
   const checkPrevComp = () => {
     if (from === "DashboardMain") {
       return (
-        <ProgressContainer>
-          <ProgressWrapper>{image}</ProgressWrapper>
-          <ProgressWrapper>
-            <CategoryText style={{ color: color }}>{category}</CategoryText>
-            {showProgressBarInDashboardMain()}
-          </ProgressWrapper>
-        </ProgressContainer>
+        <React.Fragment>
+          <ProgressContainerTouchable
+            onPress={() => navToCheckin(`Checkin${category}`)}
+          >
+            <ProgressContainer>
+              <ProgressWrapper>{image}</ProgressWrapper>
+              <ProgressWrapper>
+                <CategoryText style={{ color: color }}>{category}</CategoryText>
+                {showProgressBarInDashboardMain()}
+              </ProgressWrapper>
+            </ProgressContainer>
+          </ProgressContainerTouchable>
+        </React.Fragment>
       );
     } else if (from === "Checkin") {
       return (
-        <ProgressContainer2>
+        <ProgressContainer>
           <ProgressWrapperBlockers>
             <CategoryTextBlockers style={{ color: color }}>
               {category}
             </CategoryTextBlockers>
             {showProgressBarInBlockers()}
           </ProgressWrapperBlockers>
-        </ProgressContainer2>
+        </ProgressContainer>
       );
     }
+  };
+
+  const navToCheckin = (checkinPage) => {
+    navigation.navigate(checkinPage);
   };
 
   return <>{checkPrevComp()}</>;
 };
 
+const ProgressContainerTouchable = styled.TouchableHighlight.attrs({
+  underlayColor: "white",
+})`
+  padding-top: 8px;
+  border-radius: 25px;
+`;
 const ProgressContainer = styled.View`
   flex: 1;
   flex-direction: row;
-  margin-bottom: 12px;
-`;
-const ProgressContainer2 = styled.View`
-  margin-bottom: 12px;
+  margin-top: 4px;
 `;
 const ProgressWrapper = styled.View`
   margin-bottom: 12px;

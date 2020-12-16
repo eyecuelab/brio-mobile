@@ -18,7 +18,6 @@ export const DashboardProfile = (props) => {
     }
   }, [code]);
 
-  console.log("USERNAME", username);
   const logoutButton = () => {
     const action = actions.logoutButton();
     dispatch(action);
@@ -53,6 +52,9 @@ export const DashboardProfile = (props) => {
         </AvatarContainer>
 
         <FieldContainer>
+          <FieldTextContainer>
+            <FieldText>EYE COLOR</FieldText>
+          </FieldTextContainer>
           <EyecolorView>
             <SvgEyeball style={{ justifyContent: "space-between" }} />
             <SvgEyeball />
@@ -60,33 +62,35 @@ export const DashboardProfile = (props) => {
             <SvgEyeball />
             <SvgEyeball />
           </EyecolorView>
-          <FieldTextContainer>
-            <FieldText>EYE COLOR</FieldText>
-          </FieldTextContainer>
+          <SaveEyeColorBtn
+            onPress={() => console.log("save eye color pressed")}
+          >
+            <BtnText>Save eye color</BtnText>
+          </SaveEyeColorBtn>
         </FieldContainer>
 
         <FieldContainer>
+          <FieldTextContainer>
+            <FieldText>CHANGE USERNAME</FieldText>
+          </FieldTextContainer>
           <UsernameInput
             onChangeText={(text) => onChangeText(text)}
             placeholder={username}
             value={value}
             autoCapitalize="none"
           />
-          <FieldTextContainer>
-            <FieldText>CHANGE USERNAME</FieldText>
-          </FieldTextContainer>
           <SaveUsernameBtn onPress={() => changedUsername(value)}>
             <BtnText>Save username</BtnText>
           </SaveUsernameBtn>
         </FieldContainer>
 
         <FieldContainer>
-          <LogoutBtn onPress={() => logoutButton()}>
-            <BtnText>Log out</BtnText>
-          </LogoutBtn>
           <FieldTextContainer>
             <FieldText>LOG OUT OF THE APP</FieldText>
           </FieldTextContainer>
+          <LogoutBtn onPress={() => logoutButton()}>
+            <BtnText>Log out</BtnText>
+          </LogoutBtn>
         </FieldContainer>
       </Container>
     </>
@@ -112,6 +116,7 @@ const UsernameInput = styled.TextInput`
   width: 90%;
   height: 50px;
   padding: 10px;
+  margin-top: 5px;
   border-radius: 10px;
   background-color: white;
 `;
@@ -138,10 +143,6 @@ const EyecolorView = styled.View`
   background-color: white;
   margin-top: 8px;
 `;
-const TextWrapper = styled.View`
-  flex-direction: row;
-`;
-
 const SaveUsernameBtn = styled.TouchableHighlight`
   flex-direction: row;
   justify-content: center;
@@ -151,6 +152,18 @@ const SaveUsernameBtn = styled.TouchableHighlight`
   padding: 10px;
   border-radius: 10px;
   background-color: #e0c45e;
+  margin-top: 8;
+  text-align: center;
+`;
+const SaveEyeColorBtn = styled.TouchableHighlight`
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 55;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #94d7b5;
   margin-top: 8;
   text-align: center;
 `;
