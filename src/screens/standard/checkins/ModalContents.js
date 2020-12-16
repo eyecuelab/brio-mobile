@@ -7,15 +7,24 @@ export const ModalContents = (props) => {
 
   const showContents = () => {
     if (apiContents === "recently-played") {
-      
+      const showDetails = () => {
+        return contents.map((content, index) => {
+          return (
+            <ContentsTextWrapper key={index}>
+              <ContentsText>
+                {index + 1}. {content.track.name} by{" "}
+                {content.track.artists[0].name}
+              </ContentsText>
+            </ContentsTextWrapper>
+          );
+        });
+      };
       return (
         <ContentsContainer>
           <ContentsHeaderWrapper>
             <ContentsHeader>{`${username}'s Last 10 songs:`}</ContentsHeader>
           </ContentsHeaderWrapper>
-          <ContentsTextWrapper>
-            <ContentsText>{contents[0].track.album.name}</ContentsText>
-          </ContentsTextWrapper>
+          {showDetails()}
         </ContentsContainer>
       );
     } else {
@@ -35,32 +44,25 @@ export const ModalContents = (props) => {
 };
 const ContentsContainer = styled.View`
   margin-top: 36;
-  margin-right: 12;
-  margin-left: 12;
   margin-bottom: 36;
   justify-content: center;
+  background-color: #212529;
 `;
 const ContentsHeaderWrapper = styled.View`
-  margin: 24px;
-  padding: 24px;
+  margin: 12px;
 `;
 const ContentsTextWrapper = styled.View`
-  margin-bottom: 24px;
-  padding: 12px;
+  margin-bottom: 8px;
 `;
 const ContentsHeader = styled.Text`
   color: #fff;
   font-size: 24px;
   font-weight: 900;
   text-align: center;
-  background-color: #212529;
 `;
 const ContentsText = styled.Text`
   color: #fff;
-  font-size: 16px;
-  font-weight: 900;
-  text-align: center;
-  background-color: #212529;
+  font-size: 18px;
 `;
 const mapStateToProps = (state) => {
   return {

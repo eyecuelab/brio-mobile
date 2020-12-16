@@ -42,16 +42,17 @@ function Blocker(props) {
     dispatch(action);
   };
 
-  const calledApi = (apiEndpoint) => {
-    const action = actions.calledApi(apiEndpoint);
+  const calledApi = (apiEndpoint, createdAt) => {
+    const action = actions.calledApi(apiEndpoint, createdAt);
     dispatch(action);
   };
 
   const callModalBl = (id) => {
     const clickedBlocker = catBlockers.find((blocker) => blocker.id === id);
+    console.log("CREATED AT", clickedBlocker.createdAt)
     getAccessTokenWatcher(spotifyAuthToken);
     if (clickedBlocker.apiEndpoint !== null) {
-      calledApi(clickedBlocker.apiEndpoint);
+      calledApi(clickedBlocker.apiEndpoint, clickedBlocker.createdAt);
       setShowModal(!showModal);
     }
   };
