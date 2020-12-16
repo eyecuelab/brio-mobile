@@ -18,7 +18,7 @@ export const DashboardProfile = (props) => {
 
   useEffect(() => {
     if (code === null) {
-      navigation.navigate("general");
+      navigation.navigate("Login");
     }
   }, [code]);
 
@@ -37,9 +37,10 @@ export const DashboardProfile = (props) => {
     dispatch(action);
   };
 
-  const deactivated = (color) => {
+  const deactivated = () => {
     const action = actions.deactivated();
     dispatch(action);
+    navigation.navigate("general");
   };
 
   const showUsername = () => {
