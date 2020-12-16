@@ -14,13 +14,7 @@ export const DashboardProfile = (props) => {
     eyeBallColor ? eyeBallColor : "#7E6200"
   );
   const navigation = useNavigation();
-  const eyeColors = [
-    { eyeColor: "#51ADE0" },
-    { eyeColor: "#5EA782" },
-    { eyeColor: "#BDA41D" },
-    { eyeColor: "#7E6200" },
-    { eyeColor: "#BF2F2F" },
-  ];
+  const eyeColors = ["#51ADE0", "#5EA782", "#BDA41D", "#7E6200", "#BF2F2F"];
 
   useEffect(() => {
     if (code === null) {
@@ -62,8 +56,8 @@ export const DashboardProfile = (props) => {
   const showEyeBalls = () => {
     return eyeColors.map((color) => {
       return (
-        <EyeBallWrapper onPress={() => setEyeColor(color.eyeColor)}>
-          <SvgEyeball eyeColor={color.eyeColor} />
+        <EyeBallWrapper onPress={() => setEyeColor(color)}>
+          <SvgEyeball eyeColor={color} />
         </EyeBallWrapper>
       );
     });

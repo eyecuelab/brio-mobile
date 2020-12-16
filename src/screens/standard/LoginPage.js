@@ -1,16 +1,13 @@
-// REACT, REACT NATIVE //
 import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { connect } from "react-redux";
 import * as actions from "../../rdx/actions";
-// STYLES //
 import bg from "../../styles/ScreenStyle.js";
 import styled from "styled-components/native";
 import SvgAvatar from "../../svg_assets/SvgAvatar";
 import SvgEyeball from "../../svg_assets/SvgEyeball";
 import SvgBrioBack from "../../svg_assets/SvgBrioBack";
 import Icon from "react-native-vector-icons/FontAwesome";
-// EXPO AUTH
 import * as WebBrowser from "expo-web-browser";
 import { makeRedirectUri, useAuthRequest } from "expo-auth-session";
 import { SPOTIFY_CLIENT_ID } from "@env";
