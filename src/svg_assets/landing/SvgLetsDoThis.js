@@ -18,8 +18,6 @@ export default function SvgLetsDoThis(props) {
   <circle cx="122.023" cy="303.023" r="8.88099" transform="rotate(-0.135197 122.023 303.023)" fill="#51ADE0"/>
   <circle cx="125.557" cy="295.91" r="5.3286" transform="rotate(-0.135197 125.557 295.91)" fill="white"/>
   </svg>
-  
-
 `;
 
   return <SvgXml xml={svgMarkup} {...props} />;

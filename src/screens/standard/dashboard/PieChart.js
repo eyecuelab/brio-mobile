@@ -7,7 +7,7 @@ import { Svg, Circle } from "react-native-svg";
 import SvgEyeballPie from "../../../svg_assets/SvgEyeballPie";
 
 export const PieChart = (props) => {
-  const { catPoints } = props;
+  const { catPoints, eyeColor } = props;
   const navigation = useNavigation();
 
   const exerciseColor = "#D8A1D5";
@@ -60,7 +60,7 @@ export const PieChart = (props) => {
     return (
       <>
         <View style={{ position: "absolute" }}>
-          <SvgEyeballPie />
+          <SvgEyeballPie eyeColor={eyeColor} />
         </View>
       </>
     );
@@ -75,7 +75,7 @@ export const PieChart = (props) => {
           viewBox="0 0 400 400"
           style={{ width: "100%", height: "auto" }}
         >
-          <Circle cx={200} cy={200} r={110} fill="#fff" />
+          <Circle cx={200} cy={200} r={120} fill="#fff" />
           {displayPieChart()}
         </Svg>
         {showEyeball()}
@@ -87,6 +87,7 @@ export const PieChart = (props) => {
 const mapStateToProps = (state) => {
   return {
     catPoints: state.blockersState.currentPoints,
+    eyeColor: state.user.eyeColor,
   };
 };
 
