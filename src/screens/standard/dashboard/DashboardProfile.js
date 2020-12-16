@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { ScrollView } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../rdx/actions";
+import { Button } from "react-native-paper";
 import styled from "styled-components/native";
 import bg from "../../../styles/ScreenStyle";
 import SvgAvatar from "../../../svg_assets/SvgAvatar";
@@ -8,13 +10,15 @@ import SvgEyeball from "../../../svg_assets/SvgEyeball";
 import { useNavigation } from "@react-navigation/native";
 
 export const DashboardProfile = (props) => {
-  const { dispatch, code, username } = props;
+  const { dispatch, code, username, eyeBallColor } = props;
   const [value, onChangeText] = useState("");
+  const [eyeColor, setEyeColor] = useState(eyeBallColor || "#7E6200");
   const navigation = useNavigation();
+  const eyeColors = ["#51ADE0", "#5EA782", "#BDA41D", "#7E6200", "#BF2F2F"];
 
   useEffect(() => {
     if (code === null) {
-      navigation.navigate("general");
+      navigation.navigate("Login");
     }
   }, [code]);
 
@@ -24,8 +28,19 @@ export const DashboardProfile = (props) => {
   };
 
   const changedUsername = (username) => {
-    const action2 = actions.changedUsername(username);
-    dispatch(action2);
+    const action = actions.changedUsername(username);
+    dispatch(action);
+  };
+
+  const savedEyeColor = (color) => {
+    const action = actions.savedEyeColor(color);
+    dispatch(action);
+  };
+
+  const deactivated = () => {
+    const action = actions.deactivated();
+    dispatch(action);
+    navigation.navigate("general");
   };
 
   const showUsername = () => {
@@ -43,56 +58,75 @@ export const DashboardProfile = (props) => {
       );
     }
   };
+
+  const showEyeBalls = () => {
+    return eyeColors.map((color) => {
+      return (
+        <EyeBallWrapper onPress={() => setEyeColor(color)}>
+          <SvgEyeball eyeColor={color} />
+        </EyeBallWrapper>
+      );
+    });
+  };
+
   return (
     <>
-      <Container style={bg.basic}>
-        <AvatarContainer>
-          <SvgAvatar />
-          {showUsername()}
-        </AvatarContainer>
+      <ScrollView>
+        <Container style={bg.basic}>
+          <AvatarContainer>
+            <SvgAvatar eyeColor={eyeColor} />
+            {showUsername()}
+          </AvatarContainer>
 
-        <FieldContainer>
-          <FieldTextContainer>
-            <FieldText>EYE COLOR</FieldText>
-          </FieldTextContainer>
-          <EyecolorView>
-            <SvgEyeball style={{ justifyContent: "space-between" }} />
-            <SvgEyeball />
-            <SvgEyeball />
-            <SvgEyeball />
-            <SvgEyeball />
-          </EyecolorView>
-          <SaveEyeColorBtn
-            onPress={() => console.log("save eye color pressed")}
+          <FieldContainer>
+            <FieldTextContainer>
+              <FieldText>CHOOSE EYE COLOR</FieldText>
+            </FieldTextContainer>
+            <EyecolorView>{showEyeBalls()}</EyecolorView>
+            <SaveEyeColorBtn onPress={() => savedEyeColor(eyeColor)}>
+              <BtnText>Save eye color</BtnText>
+            </SaveEyeColorBtn>
+          </FieldContainer>
+
+          <FieldContainer>
+            <FieldTextContainer>
+              <FieldText>CHANGE USERNAME</FieldText>
+            </FieldTextContainer>
+            <UsernameInput
+              onChangeText={(text) => onChangeText(text)}
+              placeholder={username}
+              value={value}
+              autoCapitalize="none"
+            />
+            <SaveUsernameBtn onPress={() => changedUsername(value)}>
+              <BtnText>Save username</BtnText>
+            </SaveUsernameBtn>
+          </FieldContainer>
+
+          <FieldContainer>
+            <FieldTextContainer>
+              <FieldText>LOG OUT OF THE APP</FieldText>
+            </FieldTextContainer>
+            <LogoutBtn onPress={() => logoutButton()}>
+              <BtnText>Log out</BtnText>
+            </LogoutBtn>
+          </FieldContainer>
+
+          {/* temporary reset button here */}
+          <Button
+            mode="contained"
+            color="#FFCD1A"
+            labelStyle={{ color: "#fff" }}
+            style={{ marginTop: 56 }}
+            onPress={() => {
+              deactivated();
+            }}
           >
-            <BtnText>Save eye color</BtnText>
-          </SaveEyeColorBtn>
-        </FieldContainer>
-
-        <FieldContainer>
-          <FieldTextContainer>
-            <FieldText>CHANGE USERNAME</FieldText>
-          </FieldTextContainer>
-          <UsernameInput
-            onChangeText={(text) => onChangeText(text)}
-            placeholder={username}
-            value={value}
-            autoCapitalize="none"
-          />
-          <SaveUsernameBtn onPress={() => changedUsername(value)}>
-            <BtnText>Save username</BtnText>
-          </SaveUsernameBtn>
-        </FieldContainer>
-
-        <FieldContainer>
-          <FieldTextContainer>
-            <FieldText>LOG OUT OF THE APP</FieldText>
-          </FieldTextContainer>
-          <LogoutBtn onPress={() => logoutButton()}>
-            <BtnText>Log out</BtnText>
-          </LogoutBtn>
-        </FieldContainer>
-      </Container>
+            {" "}
+            DEACTIVATE{" "}
+          </Button>
+        </Container>
+      </ScrollView>
     </>
   );
 };
@@ -143,7 +177,9 @@ const EyecolorView = styled.View`
   background-color: white;
   margin-top: 8px;
 `;
-const SaveUsernameBtn = styled.TouchableHighlight`
+const SaveUsernameBtn = styled.TouchableHighlight.attrs({
+  underlayColor: "#CEAA27",
+})`
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -155,7 +191,9 @@ const SaveUsernameBtn = styled.TouchableHighlight`
   margin-top: 8;
   text-align: center;
 `;
-const SaveEyeColorBtn = styled.TouchableHighlight`
+const SaveEyeColorBtn = styled.TouchableHighlight.attrs({
+  underlayColor: "#83c5be",
+})`
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -167,7 +205,9 @@ const SaveEyeColorBtn = styled.TouchableHighlight`
   margin-top: 8;
   text-align: center;
 `;
-const LogoutBtn = styled.TouchableHighlight`
+const LogoutBtn = styled.TouchableHighlight.attrs({
+  underlayColor: "#C36FBF",
+})`
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -184,10 +224,15 @@ const BtnText = styled.Text`
   font-size: 18px;
   font-weight: 900;
 `;
+const EyeBallWrapper = styled.TouchableHighlight.attrs({
+  underlayColor: "white",
+})``;
+
 const mapStateToProps = (state) => {
   return {
     code: state.user.code,
     username: state.user.username,
+    eyeBallColor: state.user.eyeColor,
   };
 };
 

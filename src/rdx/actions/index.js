@@ -1,17 +1,17 @@
 import * as c from "./types";
 
-
-export const loggedIn = (code, username) => {
+export const loggedIn = (code, username, eyeColor) => {
   return {
     type: c.LOGGED_IN,
     code,
-    username
+    username,
+    eyeColor,
   };
 };
 export const completedBlocker = (id) => {
   return {
     type: c.COMPLETED_BLOCKER,
-    id
+    id,
   };
 };
 export const completedSuggestion = (blockerId, suggestionId) => {
@@ -59,6 +59,17 @@ export const calledApi = (apiEndpoint, createdAt) => {
   return {
     type: c.CALLED_API,
     apiEndpoint,
-    createdAt
+    createdAt,
+  };
+};
+export const savedEyeColor = (eyeColor) => {
+  return {
+    type: c.SAVED_EYECOLOR,
+    eyeColor,
+  };
+};
+export const deactivated = () => {
+  return {
+    type: c.DEACTIVATED,
   };
 };

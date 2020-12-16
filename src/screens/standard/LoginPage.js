@@ -1,16 +1,13 @@
-// REACT, REACT NATIVE //
 import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { connect } from "react-redux";
 import * as actions from "../../rdx/actions";
-// STYLES //
 import bg from "../../styles/ScreenStyle.js";
 import styled from "styled-components/native";
 import SvgAvatar from "../../svg_assets/SvgAvatar";
 import SvgEyeball from "../../svg_assets/SvgEyeball";
 import SvgBrioBack from "../../svg_assets/SvgBrioBack";
 import Icon from "react-native-vector-icons/FontAwesome";
-// EXPO AUTH
 import * as WebBrowser from "expo-web-browser";
 import { makeRedirectUri, useAuthRequest } from "expo-auth-session";
 import { SPOTIFY_CLIENT_ID } from "@env";
@@ -23,9 +20,12 @@ const discovery = {
 };
 
 const LoginPage = (props) => {
-  const { dispatch, existingUsername } = props;
+  const { dispatch, existingUsername, eyeBallColor } = props;
   const [value, onChangeText] = useState(existingUsername);
+  const [eyeColor, setEyeColor] = useState(eyeBallColor || "#7E6200");
   const navigation = useNavigation();
+  const eyeColors = ["#51ADE0", "#5EA782", "#BDA41D", "#7E6200", "#BF2F2F"];
+
   const [request, response, promptAsync] = useAuthRequest(
     {
       clientId: SPOTIFY_CLIENT_ID,
@@ -45,7 +45,7 @@ const LoginPage = (props) => {
   useEffect(() => {
     if (response?.type === "success") {
       const { code } = response.params;
-      const action = actions.loggedIn(code, value);
+      const action = actions.loggedIn(code, value, eyeColor);
       dispatch(action);
       navigation.navigate("StandardNavigation");
     }
@@ -68,27 +68,37 @@ const LoginPage = (props) => {
     }
   };
 
+  const showEyeBallsField = () => {
+    if (!eyeBallColor) {
+      return (
+        <FieldContainer>
+          <EyecolorView>{showEyeBalls()}</EyecolorView>
+          <FieldTextContainer>
+            <FieldText>CHOOSE EYE COLOR</FieldText>
+          </FieldTextContainer>
+        </FieldContainer>
+      );
+    }
+  };
+
+  const showEyeBalls = () => {
+    return eyeColors.map((color) => {
+      return (
+        <EyeBallWrapper onPress={() => setEyeColor(color)}>
+          <SvgEyeball eyeColor={color} />
+        </EyeBallWrapper>
+      );
+    });
+  };
+
   return (
     <>
       <Container style={bg.basic}>
         <AvatarContainer>
-          <SvgAvatar />
+          <SvgAvatar eyeColor={eyeColor} />
           <AvatarNameText>{value}</AvatarNameText>
         </AvatarContainer>
-
-        <FieldContainer>
-          <EyecolorView>
-            <SvgEyeball style={{ justifyContent: "space-between" }} />
-            <SvgEyeball />
-            <SvgEyeball />
-            <SvgEyeball />
-            <SvgEyeball />
-          </EyecolorView>
-          <FieldTextContainer>
-            <FieldText>EYE COLOR</FieldText>
-          </FieldTextContainer>
-        </FieldContainer>
-
+        {showEyeBallsField()}
         <FieldContainer>{usernameInputLabel()}</FieldContainer>
 
         <FieldContainer>
@@ -164,7 +174,9 @@ const EyecolorView = styled.View`
 const TextWrapper = styled.View`
   flex-direction: row;
 `;
-const SpotifyLoginBtn = styled.TouchableHighlight`
+const SpotifyLoginBtn = styled.TouchableHighlight.attrs({
+  underlayColor: "#1db954",
+})`
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -190,9 +202,13 @@ const BrioText = styled.Text`
   font-size: 12px;
   font-weight: 900;
 `;
+const EyeBallWrapper = styled.TouchableHighlight.attrs({
+  underlayColor: "white",
+})``;
 const mapStateToProps = (state) => {
   return {
     existingUsername: state.user.username,
+    eyeBallColor: state.user.eyeColor,
   };
 };
 
