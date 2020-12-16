@@ -10,6 +10,7 @@ import { useNavigation } from "@react-navigation/native";
 export const DashboardProfile = (props) => {
   const { dispatch, code, username } = props;
   const [value, onChangeText] = useState("");
+  const [eyeColor, setEyeColor] = useState("#7E6200");
   const navigation = useNavigation();
   const eyeColors = [
     { eyeColor: "#51ADE0" },
@@ -65,7 +66,7 @@ export const DashboardProfile = (props) => {
     <>
       <Container style={bg.basic}>
         <AvatarContainer>
-          <SvgAvatar />
+          <SvgAvatar eyeColor={eyeColor} />
           {showUsername()}
         </AvatarContainer>
 
@@ -73,24 +74,7 @@ export const DashboardProfile = (props) => {
           <FieldTextContainer>
             <FieldText>CHOOSE EYE COLOR</FieldText>
           </FieldTextContainer>
-          <EyecolorView>
-            {showEyeBalls()}
-            {/* <EyeBallWrapper onPress={() => console.log("EYECOLOR PRESSED")}>
-              <SvgEyeball eyeColor="#51ADE0"/>
-            </EyeBallWrapper>
-            <EyeBallWrapper onPress={() => console.log("EYECOLOR PRESSED")}>
-              <SvgEyeball eyeColor="#5EA782"/>
-            </EyeBallWrapper>
-            <EyeBallWrapper onPress={() => console.log("EYECOLOR PRESSED")}>
-              <SvgEyeball eyeColor="#BDA41D"/>
-            </EyeBallWrapper>
-            <EyeBallWrapper onPress={() => console.log("EYECOLOR PRESSED")}>
-              <SvgEyeball eyeColor="#7E6200"/>
-            </EyeBallWrapper>
-            <EyeBallWrapper onPress={() => console.log("EYECOLOR PRESSED")}>
-              <SvgEyeball eyeColor="#BF2F2F"/>
-            </EyeBallWrapper> */}
-          </EyecolorView>
+          <EyecolorView>{showEyeBalls()}</EyecolorView>
           <SaveEyeColorBtn
             onPress={() => console.log("save eye color pressed")}
           >
