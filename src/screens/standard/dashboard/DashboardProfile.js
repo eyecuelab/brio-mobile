@@ -8,7 +8,7 @@ import SvgEyeball from "../../../svg_assets/SvgEyeball";
 import { useNavigation } from "@react-navigation/native";
 
 export const DashboardProfile = (props) => {
-  const { dispatch, code, username } = props;
+  const { dispatch, code, username, eyeBallColor } = props;
   const [value, onChangeText] = useState("");
   const [eyeColor, setEyeColor] = useState("#7E6200");
   const navigation = useNavigation();
@@ -67,11 +67,18 @@ export const DashboardProfile = (props) => {
     });
   };
 
+  const showAvatar = () => {
+    if (eyeBallColor) {
+      return <SvgAvatar eyeColor={eyeBallColor} />;
+    } else {
+      return <SvgAvatar eyeColor={eyeColor} />;
+    }
+  };
   return (
     <>
       <Container style={bg.basic}>
         <AvatarContainer>
-          <SvgAvatar eyeColor={eyeColor} />
+          {showAvatar()}
           {showUsername()}
         </AvatarContainer>
 
@@ -208,6 +215,7 @@ const mapStateToProps = (state) => {
   return {
     code: state.user.code,
     username: state.user.username,
+    eyeBallColor: state.user.eyeColor,
   };
 };
 
