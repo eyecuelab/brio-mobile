@@ -77,12 +77,22 @@ const LoginPage = (props) => {
         </AvatarContainer>
 
         <FieldContainer>
-          <EyecolorView>
-            <SvgEyeball style={{ justifyContent: "space-between" }} />
-            <SvgEyeball />
-            <SvgEyeball />
-            <SvgEyeball />
-            <SvgEyeball />
+        <EyecolorView>
+            <EyeBallWrapper onPress={() => console.log("EYECOLOR PRESSED")}>
+              <SvgEyeball eyeColor="#51ADE0"/>
+            </EyeBallWrapper>
+            <EyeBallWrapper onPress={() => console.log("EYECOLOR PRESSED")}>
+              <SvgEyeball eyeColor="#5EA782"/>
+            </EyeBallWrapper>
+            <EyeBallWrapper onPress={() => console.log("EYECOLOR PRESSED")}>
+              <SvgEyeball eyeColor="#BDA41D"/>
+            </EyeBallWrapper>
+            <EyeBallWrapper onPress={() => console.log("EYECOLOR PRESSED")}>
+              <SvgEyeball eyeColor="#7E6200"/>
+            </EyeBallWrapper>
+            <EyeBallWrapper onPress={() => console.log("EYECOLOR PRESSED")}>
+              <SvgEyeball eyeColor="#BF2F2F"/>
+            </EyeBallWrapper>
           </EyecolorView>
           <FieldTextContainer>
             <FieldText>EYE COLOR</FieldText>
@@ -190,6 +200,9 @@ const BrioText = styled.Text`
   font-size: 12px;
   font-weight: 900;
 `;
+const EyeBallWrapper = styled.TouchableHighlight.attrs({
+  underlayColor: "white",
+})``
 const mapStateToProps = (state) => {
   return {
     existingUsername: state.user.username,
