@@ -20,34 +20,31 @@ function BrioGeneral(props) {
   return (
     <View style={bg.basic}>
       <DiagramContainer>
-        <SvgBrioIntro />
-        <SvgDotSliderGreen />
+        <Graphic />
+        <Slider />
         <GetStartedBtn
           text="Get Started"
           textColor="#ffffff"
           backgroundColor="#94D7B5"
         />
       </DiagramContainer>
-      <SliderContainer></SliderContainer>
     </View>
   );
 }
 
-const SliderContainer = styled.View`
-  flex-direction: column;
-  justify-content: space-around;
+const Graphic = styled(SvgBrioIntro)`
+  flex: 1;
+  max-width: 100%;
+  aspect-ratio: 0.72;
 `;
 
-const DiagramContainer = styled.View`
-  flex: 1;
-  flex-direction: column;
-  justify-content: space-around;
+const Slider = styled(SvgDotSliderGreen)`
+  max-width: 100%;
+  aspect-ratio: 0.72;
 `;
-const Diagram = styled.View`
-  margin-top: 36px;
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
+const DiagramContainer = styled.View`
+  flex-direction: column;
+  flex-grow: 1;
 `;
 
 const mapStateToProps = (state) => {
