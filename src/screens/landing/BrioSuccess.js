@@ -11,29 +11,32 @@ function BrioSuccess() {
   return (
     <View style={bg.basic}>
       <DiagramContainer>
-        <Diagram>
-          <SvgLetsDoThis />
-          <SvgDotSliderRed />
-          <GetStartedBtn
-            text="Get Started"
-            textColor="#ffffff"
-            backgroundColor="#F66A7B"
-          />
-        </Diagram>
+        <Graphic />
+        <Slider />
+        <GetStartedBtn
+          text="Get Started"
+          textColor="#ffffff"
+          backgroundColor="#F66A7B"
+        />
       </DiagramContainer>
     </View>
   );
 }
 
-const DiagramContainer = styled.View`
+const Graphic = styled(SvgLetsDoThis)`
   flex: 1;
-  flex-direction: row;
-  justify-content: space-around;
+  max-width: 100%;
+  aspect-ratio: 0.84;
 `;
-const Diagram = styled.View`
-  margin-top: 36px;
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
+
+const Slider = styled(SvgDotSliderRed)`
+  max-width: 100%;
+  aspect-ratio: 0.84;
 `;
+
+const DiagramContainer = styled.View`
+  flex-direction: column;
+  flex-grow: 1;
+`;
+
 export default BrioSuccess;
