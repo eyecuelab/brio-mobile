@@ -22,12 +22,12 @@ function BrioGeneral(props) {
       <DiagramContainer>
         <Graphic />
         <Slider />
-        <GetStartedBtn
-          text="Get Started"
-          textColor="#ffffff"
-          backgroundColor="#94D7B5"
-        />
       </DiagramContainer>
+      <GetStartedBtn
+        text="Get Started"
+        textColor="#ffffff"
+        backgroundColor="#94D7B5"
+      />
     </View>
   );
 }
@@ -35,17 +35,19 @@ function BrioGeneral(props) {
 const Graphic = styled(SvgBrioIntro)`
   flex: 1;
   max-width: 100%;
-  aspect-ratio: 0.84;
+  aspect-ratio: 0.72;
 `;
 
 const Slider = styled(SvgDotSliderGreen)`
-  max-width: 100%;
-  aspect-ratio: 0.84;
+  flex: 1;
+  max-height: 10%;
+  aspect-ratio: 0.72;
 `;
 
 const DiagramContainer = styled.View`
+  flex: 1;
   flex-direction: column;
-  flex-grow: 1;
+  align-items: center;
 `;
 
 const mapStateToProps = (state) => {
