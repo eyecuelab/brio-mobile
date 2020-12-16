@@ -22,10 +22,7 @@ export function* getAccessTokenSaga(action) {
       });
     } else {
       const spotifyState = yield select(getSpotifyState);
-      let nextResp = yield call(
-        spotifyRefreshAccessTokenService,
-        spotifyState
-      );
+      let nextResp = yield call(spotifyRefreshAccessTokenService, spotifyState);
       if (nextResp.access_token) {
         const spotifyState = yield select(getSpotifyState);
         yield put({
@@ -42,16 +39,24 @@ export function* getAccessTokenSaga(action) {
 }
 
 export function* getApiContentsSaga(action) {
-  const spotifyState = yield select(getSpotifyState);
-  console.log("3.SPOTIFY STATE", spotifyState);
+  const { apiEndpoint, createdAt, access_token } = yield select(
+    getSpotifyState
+  );
+  console.log("3.SPOTIFY STATE", { apiEndpoint, createdAt });
   try {
-    let resp = yield call(getApiContentsService, spotifyState);
+    let resp = yield call(getApiContentsService, {
+      apiEndpoint,
+      createdAt,
+      access_token,
+    });
+    console.log("7.NEW RESP", resp);
     if (resp.items) {
       yield put(actions.storeContents(resp.items));
     } else {
       throw yield resp.json();
     }
   } catch (err) {
+    console.warn(err);
     yield put({ type: "hello", error: err.message });
   }
 }

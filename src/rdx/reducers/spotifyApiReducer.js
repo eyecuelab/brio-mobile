@@ -23,6 +23,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         apiEndpoint: action.apiEndpoint,
+        createdAt: action.createdAt,
       };
     default:
       return state;

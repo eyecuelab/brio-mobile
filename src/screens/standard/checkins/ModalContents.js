@@ -7,9 +7,8 @@ export const ModalContents = (props) => {
 
   const showContents = () => {
     if (apiContents === "recently-played") {
-      const contentsTop10 = contents.slice(0, 10);
       const showDetails = () => {
-        return contentsTop10.map((content, index) => {
+        return contents.map((content, index) => {
           return (
             <ContentsTextWrapper key={index}>
               <ContentsText>
