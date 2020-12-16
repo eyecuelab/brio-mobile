@@ -12,29 +12,33 @@ function BrioCheckIns() {
       <DiagramContainer>
         <Graphic />
         <Slider />
-        <GetStartedBtn
-          text="Get Started"
-          textColor="#ffffff"
-          backgroundColor="#B96AF6"
-        />
       </DiagramContainer>
+      <GetStartedBtn
+        text="Get Started"
+        textColor="#ffffff"
+        backgroundColor="#B96AF6"
+      />
     </View>
   );
 }
 
 const Graphic = styled(SvgTellMeWhen)`
+  margin-top: 10%;
   flex: 1;
   max-width: 100%;
   aspect-ratio: 0.72;
 `;
 
 const Slider = styled(SvgDotSliderPurple)`
-  max-width: 100%;
+  flex: 1;
+  max-height: 12%;
   aspect-ratio: 0.72;
 `;
+
 const DiagramContainer = styled.View`
+  flex: 1;
   flex-direction: column;
-  flex-grow: 1;
+  align-items: center;
 `;
 
 export default BrioCheckIns;
