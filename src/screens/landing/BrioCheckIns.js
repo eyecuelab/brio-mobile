@@ -1,17 +1,17 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import bg from "../../styles/ScreenStyle.js";
 import SvgTellMeWhen from "../../svg_assets/landing/SvgTellMeWhen";
 import styled from "styled-components/native";
 import GetStartedBtn from "./GetStartedBtn";
+import SvgDotSliderPurple from "../../svg_assets/landing/SvgDotSliderPurple";
 
 function BrioCheckIns() {
   return (
     <View style={bg.basic}>
       <DiagramContainer>
-        <Diagram>
-          <SvgTellMeWhen />
-        </Diagram>
+        <Graphic />
+        <Slider />
       </DiagramContainer>
       <GetStartedBtn
         text="Get Started"
@@ -22,15 +22,23 @@ function BrioCheckIns() {
   );
 }
 
+const Graphic = styled(SvgTellMeWhen)`
+  margin-top: 10%;
+  flex: 1;
+  max-width: 100%;
+  aspect-ratio: 0.72;
+`;
+
+const Slider = styled(SvgDotSliderPurple)`
+  flex: 1;
+  max-height: 12%;
+  aspect-ratio: 0.72;
+`;
+
 const DiagramContainer = styled.View`
   flex: 1;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
 `;
-const Diagram = styled.View`
-  margin-top: 36px;
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
-`;
+
 export default BrioCheckIns;

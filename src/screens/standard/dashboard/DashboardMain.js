@@ -101,7 +101,7 @@ const DiagramContainer = styled.View`
   flex: 1;
   flex-direction: row;
   justify-content: center;
-  margin-top: 28;
+  margin-top: 28px;
 `;
 const Diagram = styled.View`
   justify-content: center;
@@ -109,7 +109,6 @@ const Diagram = styled.View`
   padding-left: 10;
   border-radius: 25px;
   background-color: #fff;
-
 `;
 const DiagramText = styled.Text`
   font-size: 18px;

@@ -1,30 +1,44 @@
-import React from 'react';
+import React from "react";
 import { View } from "react-native";
 import bg from "../../styles/ScreenStyle.js";
-import SvgSomethingFun from "../../svg_assets/landing/SvgSomethingFun"
+import SvgSomethingFun from "../../svg_assets/landing/SvgSomethingFun";
 import styled from "styled-components/native";
 import GetStartedBtn from "./GetStartedBtn";
+import SvgDotSliderBlue from "../../svg_assets/landing/SvgDotSliderBlue.js";
 
 function BrioSuggestions() {
-    return (
-        <View style={bg.basic}>
-                <DiagramContainer>
-                    <Diagram>
-                        <SvgSomethingFun />
-                    </Diagram>
-                </DiagramContainer>
-                <GetStartedBtn text="Get Started" textColor="#ffffff" backgroundColor="#51ADE0" />
-        </View>
-    )
+  return (
+    <View style={bg.basic}>
+      <DiagramContainer>
+        <Graphic />
+        <Slider />
+      </DiagramContainer>
+      <GetStartedBtn
+        text="Get Started"
+        textColor="#ffffff"
+        backgroundColor="#51ADE0"
+      />
+    </View>
+  );
 }
 
-const DiagramContainer = styled.View`
-    flex: 1;
-    flex-direction: row;
-    justify-content: space-around;
-`;
-const Diagram = styled.View`
-    margin-top: 36px;
+const Graphic = styled(SvgSomethingFun)`
+  margin-top: 10%;
+  flex: 1;
+  max-width: 100%;
+  aspect-ratio: 0.72;
 `;
 
-export default BrioSuggestions
+const Slider = styled(SvgDotSliderBlue)`
+  flex: 1;
+  max-height: 12%;
+  aspect-ratio: 0.72;
+`;
+
+const DiagramContainer = styled.View`
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export default BrioSuggestions;

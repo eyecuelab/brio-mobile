@@ -1,33 +1,44 @@
-import React from 'react';
-import { Text, View } from "react-native";
+import React from "react";
+import { View } from "react-native";
 import bg from "../../styles/ScreenStyle.js";
-import text from "../../styles/TextStyle.js";
-import SvgLetsDoThis from "../../svg_assets/landing/SvgLetsDoThis"
+import SvgLetsDoThis from "../../svg_assets/landing/SvgLetsDoThis";
 import styled from "styled-components/native";
-import GetStartedBtn from "./GetStartedBtn"
+import GetStartedBtn from "./GetStartedBtn";
+import SvgDotSliderRed from "../../svg_assets/landing/SvgDotSliderRed.js";
 
 function BrioSuccess() {
-    return (
-        <View style={bg.basic}>
-                <DiagramContainer>
-                    <Diagram>
-                        <SvgLetsDoThis />
-                    </Diagram>
-                </DiagramContainer>
-                <GetStartedBtn text="Get Started" textColor="#ffffff" backgroundColor="#F66A7B" />
-        </View>
-    )
+  return (
+    <View style={bg.basic}>
+      <DiagramContainer>
+        <Graphic />
+        <Slider />
+      </DiagramContainer>
+      <GetStartedBtn
+        text="Get Started"
+        textColor="#ffffff"
+        backgroundColor="#F66A7B"
+      />
+    </View>
+  );
 }
 
+const Graphic = styled(SvgLetsDoThis)`
+  margin-top: 10%;
+  flex: 1;
+  max-width: 100%;
+  aspect-ratio: 0.72;
+`;
+
+const Slider = styled(SvgDotSliderRed)`
+  flex: 1;
+  max-height: 12%;
+  aspect-ratio: 0.72;
+`;
+
 const DiagramContainer = styled.View`
-    flex: 1;
-    flex-direction: row;
-    justify-content: space-around;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
 `;
-const Diagram = styled.View`
-    margin-top: 36px;
-    @media (max-width: 768px) {
-        flex-direction: column;
-    }
-`;
-export default BrioSuccess
+
+export default BrioSuccess;

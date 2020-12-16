@@ -4,11 +4,11 @@ import bg from "../../styles/ScreenStyle.js";
 import SvgBrioIntro from "../../svg_assets/landing/SvgBrioIntro";
 import styled from "styled-components/native";
 import GetStartedBtn from "./GetStartedBtn";
+import SvgDotSliderGreen from "../../svg_assets/landing/SvgDotSliderGreen";
 import { connect } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 
 function BrioGeneral(props) {
-
   const spotifyAuthToken = props.spotifyAuthToken;
   const navigation = useNavigation();
   useEffect(() => {
@@ -20,9 +20,8 @@ function BrioGeneral(props) {
   return (
     <View style={bg.basic}>
       <DiagramContainer>
-        <Diagram>
-          <SvgBrioIntro />
-        </Diagram>
+        <Graphic />
+        <Slider />
       </DiagramContainer>
       <GetStartedBtn
         text="Get Started"
@@ -33,16 +32,23 @@ function BrioGeneral(props) {
   );
 }
 
+const Graphic = styled(SvgBrioIntro)`
+  margin-top: 10%;
+  flex: 1;
+  max-width: 100%;
+  aspect-ratio: 0.72;
+`;
+
+const Slider = styled(SvgDotSliderGreen)`
+  flex: 1;
+  max-height: 12%;
+  aspect-ratio: 0.72;
+`;
+
 const DiagramContainer = styled.View`
   flex: 1;
-  flex-direction: row;
-  justify-content: space-around;
-`;
-const Diagram = styled.View`
-  margin-top: 36px;
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
+  flex-direction: column;
+  align-items: center;
 `;
 
 const mapStateToProps = (state) => {
