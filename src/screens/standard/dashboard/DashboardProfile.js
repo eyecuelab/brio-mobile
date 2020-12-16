@@ -18,7 +18,6 @@ export const DashboardProfile = (props) => {
     }
   }, [code]);
 
-  console.log("USERNAME", username);
   const logoutButton = () => {
     const action = actions.logoutButton();
     dispatch(action);
@@ -53,6 +52,9 @@ export const DashboardProfile = (props) => {
         </AvatarContainer>
 
         <FieldContainer>
+          <FieldTextContainer>
+            <FieldText>EYE COLOR</FieldText>
+          </FieldTextContainer>
           <EyecolorView>
             <SvgEyeball style={{ justifyContent: "space-between" }} />
             <SvgEyeball />
@@ -60,9 +62,6 @@ export const DashboardProfile = (props) => {
             <SvgEyeball />
             <SvgEyeball />
           </EyecolorView>
-          <FieldTextContainer>
-            <FieldText>EYE COLOR</FieldText>
-          </FieldTextContainer>
           <SaveEyeColorBtn
             onPress={() => console.log("save eye color pressed")}
           >
@@ -71,27 +70,27 @@ export const DashboardProfile = (props) => {
         </FieldContainer>
 
         <FieldContainer>
+          <FieldTextContainer>
+            <FieldText>CHANGE USERNAME</FieldText>
+          </FieldTextContainer>
           <UsernameInput
             onChangeText={(text) => onChangeText(text)}
             placeholder={username}
             value={value}
             autoCapitalize="none"
           />
-          <FieldTextContainer>
-            <FieldText>CHANGE USERNAME</FieldText>
-          </FieldTextContainer>
           <SaveUsernameBtn onPress={() => changedUsername(value)}>
             <BtnText>Save username</BtnText>
           </SaveUsernameBtn>
         </FieldContainer>
 
         <FieldContainer>
-          <LogoutBtn onPress={() => logoutButton()}>
-            <BtnText>Log out</BtnText>
-          </LogoutBtn>
           <FieldTextContainer>
             <FieldText>LOG OUT OF THE APP</FieldText>
           </FieldTextContainer>
+          <LogoutBtn onPress={() => logoutButton()}>
+            <BtnText>Log out</BtnText>
+          </LogoutBtn>
         </FieldContainer>
       </Container>
     </>
@@ -117,6 +116,7 @@ const UsernameInput = styled.TextInput`
   width: 90%;
   height: 50px;
   padding: 10px;
+  margin-top: 5px;
   border-radius: 10px;
   background-color: white;
 `;
