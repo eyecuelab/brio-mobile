@@ -62,6 +62,12 @@ export const calledApi = (apiEndpoint, createdAt) => {
     createdAt,
   };
 };
+export const savedEyeColor = (eyeColor) => {
+  return {
+    type: c.SAVED_EYECOLOR,
+    eyeColor,
+  };
+};
 export const deactivated = () => {
   return {
     type: c.DEACTIVATED,

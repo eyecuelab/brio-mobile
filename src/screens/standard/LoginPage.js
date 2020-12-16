@@ -74,12 +74,13 @@ const LoginPage = (props) => {
         <FieldContainer>
           <EyecolorView>{showEyeBalls()}</EyecolorView>
           <FieldTextContainer>
-            <FieldText>EYE COLOR</FieldText>
+            <FieldText>CHOOSE EYE COLOR</FieldText>
           </FieldTextContainer>
         </FieldContainer>
       );
     }
   };
+
   const showEyeBalls = () => {
     return eyeColors.map((color) => {
       return (
