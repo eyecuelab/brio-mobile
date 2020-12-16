@@ -23,6 +23,8 @@ const LoginPage = (props) => {
   const { dispatch, existingUsername } = props;
   const [value, onChangeText] = useState(existingUsername);
   const navigation = useNavigation();
+  const eyeColors = ["#51ADE0", "#5EA782", "#BDA41D", "#7E6200", "#BF2F2F"];
+
   const [request, response, promptAsync] = useAuthRequest(
     {
       clientId: SPOTIFY_CLIENT_ID,
@@ -65,6 +67,16 @@ const LoginPage = (props) => {
     }
   };
 
+  const showEyeBalls = () => {
+    return eyeColors.map((color) => {
+      return (
+        <EyeBallWrapper onPress={() => setEyeColor(color)}>
+          <SvgEyeball eyeColor={color} />
+        </EyeBallWrapper>
+      );
+    });
+  };
+
   return (
     <>
       <Container style={bg.basic}>
@@ -75,21 +87,7 @@ const LoginPage = (props) => {
 
         <FieldContainer>
         <EyecolorView>
-            <EyeBallWrapper onPress={() => console.log("EYECOLOR PRESSED")}>
-              <SvgEyeball eyeColor="#51ADE0"/>
-            </EyeBallWrapper>
-            <EyeBallWrapper onPress={() => console.log("EYECOLOR PRESSED")}>
-              <SvgEyeball eyeColor="#5EA782"/>
-            </EyeBallWrapper>
-            <EyeBallWrapper onPress={() => console.log("EYECOLOR PRESSED")}>
-              <SvgEyeball eyeColor="#BDA41D"/>
-            </EyeBallWrapper>
-            <EyeBallWrapper onPress={() => console.log("EYECOLOR PRESSED")}>
-              <SvgEyeball eyeColor="#7E6200"/>
-            </EyeBallWrapper>
-            <EyeBallWrapper onPress={() => console.log("EYECOLOR PRESSED")}>
-              <SvgEyeball eyeColor="#BF2F2F"/>
-            </EyeBallWrapper>
+            {showEyeBalls()}
           </EyecolorView>
           <FieldTextContainer>
             <FieldText>EYE COLOR</FieldText>
