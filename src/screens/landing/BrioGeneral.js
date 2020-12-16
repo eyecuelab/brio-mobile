@@ -33,6 +33,7 @@ function BrioGeneral(props) {
 }
 
 const Graphic = styled(SvgBrioIntro)`
+  margin-top: 10%;
   flex: 1;
   max-width: 100%;
   aspect-ratio: 0.72;
@@ -40,7 +41,7 @@ const Graphic = styled(SvgBrioIntro)`
 
 const Slider = styled(SvgDotSliderGreen)`
   flex: 1;
-  max-height: 10%;
+  max-height: 12%;
   aspect-ratio: 0.72;
 `;
 

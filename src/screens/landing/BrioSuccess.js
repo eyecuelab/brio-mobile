@@ -23,6 +23,7 @@ function BrioSuccess() {
 }
 
 const Graphic = styled(SvgLetsDoThis)`
+  margin-top: 10%;
   flex: 1;
   max-width: 100%;
   aspect-ratio: 0.72;
@@ -30,7 +31,7 @@ const Graphic = styled(SvgLetsDoThis)`
 
 const Slider = styled(SvgDotSliderRed)`
   flex: 1;
-  max-height: 10%;
+  max-height: 12%;
   aspect-ratio: 0.72;
 `;
 
