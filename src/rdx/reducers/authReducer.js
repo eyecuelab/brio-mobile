@@ -25,7 +25,12 @@ export default (state = initialAuthState, action) => {
         username: action.username,
       };
     }
-
+    case c.SAVED_EYECOLOR: {
+      return {
+        ...state,
+        eyeColor: action.eyeColor,
+      };
+    }
     default:
       return state;
   }

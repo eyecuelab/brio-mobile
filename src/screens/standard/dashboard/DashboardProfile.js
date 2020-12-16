@@ -32,8 +32,13 @@ export const DashboardProfile = (props) => {
   };
 
   const changedUsername = (username) => {
-    const action2 = actions.changedUsername(username);
-    dispatch(action2);
+    const action = actions.changedUsername(username);
+    dispatch(action);
+  };
+
+  const savedEyeColor = (color) => {
+    const action = actions.savedEyeColor(color);
+    dispatch(action);
   };
 
   const showUsername = () => {
@@ -75,9 +80,7 @@ export const DashboardProfile = (props) => {
             <FieldText>CHOOSE EYE COLOR</FieldText>
           </FieldTextContainer>
           <EyecolorView>{showEyeBalls()}</EyecolorView>
-          <SaveEyeColorBtn
-            onPress={() => console.log("save eye color pressed")}
-          >
+          <SaveEyeColorBtn onPress={() => savedEyeColor(eyeColor)}>
             <BtnText>Save eye color</BtnText>
           </SaveEyeColorBtn>
         </FieldContainer>
