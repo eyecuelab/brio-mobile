@@ -12,12 +12,12 @@ function BrioSuccess() {
       <DiagramContainer>
         <Graphic />
         <Slider />
-        <GetStartedBtn
-          text="Get Started"
-          textColor="#ffffff"
-          backgroundColor="#F66A7B"
-        />
       </DiagramContainer>
+      <GetStartedBtn
+        text="Get Started"
+        textColor="#ffffff"
+        backgroundColor="#F66A7B"
+      />
     </View>
   );
 }
@@ -25,17 +25,19 @@ function BrioSuccess() {
 const Graphic = styled(SvgLetsDoThis)`
   flex: 1;
   max-width: 100%;
-  aspect-ratio: 0.84;
+  aspect-ratio: 0.72;
 `;
 
 const Slider = styled(SvgDotSliderRed)`
-  max-width: 100%;
-  aspect-ratio: 0.84;
+  flex: 1;
+  max-height: 10%;
+  aspect-ratio: 0.72;
 `;
 
 const DiagramContainer = styled.View`
+  flex: 1;
   flex-direction: column;
-  flex-grow: 1;
+  align-items: center;
 `;
 
 export default BrioSuccess;
