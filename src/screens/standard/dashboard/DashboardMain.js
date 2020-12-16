@@ -27,7 +27,9 @@ function DashboardMain(props) {
             <DiagramContainer>
               <SvgBrioFront />
               <Diagram>
-                <DiagramText>You haven't got points yet!</DiagramText>
+                <DiagramText>You haven't got points yet! </DiagramText>
+                <DiagramText>
+                  Tap categories below!</DiagramText>
               </Diagram>
             </DiagramContainer>
             <SadPieChart />
@@ -103,8 +105,11 @@ const DiagramContainer = styled.View`
 `;
 const Diagram = styled.View`
   justify-content: center;
-  margin-right: 10;
-  margin-left: 10;
+  padding-right: 10;
+  padding-left: 10;
+  border-radius: 25px;
+  background-color: #fff;
+
 `;
 const DiagramText = styled.Text`
   font-size: 18px;
