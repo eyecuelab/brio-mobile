@@ -11,6 +11,7 @@ export const DashboardProfile = (props) => {
   const { dispatch, code, username, eyeColor } = props;
   const [value, onChangeText] = useState("");
   const navigation = useNavigation();
+  const eyeColors = [{blue: "#51ADE0"}, {green: "#5EA782"}, {yellow: "#BDA41D"}, {brown: "#7E6200"}, {red: "#BF2F2F"}]
 
   useEffect(() => {
     if (code === null) {
