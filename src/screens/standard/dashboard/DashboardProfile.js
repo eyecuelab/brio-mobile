@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { ScrollView } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../rdx/actions";
+import { Button } from "react-native-paper";
 import styled from "styled-components/native";
 import bg from "../../../styles/ScreenStyle";
 import SvgAvatar from "../../../svg_assets/SvgAvatar";
@@ -10,9 +12,7 @@ import { useNavigation } from "@react-navigation/native";
 export const DashboardProfile = (props) => {
   const { dispatch, code, username, eyeBallColor } = props;
   const [value, onChangeText] = useState("");
-  const [eyeColor, setEyeColor] = useState(
-    eyeBallColor ? eyeBallColor : "#7E6200"
-  );
+  const [eyeColor, setEyeColor] = useState(eyeBallColor || "#7E6200");
   const navigation = useNavigation();
   const eyeColors = ["#51ADE0", "#5EA782", "#BDA41D", "#7E6200", "#BF2F2F"];
 
@@ -65,46 +65,62 @@ export const DashboardProfile = (props) => {
 
   return (
     <>
-      <Container style={bg.basic}>
-        <AvatarContainer>
-          <SvgAvatar eyeColor={eyeColor} />
-          {showUsername()}
-        </AvatarContainer>
+      <ScrollView>
+        <Container style={bg.basic}>
+          <AvatarContainer>
+            <SvgAvatar eyeColor={eyeColor} />
+            {showUsername()}
+          </AvatarContainer>
 
-        <FieldContainer>
-          <FieldTextContainer>
-            <FieldText>CHOOSE EYE COLOR</FieldText>
-          </FieldTextContainer>
-          <EyecolorView>{showEyeBalls()}</EyecolorView>
-          <SaveEyeColorBtn onPress={() => savedEyeColor(eyeColor)}>
-            <BtnText>Save eye color</BtnText>
-          </SaveEyeColorBtn>
-        </FieldContainer>
+          <FieldContainer>
+            <FieldTextContainer>
+              <FieldText>CHOOSE EYE COLOR</FieldText>
+            </FieldTextContainer>
+            <EyecolorView>{showEyeBalls()}</EyecolorView>
+            <SaveEyeColorBtn onPress={() => savedEyeColor(eyeColor)}>
+              <BtnText>Save eye color</BtnText>
+            </SaveEyeColorBtn>
+          </FieldContainer>
 
-        <FieldContainer>
-          <FieldTextContainer>
-            <FieldText>CHANGE USERNAME</FieldText>
-          </FieldTextContainer>
-          <UsernameInput
-            onChangeText={(text) => onChangeText(text)}
-            placeholder={username}
-            value={value}
-            autoCapitalize="none"
-          />
-          <SaveUsernameBtn onPress={() => changedUsername(value)}>
-            <BtnText>Save username</BtnText>
-          </SaveUsernameBtn>
-        </FieldContainer>
+          <FieldContainer>
+            <FieldTextContainer>
+              <FieldText>CHANGE USERNAME</FieldText>
+            </FieldTextContainer>
+            <UsernameInput
+              onChangeText={(text) => onChangeText(text)}
+              placeholder={username}
+              value={value}
+              autoCapitalize="none"
+            />
+            <SaveUsernameBtn onPress={() => changedUsername(value)}>
+              <BtnText>Save username</BtnText>
+            </SaveUsernameBtn>
+          </FieldContainer>
 
-        <FieldContainer>
-          <FieldTextContainer>
-            <FieldText>LOG OUT OF THE APP</FieldText>
-          </FieldTextContainer>
-          <LogoutBtn onPress={() => logoutButton()}>
-            <BtnText>Log out</BtnText>
-          </LogoutBtn>
-        </FieldContainer>
-      </Container>
+          <FieldContainer>
+            <FieldTextContainer>
+              <FieldText>LOG OUT OF THE APP</FieldText>
+            </FieldTextContainer>
+            <LogoutBtn onPress={() => logoutButton()}>
+              <BtnText>Log out</BtnText>
+            </LogoutBtn>
+          </FieldContainer>
+
+          {/* temporary reset button here */}
+          <Button
+            mode="contained"
+            color="#FFCD1A"
+            labelStyle={{ color: "#fff" }}
+            style={{ marginTop: 56 }}
+            onPress={() => {
+              console.log("DEACTIVATE");
+            }}
+          >
+            {" "}
+            DEACTIVATE{" "}
+          </Button>
+        </Container>
+      </ScrollView>
     </>
   );
 };
