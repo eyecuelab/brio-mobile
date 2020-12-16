@@ -8,7 +8,7 @@ import SvgEyeball from "../../../svg_assets/SvgEyeball";
 import { useNavigation } from "@react-navigation/native";
 
 export const DashboardProfile = (props) => {
-  const { dispatch, code, username } = props;
+  const { dispatch, code, username, eyeColor } = props;
   const [value, onChangeText] = useState("");
   const navigation = useNavigation();
 
@@ -53,14 +53,24 @@ export const DashboardProfile = (props) => {
 
         <FieldContainer>
           <FieldTextContainer>
-            <FieldText>EYE COLOR</FieldText>
+            <FieldText>CHOOSE EYE COLOR</FieldText>
           </FieldTextContainer>
           <EyecolorView>
-            <SvgEyeball style={{ justifyContent: "space-between" }} />
-            <SvgEyeball />
-            <SvgEyeball />
-            <SvgEyeball />
-            <SvgEyeball />
+            <EyeBallWrapper onPress={() => console.log("EYECOLOR PRESSED")}>
+              <SvgEyeball eyeColor="#51ADE0"/>
+            </EyeBallWrapper>
+            <EyeBallWrapper onPress={() => console.log("EYECOLOR PRESSED")}>
+              <SvgEyeball eyeColor="#5EA782"/>
+            </EyeBallWrapper>
+            <EyeBallWrapper onPress={() => console.log("EYECOLOR PRESSED")}>
+              <SvgEyeball eyeColor="#BDA41D"/>
+            </EyeBallWrapper>
+            <EyeBallWrapper onPress={() => console.log("EYECOLOR PRESSED")}>
+              <SvgEyeball eyeColor="#7E6200"/>
+            </EyeBallWrapper>
+            <EyeBallWrapper onPress={() => console.log("EYECOLOR PRESSED")}>
+              <SvgEyeball eyeColor="#BF2F2F"/>
+            </EyeBallWrapper>
           </EyecolorView>
           <SaveEyeColorBtn
             onPress={() => console.log("save eye color pressed")}
@@ -184,6 +194,10 @@ const BtnText = styled.Text`
   font-size: 18px;
   font-weight: 900;
 `;
+const EyeBallWrapper = styled.TouchableHighlight.attrs({
+  underlayColor: "white",
+})``
+
 const mapStateToProps = (state) => {
   return {
     code: state.user.code,
