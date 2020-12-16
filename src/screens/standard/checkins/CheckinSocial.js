@@ -5,21 +5,21 @@ import bg from "../../../styles/ScreenStyle.js";
 import SvgCheckinSocial from "../../../svg_assets/SvgCheckinSocial";
 import Blocker from "./Blocker";
 import DashBar from "../dashboard/DashBar";
-import ModalContents from "./ModalContents";
+import Modal from "./Modal";
 
 export const CheckinSocial = () => {
   const [showModal, setShowModal] = useState(false);
   return (
-    <ScrollView>
-      <Container style={bg.citrus}>
+    <Container style={bg.citrus}>
+      <ScrollView>
         <CheckinContainer>
           <SvgCheckinSocial />
           <DashBar category={"Social"} color={"#E0C45E"} from={"Checkin"} />
         </CheckinContainer>
         <ListContainer>
           <ListHeaderTextWrapper>
-            <ListHeaderText>TAP TO COMPLETE</ListHeaderText>
-            <ListHeaderText>REFRESH</ListHeaderText>
+            <ListHeaderText>CLICK ICON FOR TIPS</ListHeaderText>
+            <ListHeaderText>TAP BAR TO COMPLETE</ListHeaderText>
           </ListHeaderTextWrapper>
           <Blocker
             setShowModal={setShowModal}
@@ -28,9 +28,13 @@ export const CheckinSocial = () => {
             color2={"#E0C45E"}
           />
         </ListContainer>
-        <ModalContents showModal={showModal} setShowModal={setShowModal} />
-      </Container>
-    </ScrollView>
+        <Modal
+          showModal={showModal}
+          setShowModal={setShowModal}
+          color={"#d86f4b"}
+        />
+      </ScrollView>
+    </Container>
   );
 };
 

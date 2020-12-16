@@ -27,7 +27,9 @@ function DashboardMain(props) {
             <DiagramContainer>
               <SvgBrioFront />
               <Diagram>
-                <DiagramText>You haven't got points yet!</DiagramText>
+                <DiagramText>You haven't got points yet! </DiagramText>
+                <DiagramText>
+                  Tap categories below!</DiagramText>
               </Diagram>
             </DiagramContainer>
             <SadPieChart />
@@ -82,10 +84,9 @@ function DashboardMain(props) {
           <Button
             mode="contained"
             color="#FFCD1A"
-            labelStyle={{ color: "#fff" }}
-            onPress={() => {
-              resetProgress();
-            }}
+            labelStyle={{color: "#fff"}}
+            style={{marginTop: 12}}
+            onPress={() => {resetProgress()}}
           >
             {" "}
             Reset Progress{" "}
@@ -104,8 +105,10 @@ const DiagramContainer = styled.View`
 `;
 const Diagram = styled.View`
   justify-content: center;
-  margin-right: 10px;
-  margin-left: 10px;
+  padding-right: 10;
+  padding-left: 10;
+  border-radius: 25px;
+  background-color: #fff;
 `;
 const DiagramText = styled.Text`
   font-size: 18px;

@@ -5,21 +5,22 @@ import bg from "../../../styles/ScreenStyle.js";
 import SvgCheckinExercise from "../../../svg_assets/SvgCheckinExercise";
 import Blocker from "./Blocker";
 import DashBar from "../dashboard/DashBar";
-import ModalContents from "./ModalContents";
+import Modal from "./Modal";
 
 export const CheckinExercise = () => {
   const [showModal, setShowModal] = useState(false);
+
   return (
-    <ScrollView>
-      <Container style={bg.berry}>
+    <Container style={bg.berry}>
+      <ScrollView>
         <CheckinContainer>
           <SvgCheckinExercise />
           <DashBar category={"Exercise"} color={"#d8a1d5"} from={"Checkin"} />
         </CheckinContainer>
         <ListContainer>
           <ListHeaderTextWrapper>
-            <ListHeaderText>TAP TO COMPLETE</ListHeaderText>
-            <ListHeaderText>REFRESH</ListHeaderText>
+            <ListHeaderText>CLICK ICON FOR TIPS</ListHeaderText>
+            <ListHeaderText>TAP BAR TO COMPLETE</ListHeaderText>
           </ListHeaderTextWrapper>
           <Blocker
             setShowModal={setShowModal}
@@ -28,9 +29,13 @@ export const CheckinExercise = () => {
             color2={"#FFE3E3"}
           />
         </ListContainer>
-        <ModalContents showModal={showModal} setShowModal={setShowModal} />
-      </Container>
-    </ScrollView>
+        <Modal
+          showModal={showModal}
+          setShowModal={setShowModal}
+          color={"#d587b5"}
+        />
+      </ScrollView>
+    </Container>
   );
 };
 

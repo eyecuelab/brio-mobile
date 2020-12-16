@@ -13,17 +13,16 @@ import styled from "styled-components/native";
 import DashList from "./DashList";
 
 export const DashboardHome = () => {
-    
   return (
     <>
       <View style={bg.basic}>
         <DiagramContainer>
-          <SvgBrioHome />
           <Diagram>
             <DiagramTextHeader>Oh my gosh!</DiagramTextHeader>
             <DiagramText>This is going to be so much fun. </DiagramText>
             <DiagramText>What are we going to do today?</DiagramText>
           </Diagram>
+          <SvgBrioHome />
         </DiagramContainer>
         <ListContainer>
           <DashList
@@ -52,27 +51,32 @@ export const DashboardHome = () => {
 
 const DiagramContainer = styled.View`
   flex: 1;
-  flex-direction: row;
   justify-content: space-around;
-  margin-top: 36;
+  margin-top: 48;
 `;
 const Diagram = styled.View`
   margin-top: 36;
+  margin-bottom: 12;
+  padding-right: 5;
+  padding-left: 5;
+  padding-bottom: 5;
+  position: absolute;
+  top: -30;
+  right: 10;
+  border-radius: 25px;
+  background-color: #fff;
 `;
 const DiagramTextHeader = styled.Text`
-  font-size: 35px;
+  font-size: 30px;
   color: #51ade0;
   font-weight: 900;
-  background-color: #fff;
   padding: 10px;
 `;
 const DiagramText = styled.Text`
-  font-size: 18px;
+  font-size: 16px;
   color: #51ade0;
   font-weight: 900;
-  background-color: #fff;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 4px;
 `;
 const ListContainer = styled.View`
   margin-bottom: 24;
