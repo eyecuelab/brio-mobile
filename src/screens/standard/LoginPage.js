@@ -109,7 +109,7 @@ const LoginPage = (props) => {
         </FieldContainer>
         <BrioContainer>
           <SvgBrioBack />
-          <BrioText>©Kevin D & Chee M @EyeCueLab</BrioText>
+          <BrioText>© KD & Chee @EyeCueLab</BrioText>
         </BrioContainer>
       </Container>
     </>
@@ -121,7 +121,7 @@ const Container = styled.View`
   height: 100%;
 `;
 const AvatarContainer = styled.View`
-  margin-top: 64;
+  margin-top: 52;
   align-items: center;
   justify-content: center;
 `;
@@ -181,7 +181,7 @@ const LoginBtnText = styled.Text`
   font-weight: 900;
 `;
 const BrioContainer = styled.View`
-  margin-top: 64;
+  margin-top: 12;
   align-items: center;
   justify-content: center;
 `;

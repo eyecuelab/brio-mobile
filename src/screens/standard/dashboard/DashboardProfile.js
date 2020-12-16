@@ -63,6 +63,11 @@ export const DashboardProfile = (props) => {
           <FieldTextContainer>
             <FieldText>EYE COLOR</FieldText>
           </FieldTextContainer>
+          <SaveEyeColorBtn
+            onPress={() => console.log("save eye color pressed")}
+          >
+            <BtnText>Save eye color</BtnText>
+          </SaveEyeColorBtn>
         </FieldContainer>
 
         <FieldContainer>
@@ -138,10 +143,6 @@ const EyecolorView = styled.View`
   background-color: white;
   margin-top: 8px;
 `;
-const TextWrapper = styled.View`
-  flex-direction: row;
-`;
-
 const SaveUsernameBtn = styled.TouchableHighlight`
   flex-direction: row;
   justify-content: center;
@@ -151,6 +152,18 @@ const SaveUsernameBtn = styled.TouchableHighlight`
   padding: 10px;
   border-radius: 10px;
   background-color: #e0c45e;
+  margin-top: 8;
+  text-align: center;
+`;
+const SaveEyeColorBtn = styled.TouchableHighlight`
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 55;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #94d7b5;
   margin-top: 8;
   text-align: center;
 `;
