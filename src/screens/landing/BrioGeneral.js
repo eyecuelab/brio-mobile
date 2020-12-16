@@ -35,13 +35,14 @@ function BrioGeneral(props) {
 const Graphic = styled(SvgBrioIntro)`
   flex: 1;
   max-width: 100%;
-  aspect-ratio: 0.72;
+  aspect-ratio: 0.84;
 `;
 
 const Slider = styled(SvgDotSliderGreen)`
   max-width: 100%;
-  aspect-ratio: 0.72;
+  aspect-ratio: 0.84;
 `;
+
 const DiagramContainer = styled.View`
   flex-direction: column;
   flex-grow: 1;

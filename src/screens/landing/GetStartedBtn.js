@@ -28,6 +28,7 @@ const ButtonContainer = styled.TouchableOpacity`
   height: 76px;
   border-radius: 10px;
   justify-content: space-around;
+  margin-bottom: 3%;
   background-color: ${(props) => props.backgroundColor};
 `;
 
