@@ -10,7 +10,9 @@ import { useNavigation } from "@react-navigation/native";
 export const DashboardProfile = (props) => {
   const { dispatch, code, username, eyeBallColor } = props;
   const [value, onChangeText] = useState("");
-  const [eyeColor, setEyeColor] = useState("#7E6200");
+  const [eyeColor, setEyeColor] = useState(
+    eyeBallColor ? eyeBallColor : "#7E6200"
+  );
   const navigation = useNavigation();
   const eyeColors = [
     { eyeColor: "#51ADE0" },
@@ -67,18 +69,11 @@ export const DashboardProfile = (props) => {
     });
   };
 
-  const showAvatar = () => {
-    if (eyeBallColor) {
-      return <SvgAvatar eyeColor={eyeBallColor} />;
-    } else {
-      return <SvgAvatar eyeColor={eyeColor} />;
-    }
-  };
   return (
     <>
       <Container style={bg.basic}>
         <AvatarContainer>
-          {showAvatar()}
+          <SvgAvatar eyeColor={eyeColor} />
           {showUsername()}
         </AvatarContainer>
 
