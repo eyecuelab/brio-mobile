@@ -70,6 +70,18 @@ const LoginPage = (props) => {
     }
   };
 
+  const showEyeBallsField = () => {
+    if (!eyeBallColor) {
+      return (
+        <FieldContainer>
+          <EyecolorView>{showEyeBalls()}</EyecolorView>
+          <FieldTextContainer>
+            <FieldText>EYE COLOR</FieldText>
+          </FieldTextContainer>
+        </FieldContainer>
+      );
+    }
+  };
   const showEyeBalls = () => {
     return eyeColors.map((color) => {
       return (
@@ -87,14 +99,7 @@ const LoginPage = (props) => {
           <SvgAvatar eyeColor={eyeColor} />
           <AvatarNameText>{value}</AvatarNameText>
         </AvatarContainer>
-
-        <FieldContainer>
-          <EyecolorView>{showEyeBalls()}</EyecolorView>
-          <FieldTextContainer>
-            <FieldText>EYE COLOR</FieldText>
-          </FieldTextContainer>
-        </FieldContainer>
-
+        {showEyeBallsField()}
         <FieldContainer>{usernameInputLabel()}</FieldContainer>
 
         <FieldContainer>
@@ -170,7 +175,9 @@ const EyecolorView = styled.View`
 const TextWrapper = styled.View`
   flex-direction: row;
 `;
-const SpotifyLoginBtn = styled.TouchableHighlight`
+const SpotifyLoginBtn = styled.TouchableHighlight.attrs({
+  underlayColor: "#1db954",
+})`
   flex-direction: row;
   justify-content: center;
   align-items: center;

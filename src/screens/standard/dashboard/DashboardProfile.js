@@ -155,7 +155,9 @@ const EyecolorView = styled.View`
   background-color: white;
   margin-top: 8px;
 `;
-const SaveUsernameBtn = styled.TouchableHighlight`
+const SaveUsernameBtn = styled.TouchableHighlight.attrs({
+  underlayColor: "#CEAA27",
+})`
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -167,7 +169,9 @@ const SaveUsernameBtn = styled.TouchableHighlight`
   margin-top: 8;
   text-align: center;
 `;
-const SaveEyeColorBtn = styled.TouchableHighlight`
+const SaveEyeColorBtn = styled.TouchableHighlight.attrs({
+  underlayColor: "#83c5be",
+})`
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -179,7 +183,9 @@ const SaveEyeColorBtn = styled.TouchableHighlight`
   margin-top: 8;
   text-align: center;
 `;
-const LogoutBtn = styled.TouchableHighlight`
+const LogoutBtn = styled.TouchableHighlight.attrs({
+  underlayColor: "#C36FBF",
+})`
   flex-direction: row;
   justify-content: center;
   align-items: center;
