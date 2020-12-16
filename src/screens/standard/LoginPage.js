@@ -20,8 +20,11 @@ const discovery = {
 };
 
 const LoginPage = (props) => {
-  const { dispatch, existingUsername } = props;
+  const { dispatch, existingUsername, eyeBallColor } = props;
   const [value, onChangeText] = useState(existingUsername);
+  const [eyeColor, setEyeColor] = useState(
+    eyeBallColor ? eyeBallColor : "#7E6200"
+  );
   const navigation = useNavigation();
   const eyeColors = ["#51ADE0", "#5EA782", "#BDA41D", "#7E6200", "#BF2F2F"];
 
@@ -81,14 +84,12 @@ const LoginPage = (props) => {
     <>
       <Container style={bg.basic}>
         <AvatarContainer>
-          <SvgAvatar />
+          <SvgAvatar eyeColor={eyeColor} />
           <AvatarNameText>{value}</AvatarNameText>
         </AvatarContainer>
 
         <FieldContainer>
-        <EyecolorView>
-            {showEyeBalls()}
-          </EyecolorView>
+          <EyecolorView>{showEyeBalls()}</EyecolorView>
           <FieldTextContainer>
             <FieldText>EYE COLOR</FieldText>
           </FieldTextContainer>
@@ -197,10 +198,11 @@ const BrioText = styled.Text`
 `;
 const EyeBallWrapper = styled.TouchableHighlight.attrs({
   underlayColor: "white",
-})``
+})``;
 const mapStateToProps = (state) => {
   return {
     existingUsername: state.user.username,
+    eyeBallColor: state.user.eyeColor,
   };
 };
 
