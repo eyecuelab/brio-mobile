@@ -1,10 +1,11 @@
 import * as c from "./types";
 
-export const loggedIn = (code, username) => {
+export const loggedIn = (code, username, eyeColor) => {
   return {
     type: c.LOGGED_IN,
     code,
     username,
+    eyeColor,
   };
 };
 export const completedBlocker = (id) => {
@@ -61,9 +62,8 @@ export const calledApi = (apiEndpoint, createdAt) => {
     createdAt,
   };
 };
-export const savedEyeColor = (eyeColor) => {
+export const deactivated = () => {
   return {
-    type: c.SAVED_EYECOLOR,
-    eyeColor,
+    type: c.DEACTIVATED,
   };
 };

@@ -22,9 +22,7 @@ const discovery = {
 const LoginPage = (props) => {
   const { dispatch, existingUsername, eyeBallColor } = props;
   const [value, onChangeText] = useState(existingUsername);
-  const [eyeColor, setEyeColor] = useState(
-    eyeBallColor ? eyeBallColor : "#7E6200"
-  );
+  const [eyeColor, setEyeColor] = useState(eyeBallColor || "#7E6200");
   const navigation = useNavigation();
   const eyeColors = ["#51ADE0", "#5EA782", "#BDA41D", "#7E6200", "#BF2F2F"];
 
@@ -47,7 +45,7 @@ const LoginPage = (props) => {
   useEffect(() => {
     if (response?.type === "success") {
       const { code } = response.params;
-      const action = actions.loggedIn(code, value);
+      const action = actions.loggedIn(code, value, eyeColor);
       dispatch(action);
       navigation.navigate("StandardNavigation");
     }

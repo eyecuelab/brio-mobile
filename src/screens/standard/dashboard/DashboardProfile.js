@@ -37,6 +37,11 @@ export const DashboardProfile = (props) => {
     dispatch(action);
   };
 
+  const deactivated = (color) => {
+    const action = actions.deactivated();
+    dispatch(action);
+  };
+
   const showUsername = () => {
     if (value) {
       return (
@@ -113,7 +118,7 @@ export const DashboardProfile = (props) => {
             labelStyle={{ color: "#fff" }}
             style={{ marginTop: 56 }}
             onPress={() => {
-              console.log("DEACTIVATE");
+              deactivated();
             }}
           >
             {" "}
