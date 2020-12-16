@@ -13,7 +13,6 @@ import SvgMusic from "../../../svg_assets/SvgMusic";
 import SvgSocial from "../../../svg_assets/SvgSocial";
 import SadPieChart from "./SadPieChart";
 
-
 function DashboardMain(props) {
   const { allBlockers, dispatch, username } = props;
 
@@ -84,6 +83,7 @@ function DashboardMain(props) {
             mode="contained"
             color="#FFCD1A"
             labelStyle={{color: "#fff"}}
+            style={{marginTop: 12}}
             onPress={() => {resetProgress()}}
           >
             {" "}
