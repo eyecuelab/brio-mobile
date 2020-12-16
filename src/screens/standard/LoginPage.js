@@ -51,16 +51,7 @@ const LoginPage = (props) => {
   }, [response]);
 
   const usernameInputLabel = () => {
-    if (existingUsername) {
-      return (
-        <>
-          <UsernameInput value={value} editable={false} />
-          <FieldTextContainer>
-            <FieldText>USERNAME</FieldText>
-          </FieldTextContainer>
-        </>
-      );
-    } else {
+    if (!existingUsername) {
       return (
         <>
           <UsernameInput
