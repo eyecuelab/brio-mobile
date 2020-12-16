@@ -10,27 +10,32 @@ function BrioSuggestions() {
   return (
     <View style={bg.basic}>
       <DiagramContainer>
-        <Diagram>
-          <SvgSomethingFun />
-          <SvgDotSliderBlue />
-        </Diagram>
+        <Graphic />
+        <Slider />
+        <GetStartedBtn
+          text="Get Started"
+          textColor="#ffffff"
+          backgroundColor="#51ADE0"
+        />
       </DiagramContainer>
-      <GetStartedBtn
-        text="Get Started"
-        textColor="#ffffff"
-        backgroundColor="#51ADE0"
-      />
     </View>
   );
 }
 
-const DiagramContainer = styled.View`
+const Graphic = styled(SvgSomethingFun)`
   flex: 1;
-  flex-direction: row;
-  justify-content: space-around;
+  max-width: 100%;
+  aspect-ratio: 0.72;
 `;
-const Diagram = styled.View`
-  margin-top: 36px;
+
+const Slider = styled(SvgDotSliderBlue)`
+  max-width: 100%;
+  aspect-ratio: 0.72;
+`;
+
+const DiagramContainer = styled.View`
+  flex-direction: column;
+  flex-grow: 1;
 `;
 
 export default BrioSuggestions;
