@@ -9,7 +9,6 @@ import SvgEyeballPie from "../../../svg_assets/SvgEyeballPie";
 export const PieChart = (props) => {
   const { catPoints, eyeBallColor } = props;
   const navigation = useNavigation();
-
   const exerciseColor = "#D8A1D5";
   const musicColor = "#94D7B5";
   const socialColor = "#E0C45E";

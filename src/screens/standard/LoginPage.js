@@ -52,7 +52,7 @@ const LoginPage = (props) => {
   }, [response]);
 
   useEffect(() => {
-    setEyeColor(eyeBallColor);
+    setEyeColor(eyeBallColor || eyeColor);
     return () => {};
   }, [eyeBallColor]);
 
