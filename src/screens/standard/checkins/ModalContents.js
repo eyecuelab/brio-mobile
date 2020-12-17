@@ -57,7 +57,9 @@ const ContentsContainer = styled.View`
   margin-top: 36;
   margin-bottom: 36;
   justify-content: center;
-  background-color: #212529;
+  background-color: #fff;
+  border-width: 10;
+  border-radius: 25px;
 `;
 const ContentsHeaderWrapper = styled.View`
   margin: 12px;
@@ -66,13 +68,13 @@ const ContentsTextWrapper = styled.View`
   margin-bottom: 8px;
 `;
 const ContentsHeader = styled.Text`
-  color: #fff;
+  color: #000000;
   font-size: 24px;
   font-weight: 900;
   text-align: center;
 `;
 const ContentsText = styled.Text`
-  color: #fff;
+  color: #000000;
   font-size: 18px;
 `;
 const mapStateToProps = (state) => {
