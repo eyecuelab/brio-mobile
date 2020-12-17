@@ -56,7 +56,6 @@ export const ModalContents = (props) => {
 const ContentsContainer = styled.View`
   margin-top: 36px;
   margin-bottom: 36px;
-  justify-content: center;
   background-color: #fff;
   border-radius: 25px;
   padding: 24px;

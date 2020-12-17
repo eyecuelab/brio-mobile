@@ -8,30 +8,31 @@ export const DashBar = (props) => {
   const { allBlockers, catPoints, category, color, image, from } = props;
   const navigation = useNavigation();
 
-  const catBlockers = allBlockers.filter(
-    (blocker) => blocker.category === category.toLowerCase()
-  );
-
-  const totalCatBlockerPts = catBlockers
-    .map((blocker) => {
-      return blocker.points;
-    })
-    .reduce((acc, cur) => {
-      return acc + cur;
-    });
-
-  const totalCatSuggestionPts = catBlockers
-    .map((blocker) =>
-      blocker.suggestions.map((suggestion) => suggestion.points)
-    )
-    .flat()
-    .reduce((acc, cur) => {
-      return acc + cur;
-    });
-
-  const totalCatPts = totalCatBlockerPts + totalCatSuggestionPts;
-
-  const currentCatPts = catPoints[category.toLowerCase()];
+    const catBlockers = allBlockers.filter(
+      (blocker) => blocker.category === category.toLowerCase()
+    );
+  
+    const totalCatBlockerPts = catBlockers
+      .map((blocker) => {
+        return blocker.points;
+      })
+      .reduce((acc, cur) => {
+        return acc + cur;
+      });
+  
+    const totalCatSuggestionPts = catBlockers
+      .map((blocker) =>
+        blocker.suggestions.map((suggestion) => suggestion.points)
+      )
+      .flat()
+      .reduce((acc, cur) => {
+        return acc + cur;
+      });
+  
+    const totalCatPts = totalCatBlockerPts + totalCatSuggestionPts;
+  
+    const currentCatPts = catPoints[category.toLowerCase()];
+  
 
   const showProgressBarInDashboardMain = () => {
     return (
@@ -100,6 +101,7 @@ export const DashBar = (props) => {
 
   return <>{checkPrevComp()}</>;
 };
+
 
 const ProgressContainerTouchable = styled.TouchableHighlight.attrs({
   underlayColor: "white",

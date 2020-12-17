@@ -70,7 +70,6 @@ export default (state = initBlockers(), action) => {
     case c.DEACTIVATE_BLOCKERS: {
       return initBlockers();
     }
-
     default:
       return state;
   }

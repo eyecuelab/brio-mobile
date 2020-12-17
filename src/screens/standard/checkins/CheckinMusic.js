@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ScrollView } from "react-native";
+import { View, ScrollView } from "react-native";
 import styled from "styled-components/native";
 import bg from "../../../styles/ScreenStyle.js";
 import SvgCheckinMusic from "../../../svg_assets/SvgCheckinMusic";
@@ -10,8 +10,8 @@ import Modal from "./Modal";
 export const CheckinMusic = () => {
   const [showModal, setShowModal] = useState(false);
   return (
-    <ScrollView>
-      <Container style={bg.mint}>
+    <Container style={bg.mint}>
+      <ScrollView>
         <CheckinContainer>
           <SvgCheckinMusic />
           <DashBar category={"Music"} color={"#94D7B5"} from={"Checkin"} />
@@ -33,8 +33,8 @@ export const CheckinMusic = () => {
           setShowModal={setShowModal}
           color={"#12492E"}
         />
-      </Container>
-    </ScrollView>
+      </ScrollView>
+    </Container>
   );
 };
 
@@ -57,7 +57,7 @@ const ListHeaderTextWrapper = styled.View`
   height: 20;
   flex-direction: row;
   justify-content: space-between;
-  margin: 12px;
+  margin: 24px;
 `;
 const ListHeaderText = styled.Text`
   color: #94d7b5;

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { connect } from "react-redux";
 import * as actions from "../../rdx/actions";
@@ -92,11 +93,13 @@ const LoginPage = (props) => {
   };
 
   const showEyeBalls = () => {
-    return eyeColors.map((color) => {
+    return eyeColors.map((color, index) => {
       return (
-        <EyeBallWrapper onPress={() => setEyeColor(color)}>
-          <SvgEyeball eyeColor={color} />
-        </EyeBallWrapper>
+        <React.Fragment key={index}>
+          <EyeBallWrapper onPress={() => setEyeColor(color)}>
+            <SvgEyeball eyeColor={color} />
+          </EyeBallWrapper>
+        </React.Fragment>
       );
     });
   };
@@ -104,33 +107,35 @@ const LoginPage = (props) => {
   return (
     <>
       <Container style={bg.basic}>
-        <AvatarContainer>
-          <SvgAvatar eyeColor={eyeColor} />
-          <AvatarNameText>{username}</AvatarNameText>
-        </AvatarContainer>
-        {showEyeBallsField()}
-        <FieldContainer>{usernameInputLabel()}</FieldContainer>
+        <ScrollView>
+          <AvatarContainer>
+            <SvgAvatar eyeColor={eyeColor} />
+            <AvatarNameText>{username}</AvatarNameText>
+          </AvatarContainer>
+          {showEyeBallsField()}
+          <FieldContainer>{usernameInputLabel()}</FieldContainer>
 
-        <FieldContainer>
-          <SpotifyLoginBtn onPress={() => promptAsync()}>
-            <TextWrapper>
-              <Icon
-                name="spotify"
-                size={22}
-                color="#fff"
-                style={{ marginRight: 20 }}
-              />
-              <LoginBtnText>LOGIN</LoginBtnText>
-            </TextWrapper>
-          </SpotifyLoginBtn>
-          <FieldTextContainer>
-            <FieldText>SYNC YOUR SPOTIFY</FieldText>
-          </FieldTextContainer>
-        </FieldContainer>
-        <BrioContainer>
-          <SvgBrioBack />
-          <BrioText>© KD & Chee @EyeCueLab</BrioText>
-        </BrioContainer>
+          <FieldContainer>
+            <SpotifyLoginBtn onPress={() => promptAsync()}>
+              <TextWrapper>
+                <Icon
+                  name="spotify"
+                  size={22}
+                  color="#fff"
+                  style={{ marginRight: 20 }}
+                />
+                <LoginBtnText>LOGIN</LoginBtnText>
+              </TextWrapper>
+            </SpotifyLoginBtn>
+            <FieldTextContainer>
+              <FieldText>SYNC YOUR SPOTIFY</FieldText>
+            </FieldTextContainer>
+          </FieldContainer>
+          <BrioContainer>
+            <SvgBrioBack />
+            <BrioText>© KD & Chee @EyeCueLab</BrioText>
+          </BrioContainer>
+        </ScrollView>
       </Container>
     </>
   );

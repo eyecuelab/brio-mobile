@@ -11,8 +11,8 @@ export const CheckinExercise = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <ScrollView>
-      <Container style={bg.berry}>
+    <Container style={bg.berry}>
+      <ScrollView>
         <CheckinContainer>
           <SvgCheckinExercise />
           <DashBar category={"Exercise"} color={"#d8a1d5"} from={"Checkin"} />
@@ -34,8 +34,8 @@ export const CheckinExercise = () => {
           setShowModal={setShowModal}
           color={"#d587b5"}
         />
-      </Container>
-    </ScrollView>
+      </ScrollView>
+    </Container>
   );
 };
 
@@ -55,7 +55,7 @@ const ListContainer = styled.View`
   justify-content: center;
 `;
 const ListHeaderTextWrapper = styled.View`
-  height: 20;
+  height: 20px;
   flex-direction: row;
   justify-content: space-between;
   margin: 12px;
