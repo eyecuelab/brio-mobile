@@ -27,8 +27,8 @@ export const DashboardProfile = (props) => {
     dispatch(action);
   };
 
-  const savedEyeColor = (color) => {
-    const action = actions.savedEyeColor(color);
+  const savedEyeColor = (eyeColor) => {
+    const action = actions.savedEyeColor(eyeColor);
     dispatch(action);
   };
 

@@ -21,8 +21,8 @@ const discovery = {
 
 const LoginPage = (props) => {
   const { dispatch, existingUsername, eyeBallColor } = props;
-  const [value, onChangeText] = useState(existingUsername);
-  const [eyeColor, setEyeColor] = useState(eyeBallColor || "#7E6200");
+  const [username, setUsername] = useState("");
+  const [eyeColor, setEyeColor] = useState("#7E6200");
   const navigation = useNavigation();
   const eyeColors = ["#51ADE0", "#5EA782", "#BDA41D", "#7E6200", "#BF2F2F"];
 
@@ -45,19 +45,29 @@ const LoginPage = (props) => {
   useEffect(() => {
     if (response?.type === "success") {
       const { code } = response.params;
-      const action = actions.loggedIn(code, value, eyeColor);
+      const action = actions.loggedIn(code, username, eyeColor);
       dispatch(action);
       navigation.navigate("StandardNavigation");
     }
   }, [response]);
+
+  useEffect(() => {
+    setEyeColor(eyeBallColor);
+    return () => {};
+  }, [eyeBallColor]);
+
+  useEffect(() => {
+    setUsername(existingUsername);
+    return () => {};
+  }, [existingUsername]);
 
   const usernameInputLabel = () => {
     if (!existingUsername) {
       return (
         <>
           <UsernameInput
-            onChangeText={(text) => onChangeText(text)}
-            value={value}
+            onChangeText={(text) => setUsername(text)}
+            value={username}
             autoCapitalize="none"
           />
           <FieldTextContainer>
@@ -96,7 +106,7 @@ const LoginPage = (props) => {
       <Container style={bg.basic}>
         <AvatarContainer>
           <SvgAvatar eyeColor={eyeColor} />
-          <AvatarNameText>{value}</AvatarNameText>
+          <AvatarNameText>{username}</AvatarNameText>
         </AvatarContainer>
         {showEyeBallsField()}
         <FieldContainer>{usernameInputLabel()}</FieldContainer>
