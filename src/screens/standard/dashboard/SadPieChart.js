@@ -1,11 +1,13 @@
 import React from "react";
 import { View } from "react-native";
+import { connect } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { VictoryPie } from "victory-native";
 import { Svg, Circle } from "react-native-svg";
 import SvgEyeballPie from "../../../svg_assets/SvgEyeballPie";
 
-export const SadPieChart = () => {
+export const SadPieChart = (props) => {
+  const { eyeBallColor } = props;
   const navigation = useNavigation();
   const exerciseGrey = "#8A8A8A";
   const musicGrey = "#5E5E5E";
@@ -57,7 +59,7 @@ export const SadPieChart = () => {
     return (
       <>
         <View style={{ position: "absolute" }}>
-          <SvgEyeballPie />
+          <SvgEyeballPie eyeColor={eyeBallColor} />
         </View>
       </>
     );
@@ -82,4 +84,10 @@ export const SadPieChart = () => {
   );
 };
 
-export default SadPieChart;
+const mapStateToProps = (state) => {
+  return {
+    eyeBallColor: state.user.eyeColor,
+  };
+};
+
+export default connect(mapStateToProps)(SadPieChart);

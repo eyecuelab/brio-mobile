@@ -55,9 +55,10 @@ export const changedUsername = (username) => {
     username,
   };
 };
-export const calledApi = (apiEndpoint, createdAt) => {
+export const calledApi = (tappedTask, apiEndpoint, createdAt) => {
   return {
     type: c.CALLED_API,
+    tappedTask,
     apiEndpoint,
     createdAt,
   };
@@ -68,8 +69,18 @@ export const savedEyeColor = (eyeColor) => {
     eyeColor,
   };
 };
-export const deactivated = () => {
+export const deactivateAuth = () => {
   return {
-    type: c.DEACTIVATED,
+    type: c.DEACTIVATE_AUTH,
+  };
+};
+export const deactivateSpotify = () => {
+  return {
+    type: c.DEACTIVATE_SPOTIFY,
+  };
+};
+export const deactivateBlockers = () => {
+  return {
+    type: c.DEACTIVATE_BLOCKERS,
   };
 };

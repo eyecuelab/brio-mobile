@@ -55,7 +55,7 @@ const ListContainer = styled.View`
   justify-content: center;
 `;
 const ListHeaderTextWrapper = styled.View`
-  height: 20;
+  height: 20px;
   flex-direction: row;
   justify-content: space-between;
   margin: 12px;

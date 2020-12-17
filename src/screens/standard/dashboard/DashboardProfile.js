@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { ScrollView } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../rdx/actions";
@@ -10,21 +10,16 @@ import SvgEyeball from "../../../svg_assets/SvgEyeball";
 import { useNavigation } from "@react-navigation/native";
 
 export const DashboardProfile = (props) => {
-  const { dispatch, code, username, eyeBallColor } = props;
+  const { dispatch, username, eyeBallColor } = props;
   const [value, onChangeText] = useState("");
   const [eyeColor, setEyeColor] = useState(eyeBallColor || "#7E6200");
   const navigation = useNavigation();
   const eyeColors = ["#51ADE0", "#5EA782", "#BDA41D", "#7E6200", "#BF2F2F"];
 
-  useEffect(() => {
-    if (code === null) {
-      navigation.navigate("Login");
-    }
-  }, [code]);
-
   const logoutButton = () => {
     const action = actions.logoutButton();
     dispatch(action);
+    navigation.navigate("Login");
   };
 
   const changedUsername = (username) => {
@@ -32,14 +27,18 @@ export const DashboardProfile = (props) => {
     dispatch(action);
   };
 
-  const savedEyeColor = (color) => {
-    const action = actions.savedEyeColor(color);
+  const savedEyeColor = (eyeColor) => {
+    const action = actions.savedEyeColor(eyeColor);
     dispatch(action);
   };
 
   const deactivated = () => {
-    const action = actions.deactivated();
-    dispatch(action);
+    const actionAuth = actions.deactivateAuth();
+    const actionSpot = actions.deactivateSpotify();
+    const actionBlockers = actions.deactivateBlockers();
+    dispatch(actionAuth);
+    dispatch(actionSpot);
+    dispatch(actionBlockers);
     navigation.navigate("general");
   };
 

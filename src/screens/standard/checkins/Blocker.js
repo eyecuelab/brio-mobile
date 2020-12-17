@@ -42,17 +42,16 @@ function Blocker(props) {
     dispatch(action);
   };
 
-  const calledApi = (apiEndpoint, createdAt) => {
-    const action = actions.calledApi(apiEndpoint, createdAt);
+  const calledApi = (tappedTask, apiEndpoint, createdAt) => {
+    const action = actions.calledApi(tappedTask, apiEndpoint, createdAt);
     dispatch(action);
   };
 
   const callModalBl = (id) => {
     const clickedBlocker = catBlockers.find((blocker) => blocker.id === id);
-    console.log("CREATED AT", clickedBlocker.createdAt)
     getAccessTokenWatcher(spotifyAuthToken);
     if (clickedBlocker.apiEndpoint !== null) {
-      calledApi(clickedBlocker.apiEndpoint, clickedBlocker.createdAt);
+      calledApi(clickedBlocker, clickedBlocker.apiEndpoint, clickedBlocker.createdAt);
       setShowModal(!showModal);
     }
   };
@@ -61,7 +60,7 @@ function Blocker(props) {
     const clickedSugg = catSuggs.find((sugg) => sugg.id === id);
     getAccessTokenWatcher(spotifyAuthToken);
     if (clickedSugg.apiEndpoint !== null) {
-      calledApi(clickedSugg.apiEndpoint);
+      calledApi(clickedSugg, clickedSugg.apiEndpoint);
       setShowModal(!showModal);
     }
   };

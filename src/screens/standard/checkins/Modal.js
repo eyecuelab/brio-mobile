@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from "react";
-import {
-  ImageBackground,
-  TouchableOpacity,
-  useWindowDimensions,
-} from "react-native";
+import { TouchableOpacity, useWindowDimensions } from "react-native";
 import { connect } from "react-redux";
-import brio from "../../../../assets/BrioPng.png";
 import ModalContents from "./ModalContents";
 export const Modal = (props) => {
   const { showModal, setShowModal, apiEndpoint, color } = props;
@@ -33,9 +28,9 @@ export const Modal = (props) => {
                 display: "flex",
                 flexDirection: "column",
                 position: "absolute",
-                left: 0,
-                top: 0,
-                opacity: 0.5,
+                left: -8,
+                top: -50,
+                opacity: 0.9,
                 backgroundColor: `${color}`,
                 height,
                 width,
@@ -49,7 +44,6 @@ export const Modal = (props) => {
                 position: "absolute",
                 left: 0,
                 top: 0,
-                opacity: 0.5,
                 backgroundColor: `${color}`,
                 height: 0,
                 width: 0,
@@ -57,18 +51,7 @@ export const Modal = (props) => {
         }
         onPress={() => setShowModal(false)}
       >
-        <ImageBackground
-          source={brio}
-          style={{
-            backgroundColor: "#ffffff",
-            resizeMode: "cover",
-            alignItems: "center",
-            marginRight: 15,
-            borderRadius: 25,
-          }}
-        >
-          <ModalContents apiContents={apiContents} />
-        </ImageBackground>
+        <ModalContents apiContents={apiContents} />
       </TouchableOpacity>
     </>
   );

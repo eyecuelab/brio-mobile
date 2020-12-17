@@ -67,7 +67,9 @@ export default (state = initBlockers(), action) => {
     case c.RESET_PROGRESS: {
       return initBlockers();
     }
-
+    case c.DEACTIVATE_BLOCKERS: {
+      return initBlockers();
+    }
     default:
       return state;
   }

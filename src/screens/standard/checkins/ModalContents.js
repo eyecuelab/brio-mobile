@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import styled from "styled-components/native";
 
 export const ModalContents = (props) => {
-  const { contents, apiContents, username } = props;
+  const { contents, apiContents, tappedTask } = props;
 
   const showContents = () => {
     if (contents) {
@@ -23,7 +23,7 @@ export const ModalContents = (props) => {
         return (
           <ContentsContainer>
             <ContentsHeaderWrapper>
-              <ContentsHeader>{`${username}'s Last 10 songs:`}</ContentsHeader>
+              <ContentsHeader>{tappedTask.description}</ContentsHeader>
             </ContentsHeaderWrapper>
             {showDetails()}
           </ContentsContainer>
@@ -32,7 +32,7 @@ export const ModalContents = (props) => {
         return (
           <ContentsContainer>
             <ContentsHeaderWrapper>
-              <ContentsHeader>Other api call:</ContentsHeader>
+              <ContentsHeader>{tappedTask.description}</ContentsHeader>
             </ContentsHeaderWrapper>
             <ContentsTextWrapper>
               <ContentsText>Other api contents</ContentsText>
@@ -54,10 +54,11 @@ export const ModalContents = (props) => {
   return <>{showContents()}</>;
 };
 const ContentsContainer = styled.View`
-  margin-top: 36;
-  margin-bottom: 36;
-  justify-content: center;
-  background-color: #212529;
+  margin-top: 36px;
+  margin-bottom: 36px;
+  background-color: #fff;
+  border-radius: 25px;
+  padding: 24px;
 `;
 const ContentsHeaderWrapper = styled.View`
   margin: 12px;
@@ -66,20 +67,20 @@ const ContentsTextWrapper = styled.View`
   margin-bottom: 8px;
 `;
 const ContentsHeader = styled.Text`
-  color: #fff;
+  color: #000000;
   font-size: 24px;
   font-weight: 900;
   text-align: center;
 `;
 const ContentsText = styled.Text`
-  color: #fff;
+  color: #000000;
   font-size: 18px;
 `;
 const mapStateToProps = (state) => {
-  console.log(state.spotifyApi);
   return {
     apiEndpoint: state.spotifyApi.apiEndpoint,
     contents: state.spotifyApi.contents,
+    tappedTask: state.spotifyApi.tappedTask,
     username: state.user.username,
   };
 };
