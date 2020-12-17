@@ -16,7 +16,10 @@ export default function StandardNavigation() {
         initialRouteName="dashboardMain"
         activeColor="#757272"
         inactiveColor="#ECC08D"
-        barStyle={{ backgroundColor: "#D9FFFFFF" }}
+        barStyle={{
+          backgroundColor: "rgba(255, 255, 255, 0.6)",
+          position: "absolute",
+        }}
         showLabel={false}
       >
         <Tab.Screen
