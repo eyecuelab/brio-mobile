@@ -9,7 +9,7 @@ import LoginPage from "./screens/standard/LoginPage";
 import StandardNavigation from "./screens/standard/StandardNavigation.js";
 import LandingNavigation from "./screens/landing/LandingNavigation.js";
 
-// console.disableYellowBox = true;
+console.disableYellowBox = true;
 
 const RootStack = createStackNavigator();
 
