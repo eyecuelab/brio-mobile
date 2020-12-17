@@ -11,8 +11,8 @@ export const CheckinExercise = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <Container style={bg.berry}>
-      <ScrollView>
+    <ScrollView>
+      <Container style={bg.berry}>
         <CheckinContainer>
           <SvgCheckinExercise />
           <DashBar category={"Exercise"} color={"#d8a1d5"} from={"Checkin"} />
@@ -34,8 +34,8 @@ export const CheckinExercise = () => {
           setShowModal={setShowModal}
           color={"#d587b5"}
         />
-      </ScrollView>
-    </Container>
+      </Container>
+    </ScrollView>
   );
 };
 
