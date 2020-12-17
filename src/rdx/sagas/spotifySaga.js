@@ -56,7 +56,6 @@ export function* getApiContentsSaga(action) {
       throw yield resp.json();
     }
   } catch (err) {
-    console.warn(err);
     yield put({ type: "hello", error: err.message });
   }
 }

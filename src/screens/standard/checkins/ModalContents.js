@@ -76,7 +76,6 @@ const ContentsText = styled.Text`
   font-size: 18px;
 `;
 const mapStateToProps = (state) => {
-  console.log(state.spotifyApi);
   return {
     apiEndpoint: state.spotifyApi.apiEndpoint,
     contents: state.spotifyApi.contents,

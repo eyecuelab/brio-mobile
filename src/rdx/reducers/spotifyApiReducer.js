@@ -25,9 +25,9 @@ export default (state = initialState, action) => {
         apiEndpoint: action.apiEndpoint,
         createdAt: action.createdAt,
       };
-      case c.DEACTIVATE_SPOTIFY: {
-        return initialState
-      }
+    case c.DEACTIVATE_SPOTIFY: {
+      return initialState;
+    }
     default:
       return state;
   }

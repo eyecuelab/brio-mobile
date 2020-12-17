@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { ScrollView } from "react-native";
 import { connect } from "react-redux";
 import * as actions from "../../../rdx/actions";
@@ -10,7 +10,7 @@ import SvgEyeball from "../../../svg_assets/SvgEyeball";
 import { useNavigation } from "@react-navigation/native";
 
 export const DashboardProfile = (props) => {
-  const { dispatch, code, username, eyeBallColor } = props;
+  const { dispatch, username, eyeBallColor } = props;
   const [value, onChangeText] = useState("");
   const [eyeColor, setEyeColor] = useState(eyeBallColor || "#7E6200");
   const navigation = useNavigation();
@@ -19,6 +19,7 @@ export const DashboardProfile = (props) => {
   const logoutButton = () => {
     const action = actions.logoutButton();
     dispatch(action);
+    navigation.navigate("Login");
   };
 
   const changedUsername = (username) => {
@@ -34,8 +35,10 @@ export const DashboardProfile = (props) => {
   const deactivated = () => {
     const actionAuth = actions.deactivateAuth();
     const actionSpot = actions.deactivateSpotify();
+    const actionBlockers = actions.deactivateBlockers();
     dispatch(actionAuth);
     dispatch(actionSpot);
+    dispatch(actionBlockers);
     navigation.navigate("general");
   };
 
@@ -225,8 +228,6 @@ const EyeBallWrapper = styled.TouchableHighlight.attrs({
 })``;
 
 const mapStateToProps = (state) => {
-  console.log("USER STATE" ,state.user)
-  console.log("SPOTIFY STATE", state.spotifyApi)
   return {
     code: state.user.code,
     username: state.user.username,

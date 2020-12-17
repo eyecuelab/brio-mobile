@@ -78,3 +78,8 @@ export const deactivateSpotify = () => {
     type: c.DEACTIVATE_SPOTIFY,
   };
 };
+export const deactivateBlockers = () => {
+  return {
+    type: c.DEACTIVATE_BLOCKERS,
+  };
+};

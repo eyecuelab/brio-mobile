@@ -49,7 +49,6 @@ function Blocker(props) {
 
   const callModalBl = (id) => {
     const clickedBlocker = catBlockers.find((blocker) => blocker.id === id);
-    console.log("CREATED AT", clickedBlocker.createdAt)
     getAccessTokenWatcher(spotifyAuthToken);
     if (clickedBlocker.apiEndpoint !== null) {
       calledApi(clickedBlocker.apiEndpoint, clickedBlocker.createdAt);
