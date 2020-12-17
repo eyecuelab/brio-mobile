@@ -16,12 +16,6 @@ export const DashboardProfile = (props) => {
   const navigation = useNavigation();
   const eyeColors = ["#51ADE0", "#5EA782", "#BDA41D", "#7E6200", "#BF2F2F"];
 
-  useEffect(() => {
-    if (code === null) {
-      navigation.navigate("Login");
-    }
-  }, [code]);
-
   const logoutButton = () => {
     const action = actions.logoutButton();
     dispatch(action);
@@ -38,8 +32,10 @@ export const DashboardProfile = (props) => {
   };
 
   const deactivated = () => {
-    const action = actions.deactivated();
-    dispatch(action);
+    const actionAuth = actions.deactivateAuth();
+    const actionSpot = actions.deactivateSpotify();
+    dispatch(actionAuth);
+    dispatch(actionSpot);
     navigation.navigate("general");
   };
 
@@ -229,6 +225,8 @@ const EyeBallWrapper = styled.TouchableHighlight.attrs({
 })``;
 
 const mapStateToProps = (state) => {
+  console.log("USER STATE" ,state.user)
+  console.log("SPOTIFY STATE", state.spotifyApi)
   return {
     code: state.user.code,
     username: state.user.username,

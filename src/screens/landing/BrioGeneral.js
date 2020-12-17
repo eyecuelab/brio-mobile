@@ -9,8 +9,9 @@ import { connect } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 
 function BrioGeneral(props) {
-  const spotifyAuthToken = props.spotifyAuthToken;
+  const { spotifyAuthToken } = props;
   const navigation = useNavigation();
+
   useEffect(() => {
     if (spotifyAuthToken != null) {
       navigation.navigate("StandardNavigation");

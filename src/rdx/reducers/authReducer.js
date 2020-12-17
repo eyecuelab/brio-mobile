@@ -34,7 +34,7 @@ export default (state = initialAuthState, action) => {
         eyeColor: action.eyeColor,
       };
     }
-    case c.DEACTIVATED: {
+    case c.DEACTIVATE_AUTH: {
       return initialAuthState
     }
     default:

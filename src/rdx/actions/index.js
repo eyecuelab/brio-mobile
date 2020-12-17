@@ -68,8 +68,13 @@ export const savedEyeColor = (eyeColor) => {
     eyeColor,
   };
 };
-export const deactivated = () => {
+export const deactivateAuth = () => {
   return {
-    type: c.DEACTIVATED,
+    type: c.DEACTIVATE_AUTH,
+  };
+};
+export const deactivateSpotify = () => {
+  return {
+    type: c.DEACTIVATE_SPOTIFY,
   };
 };
