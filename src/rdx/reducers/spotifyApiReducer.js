@@ -22,6 +22,7 @@ export default (state = initialState, action) => {
     case c.CALLED_API:
       return {
         ...state,
+        tappedTask: action.tappedTask,
         apiEndpoint: action.apiEndpoint,
         createdAt: action.createdAt,
       };

@@ -51,7 +51,7 @@ function Blocker(props) {
     const clickedBlocker = catBlockers.find((blocker) => blocker.id === id);
     getAccessTokenWatcher(spotifyAuthToken);
     if (clickedBlocker.apiEndpoint !== null) {
-      calledApi(clickedBlocker.apiEndpoint, clickedBlocker.createdAt);
+      calledApi(clickedBlocker, clickedBlocker.apiEndpoint, clickedBlocker.createdAt);
       setShowModal(!showModal);
     }
   };
@@ -60,7 +60,7 @@ function Blocker(props) {
     const clickedSugg = catSuggs.find((sugg) => sugg.id === id);
     getAccessTokenWatcher(spotifyAuthToken);
     if (clickedSugg.apiEndpoint !== null) {
-      calledApi(clickedSugg.apiEndpoint);
+      calledApi(clickedSugg, clickedSugg.apiEndpoint);
       setShowModal(!showModal);
     }
   };

@@ -55,9 +55,10 @@ export const changedUsername = (username) => {
     username,
   };
 };
-export const calledApi = (apiEndpoint, createdAt) => {
+export const calledApi = (tappedTask, apiEndpoint, createdAt) => {
   return {
     type: c.CALLED_API,
+    tappedTask,
     apiEndpoint,
     createdAt,
   };
