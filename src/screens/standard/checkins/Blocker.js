@@ -42,8 +42,8 @@ function Blocker(props) {
     dispatch(action);
   };
 
-  const calledApi = (apiEndpoint, createdAt) => {
-    const action = actions.calledApi(apiEndpoint, createdAt);
+  const calledApi = (tappedTask, apiEndpoint, createdAt) => {
+    const action = actions.calledApi(tappedTask, apiEndpoint, createdAt);
     dispatch(action);
   };
 
