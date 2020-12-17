@@ -82,9 +82,10 @@ export default function initBlockers() {
         ],
       },
       {
+        //maybe this should be do you have spotify on your phone? we can add download link to modal
         category: "music",
         id: v4(),
-        description: "Play 10 songs",
+        description: "Play 10 songs.",
         createdAt: new Date(),
         completedAt: null,
         points: 10,
@@ -92,14 +93,14 @@ export default function initBlockers() {
         suggestions: [
           {
             id: v4(),
-            description: "Play 3 albums",
+            description: "Play 5 songs.",
             createdAt: new Date(),
             completedAt: null,
             points: 20,
           },
           {
             id: v4(),
-            description: "Make a playlist",
+            description: "Play an entire album.",
             createdAt: new Date(),
             completedAt: null,
             points: 30,
@@ -109,21 +110,22 @@ export default function initBlockers() {
       {
         category: "music",
         id: v4(),
-        description: "Are you folowing multiple artists?",
+        description: "Are you following multiple artists?",
         createdAt: new Date(),
         completedAt: null,
         points: 20,
         suggestions: [
           {
             id: v4(),
-            description: "...",
+            description:
+              "Make a playlist of tracks from new artists you follow.",
             createdAt: new Date(),
             completedAt: null,
             points: 20,
           },
           {
             id: v4(),
-            description: "......",
+            description: "Share a playlist you made via text.",
             createdAt: new Date(),
             completedAt: null,
             points: 30,
@@ -140,14 +142,14 @@ export default function initBlockers() {
         suggestions: [
           {
             id: v4(),
-            description: "...",
+            description: "Follow another users playlist.",
             createdAt: new Date(),
             completedAt: null,
             points: 20,
           },
           {
             id: v4(),
-            description: "......",
+            description: "Make a collaborative playlist with two friends.",
             createdAt: new Date(),
             completedAt: null,
             points: 30,
@@ -157,21 +159,21 @@ export default function initBlockers() {
       {
         category: "social",
         id: v4(),
-        description: "Do you...?",
+        description: "Do you have a Meetup.com account?",
         createdAt: new Date(),
         completedAt: null,
         points: 10,
         suggestions: [
           {
             id: v4(),
-            description: "...",
+            description: "Signup for a new Meetup group.",
             createdAt: new Date(),
             completedAt: null,
             points: 20,
           },
           {
             id: v4(),
-            description: "......",
+            description: "Attend a Meetup event.",
             createdAt: new Date(),
             completedAt: null,
             points: 30,
@@ -181,21 +183,21 @@ export default function initBlockers() {
       {
         category: "social",
         id: v4(),
-        description: "Are you...?",
+        description: "Do you know where your nearest post office box is?",
         createdAt: new Date(),
         completedAt: null,
         points: 20,
         suggestions: [
           {
             id: v4(),
-            description: "...",
+            description: "Buy some stamps and envelopes",
             createdAt: new Date(),
             completedAt: null,
             points: 20,
           },
           {
             id: v4(),
-            description: "......",
+            description: "Write a letter to a friend who lives far away.",
             createdAt: new Date(),
             completedAt: null,
             points: 30,
@@ -205,21 +207,22 @@ export default function initBlockers() {
       {
         category: "social",
         id: v4(),
-        description: "Do you have...?",
+        description: "Do you have a coffee shop you like?",
         createdAt: new Date(),
         completedAt: null,
         points: 30,
         suggestions: [
           {
             id: v4(),
-            description: "...",
+            description:
+              "Go to a coffee shop and say, “I like your shirt” to the barista",
             createdAt: new Date(),
             completedAt: null,
             points: 20,
           },
           {
             id: v4(),
-            description: "......",
+            description: "Go to a coffee shop and make a new friend.",
             createdAt: new Date(),
             completedAt: null,
             points: 30,
