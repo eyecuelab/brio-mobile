@@ -83,7 +83,7 @@ export const DashboardProfile = (props) => {
             </FieldTextContainer>
             <EyecolorView>{showEyeBalls()}</EyecolorView>
             <SaveEyeColorBtn onPress={() => savedEyeColor(eyeColor)}>
-              <BtnText>Save eye color</BtnText>
+              <BtnText>Save Eye Color</BtnText>
             </SaveEyeColorBtn>
           </FieldContainer>
 
@@ -98,7 +98,7 @@ export const DashboardProfile = (props) => {
               autoCapitalize="none"
             />
             <SaveUsernameBtn onPress={() => changedUsername(value)}>
-              <BtnText>Save username</BtnText>
+              <BtnText>Save Username</BtnText>
             </SaveUsernameBtn>
           </FieldContainer>
 
@@ -107,7 +107,7 @@ export const DashboardProfile = (props) => {
               <FieldText>LOG OUT OF THE APP</FieldText>
             </FieldTextContainer>
             <LogoutBtn onPress={() => logoutButton()}>
-              <BtnText>Log out</BtnText>
+              <BtnText>Log Out</BtnText>
             </LogoutBtn>
           </FieldContainer>
 
