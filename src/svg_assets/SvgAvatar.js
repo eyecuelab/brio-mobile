@@ -9,8 +9,8 @@ export default function SvgAvatar(props) {
   <circle cx="105.286" cy="101.286" r="34.2857" fill=${props.eyeColor}/>
   <circle cx="105.285" cy="101.286" r="19.0476" fill="#333333"/>
   <circle cx="112.905" cy="86.0477" r="11.4286" fill="white"/>
-  <rect x="90" y="137" width="31" height="40" rx="4" fill=${props.eyeColor}/>
-  <rect x="84" y="137" width="43" height="26" rx="4" fill=${props.eyeColor}/>
+  <rect x="90" y="137" width="31" height="40" rx="4" fill="#333333"/>
+  <rect x="84" y="137" width="43" height="26" rx="4" fill="#333333"/>
   <defs>
   <filter id="filter0_d" x="0" y="0" width="210" height="210" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
   <feFlood flood-opacity="0" result="BackgroundImageFix"/>
