@@ -13,6 +13,7 @@ export const DashboardProfile = (props) => {
   const { dispatch, username, eyeBallColor } = props;
   const [value, onChangeText] = useState("");
   const [eyeColorBtnText, setEyeColorBtnText] = useState("Change eye color");
+  const [usernameBtnText, setUsernameBtnText] = useState("Change username");
   const [eyeColor, setEyeColor] = useState(eyeBallColor || "#7E6200");
   const navigation = useNavigation();
   const eyeColors = ["#51ADE0", "#5EA782", "#BDA41D", "#7E6200", "#BF2F2F"];
@@ -26,7 +27,8 @@ export const DashboardProfile = (props) => {
   const changedUsername = (username) => {
     const action = actions.changedUsername(username);
     dispatch(action);
-    savedEyeColorButtonText();
+    setUsernameBtnText("SAVED!");
+    savedUsernameButtonText();
   };
 
   const savedEyeColor = (eyeColor) => {
@@ -35,9 +37,15 @@ export const DashboardProfile = (props) => {
     setEyeColorBtnText("SAVED!");
     savedEyeColorButtonText();
   };
+
   const savedEyeColorButtonText = () => {
     setTimeout(() => {
       setEyeColorBtnText("Change eyecolor");
+    }, 1500);
+  };
+  const savedUsernameButtonText = () => {
+    setTimeout(() => {
+      setUsernameBtnText("Change username");
     }, 1500);
   };
   const deactivated = () => {
@@ -106,7 +114,7 @@ export const DashboardProfile = (props) => {
               autoCapitalize="none"
             />
             <SaveUsernameBtn onPress={() => changedUsername(value)}>
-              <BtnText>Save username</BtnText>
+              <BtnText>{usernameBtnText}</BtnText>
             </SaveUsernameBtn>
           </FieldContainer>
 
