@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components/native";
+import SvgBrioFront from "../../../svg_assets/SvgBrioFront";
 
 export const ModalContents = (props) => {
   const { contents, apiContents, tappedTask } = props;
@@ -35,7 +36,7 @@ export const ModalContents = (props) => {
               <ContentsHeader>{tappedTask.description}</ContentsHeader>
             </ContentsHeaderWrapper>
             <ContentsTextWrapper>
-              <ContentsText>Other api contents</ContentsText>
+              <ContentsText><SvgBrioFront /></ContentsText>
             </ContentsTextWrapper>
           </ContentsContainer>
         );

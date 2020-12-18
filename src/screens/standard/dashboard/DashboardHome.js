@@ -18,11 +18,11 @@ export const DashboardHome = () => {
     <>
       <View style={bg.basic}>
         <DiagramContainer>
-          <Diagram>
-            <DiagramTextHeader>Oh my gosh!</DiagramTextHeader>
+          <TextBox>
+            <DiagramHeader>Oh my gosh!</DiagramHeader>
             <DiagramText>This is going to be so much fun. </DiagramText>
             <DiagramText>What are we going to do today?</DiagramText>
-          </Diagram>
+          </TextBox>
           <SpinningBrio />
         </DiagramContainer>
         <ListContainer>
@@ -52,22 +52,20 @@ export const DashboardHome = () => {
 
 const DiagramContainer = styled.View`
   flex: 1;
-  justify-content: space-around;
-  margin-top: 48;
+  flex-flow: row;
+  justify-content: center;
+  margin-top: 28px;
 `;
-const Diagram = styled.View`
-  margin-top: 36;
-  margin-bottom: 12;
-  padding-right: 5;
-  padding-left: 5;
-  padding-bottom: 5;
+const TextBox = styled.View`
+  background-color: #ffffff;
   position: absolute;
-  top: -30;
-  right: 10;
   border-radius: 25px;
-  background-color: #fff;
+  padding: 12px;
+  right: 10;
+  top: 20;
+  border: 3px #cda000;
 `;
-const DiagramTextHeader = styled.Text`
+const DiagramHeader = styled.Text`
   font-size: 30px;
   color: #51ade0;
   font-weight: 900;
@@ -77,7 +75,7 @@ const DiagramText = styled.Text`
   font-size: 16px;
   color: #51ade0;
   font-weight: 900;
-  padding: 4px;
+  padding: 5px;
 `;
 const ListContainer = styled.View`
   margin-bottom: 24;

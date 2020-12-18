@@ -25,11 +25,11 @@ function DashboardMain(props) {
         return (
           <>
             <DiagramContainer>
+              <TextBox>
+                <DiagramHeader>You haven't got points yet! </DiagramHeader>
+                <DiagramHeader>Tap categories below!</DiagramHeader>
+              </TextBox>
               <SvgBrioFront />
-              <Diagram>
-                <DiagramText>You haven't got points yet! </DiagramText>
-                <DiagramText>Tap categories below!</DiagramText>
-              </Diagram>
             </DiagramContainer>
             <SadPieChart />
           </>
@@ -38,11 +38,11 @@ function DashboardMain(props) {
         return (
           <>
             <DiagramContainer>
+              <TextBox>
+                <DiagramHeader>Welcome back {username}!</DiagramHeader>
+                <DiagramHeader>You look great!</DiagramHeader>
+              </TextBox>
               <SvgBrioFront />
-              <Diagram>
-                <DiagramText>Welcome back {username}! </DiagramText>
-                <DiagramText> You look great!</DiagramText>
-              </Diagram>
             </DiagramContainer>
             <PieChart />
           </>
@@ -99,21 +99,24 @@ function DashboardMain(props) {
 }
 
 const DiagramContainer = styled.View`
-  flex: 1;
-  flex-direction: row;
-  justify-content: center;
+  flex-flow: row;
+  height: 15%;
   margin-top: 28px;
 `;
-const Diagram = styled.View`
-  justify-content: center;
-  padding-right: 10px;
-  padding-left: 10px;
+const TextBox = styled.View`
+  width: 70%;
+  background-color: #ffffff;
+  position: absolute;
   border-radius: 25px;
-  background-color: #fff;
+  padding: 15px;
+  right: 10;
+  top: 20;
+  border: 3px #cda000;
 `;
-const DiagramText = styled.Text`
+const DiagramHeader = styled.Text`
   font-size: 18px;
   color: #51ade0;
+  padding: 10px;
   font-weight: 900;
 `;
 
