@@ -16,9 +16,6 @@ export default StyleSheet.create({
   },
   citrus: {
     flex: 1,
-    paddingTop: 64,
-    paddingBottom: 68,
-    padding: 8,
     backgroundColor: "#FFFEDF",
   },
   sun: {

@@ -63,7 +63,7 @@ export const Modal = (props) => {
 };
 
 const BlockHack = styled.View`
-  height: 20%;
+  height: 25%;
 `;
 const ContentPop = styled.TouchableOpacity`
   height: 100%;
@@ -72,7 +72,7 @@ const ContentPop = styled.TouchableOpacity`
 
 const InteriorContent = styled.View`
   position: relative;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 1) !important;
   border-radius: 40px;
   border: 3px black;
   margin: 3%;

@@ -14,6 +14,7 @@ export const CheckinExercise = () => {
     <Container style={bg.berry}>
       <ScrollView>
         <CheckinContainer>
+          <CheckinBumper />
           <SvgCheckinExercise />
           <DashBar category={"Exercise"} color={"#d8a1d5"} from={"Checkin"} />
         </CheckinContainer>
@@ -38,6 +39,10 @@ export const CheckinExercise = () => {
     </Container>
   );
 };
+
+const CheckinBumper = styled.View`
+  height: 20%;
+`;
 
 const Container = styled.View`
   flex: 1;
