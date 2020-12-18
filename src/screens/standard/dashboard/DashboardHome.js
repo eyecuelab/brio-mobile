@@ -11,6 +11,7 @@ import SvgSocial from "../../../svg_assets/SvgSocial";
 import SvgArrowSocial from "../../../svg_assets/SvgArrowSocial";
 import styled from "styled-components/native";
 import DashList from "./DashList";
+import SpinningBrio from "../../../svg_assets/animations/SpinningBrio";
 
 export const DashboardHome = () => {
   return (
@@ -22,7 +23,7 @@ export const DashboardHome = () => {
             <DiagramText>This is going to be so much fun. </DiagramText>
             <DiagramText>What are we going to do today?</DiagramText>
           </Diagram>
-          <SvgBrioHome />
+          <SpinningBrio />
         </DiagramContainer>
         <ListContainer>
           <DashList

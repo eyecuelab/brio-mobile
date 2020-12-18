@@ -180,7 +180,7 @@ const EyecolorView = styled.View`
   justify-content: space-around;
   align-items: center;
   width: 90%;
-  height: 55;
+  height: 55px;
   padding: 10px;
   border-radius: 10;
   background-color: white;
@@ -196,7 +196,7 @@ const SpotifyLoginBtn = styled.TouchableHighlight.attrs({
   justify-content: center;
   align-items: center;
   width: 90%;
-  height: 55;
+  height: 55px;
   padding: 10px;
   border-radius: 10;
   background-color: #1ed760;
