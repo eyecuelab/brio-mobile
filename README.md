@@ -78,37 +78,7 @@ and remove roadblocks that can get in the way of ever starting good habits and d
 
 ## Setup/Installation Requirements
 
-### _For Accessing Application Source Code_:
-
-1. Clone this projects repository into your local directory following [these](https://www.linode.com/docs/development/version-control/how-to-install-git-and-clone-a-github-repository/) instructions.
-
-2. Open the now local project folder with [VSC](https://code.visualstudio.com/Download) or an equivalent
-
-3. If Gatsby isn't already installed globally on your machine, do so by entering the following in the command line:
-
-```
-$ npm install -g gatsby-cli
-```
-
-4. Navigate to the project directory from your terminal by entering the following:
-
-```
-$ cd ~/rational-unicorn
-```
-
-5. Within the projects directory install all required dependencies with
-
-```
-$ npm install
-```
-
-6. Run the application to view in your browser with
-
-```
-$ gatsby develop
-```
-
-> If the browser does not automatically launch, view the project [here](https://localhost:8000)
+### Installation instructions coming soon! 
 
 <hr/>
 
