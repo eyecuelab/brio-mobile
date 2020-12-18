@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { TouchableOpacity, useWindowDimensions } from "react-native";
 import { connect } from "react-redux";
 import ModalContents from "./ModalContents";
+import styled from "styled-components";
+import { setStatusBarHidden } from "expo-status-bar";
+
 export const Modal = (props) => {
   const { showModal, setShowModal, apiEndpoint, color } = props;
-  const { height, width } = useWindowDimensions();
   const [apiContents, setApiContents] = useState("");
 
   useEffect(() => {
@@ -20,28 +21,29 @@ export const Modal = (props) => {
 
   return (
     <>
-      <TouchableOpacity
+      <ContentPop
         style={
           showModal
             ? {
                 flex: 1,
+                flewGrow: 1,
                 display: "flex",
                 flexDirection: "column",
                 position: "absolute",
-                left: -8,
-                top: -50,
-                opacity: 0.9,
+                left: 0,
+                top: 0,
+                opacity: 0.8,
                 backgroundColor: `${color}`,
-                height,
-                width,
-                justifyContent: "center",
+                justifyContent: "relative",
                 alignItems: "center",
+                overflow: "hidden",
               }
             : {
                 flex: 1,
                 display: "none",
                 flexDirection: "column",
                 position: "absolute",
+                opacity: 0.3,
                 left: 0,
                 top: 0,
                 backgroundColor: `${color}`,
@@ -51,11 +53,30 @@ export const Modal = (props) => {
         }
         onPress={() => setShowModal(false)}
       >
-        <ModalContents apiContents={apiContents} />
-      </TouchableOpacity>
+        <BlockHack />
+        <InteriorContent>
+          <ModalContents apiContents={apiContents} />
+        </InteriorContent>
+      </ContentPop>
     </>
   );
 };
+
+const BlockHack = styled.View`
+  height: 20%;
+`;
+const ContentPop = styled.TouchableOpacity`
+  height: 100%;
+  width: 100%;
+`;
+
+const InteriorContent = styled.View`
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 40px;
+  border: 3px black;
+  margin: 3%;
+`;
 
 const mapStateToProps = (state) => {
   return {

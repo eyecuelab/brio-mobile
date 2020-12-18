@@ -57,7 +57,6 @@ const ContentsContainer = styled.View`
   margin-top: 36px;
   margin-bottom: 36px;
   background-color: #fff;
-  border-radius: 25px;
   padding: 24px;
 `;
 const ContentsHeaderWrapper = styled.View`

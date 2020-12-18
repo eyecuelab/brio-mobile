@@ -37,9 +37,6 @@ export default StyleSheet.create({
   },
   mint: {
     flex: 1,
-    paddingTop: 64,
-    paddingBottom: 68,
-    padding: 8,
     backgroundColor: "#F1FFDF",
   },
   robin: {
@@ -58,9 +55,6 @@ export default StyleSheet.create({
   },
   berry: {
     flex: 1,
-    paddingTop: 64,
-    paddingBottom: 68,
-    padding: 8,
     backgroundColor: "#FFEFEF",
   },
 });
