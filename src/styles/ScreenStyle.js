@@ -7,6 +7,10 @@ export default StyleSheet.create({
     paddingBottom: 68,
     backgroundColor: "#FFF0DF",
   },
+  login: {
+    flex: 1,
+    backgroundColor: "#FFF0DF",
+  },
   brick: {
     flex: 1,
     paddingTop: 64,

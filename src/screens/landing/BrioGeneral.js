@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { View } from "react-native";
 import bg from "../../styles/ScreenStyle.js";
-import SvgBrioIntro from "../../svg_assets/landing/SvgBrioIntro";
 import styled from "styled-components/native";
 import GetStartedBtn from "./GetStartedBtn";
 import SvgDotSliderGreen from "../../svg_assets/landing/SvgDotSliderGreen";
 import { connect } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
+import SvgBrioIntro from "../../svg_assets/landing/SvgBrioIntro.js";
 
 function BrioGeneral(props) {
   const { spotifyAuthToken } = props;
