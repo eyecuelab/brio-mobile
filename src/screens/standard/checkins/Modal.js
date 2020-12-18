@@ -53,7 +53,6 @@ export const Modal = (props) => {
         }
         onPress={() => setShowModal(false)}
       >
-        <BlockHack />
         <InteriorContent>
           <ModalContents apiContents={apiContents} />
         </InteriorContent>
@@ -62,10 +61,8 @@ export const Modal = (props) => {
   );
 };
 
-const BlockHack = styled.View`
-  height: 25%;
-`;
 const ContentPop = styled.TouchableOpacity`
+  padding-top: 25%;
   height: 100%;
   width: 100%;
 `;
