@@ -115,6 +115,7 @@ export const DashboardProfile = (props) => {
             />
             <SaveUsernameBtn onPress={() => changedUsername(value)}>
               <BtnText>{usernameBtnText}</BtnText>
+              <BtnText>Save Username</BtnText>
             </SaveUsernameBtn>
           </FieldContainer>
 
@@ -123,7 +124,7 @@ export const DashboardProfile = (props) => {
               <FieldText>LOG OUT OF THE APP</FieldText>
             </FieldTextContainer>
             <LogoutBtn onPress={() => logoutButton()}>
-              <BtnText>Log out</BtnText>
+              <BtnText>Log Out</BtnText>
             </LogoutBtn>
           </FieldContainer>
 
