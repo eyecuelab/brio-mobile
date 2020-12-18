@@ -6,6 +6,7 @@ import SvgCheckinExercise from "../../../svg_assets/SvgCheckinExercise";
 import Blocker from "./Blocker";
 import DashBar from "../dashboard/DashBar";
 import Modal from "./Modal";
+import AnimatedBrio from "./AnimatedBrio";
 
 export const CheckinExercise = () => {
   const [showModal, setShowModal] = useState(false);
@@ -34,6 +35,7 @@ export const CheckinExercise = () => {
           setShowModal={setShowModal}
           color={"#d587b5"}
         />
+        <AnimatedBrio />
       </ScrollView>
     </Container>
   );
