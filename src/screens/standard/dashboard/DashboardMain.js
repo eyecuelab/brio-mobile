@@ -101,13 +101,15 @@ function DashboardMain(props) {
 const DiagramContainer = styled.View`
   flex: 1;
   flex-flow: row;
+  justify-content: center;
   margin-top: 28px;
 `;
 const TextBox = styled.View`
   position: absolute;
-  border-radius: 25px;
+  max-height: 125px;
+  max-width: 200px;
   right: 20;
-  top: 20;
+  top: 30;
 `;
 const DiagramHeader = styled.Text`
   font-size: 24px;

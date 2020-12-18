@@ -74,7 +74,7 @@ const DiagramText = styled.Text`
   font-size: 16px;
   color: #51ade0;
   font-weight: 900;
-  padding: 4px;
+  padding: 5px;
 `;
 const ListContainer = styled.View`
   margin-bottom: 24;

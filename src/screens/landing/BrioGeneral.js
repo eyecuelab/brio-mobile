@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { View } from "react-native";
 import bg from "../../styles/ScreenStyle.js";
-import SvgBrioIntro from "../../svg_assets/landing/SvgBrioIntro";
-import styled, { keyframes } from "styled-components/native";
+import styled from "styled-components/native";
 import GetStartedBtn from "./GetStartedBtn";
 import SvgDotSliderGreen from "../../svg_assets/landing/SvgDotSliderGreen";
 import { connect } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
+import SvgBrioIntro from "../../svg_assets/landing/SvgBrioIntro.js";
 
 function BrioGeneral(props) {
   const { spotifyAuthToken } = props;
@@ -33,27 +33,12 @@ function BrioGeneral(props) {
   );
 }
 
-const breatheAnimation = keyframes`
- 0% { height: 100px; width: 100px; }
- 30% { height: 400px; width: 400px; opacity: 1 }
- 40% { height: 405px; width: 405px; opacity: 0.3; }
- 100% { height: 100px; width: 100px; opacity: 0.6; }
-`;
 const Graphic = styled(SvgBrioIntro)`
   margin-top: 10%;
   flex: 1;
   max-width: 100%;
   aspect-ratio: 0.72;
-  animation-name: ${breatheAnimation};
-  animation-duration: 8s;
-  animation-iteration-count: infinite;
 `;
-// const Graphic = styled(SvgBrioIntro)`
-//   margin-top: 10%;
-//   flex: 1;
-//   max-width: 100%;
-//   aspect-ratio: 0.72;
-// `;
 
 const Slider = styled(SvgDotSliderGreen)`
   flex: 1;

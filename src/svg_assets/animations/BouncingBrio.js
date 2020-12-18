@@ -1,9 +1,9 @@
 import React, { Component, useState, useEffect } from "react";
 import { View, Animated, Easing } from "react-native";
-import SvgBrioSpin from "../../svg_assets/SvgBrioSpin";
+import SvgBrioIntro from "../../svg_assets/landing/SvgBrioIntro";
 
-const SpinningBrio = () => {
-  const spinAnim = useState(new Animated.Value(0));
+const BouncingBrio = () => {
+  const [spinAnim] = useState(new Animated.Value(0));
 
   const interpolateRotation = spinAnim.interpolate({
     inputRange: [0, 1],
@@ -11,13 +11,7 @@ const SpinningBrio = () => {
   });
 
   const animatedStyle = {
-    transform: [
-      { translateX: -130 },
-      { translateY: -60 },
-      { rotate: interpolateRotation },
-      { translateX: 0 },
-      { translateY: 0 },
-    ],
+    transform: [{ rotate: interpolateRotation }],
   };
 
   useEffect(() => {
@@ -26,6 +20,7 @@ const SpinningBrio = () => {
         toValue: 1,
         duration: 4000,
         easing: Easing.linear,
+        useNativeDriver: true,
       })
     ).start();
   });
@@ -33,10 +28,10 @@ const SpinningBrio = () => {
   return (
     <View>
       <Animated.View style={animatedStyle}>
-        <SvgBrioSpin />
+        <SvgBrioIntro />
       </Animated.View>
     </View>
   );
 };
 
-export default SpinningBrio;
+export default BouncingBrio;

@@ -106,7 +106,7 @@ const LoginPage = (props) => {
 
   return (
     <>
-      <Container style={bg.basic}>
+      <Container style={bg.login}>
         <ScrollView>
           <AvatarContainer>
             <SvgAvatar eyeColor={eyeColor} />
@@ -211,6 +211,7 @@ const BrioContainer = styled.View`
   margin-top: 12;
   align-items: center;
   justify-content: center;
+  margin-bottom: 2%;
 `;
 const BrioText = styled.Text`
   color: #dea768;

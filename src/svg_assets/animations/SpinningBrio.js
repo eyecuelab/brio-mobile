@@ -26,6 +26,7 @@ const SpinningBrio = () => {
         toValue: 1,
         duration: 4000,
         easing: Easing.linear,
+        useNativeDriver: true,
       })
     ).start();
   });
