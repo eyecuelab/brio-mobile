@@ -14,7 +14,6 @@ export const CheckinExercise = () => {
     <Container style={bg.berry}>
       <ScrollView>
         <CheckinContainer>
-          <CheckinBumper />
           <SvgCheckinExercise />
           <DashBar category={"Exercise"} color={"#d8a1d5"} from={"Checkin"} />
         </CheckinContainer>
@@ -40,27 +39,24 @@ export const CheckinExercise = () => {
   );
 };
 
-const CheckinBumper = styled.View`
-  height: 20%;
-`;
-
 const Container = styled.View`
   flex: 1;
   height: 100%;
 `;
 const CheckinContainer = styled.View`
+  padding-top: 15%;
+  padding-bottom: 10%
+  flex-flow: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 `;
 const ListContainer = styled.View`
-  margin-top: 36;
   margin-right: 12;
   margin-left: 12;
   margin-bottom: 36;
   justify-content: center;
 `;
 const ListHeaderTextWrapper = styled.View`
-  height: 20px;
   flex-direction: row;
   justify-content: space-between;
   margin: 12px;

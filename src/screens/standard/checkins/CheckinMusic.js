@@ -13,7 +13,6 @@ export const CheckinMusic = () => {
     <Container style={bg.mint}>
       <ScrollView>
         <CheckinContainer>
-          <CheckinBumper />
           <SvgCheckinMusic />
           <DashBar category={"Music"} color={"#94D7B5"} from={"Checkin"} />
         </CheckinContainer>
@@ -39,30 +38,27 @@ export const CheckinMusic = () => {
   );
 };
 
-const CheckinBumper = styled.View`
-  height: 20%;
-`;
-
 const Container = styled.View`
   flex: 1;
   height: 100%;
 `;
 const CheckinContainer = styled.View`
+  padding-top: 15%;
+  padding-bottom: 10%
+  flex-flow: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 `;
 const ListContainer = styled.View`
-  margin-top: 36;
   margin-right: 12;
   margin-left: 12;
   margin-bottom: 36;
   justify-content: center;
 `;
 const ListHeaderTextWrapper = styled.View`
-  height: 20;
   flex-direction: row;
   justify-content: space-between;
-  margin: 24px;
+  margin: 12px;
 `;
 const ListHeaderText = styled.Text`
   color: #94d7b5;

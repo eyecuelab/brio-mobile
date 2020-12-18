@@ -43,18 +43,20 @@ const Container = styled.View`
   height: 100%;
 `;
 const CheckinContainer = styled.View`
+  padding-top: 15%;
+  padding-bottom: 10%
+  flex-flow: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 `;
 const ListContainer = styled.View`
-  margin-top: 36;
   margin-right: 12;
   margin-left: 12;
   margin-bottom: 36;
   justify-content: center;
 `;
 const ListHeaderTextWrapper = styled.View`
-  height: 20;
+  height: 10;
   flex-direction: row;
   justify-content: space-between;
   margin: 12px;
