@@ -152,7 +152,7 @@ function Blocker(props) {
                   <List.Item
                     title={blocker.description}
                     titleNumberOfLines={3}
-                    titleStyle={{ color: "#FFFFFF" }}
+                    titleStyle={{ color: "#FFFFFF", fontWeight: "bold" }}
                     description={getCompletedDate(blocker)}
                     descriptionStyle={{ color: "#FFFFFF" }}
                     left={() => <SvgStarIconComplete />}
@@ -185,7 +185,7 @@ function Blocker(props) {
             <List.Item
               title={suggestion.description}
               titleNumberOfLines={3}
-              titleStyle={{ color: "#FFFFFF" }}
+              titleStyle={{ color: "#FFFFFF", fontWeight: "bold" }}
               description={getCompletedDate(suggestion)}
               descriptionStyle={{ color: "#FFFFFF" }}
               left={() => <SvgStarIconComplete />}
