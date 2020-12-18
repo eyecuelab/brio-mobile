@@ -13,8 +13,8 @@ export const ModalContents = (props) => {
             return (
               <ContentsTextWrapper key={index}>
                 <ContentsText>
-                  {index + 1}. {content.track.name} by{" "}
-                  {content.track.artists[0].name}
+                  {index + 1}. <TrackTitle>"{content.track.name}"</TrackTitle>{" "}
+                  by {content.track.artists[0].name}
                 </ContentsText>
               </ContentsTextWrapper>
             );
@@ -53,6 +53,10 @@ export const ModalContents = (props) => {
 
   return <>{showContents()}</>;
 };
+
+const TrackTitle = styled.Text`
+  font-weight: bold;
+`;
 const ContentsContainer = styled.View`
   margin-top: 36px;
   margin-bottom: 36px;
