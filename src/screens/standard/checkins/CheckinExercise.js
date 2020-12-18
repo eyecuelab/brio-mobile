@@ -6,6 +6,7 @@ import SvgCheckinExercise from "../../../svg_assets/SvgCheckinExercise";
 import Blocker from "./Blocker";
 import DashBar from "../dashboard/DashBar";
 import Modal from "./Modal";
+import AnimatedBrio from "./AnimatedBrio";
 
 export const CheckinExercise = () => {
   const [showModal, setShowModal] = useState(false);
@@ -22,6 +23,7 @@ export const CheckinExercise = () => {
             <ListHeaderText>CLICK ICON FOR TIPS</ListHeaderText>
             <ListHeaderText>TAP BAR TO COMPLETE</ListHeaderText>
           </ListHeaderTextWrapper>
+          <AnimatedBrio />
           <Blocker
             setShowModal={setShowModal}
             category={"exercise"}

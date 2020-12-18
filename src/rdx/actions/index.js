@@ -84,3 +84,8 @@ export const deactivateBlockers = () => {
     type: c.DEACTIVATE_BLOCKERS,
   };
 };
+export const resetAnimation = () => {
+  return {
+    type: c.RESET_ANIMATION,
+  };
+};

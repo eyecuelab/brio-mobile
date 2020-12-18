@@ -103,7 +103,7 @@ export const DashboardProfile = (props) => {
             </SaveEyeColorBtn>
           </FieldContainer>
 
-          <FieldContainer>
+          <FieldContainer> 
             <FieldTextContainer>
               <FieldText>CHANGE USERNAME</FieldText>
             </FieldTextContainer>
