@@ -7,7 +7,7 @@ import { Button } from "react-native-paper";
 import PieChart from "./PieChart";
 import DashBar from "./DashBar";
 import styled from "styled-components/native";
-import SvgBrioFront from "../../../svg_assets/SvgBrioFront";
+import SvgBrioPie from "../../../svg_assets/SvgBrioPie";
 import SvgExercise from "../../../svg_assets/SvgExercise";
 import SvgMusic from "../../../svg_assets/SvgMusic";
 import SvgSocial from "../../../svg_assets/SvgSocial";
@@ -25,7 +25,7 @@ function DashboardMain(props) {
         return (
           <>
             <DiagramContainer>
-              <SvgBrioFront />
+              <SvgBrioPie />
               <Diagram>
                 <DiagramText>You haven't got points yet! </DiagramText>
                 <DiagramText>Tap categories below!</DiagramText>
@@ -38,11 +38,11 @@ function DashboardMain(props) {
         return (
           <>
             <DiagramContainer>
-              <SvgBrioFront />
-              <Diagram>
-                <DiagramText>Welcome back {username}! </DiagramText>
-                <DiagramText> You look great!</DiagramText>
-              </Diagram>
+              <SvgBrioPie />
+              <TextBox>
+                <DiagramHeader>Welcome back {username}!</DiagramHeader>
+                <DiagramHeader>You look great!</DiagramHeader>
+              </TextBox>
             </DiagramContainer>
             <PieChart />
           </>
@@ -84,7 +84,7 @@ function DashboardMain(props) {
             mode="contained"
             color="#FFCD1A"
             labelStyle={{ color: "#fff" }}
-            style={{ marginTop: 100}}
+            style={{ marginTop: 100 }}
             onPress={() => {
               resetProgress();
             }}
@@ -100,21 +100,23 @@ function DashboardMain(props) {
 
 const DiagramContainer = styled.View`
   flex: 1;
-  flex-direction: row;
+  flex-flow: row;
   justify-content: center;
   margin-top: 28px;
 `;
-const Diagram = styled.View`
-  justify-content: center;
-  padding-right: 10px;
-  padding-left: 10px;
-  border-radius: 25px;
-  background-color: #fff;
+const TextBox = styled.View`
+  position: absolute;
+  max-height: 125px;
+  max-width: 200px;
+  right: 20;
+  top: 20;
+  border: 1px;
 `;
-const DiagramText = styled.Text`
-  font-size: 18px;
+const DiagramHeader = styled.Text`
+  font-size: 24px;
   color: #51ade0;
   font-weight: 900;
+  margin-bottom: 2px;
 `;
 
 const mapStateToProps = (state) => {
