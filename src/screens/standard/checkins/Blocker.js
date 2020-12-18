@@ -51,7 +51,11 @@ function Blocker(props) {
     const clickedBlocker = catBlockers.find((blocker) => blocker.id === id);
     getAccessTokenWatcher(spotifyAuthToken);
     if (clickedBlocker.apiEndpoint !== null) {
-      calledApi(clickedBlocker, clickedBlocker.apiEndpoint, clickedBlocker.createdAt);
+      calledApi(
+        clickedBlocker,
+        clickedBlocker.apiEndpoint,
+        clickedBlocker.createdAt
+      );
       setShowModal(!showModal);
     }
   };
@@ -60,7 +64,7 @@ function Blocker(props) {
     const clickedSugg = catSuggs.find((sugg) => sugg.id === id);
     getAccessTokenWatcher(spotifyAuthToken);
     if (clickedSugg.apiEndpoint !== null) {
-      calledApi(clickedSugg, clickedSugg.apiEndpoint);
+      calledApi(clickedSugg, clickedSugg.apiEndpoint, clickedSugg.createdAt);
       setShowModal(!showModal);
     }
   };
@@ -86,7 +90,9 @@ function Blocker(props) {
                       completedBlocker(blocker.id);
                     }}
                   >
-                    <ListText>{blocker.description}</ListText>
+                    <ListTextWrapper>
+                      <ListText>{blocker.description}</ListText>
+                    </ListTextWrapper>
                   </ListWrapper>
                 </BlockerListContainer>
               </React.Fragment>
@@ -114,7 +120,9 @@ function Blocker(props) {
                       completedSuggestion(blocker.id, uncompletedSuggestion.id);
                     }}
                   >
-                    <ListText>{uncompletedSuggestion.description}</ListText>
+                    <ListTextWrapper>
+                      <ListText>{uncompletedSuggestion.description}</ListText>
+                    </ListTextWrapper>
                   </ListWrapper>
                 </BlockerListContainer>
               );
@@ -144,7 +152,7 @@ function Blocker(props) {
                   <List.Item
                     title={blocker.description}
                     titleNumberOfLines={3}
-                    titleStyle={{ color: "#FFFFFF" }}
+                    titleStyle={{ color: "#FFFFFF", fontWeight: "bold" }}
                     description={getCompletedDate(blocker)}
                     descriptionStyle={{ color: "#FFFFFF" }}
                     left={() => <SvgStarIconComplete />}
@@ -177,7 +185,7 @@ function Blocker(props) {
             <List.Item
               title={suggestion.description}
               titleNumberOfLines={3}
-              titleStyle={{ color: "#FFFFFF" }}
+              titleStyle={{ color: "#FFFFFF", fontWeight: "bold" }}
               description={getCompletedDate(suggestion)}
               descriptionStyle={{ color: "#FFFFFF" }}
               left={() => <SvgStarIconComplete />}
@@ -255,15 +263,18 @@ const BlockerListContainer = styled.View`
 const ListWrapper = styled.TouchableHighlight`
   justify-content: center;
   align-items: center;
+  width: 70%;
   height: 50px;
-  padding: 12px;
   border-radius: 25px;
+`;
+const ListTextWrapper = styled.View`
+  width: 80%;
+  flex-direction: row;
+  flex-wrap: wrap;
 `;
 const ListText = styled.Text`
   font-size: 14px;
   font-weight: 900;
-  text-align: center;
-  flex-shrink: 1;
   color: #6c757d;
 `;
 const IconWrapper = styled.TouchableHighlight`

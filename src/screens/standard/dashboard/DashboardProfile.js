@@ -12,6 +12,8 @@ import { useNavigation } from "@react-navigation/native";
 export const DashboardProfile = (props) => {
   const { dispatch, username, eyeBallColor } = props;
   const [value, onChangeText] = useState("");
+  const [eyeColorBtnText, setEyeColorBtnText] = useState("Change eye color");
+  const [usernameBtnText, setUsernameBtnText] = useState("Change username");
   const [eyeColor, setEyeColor] = useState(eyeBallColor || "#7E6200");
   const navigation = useNavigation();
   const eyeColors = ["#51ADE0", "#5EA782", "#BDA41D", "#7E6200", "#BF2F2F"];
@@ -25,13 +27,27 @@ export const DashboardProfile = (props) => {
   const changedUsername = (username) => {
     const action = actions.changedUsername(username);
     dispatch(action);
+    setUsernameBtnText("SAVED!");
+    savedUsernameButtonText();
   };
 
   const savedEyeColor = (eyeColor) => {
     const action = actions.savedEyeColor(eyeColor);
     dispatch(action);
+    setEyeColorBtnText("SAVED!");
+    savedEyeColorButtonText();
   };
 
+  const savedEyeColorButtonText = () => {
+    setTimeout(() => {
+      setEyeColorBtnText("Change eyecolor");
+    }, 1500);
+  };
+  const savedUsernameButtonText = () => {
+    setTimeout(() => {
+      setUsernameBtnText("Change username");
+    }, 1500);
+  };
   const deactivated = () => {
     const actionAuth = actions.deactivateAuth();
     const actionSpot = actions.deactivateSpotify();
@@ -83,7 +99,7 @@ export const DashboardProfile = (props) => {
             </FieldTextContainer>
             <EyecolorView>{showEyeBalls()}</EyecolorView>
             <SaveEyeColorBtn onPress={() => savedEyeColor(eyeColor)}>
-              <BtnText>Save Eye Color</BtnText>
+              <BtnText>{eyeColorBtnText}</BtnText>
             </SaveEyeColorBtn>
           </FieldContainer>
 
@@ -98,6 +114,7 @@ export const DashboardProfile = (props) => {
               autoCapitalize="none"
             />
             <SaveUsernameBtn onPress={() => changedUsername(value)}>
+              <BtnText>{usernameBtnText}</BtnText>
               <BtnText>Save Username</BtnText>
             </SaveUsernameBtn>
           </FieldContainer>
