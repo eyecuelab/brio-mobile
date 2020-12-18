@@ -78,8 +78,6 @@ and remove roadblocks that can get in the way of ever starting good habits and d
 
 ## Setup/Installation Requirements
 
-### Installation instructions coming soon! 
-
 <hr/>
 
 ## Known Bugs
