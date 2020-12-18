@@ -13,6 +13,7 @@ import LandingNavigation from "./screens/landing/LandingNavigation.js";
 const RootStack = createStackNavigator();
 
 export default function App() {
+  console.disableYellowBox = true;
   return (
     <>
       <SafeAreaProvider>

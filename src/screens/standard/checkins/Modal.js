@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { TouchableOpacity, useWindowDimensions } from "react-native";
 import { connect } from "react-redux";
 import ModalContents from "./ModalContents";
+
 export const Modal = (props) => {
   const { showModal, setShowModal, apiEndpoint, color } = props;
   const { height, width } = useWindowDimensions();
