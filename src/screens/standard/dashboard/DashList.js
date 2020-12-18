@@ -50,7 +50,7 @@ export const DashList = (props) => {
       });
       const mostRecentCompletedBlocker = sortedBlockersByCompletedAt[0];
 
-      const mostRecentCompletedDate = mostRecentCompletedBlocker.completedAt;
+      const mostRecentCompletedDate = new Date(mostRecentCompletedBlocker.completedAt);
 
       const month = months[mostRecentCompletedDate.getMonth()];
       const day = days[mostRecentCompletedDate.getDay()];
@@ -85,7 +85,6 @@ export const DashList = (props) => {
           style={{
             justifyContent: "center",
             alignItems: "center",
-            backgroundColor: "#fff",
             padding: 20,
             margin: "auto",
           }}
@@ -100,6 +99,8 @@ export const DashList = (props) => {
 
 const ListWrapper = styled.View`
   margin: 6px;
+  background-color: white;
+  border-radius: 25px;
 `;
 const ListImage = styled.View`
   flex-direction: column;

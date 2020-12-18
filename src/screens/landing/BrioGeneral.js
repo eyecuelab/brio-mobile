@@ -1,14 +1,61 @@
-import React from 'react';
-import { Text, View } from "react-native";
+import React, { useEffect } from "react";
+import { View } from "react-native";
 import bg from "../../styles/ScreenStyle.js";
-import text from "../../styles/TextStyle.js";
+import SvgBrioIntro from "../../svg_assets/landing/SvgBrioIntro";
+import styled from "styled-components/native";
+import GetStartedBtn from "./GetStartedBtn";
+import SvgDotSliderGreen from "../../svg_assets/landing/SvgDotSliderGreen";
+import { connect } from "react-redux";
+import { useNavigation } from "@react-navigation/native";
 
+function BrioGeneral(props) {
+  const { spotifyAuthToken } = props;
+  const navigation = useNavigation();
 
-function BrioGeneral() {
-    return (
-        <View style={bg.grape}>
-                <Text style={text.header}>First Page</Text>
-        </View>
-    )
+  useEffect(() => {
+    if (spotifyAuthToken != null) {
+      navigation.navigate("StandardNavigation");
+    }
+  }, [spotifyAuthToken]);
+
+  return (
+    <View style={bg.basic}>
+      <DiagramContainer>
+        <Graphic />
+        <Slider />
+      </DiagramContainer>
+      <GetStartedBtn
+        text="Get Started"
+        textColor="#ffffff"
+        backgroundColor="#94D7B5"
+      />
+    </View>
+  );
 }
-export default BrioGeneral
+
+const Graphic = styled(SvgBrioIntro)`
+  margin-top: 10%;
+  flex: 1;
+  max-width: 100%;
+  aspect-ratio: 0.72;
+`;
+
+const Slider = styled(SvgDotSliderGreen)`
+  flex: 1;
+  max-height: 12%;
+  aspect-ratio: 0.72;
+`;
+
+const DiagramContainer = styled.View`
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const mapStateToProps = (state) => {
+  return {
+    spotifyAuthToken: state.user.code,
+  };
+};
+const BrioGeneralConnected = connect(mapStateToProps)(BrioGeneral);
+export default BrioGeneralConnected;

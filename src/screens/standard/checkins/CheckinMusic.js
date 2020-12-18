@@ -1,31 +1,44 @@
-import React from "react";
-import { ScrollView } from "react-native";
+import React, { useState } from "react";
+import { View, ScrollView } from "react-native";
 import styled from "styled-components/native";
 import bg from "../../../styles/ScreenStyle.js";
 import SvgCheckinMusic from "../../../svg_assets/SvgCheckinMusic";
 import Blocker from "./Blocker";
 import DashBar from "../dashboard/DashBar";
+import Modal from "./Modal";
+import AnimatedBrio from "./AnimatedBrio";
 
 export const CheckinMusic = () => {
+  const [showModal, setShowModal] = useState(false);
   return (
-    <ScrollView>
-      <Container style={bg.mint}>
+    <Container style={bg.mint}>
+      <ScrollView>
         <CheckinContainer>
           <SvgCheckinMusic />
           <DashBar category={"Music"} color={"#94D7B5"} from={"Checkin"} />
         </CheckinContainer>
         <ListContainer>
           <ListHeaderTextWrapper>
-            <ListHeaderText>TAP TO COMPLETE</ListHeaderText>
-            <ListHeaderText>REFRESH</ListHeaderText>
+            <ListHeaderText>CLICK ICON FOR TIPS</ListHeaderText>
+            <ListHeaderText>TAP BAR TO COMPLETE</ListHeaderText>
           </ListHeaderTextWrapper>
-          <Blocker category={"music"} color1={"#94D7B5"} color2={"#DAF3E6"}/>
+          <AnimatedBrio />
+          <Blocker
+            setShowModal={setShowModal}
+            category={"music"}
+            color1={"#94D7B5"}
+            color2={"#DAF3E6"}
+          />
         </ListContainer>
-      </Container>
-    </ScrollView>
+        <Modal
+          showModal={showModal}
+          setShowModal={setShowModal}
+          color={"#12492E"}
+        />
+      </ScrollView>
+    </Container>
   );
 };
-
 
 const Container = styled.View`
   flex: 1;
@@ -46,7 +59,7 @@ const ListHeaderTextWrapper = styled.View`
   height: 20;
   flex-direction: row;
   justify-content: space-between;
-  margin: 12px;
+  margin: 24px;
 `;
 const ListHeaderText = styled.Text`
   color: #94d7b5;

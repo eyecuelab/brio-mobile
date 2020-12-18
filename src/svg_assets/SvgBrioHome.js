@@ -19,7 +19,7 @@ export default function SvgBrioHome(){
   <circle cx="56.3117" cy="83.7656" r="2.26436" transform="rotate(-7.35049 56.3117 83.7656)" fill="white"/>
   </svg>  
   `;
-  const SvgImage = () => <SvgXml xml={svgMarkup} width="100px" />;  
+  const SvgImage = () => <SvgXml xml={svgMarkup} width="40%" />;  
 
   return <SvgImage />;
 }
