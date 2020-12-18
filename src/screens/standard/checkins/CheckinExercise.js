@@ -23,6 +23,7 @@ export const CheckinExercise = () => {
             <ListHeaderText>CLICK ICON FOR TIPS</ListHeaderText>
             <ListHeaderText>TAP BAR TO COMPLETE</ListHeaderText>
           </ListHeaderTextWrapper>
+          <AnimatedBrio />
           <Blocker
             setShowModal={setShowModal}
             category={"exercise"}
@@ -35,7 +36,6 @@ export const CheckinExercise = () => {
           setShowModal={setShowModal}
           color={"#d587b5"}
         />
-        <AnimatedBrio />
       </ScrollView>
     </Container>
   );

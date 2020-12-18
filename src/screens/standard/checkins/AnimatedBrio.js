@@ -1,15 +1,34 @@
-import React from "react";
-import { View, Animated, TouchableHighlight } from "react-native";
+import React, { useEffect } from "react";
+import { View, Animated } from "react-native";
 import { connect } from "react-redux";
 import SvgBrioBack from "../../../svg_assets/SvgBrioBack";
+import * as actions from "../../../rdx/actions";
 
-export const AnimatedBrio = () => {
-  const moveAnimation = new Animated.ValueXY({ x: 0, y: 0 });
+export const AnimatedBrio = (props) => {
+  const { doAnimation, dispatch } = props;
+
+  useEffect(() => {
+    if (doAnimation) {
+      moveBrio();
+    }
+    return () => {};
+  }, [doAnimation]);
+
+  const moveAnimation = new Animated.ValueXY({ x: -200, y: 150 });
   const moveBrio = () => {
-    Animated.spring(moveAnimation, {
-      toValue: { x: 300, y: -900 },
-    }).start();
+    Animated.timing(moveAnimation, {
+      toValue: { x: 400, y: -500 },
+      duration: 1500,
+      useNativeDriver: false,
+    }).start(() => {
+      const action = actions.resetAnimation();
+      dispatch(action);
+    });
   };
+
+  if (!doAnimation) {
+    return null;
+  }
 
   return (
     <View style={{ flex: 1, backgroundColor: "#ecf0f1", zIndex: 1 }}>
@@ -22,20 +41,16 @@ export const AnimatedBrio = () => {
           moveAnimation.getLayout(),
         ]}
       >
-        <TouchableHighlight
-          style={{
-            paddingTop: 24,
-            paddingBottom: 24,
-          }}
-          onPress={moveBrio}
-        >
-          <SvgBrioBack />
-        </TouchableHighlight>
+        <SvgBrioBack />
       </Animated.View>
     </View>
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => {
+  return {
+    doAnimation: state.blockersState.doAnimation,
+  };
+};
 
 export default connect(mapStateToProps)(AnimatedBrio);

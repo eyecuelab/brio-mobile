@@ -24,6 +24,7 @@ export default (state = initBlockers(), action) => {
         ...currentState,
         blockers: updatedBlockers,
         currentPoints: updatedPoints,
+        doAnimation: true,
       };
     }
 
@@ -58,10 +59,12 @@ export default (state = initBlockers(), action) => {
         [updatedBlocker.category]:
           currentPointsForCateogry + updatedSuggestion.points,
       };
+
       return {
         ...currentState,
         blockers: updatedBlockers,
         currentPoints: updatedPoints,
+        doAnimation: true,
       };
     }
     case c.RESET_PROGRESS: {
@@ -69,6 +72,12 @@ export default (state = initBlockers(), action) => {
     }
     case c.DEACTIVATE_BLOCKERS: {
       return initBlockers();
+    }
+    case c.RESET_ANIMATION: {
+      return {
+        ...state,
+        doAnimation: false,
+      };
     }
     default:
       return state;
