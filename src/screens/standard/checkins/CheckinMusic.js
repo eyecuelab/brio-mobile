@@ -6,6 +6,7 @@ import SvgCheckinMusic from "../../../svg_assets/SvgCheckinMusic";
 import Blocker from "./Blocker";
 import DashBar from "../dashboard/DashBar";
 import Modal from "./Modal";
+import AnimatedBrio from "./AnimatedBrio";
 
 export const CheckinMusic = () => {
   const [showModal, setShowModal] = useState(false);
@@ -21,6 +22,7 @@ export const CheckinMusic = () => {
             <ListHeaderText>CLICK ICON FOR TIPS</ListHeaderText>
             <ListHeaderText>TAP BAR TO COMPLETE</ListHeaderText>
           </ListHeaderTextWrapper>
+          <AnimatedBrio />
           <Blocker
             setShowModal={setShowModal}
             category={"music"}

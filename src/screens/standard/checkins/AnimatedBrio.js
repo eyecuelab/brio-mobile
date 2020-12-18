@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Animated } from "react-native";
 import { connect } from "react-redux";
 import SvgBrioBack from "../../../svg_assets/SvgBrioBack";
@@ -6,7 +6,11 @@ import * as actions from "../../../rdx/actions";
 
 export const AnimatedBrio = (props) => {
   const { doAnimation, dispatch } = props;
-
+  const [animationSets, setAnimationSets] = useState({
+    startPoint: { x: -150, y: 150 },
+    endPoint: { x: 400, y: -500 },
+    duration: 1500,
+  });
   useEffect(() => {
     if (doAnimation) {
       moveBrio();
@@ -14,15 +18,33 @@ export const AnimatedBrio = (props) => {
     return () => {};
   }, [doAnimation]);
 
-  const moveAnimation = new Animated.ValueXY({ x: -200, y: 150 });
+  const animationData = [
+    {
+      startPoint: { x: -150, y: 150 },
+      endPoint: { x: 400, y: -500 },
+      duration: 1500,
+    },
+    {
+      startPoint: { x: 450, y: 150 },
+      endPoint: { x: -400, y: -500 },
+      duration: 1500,
+    },
+  ];
+  const randomAnimationData = () => {
+    let randomIndex = Math.floor(Math.random() * animationData.length);
+    setAnimationSets(animationData[randomIndex]);
+  };
+
+  const moveAnimation = new Animated.ValueXY(animationSets.startPoint);
   const moveBrio = () => {
     Animated.timing(moveAnimation, {
-      toValue: { x: 400, y: -500 },
-      duration: 1500,
+      toValue: animationSets.endPoint,
+      duration: animationSets.duration,
       useNativeDriver: false,
     }).start(() => {
       const action = actions.resetAnimation();
       dispatch(action);
+      randomAnimationData();
     });
   };
 
