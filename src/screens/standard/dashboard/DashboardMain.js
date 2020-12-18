@@ -26,10 +26,10 @@ function DashboardMain(props) {
           <>
             <DiagramContainer>
               <SvgBrioPie />
-              <Diagram>
-                <DiagramText>You haven't got points yet! </DiagramText>
-                <DiagramText>Tap categories below!</DiagramText>
-              </Diagram>
+              <TextBox>
+                <DiagramHeader>You haven't got points yet! </DiagramHeader>
+                <DiagramHeader>Tap categories below!</DiagramHeader>
+              </TextBox>
             </DiagramContainer>
             <SadPieChart />
           </>
@@ -101,16 +101,13 @@ function DashboardMain(props) {
 const DiagramContainer = styled.View`
   flex: 1;
   flex-flow: row;
-  justify-content: center;
   margin-top: 28px;
 `;
 const TextBox = styled.View`
   position: absolute;
-  max-height: 125px;
-  max-width: 200px;
+  border-radius: 25px;
   right: 20;
   top: 20;
-  border: 1px;
 `;
 const DiagramHeader = styled.Text`
   font-size: 24px;

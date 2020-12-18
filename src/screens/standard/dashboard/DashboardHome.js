@@ -2,7 +2,7 @@ import React from "react";
 import { View } from "react-native";
 import { connect } from "react-redux";
 import bg from "../../../styles/ScreenStyle";
-import SvgBrioHome from "../../../svg_assets/SvgBrioHome";
+import SpinningBrio from "../../../svg_assets/animations/SpinningBrio";
 import SvgExercise from "../../../svg_assets/SvgExercise";
 import SvgArrowExercise from "../../../svg_assets/SvgArrowExercise";
 import SvgMusic from "../../../svg_assets/SvgMusic";
@@ -17,12 +17,12 @@ export const DashboardHome = () => {
     <>
       <View style={bg.basic}>
         <DiagramContainer>
-          <Diagram>
-            <DiagramTextHeader>Oh my gosh!</DiagramTextHeader>
+          <TextBox>
+            <DiagramHeader>Oh my gosh!</DiagramHeader>
             <DiagramText>This is going to be so much fun. </DiagramText>
             <DiagramText>What are we going to do today?</DiagramText>
-          </Diagram>
-          <SvgBrioHome />
+          </TextBox>
+          <SpinningBrio />
         </DiagramContainer>
         <ListContainer>
           <DashList
@@ -51,22 +51,20 @@ export const DashboardHome = () => {
 
 const DiagramContainer = styled.View`
   flex: 1;
-  justify-content: space-around;
-  margin-top: 48;
+  flex-flow: row;
+  justify-content: center;
+  margin-top: 28px;
 `;
-const Diagram = styled.View`
-  margin-top: 36;
-  margin-bottom: 12;
-  padding-right: 5;
-  padding-left: 5;
-  padding-bottom: 5;
+const TextBox = styled.View`
+  background-color: #ffffff;
   position: absolute;
-  top: -30;
-  right: 10;
   border-radius: 25px;
-  background-color: #fff;
+  padding: 12px;
+  right: 10;
+  top: 20;
+  border: 3px #cda000;
 `;
-const DiagramTextHeader = styled.Text`
+const DiagramHeader = styled.Text`
   font-size: 30px;
   color: #51ade0;
   font-weight: 900;
