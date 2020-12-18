@@ -115,7 +115,6 @@ export const DashboardProfile = (props) => {
             />
             <SaveUsernameBtn onPress={() => changedUsername(value)}>
               <BtnText>{usernameBtnText}</BtnText>
-              <BtnText>Save Username</BtnText>
             </SaveUsernameBtn>
           </FieldContainer>
 
