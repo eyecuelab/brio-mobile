@@ -13,6 +13,7 @@ export const CheckinMusic = () => {
     <Container style={bg.mint}>
       <ScrollView>
         <CheckinContainer>
+          <CheckinBumper />
           <SvgCheckinMusic />
           <DashBar category={"Music"} color={"#94D7B5"} from={"Checkin"} />
         </CheckinContainer>
@@ -37,6 +38,10 @@ export const CheckinMusic = () => {
     </Container>
   );
 };
+
+const CheckinBumper = styled.View`
+  height: 20%;
+`;
 
 const Container = styled.View`
   flex: 1;
