@@ -127,12 +127,12 @@ export const DashboardProfile = (props) => {
             </LogoutBtn>
           </FieldContainer>
 
-          {/* temporary reset button here */}
+          {/* temporary reset button */}
           <Button
             mode="contained"
             color="#FFCD1A"
             labelStyle={{ color: "#fff" }}
-            style={{ marginTop: 56 }}
+            style={{ marginTop: 120 }}
             onPress={() => {
               deactivated();
             }}

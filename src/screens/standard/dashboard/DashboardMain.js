@@ -79,12 +79,12 @@ function DashboardMain(props) {
             image={<SvgSocial />}
             from={"DashboardMain"}
           />
-          {/* temporary reset button here */}
+          {/* temporary reset button */}
           <Button
             mode="contained"
             color="#FFCD1A"
             labelStyle={{ color: "#fff" }}
-            style={{ marginTop: 12 }}
+            style={{ marginTop: 100}}
             onPress={() => {
               resetProgress();
             }}
