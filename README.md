@@ -1,6 +1,6 @@
 # Brio
 
-![Welcome](https://i.ibb.co/dm370fr/Brio-Welcome-Title.png)
+![Welcome](https://i.ibb.co/S7jZbKQ/Brio-Welcome-Title.png)
 
 <br />
 
